@@ -1,0 +1,9 @@
+#!gbuild
+[Subproject]
+	:sourceDir=../..
+	-I../../app/simple_draw/src/inc
+	-I../../app/simple_draw/src/main
+	-I../../app/simple_draw/src/fdl
+	-I../../macro/sm/ism/src
+app\simple_draw\src\lcd\init.c
+

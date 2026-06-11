@@ -1,0 +1,172 @@
+#include <dr7f701403_IRQ.h>
+
+--.section ".R_FCL_CODE_USRINT", "xaw"
+
+.section ".R_FCL_CODE_USRINT", .text
+
+.global   __unused_isr_ram
+ __unused_isr_ram:
+  br	 __unused_isr_ram
+
+
+  .offset 0x00e0
+  syncp
+  #if (FENMI_ENABLE > 0x00000000)
+    .extern _FENMI
+    jr _FENMI
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x00f0
+  syncp
+  #if (FEINT_ENABLE > 0x00000000)
+    .extern _FEINT
+    jr _FEINT
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0100
+  syncp
+  #if (EINTPRIO_0_ENABLE > 0x00000000)
+    .extern _EINTPRIO_0_RAM
+    jr _EINTPRIO_0_RAM
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0110
+  syncp
+  #if (EINTPRIO_1_ENABLE > 0x00000000)
+    .extern _EINTPRIO_1
+    jr _EINTPRIO_1
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0120
+  syncp
+  #if (EINTPRIO_2_ENABLE > 0x00000000)
+    .extern _EINTPRIO_2
+    jr _EINTPRIO_2
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0130
+  syncp
+  #if (EINTPRIO_3_ENABLE > 0x00000000)
+    .extern _EINTPRIO_3
+    jr _EINTPRIO_3
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0140
+  syncp
+  #if (EINTPRIO_4_ENABLE > 0x00000000)
+    .extern _EINTPRIO_4
+    jr _EINTPRIO_4
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0150
+  syncp
+  #if (EINTPRIO_5_ENABLE > 0x00000000)
+    .extern _EINTPRIO_5
+    jr _EINTPRIO_5
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0160
+  syncp
+  #if (EINTPRIO_6_ENABLE > 0x00000000)
+    .extern _EINTPRIO_6
+    jr _EINTPRIO_6
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0170
+  syncp
+  #if (EINTPRIO_7_ENABLE > 0x00000000)
+    .extern _EINTPRIO_7
+    jr _EINTPRIO_7
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0180
+  syncp
+  #if (EINTPRIO_8_ENABLE > 0x00000000)
+    .extern _EINTPRIO_8
+    jr _EINTPRIO_8
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x0190
+  syncp
+  #if (EINTPRIO_9_ENABLE > 0x00000000)
+    .extern _EINTPRIO_9
+    jr _EINTPRIO_9
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x01a0
+  syncp
+  #if (EINTPRIO_10_ENABLE > 0x00000000)
+    .extern _EINTPRIO_10
+    jr _EINTPRIO_10
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x01b0
+  syncp
+  #if (EINTPRIO_11_ENABLE > 0x00000000)
+    .extern _EINTPRIO_11
+    jr _EINTPRIO_11
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x01c0
+  syncp
+  #if (EINTPRIO_12_ENABLE > 0x00000000)
+    .extern _EINTPRIO_12
+    jr _EINTPRIO_12
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x01d0
+  syncp
+  #if (EINTPRIO_13_ENABLE > 0x00000000)
+    .extern _EINTPRIO_13
+    jr _EINTPRIO_13
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x01e0
+  syncp
+  #if (EINTPRIO_14_ENABLE > 0x00000000)
+    .extern _EINTPRIO_14
+    jr _EINTPRIO_14
+  #else
+    jr __unused_isr
+  #endif
+
+  .offset 0x01f0
+  syncp
+  #if (EINTPRIO_15_ENABLE > 0x00000000)
+    .extern _EINTPRIO_15
+    jr _EINTPRIO_15
+  #else
+    jr __unused_isr
+  #endif

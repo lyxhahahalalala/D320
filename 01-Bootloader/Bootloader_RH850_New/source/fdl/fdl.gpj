@@ -1,0 +1,9 @@
+#!gbuild
+[Subproject]
+fdlapp_control.c
+fdlapp_main.c
+r_fdl_hw_access.c
+r_fdl_user_if.c
+r_fdl_user_if_init.c
+fdl_descriptor.c
+fdl_user.c

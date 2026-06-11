@@ -1,0 +1,14 @@
+#!gbuild
+[Subproject]
+
+	-I ..\ComDrv\
+
+bt_uds.h
+bt_tp.c
+bt_uds.c
+bt.h
+bt_init.c
+bt_priv.h
+bt_pub.h
+common.h
+services_prot.h

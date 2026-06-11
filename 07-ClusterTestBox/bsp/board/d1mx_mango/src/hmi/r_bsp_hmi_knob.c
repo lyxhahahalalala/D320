@@ -1,0 +1,189 @@
+/*
+****************************************************************************
+PROJECT : BSP HMI Knob/Button
+FILE    : $Id: r_bsp_hmi_knob.c 4988 2015-03-30 13:06:17Z golczewskim $
+============================================================================ 
+DESCRIPTION
+BSP Implementation D1M2 MANGO Board support sys functions - knob and button
+============================================================================
+                            C O P Y R I G H T                            
+============================================================================
+                           Copyright (c) 2014
+                                  by 
+                       Renesas Electronics (Europe) GmbH. 
+                           Arcadiastrasse 10
+                          D-40472 Duesseldorf
+                               Germany
+                          All rights reserved.
+============================================================================
+Purpose: only for testing
+
+DISCLAIMER                                                                   
+This software is supplied by Renesas Electronics Corporation and is only     
+intended for use with Renesas products. No other uses are authorized. This   
+software is owned by Renesas Electronics Corporation and is protected under  
+all applicable laws, including copyright laws.                               
+THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING  
+THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT      
+LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE   
+AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.          
+TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS       
+ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE  
+FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR   
+ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE  
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.                             
+Renesas reserves the right, without notice, to make changes to this software 
+and to discontinue the availability of this software. By using this software,
+you agree to the additional terms and conditions found by accessing the      
+following link:                                                              
+http://www.renesas.com/disclaimer *                                          
+Copyright (C) 2011 Renesas Electronics Corporation. All rights reserved.     
+
+****************************************************************************
+*/
+
+/*******************************************************************************
+  Section: Includes
+*/
+#include "iodefine.h"
+#include "r_typedefs.h"     /* Renesas basic types, e.g. uint32_t */
+#include "r_dev_api.h"
+#include "r_gpio_api.h"
+#include "r_bsp_hmi_api.h"
+#include "r_bsp_hmi_knob.h" /* BSP HMI Knob and Button */
+#include "r_tauj_api.h"
+#include "bsp.h"
+#include "string.h"
+#include "SYSTEM.h"
+
+
+#define BackLight_ON     (PORT_ISO.P42.BIT.P42_15 = 1)
+#define BackLight_OFF   (PORT_ISO.P42.BIT.P42_15 = 0)
+
+#define LCD_ON   (PORT_ISO.P21.BIT.P21_0 = 1)
+#define LCD_OFF   (PORT_ISO.P21.BIT.P21_0 = 0)
+static unsigned LCD_BL;
+
+/*******************************************************************************
+  Section: Local variable 
+*/
+
+
+/*******************************************************************************
+  Section: Local Functions
+*/
+static void locConfigTauj(void); 
+static void locTauj0ch0Isr (void); 
+static void locTauj0ch1Isr (void); 
+static void locTauj0ch2Isr (void);   //+++++++++++++
+static void locTauj0ch3Isr (void);   //+++++++++++++ 
+static void locButtonLeftAction(void);
+static void locButtonUpAction(void);
+
+
+/*
+  Configure TAUJ to generate interrupt every 500uSec
+*/
+static void locConfigTauj(void)
+{
+    r_tauj_Error_t error = R_TAUJ_ERR_OK;
+    uint8_t Inst = 0;
+    error = R_TAUJ_Init(0);
+    /* set the clock period for CK0 (TPS) */
+    error += R_TAUJ_SetClockPeriod(Inst, R_TAUJ_CK_0,  R_TAUJ_TIME_INTERVAL_0);
+    /* select the clock source for the timer channel CK_0 - 3 in the CMOR */
+    error += R_TAUJ_SetClkSource(Inst, (r_tauj_Channel_t)0, R_TAUJ_CK_0);
+	// error += R_TAUJ_SetClkSource(Inst, (r_tauj_Channel_t)1, R_TAUJ_CK_0);
+    error += R_TAUJ_SetClkSource(Inst, (r_tauj_Channel_t)2, R_TAUJ_CK_0);   //++++++++++++
+    error += R_TAUJ_SetClkSource(Inst, (r_tauj_Channel_t)3, R_TAUJ_CK_0);   //++++++++++++
+    /* select the mode for the timer channel (CMOR) */
+    error += R_TAUJ_SetMode(Inst, (r_tauj_Channel_t)0, R_TAUJ_INTERVAL_TIMER_MODE);
+    // error += R_TAUJ_SetMode(Inst, (r_tauj_Channel_t)1, R_TAUJ_CAPTURE_ONE_COUNT_MODE);
+    error += R_TAUJ_SetMode(Inst, (r_tauj_Channel_t)2, R_TAUJ_INTERVAL_TIMER_MODE);   //++++++++++++
+    error += R_TAUJ_SetMode(Inst, (r_tauj_Channel_t)3, R_TAUJ_INTERVAL_TIMER_MODE);   //++++++++++++
+
+	// R_TAUJ_SetTinEdge(Inst, (r_tauj_Channel_t)0, R_TAUJ_BOTH_HIGH_WIDTH);
+	// R_TAUJ_SetTinEdge(Inst, (r_tauj_Channel_t)1, R_TAUJ_BOTH_HIGH_WIDTH);
+
+
+    /* Write the count value in the CDR */
+    error += R_TAUJ_SetPeriod(Inst, (r_tauj_Channel_t)0,   10000*0.667);
+    //error += R_TAUJ_SetPeriod(Inst, (r_tauj_Channel_t)1,  1000);
+    error += R_TAUJ_SetPeriod(Inst, (r_tauj_Channel_t)2,   100000*0.66667);
+    error += R_TAUJ_SetPeriod(Inst, (r_tauj_Channel_t)3,   1000*0.67);
+    /* Disable the output (TOE) */
+    error += R_TAUJ_OutputDisable(Inst, R_TAUJ_CHANNEL_0);
+	// error += R_TAUJ_OutputDisable(Inst, R_TAUJ_CHANNEL_1);
+    error += R_TAUJ_OutputDisable(Inst, R_TAUJ_CHANNEL_2);   //++++++++++++
+    error += R_TAUJ_OutputDisable(Inst, R_TAUJ_CHANNEL_3);   //++++++++++++
+    /* Enable interrupt */
+    R_TAUJ_EnableInt(0, R_TAUJ_INT_CH0);
+	// R_TAUJ_EnableInt(0, R_TAUJ_INT_CH1);//normal bg not on
+    R_TAUJ_EnableInt(0, R_TAUJ_INT_CH2);   //++++++++++++
+    R_TAUJ_EnableInt(0, R_TAUJ_INT_CH3);   //++++++++++++
+    /* Set ISR routine */
+    R_TAUJ_SetIsrCallback(0, R_TAUJ_INT_CH0, &locTauj0ch0Isr);
+   // R_TAUJ_SetIsrCallback(0, R_TAUJ_INT_CH1, &locTauj0ch1Isr);    
+    R_TAUJ_SetIsrCallback(0, R_TAUJ_INT_CH2, &locTauj0ch2Isr);   //++++++++++++
+    R_TAUJ_SetIsrCallback(0, R_TAUJ_INT_CH3, &locTauj0ch3Isr);   //++++++++++++
+
+    R_TAUJ_Start(0, R_TAUJ_CHANNEL_0);
+  //  R_TAUJ_Start(0, R_TAUJ_CHANNEL_1);
+    R_TAUJ_Start(0, R_TAUJ_CHANNEL_2);
+   // R_TAUJ_Start(0, R_TAUJ_CHANNEL_3);
+}
+
+
+static void locTauj0ch0Isr (void)
+{
+
+	Interrupt1ms();
+
+}
+
+
+static void locTauj0ch1Isr (void)
+{
+
+ 
+
+}
+
+static void locTauj0ch2Isr (void)  //++++++++++++
+{
+ 	Interrupt10ms();
+}
+
+static void locTauj0ch3Isr (void)  //++++++++++++
+{
+static uint8_t pwmcnt;
+ #if 0
+   PORT_ISO.P1.BIT.P1_4 = 0;
+#endif
+ 	 if(IN6)
+  		LCD_BL = 5;
+	  else
+  		LCD_BL = 10;
+	  
+
+		pwmcnt++;//bl_pwm_cnt
+		if(pwmcnt > 9)
+		{
+			pwmcnt = 0;
+			LCD_ON;	
+		}
+		else  if(pwmcnt >= LCD_BL)//5  ÁÁ¶È¼õÎªÒ»°ë
+		{
+			LCD_ON;
+	
+		}
+
+	
+}
+
+
+void R_BSP_HMI_InitRotaryKnob(void)
+{
+    locConfigTauj(); 
+}
+

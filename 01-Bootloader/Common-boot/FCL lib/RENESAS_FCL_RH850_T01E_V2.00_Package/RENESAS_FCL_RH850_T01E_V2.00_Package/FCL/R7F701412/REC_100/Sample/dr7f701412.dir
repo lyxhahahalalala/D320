@@ -1,0 +1,59 @@
+; *********************************************************************************************************************
+; File Name     : $Source: dr7f701412.dir $
+; Mod. Revision : $Revision: 1.1 $
+; Mod. Date     : $Date: 2014/07/18 16:26:04MESZ $
+; Device(s)     : RV40 Flash based RH850 microcontroller
+; Description   : Linker directives for FCL sample application
+; *********************************************************************************************************************
+
+; *********************************************************************************************************************
+; DISCLAIMER
+; This software is supplied by Renesas Electronics Corporation and is only  intended for use with
+; Renesas products. No other uses are authorized. This software is owned by Renesas Electronics
+; Corporation and is protected under all applicable laws, including copyright laws.
+; THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING THIS SOFTWARE,
+; WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+; TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR
+; ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR
+; CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE
+; BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+; Renesas reserves the right, without notice, to make changes to this software and to discontinue the
+; availability of this software. By using this software, you agree to the additional terms and conditions
+; found by accessing the  following link:
+; http://www.renesas.com/disclaimer
+;
+; Copyright (C) 2013 Renesas Electronics Corporation. All rights reserved.
+; *********************************************************************************************************************
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; IMPORTANT considerations
+; ------------------------
+; 1. Starting address of FCL_RESERVED section is the define value for FCL_RAM_ADDR used inside the code
+; 2. The order of sections R_FCL_CODE_RAM_USRINT,R_FCL_CODE_RAM_USR,R_FCL_CODE_RAM,R_FCL_CODE_ROMRAM is critical and
+;    other sections should not be interposed.
+; 3. Size of section FCL_RESERVED must be equal or larger than the space occupied by the sections enumerated at 2.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+-rom=.data=.data.R
+
+-start=RESET,                                   &
+       VECT,                                    &
+       EIINTTBL,                                &
+       .const,                                  &
+       .INIT_DSEC.const,                        &
+       .INIT_BSEC.const,                        &
+       .text,                                   &
+       .data,                                   &
+       R_FCL_CODE_ROM.text,                     &
+       R_FCL_CONST.const,                       &
+       R_FCL_CODE_USRINT.text,                  &
+       R_FCL_CODE_USR.text,                     &
+       R_FCL_CODE_RAM.text,                     &
+       R_FCL_CODE_ROMRAM.text,                  &
+       R_FCL_CODE_RAM_EX_PROT.text     /00000000
+
+-start= FCL_RESERVED.bss,                       &
+        .data.R,                                &
+        .bss,                                   &
+        R_FCL_Data.bss,                         &
+        .stack.R.bss                   /FED80000

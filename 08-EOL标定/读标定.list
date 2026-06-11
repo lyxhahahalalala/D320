@@ -1,0 +1,9 @@
+<SendList m_dwCycles="1">
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="建立连接" obj="F117DA180000000000000001080210030000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="身份验证" obj="F117DA180000000000000001080227070000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" obj="F117DA180000000000000001080227080000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="链路保持" obj="F117DA18000000000000000108023E000000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取标定指定DID值指令" obj="F117DA180000000000000001080322014B00000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取标定指定DID值指令" obj="F117DA180000000000000001080322014C00000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取标定指定DID值指令" obj="F117DA180000000000000001080322015000000000000000" />
+</SendList>

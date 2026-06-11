@@ -1,0 +1,221 @@
+===============================================================================
+Read me file for the RH850 Flash Self-Programming Library for Code Flash
+===============================================================================
+
+
+========
+Contents
+========
+
+1. Software Corrections and Updates
+2. General Information
+3. File Naming
+4. Supported Devices
+5. Operating Precautions
+6. Support
+
+
+===================================
+1. Software Corrections and Updates
+===================================
+
+Installer Changes
+-----------------
+
+    V2.00
+    ------
+    - Contains FCL V2.00
+
+    V1.01
+    ------
+    - Contains FCL V1.03
+
+    V1.00
+    ------
+    - official release (Library: V1.02)
+
+
+Library Changes
+-----------------
+    V2.00
+    ------
+    Major version update due to functionality update and moderate API changes
+
+    Updates:
+        - Added cancel request for the Flash operations Erase and Write
+        - Support of devices equipped with multi-core architectures 
+          (with cryptographic units). 
+          - Resulting in slightly increased number of handler calls required 
+            for Flash operations
+        - Added robustness checks
+          - Prepare environment operation is now prohibited on active Flash 
+            operations
+        - Further minor internal improvements and updates
+    Fixes:
+        - Fixed issues in suspend/resume processing:
+          - If after suspending a Flash operation a new Flash operation is 
+            executed to another Flash area (e.g. Erase to user area suspended 
+            --> write to user boot area), the resumed operation continues on 
+            the wrong area
+          - Issues in case of a short transition periods
+            1) 
+              - Conditions
+                - Suspend request when a Flash hardware operation is already 
+                  finished, but not yet handled by R_FCL_Handler
+                - Suspend request when a Flash hardware operation is not yet 
+                  started, as not yet handled by R_FCL_Handler
+              - Issues
+                - The software may reject further Flash operations after resume
+                - The status of the suspended operation is possibly not 
+                  properly updated if another Flash operation is executed when 
+                  the 1st one is suspended
+            2) 
+              - Conditions
+                - One affected dedicated sequence: 
+                  Flash operation start - suspend request - hdr call - resume 
+              - Issues
+                - No further Flash operation is possible
+    API changes:
+        - Suspend / Resume requests
+          - Old: 
+            Suspend request was accepted but ignored for other commands than 
+            Erase and Write. This resulted in long suspend time for other 
+            commands
+          - New:
+            Suspend request is only accepted for Erase and Write commands. For
+            other commands it is now rejected
+        - R_FCL_Init returned value "R_FCL_ERR_PROTECTION" moved to the Prepare
+          environment command handling
+        - Prepare environment command only executable once after R_FCL_Init 
+          execution
+          - Old: Execution possible without restriction after R_FCL_Init
+
+    Added D1x, F1H support
+
+    V1.03
+    ------
+    - Renaming of defines to enable/disable features
+    - BFlash switch and clear cache functionality separated
+    - ID verification changed
+    - OTP write size reduced to enhance write speed
+    - support for unaligned buffer access added
+    - address calculation optimized
+    - frequency calculation changed
+
+    V1.02
+    ------
+    Renesas CC-RH support added
+
+    V1.01
+    ------
+    - fix for returning to flash during operation in USER mode
+    - fixes for setting OTP, Read, Write and Erase flags
+    - fix status return when a new request is made and library is in busy state
+
+    V1.00
+    ------
+    Initial library version
+
+
+======================
+2. General Information
+======================
+
+The Flash Self-Programming Library is delivered in source code, prepared for
+the GHS development environment, IAR embedded workbench and the 
+Renesas Cube Suite.
+
+Supported compiler are:
+
+GHS 6.14, compiler version 201355 (201355)
+CC-RH, compiler version 1.00.00
+IAR embedded workbench 1.10
+
+This installer contains the Flash Self-Programming library for the different
+devices mentioned chapter 4. of this file. By selecting the correct device and
+required compiler the appropriate libraries will be installed automatically.
+
+
+========================================
+3. File Naming
+========================================
+
+The installer file has the name RENESAS_FCL_RH850_T{ab}E_V{x}.{y}{z}.exe
+e.g. RENESAS_FCL_RH850_T01E_V1.00.exe
+
+{ab} Library type number
+{x} This version digit will be incremented in case of major changes e.g. API
+changes
+{y} This version digit will be incremented in case of bug fixes and internal
+improvements
+{z} This version digit will be incremented in case of adding support of new
+devices
+
+
+====================
+4. Supported Devices
+====================
+
+The following devices are covered by this package
+
+    RH850/D1x
+    -----------
+    R7F701401~1412
+    Tested device: R7F701412 WS1416
+
+    RH850/E1x
+    -----------
+    R7F701Z05~R7F701Z07 (R7F701201~R7F701205)
+    No sample program provided for RH850/E1x. Please use the library 
+    for RH850/P1X 
+    
+    RH850/F1x
+    -----------
+    R7F701011~1035
+    Tested device: R7F7010352 WS2.0
+       
+    RH850/P1X
+    -----------
+    R7F701300~1315
+    R7F701353
+    tested device: R7F701353 WS 1332
+    
+    RH850/F1H
+    -----------
+    R7F701501~R7F701513
+    Tested device: R7F701503 WS1.0
+    
+========================
+5. Operating Precautions
+========================
+
+All devices and libraries
+-------------------------
+- Programming the user boot area is currently not supported for E1x and F1x, 
+  because the feature is not supported by the hardware. Even if the feature 
+  is supported in a later device version it need to be considered that this 
+  functionality is not tested in this library version.
+- The libraries have been tested on not qualified hardware (working sample).
+  Following that, it might be necessary to update the libraries later on in 
+  case of changing device features.
+
+
+
+==========
+6. Support
+==========
+
+In case of any question please do not hesitate to contact:
+
+Technical Product Support
+
+Renesas Electronics Europe GmbH
+Arcadiastr. 10
+D-40472 Duesseldorf, Germany
+
+email: application_support.flash-eu@lm.renesas.com
+
+
+===============================================================================
+End of read me file for the RH850 Self-Programming Library for Code Flash
+===============================================================================

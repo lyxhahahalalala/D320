@@ -1,0 +1,14 @@
+#!gbuild
+[Subproject]
+cpu.h
+dr7f701405.dvf.h
+dr7f701405.ld
+dr7f701405_0.grd
+dr7f701405_irq.h
+dr7f701405_startup.850
+fcl_cfg.h
+fcl_descriptor.h
+fcl_prefetch.850
+fcl_user.h
+io_macros_v2.h
+target.h

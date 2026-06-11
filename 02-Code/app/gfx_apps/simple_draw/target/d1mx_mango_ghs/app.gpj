@@ -1,0 +1,26 @@
+#!gbuild
+[Subproject]
+	:sourceDir=../../../..
+	-I../../../../../app/gfx_apps/simple_draw/src/inc
+	-I../../../../../app/gfx_apps/simple_draw/src/main
+	-I../../../../../macro/sm/ism/src/zk
+	-I../../../../../app/gfx_apps/simple_draw/src/ptmr
+	-I../../../../../app/gfx_apps/simple_draw/src/uds
+	-I../../../../../app/gfx_apps/simple_draw/src/key
+	-I../../../../../app/gfx_apps/simple_draw/src/pwm
+	-I../../../../../app/gfx_apps/simple_draw/src/adc
+gfx_apps\simple_draw\src\buzzer\pcmpwm.c
+gfx_apps\simple_draw\src\main\main.c
+gfx_apps\simple_draw\src\main\app_can.c
+gfx_apps\simple_draw\src\main\app_storage.c
+gfx_apps\simple_draw\src\main\system.c
+gfx_apps\simple_draw\src\io\led.c
+gfx_apps\simple_draw\src\io\switch.c
+gfx_apps\simple_draw\src\key\key.c
+gfx_apps\simple_draw\src\pwm\pwm.c
+gfx_apps\simple_draw\src\ptmr\ptmr.c
+
+gfx_apps\simple_draw\src\main\interval.c
+gfx_apps\simple_draw\src\main\app_data_center.c
+gfx_apps\simple_draw\src\main\scheduler.c
+gfx_apps\simple_draw\src\main\app_dm1.c

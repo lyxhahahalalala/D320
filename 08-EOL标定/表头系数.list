@@ -1,0 +1,10 @@
+<SendList m_dwCycles="1">
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="建立连接" obj="F117DA180000000000000001080210030000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="身份验证" obj="F117DA180000000000000001080227070000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" obj="F117DA180000000000000001080227080000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="链路保持" obj="F117DA18000000000000000108023E000000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="写入指定DID标定值指令" obj="F117DA18000000000000000108042E014106D80000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="标定结束指令" obj="F117DA180000000000000001080431011008000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="仪表复位" obj="F117DA180000000000000001080211010000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取标定指定DID值指令" obj="F117DA180000000000000001080322014100000000000000" />
+</SendList>

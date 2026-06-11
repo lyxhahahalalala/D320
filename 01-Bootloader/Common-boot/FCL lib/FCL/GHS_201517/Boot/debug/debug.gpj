@@ -1,0 +1,4 @@
+#!gbuild
+[Subproject]
+d1x_connections.mbs
+d1x_connections.con

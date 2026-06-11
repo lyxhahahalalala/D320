@@ -1,0 +1,13 @@
+#!gbuild
+[Subproject]
+	:sourceDir=../../../..
+	-I../../../../../app/gfx_apps/simple_draw/src/inc
+	-I../../../../../app/gfx_apps/simple_draw/src/main
+	-I../../../../../app/gfx_apps/simple_draw/src/uds
+	-I../../../../../app/gfx_apps/simple_draw/src/ptmr
+gfx_apps\simple_draw\src\uds\network_layer.c
+gfx_apps\simple_draw\src\uds\obd_dtc.c
+gfx_apps\simple_draw\src\uds\uds_service.c
+gfx_apps\simple_draw\src\uds\uds_status.c
+gfx_apps\simple_draw\src\uds\uds_support.c
+gfx_apps\simple_draw\src\uds\uds_util.c

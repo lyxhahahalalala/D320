@@ -1,0 +1,6 @@
+---- message_Rec Matches (5 in 2 files) ----
+Main.c (source):CAN_MESSAGE volatile message_Rec;
+Main.c (source):		if(message_Rec.data[0]==0x00)
+Main.c (source):CAN2_ReceiveMessage(&message_Rec);
+Rscan.c (source):extern  CAN_MESSAGE volatile message_Rec;
+Rscan.c (source):		switch(message_Rec.id)

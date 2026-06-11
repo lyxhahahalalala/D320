@@ -1,0 +1,342 @@
+--
+-- Library       : Code Flash Access Library for Renesas RH850 devices, based on the RV40 Flash technology
+--
+-- File Name     : $Source: r_fcl_hw_access_asm.850 $
+-- Lib. Version  : $RH850_FCL_LIB_VERSION_T01: V2.00 $
+-- Mod. Revision : $Revision: 1.5 $
+-- Mod. Date     : $Date: 2014/09/01 13:40:56MESZ $
+-- Device(s)     : RV40 Flash based RH850 microcontroller
+-- Description   : FCL hardware interface functions (assembler)
+-------------------------------------------------------------------------------------------------------------
+--
+--   Purpose:
+--      Assembler code of basic functions used during self-programming
+--
+--   Environment:
+--      Devices: RV40F Flash based RH850 microcontroller
+--      IDE's:   GHS      
+--
+-------------------------------------------------------------------------------------------------------------
+--
+-- DISCLAIMER
+-- This software is supplied by Renesas Electronics Corporation and is only
+-- intended for use with Renesas products. No other uses are authorized. This
+-- software is owned by Renesas Electronics Corporation and is protected under
+-- all applicable laws, including copyright laws.
+-- THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+-- THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT
+-- LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+-- AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+-- TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+-- ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+-- FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR
+-- ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE
+-- BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-- Renesas reserves the right, without notice, to make changes to this software
+-- and to discontinue the availability of this software. By using this software,
+-- you agree to the additional terms and conditions found by accessing the
+-- following link:
+-- http://www.renesas.com/disclaimer
+--
+-- Copyright (C) 2014 Renesas Electronics Corporation. All rights reserved.
+--
+-------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------------
+--Includes   <System Includes> , "Project Includes" 
+-------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------------
+--Macro definitions
+-------------------------------------------------------------------------------------------------------------
+#define R_FPSYS_REGADD_BFASEL_U32              0xffc59008uL
+#define R_FPSYS_REGADD_BWC_U32                 0xffbc0700uL
+
+-------------------------------------------------------------------------------------------------------------
+--Typedef definitions
+-------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------------
+--Exported global variables (to be accessed by other files) 
+-------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------------
+--Private global variables and functions 
+-------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_CodeRomRam_CalcRange
+-------------------------------------------------------------------------------------------------------------
+--
+-- Function calculates start address and size of section R_FCL_CODE_ROMRAM
+--
+-- @param[out]    r6: secStart_u32   Start address of the section R_FCL_CODE_ROMRAM
+--                r7: secSize_u32    Size of the section R_FCL_CODE_ROMRAM
+-- @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_ROM",.text
+.globl _R_FCL_Fct_CodeRomRam_CalcRange
+
+_R_FCL_Fct_CodeRomRam_CalcRange:
+    /* calculate section start address */
+    movea   lo(___ghsbegin_R_FCL_CODE_ROMRAM), zero, r10
+    movhi   hi(___ghsbegin_R_FCL_CODE_ROMRAM), r10, r10
+
+    /* calculate section size */
+    movea   lo(___ghsend_R_FCL_CODE_ROMRAM), zero, r11
+    movhi   hi(___ghsend_R_FCL_CODE_ROMRAM), r11, r11
+
+    st.w    r10, 0[r6]
+    sub     r10, r11
+    st.w    r11, 0[r7]
+
+    jmp     lp
+
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_CodeRam_CalcRange
+-------------------------------------------------------------------------------------------------------------
+--
+--  Function calculates start address and size of section R_FCL_CODE_RAM
+--
+--  @param[out]    r6: secStart_u32   Start address of the section R_FCL_CODE_RAM
+--                 r7: secSize_u32    Size of the section R_FCL_CODE_RAM
+--  @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_ROM",.text
+.globl _R_FCL_Fct_CodeRam_CalcRange
+
+_R_FCL_Fct_CodeRam_CalcRange:
+    /* calculate section start address */
+    movea   lo(___ghsbegin_R_FCL_CODE_RAM), zero, r10
+    movhi   hi(___ghsbegin_R_FCL_CODE_RAM), r10, r10
+
+    /* calculate section size */
+    movea   lo(___ghsend_R_FCL_CODE_RAM), zero, r11
+    movhi   hi(___ghsend_R_FCL_CODE_RAM), r11, r11
+
+    st.w    r10, 0[r6]
+    sub     r10, r11
+    st.w    r11, 0[r7]
+
+    jmp     lp
+
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_CodeUsr_CalcRange
+-------------------------------------------------------------------------------------------------------------
+--
+--  Function calculates start address and size of section R_FCL_CODE_USR
+--
+--  @param[out]    r6: secStart_u32   Start address of the section R_FCL_CODE_USR
+--                 r7: secSize_u32    Size of the section R_FCL_CODE_USR
+--  @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_ROM",.text
+.globl _R_FCL_Fct_CodeUsr_CalcRange
+
+_R_FCL_Fct_CodeUsr_CalcRange:
+    /* calculate section start address */
+    movea   lo(___ghsbegin_R_FCL_CODE_USR), zero, r10
+    movhi   hi(___ghsbegin_R_FCL_CODE_USR), r10, r10
+
+    /* calculate section size */
+    movea   lo(___ghsend_R_FCL_CODE_USR), zero, r11
+    movhi   hi(___ghsend_R_FCL_CODE_USR), r11, r11
+
+    st.w    r10, 0[r6]
+    sub     r10, r11
+    st.w    r11, 0[r7]
+
+    jmp     lp
+    
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_CodeUsrInt_CalcRange
+-------------------------------------------------------------------------------------------------------------
+--
+--  Function calculates start address and size of section R_FCL_CODE_USRINT
+--
+--  @param[out]    r6: secStart_u32   Start address of the section R_FCL_CODE_USRINT
+--                 r7: secSize_u32    Size of the section R_FCL_CODE_USRINT
+--  @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_ROM",.text
+.globl _R_FCL_Fct_CodeUsrInt_CalcRange
+
+_R_FCL_Fct_CodeUsrInt_CalcRange:
+    /* calculate section start address */
+    movea   lo(___ghsbegin_R_FCL_CODE_USRINT), zero, r10
+    movhi   hi(___ghsbegin_R_FCL_CODE_USRINT), r10, r10
+
+    /* calculate section size */
+    movea   lo(___ghsend_R_FCL_CODE_USRINT), zero, r11
+    movhi   hi(___ghsend_R_FCL_CODE_USRINT), r11, r11
+
+    st.w    r10, 0[r6]
+    sub     r10, r11
+    st.w    r11, 0[r7]
+
+    jmp     lp
+    
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_CodeExProt_CalcRange
+-------------------------------------------------------------------------------------------------------------
+--
+--  Function calculates start address and size of section R_FCL_CODE_RAM_EX_PROT
+--
+--  @param[out]    r6: secStart_u32   Start address of the section R_FCL_CODE_RAM_EX_PROT
+--                 r7: secSize_u32    Size of the section R_FCL_CODE_RAM_EX_PROT
+--  @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_ROM",.text
+.globl _R_FCL_Fct_CodeExProt_CalcRange
+
+_R_FCL_Fct_CodeExProt_CalcRange:
+    /* calculate section start address */
+    movea   lo(___ghsbegin_R_FCL_CODE_RAM_EX_PROT), zero, r10
+    movhi   hi(___ghsbegin_R_FCL_CODE_RAM_EX_PROT), r10, r10
+
+    /* calculate section size */
+    movea   lo(___ghsend_R_FCL_CODE_RAM_EX_PROT), zero, r11
+    movhi   hi(___ghsend_R_FCL_CODE_RAM_EX_PROT), r11, r11
+
+    st.w    r10, 0[r6]
+    sub     r10, r11
+    st.w    r11, 0[r7]
+
+    jmp     lp
+
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_PrgOffset
+-------------------------------------------------------------------------------------------------------------
+--
+--  Function calculates the offset between function execution address and link address
+--
+--  @param[in,out] ---
+--  @return        Execution offset in Bytes
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_ROM",.text
+.globl _R_FCL_Fct_PrgOffset
+
+_R_FCL_Fct_PrgOffset:
+    jarl    L0, r10
+L0: movea   lo(L0), zero, r6
+    movhi   hi(L0), r6, r6
+    sub     r6, r10
+
+    jmp     lp
+
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_FCUFct_Switch_BFlash
+-------------------------------------------------------------------------------------------------------------
+--
+-- Function enables or disables BFlash
+--
+-- @param[in]     r6: 1: Activate BFlash
+--                r6: 0: Deactivate BFlash
+-- @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_RAM",.text
+.globl _R_FCL_FCUFct_Switch_BFlash
+
+_R_FCL_FCUFct_Switch_BFlash:
+    -- /* Switch BFlash */
+    mov     R_FPSYS_REGADD_BFASEL_U32, r10
+    st.b    r6, 0[r10]
+    ld.b    0[r10], r10             -- /* Dummy read access to a FCU register to wait one APB access cycle */
+    synci                           -- /* sync to clear the line buffer */
+
+    jmp     lp
+    
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_FCUFct_Clear_Cache
+-------------------------------------------------------------------------------------------------------------
+--
+-- Function clears the Flash cache
+--
+-- @param[in,out] ---
+-- @return        ---
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_RAM",.text
+.globl _R_FCL_FCUFct_Clear_Cache
+
+_R_FCL_FCUFct_Clear_Cache:    
+    /* set ICHCLR bit */
+    stsr    24, r12, 4              -- /* system register 24, 4 is ICCTRL */
+    ori     0x0100, r12, r12
+    ldsr    r12, 24, 4
+
+_POLLING_SYSTEM_REG_:
+    stsr    24, r12, 4              -- /* Dummy read to system register to complete the operation */
+    andi    0x0100, r12, r12
+    cmp     0x0000, r12
+    bne     _POLLING_SYSTEM_REG_
+    synci                           -- /* sync to clear the line buffer */
+
+    -- /* BWC buffer mounted ? */
+    stsr    6, r12, 1               -- /* system register 6, 1 is PID */
+    andi    0x00e0, r12, r12        -- /* BWC buffer only on G3K core */
+    mov     0x20, r14
+    cmp     r12, r14
+    bz     _CLEAR_BWC_BUFFER_
+
+    /* set CDBCLR bit */
+    stsr    24, r12, 13             -- /* system register 24, 13 is CDBCR */
+    ori     0x0002, r12, r12
+    ldsr    r12, 24, 13
+    stsr    24, r12, 13             -- /* Dummy read to system register to complete the operation */
+    br      _CLEAR_CACHE_END_
+
+_CLEAR_BWC_BUFFER_:
+    /* clear BWC buffer */
+    mov     R_FPSYS_REGADD_BWC_U32, r12
+    mov     0x01, r14
+    st.b    r0, 0[r12]      /* BWC buffer clear on (BWCREG = 0) */
+    st.b    r14, 0[r12]     /* BWC buffer clear off (BWCREG = 1) */
+    st.b    r0, 0[r12]      /* BWC buffer clear on (BWCREG = 0) */
+    ld.b    0[r12], r14
+    synci
+
+_CLEAR_CACHE_END_:
+
+    jmp     lp
+
+-------------------------------------------------------------------------------------------------------------
+-- Function name: R_FCL_Fct_Copy_Code
+-------------------------------------------------------------------------------------------------------------
+--
+-- Function calculates start address and size of section R_FCL_CODE_RAM.
+--
+-- @param[out]    r6: src_u32        start address
+--                r7: dest_u32       destination address
+--                r8: cnt_u32        size to copy (need to be 4 byte aligned)
+-- @return        last destination address + 4
+--
+-------------------------------------------------------------------------------------------------------------
+.section".R_FCL_CODE_RAM",.text
+.globl _R_FCL_Fct_Copy_Code
+
+_R_FCL_Fct_Copy_Code:
+    cmp     r0, r8
+    be      _COPY_LOOP_END_
+_COPY_LOOP_:   
+    ld.w    0[r6], r10
+    st.w    r10, 0[r7]
+    add     4, r6     
+    add     4, r7
+    add     -4, r8
+    bnz     _COPY_LOOP_
+_COPY_LOOP_END_:   
+    mov     r7, r10
+
+    jmp     lp

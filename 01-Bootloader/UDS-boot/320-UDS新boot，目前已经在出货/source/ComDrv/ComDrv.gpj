@@ -1,0 +1,9 @@
+#!gbuild
+[Subproject]
+can_table.c
+can_table.h
+crc16.h
+rscan.c
+rscan.h
+Can.c
+Can.h

@@ -1,0 +1,9 @@
+gfx_apps\simple_draw\src\lcd\pointer0.c
+gfx_apps\simple_draw\src\lcd\pointer1.c
+gfx_apps\simple_draw\src\lcd\pointer2.c
+gfx_apps\simple_draw\src\lcd\pointer3.c
+gfx_apps\simple_draw\src\lcd\pointer4.c
+gfx_apps\simple_draw\src\lcd\pointer5.c
+gfx_apps\simple_draw\src\lcd\pointer6.c
+gfx_apps\simple_draw\src\lcd\pointer7.c
+gfx_apps\simple_draw\src\lcd\pointer8.c

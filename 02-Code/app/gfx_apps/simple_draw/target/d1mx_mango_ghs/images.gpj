@@ -1,0 +1,32 @@
+#!gbuild
+[Subproject]
+	:sourceDir=../../../..
+	-I../../../../../app/gfx_apps/simple_draw/src/inc
+	-I../../../../../app/gfx_apps/simple_draw/src/main
+	-I../../../../../app/gfx_apps/simple_draw/src/zk
+
+gfx_apps\simple_draw\src\font\wryh22.c
+gfx_apps\simple_draw\src\font\wryh24.c
+gfx_apps\simple_draw\src\font\wryh31.c
+gfx_apps\simple_draw\src\font\wryh38_num.c
+gfx_apps\simple_draw\src\font\wryh38bold.c
+gfx_apps\simple_draw\src\font\xunhang.c
+gfx_apps\simple_draw\src\image\full_sprite.c
+gfx_apps\simple_draw\src\image\Img_logo.c
+gfx_apps\simple_draw\src\image\Img_bg_line.c
+gfx_apps\simple_draw\src\image\Img_font_telltable.c
+gfx_apps\simple_draw\src\image\Img_LmtSpd.c
+gfx_apps\simple_draw\src\image\Img_AutoLowBeam.c
+gfx_apps\simple_draw\src\image\Img_ldwfcw.c
+gfx_apps\simple_draw\src\image\Img_E_P.c
+gfx_apps\simple_draw\src\image\Img_h2soc.c
+gfx_apps\simple_draw\src\image\Img_motor.c
+gfx_apps\simple_draw\src\image\Img_soc.c
+gfx_apps\simple_draw\src\image\Img_box.c
+gfx_apps\simple_draw\src\image\Img_charge.c
+gfx_apps\simple_draw\src\image\Img_spdn.c
+gfx_apps\simple_draw\src\image\Img_truck.c
+gfx_apps\simple_draw\src\image\Img_up_down.c
+gfx_apps\simple_draw\src\image\Img_tireframe.c
+gfx_apps\simple_draw\src\image\Img_tirePressure.c
+

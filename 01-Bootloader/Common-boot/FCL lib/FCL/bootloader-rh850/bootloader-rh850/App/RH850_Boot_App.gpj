@@ -1,0 +1,29 @@
+#!gbuild
+primaryTarget=v800_standalone.tgt
+[Program]
+	-G
+	-object_dir=output/objects
+	-map
+	-gsize
+	-e _RESET
+	-list
+	-list_dir=output/list
+	-passsource
+	-Mx
+	-bsp generic
+	-sda=all
+	-callgraph
+	{optgroup=GhsCommonOptions} -o output/rh850d1l_Interrupt
+	:postexec='gmemfile output/rh850d1l_Interrupt -o output/rh850d1l_Interrupt.mem'
+	:postexec='gsrec  -e 0 -hex386 output/rh850d1l_Interrupt -o output/rh850d1l_Iterrupt.hex'
+	:postexec='gsrec  -e 0 -noS5 output/rh850d1l_Interrupt -o output/rh850d1l_Interrupt.rec'
+	--no_additional_output
+	-Idevice
+	-fsoft
+	-cpu=rh850
+	-locatedprogram
+	:sourceDirNonRelative='E:\\Documents\\RH850_D1L\\Demo Transplant from F1L\\D1L_GHS_StartUp_Interrupt\\source'
+readme.txt		[Documentation]
+device\device.gpj
+source\source.gpj
+debug\debug.gpj

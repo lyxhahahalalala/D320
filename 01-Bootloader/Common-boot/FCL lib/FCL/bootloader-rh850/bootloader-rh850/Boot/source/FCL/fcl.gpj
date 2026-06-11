@@ -1,0 +1,5 @@
+#!gbuild
+[Subproject]
+r_fcl.h
+r_fcl_types.h
+lib\lib.gpj

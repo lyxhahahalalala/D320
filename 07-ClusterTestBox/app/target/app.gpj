@@ -1,0 +1,10 @@
+#!gbuild
+[Subproject]
+	:sourceDir=..
+	-I../../app/simple_draw/src/inc
+	-I../../app/simple_draw/src/main
+simple_draw\src\main\main.c
+simple_draw\src\main\system.c
+simple_draw\src\io\led.c
+simple_draw\src\io\switch.c
+

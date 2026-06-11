@@ -1,0 +1,7 @@
+#!gbuild
+[Subproject]
+	-Isource\ComDrv
+main.c
+clock.c
+ComDrv\ComDrv.gpj
+FCL\FCL.gpj

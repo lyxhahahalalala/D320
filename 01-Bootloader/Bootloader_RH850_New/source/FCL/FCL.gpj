@@ -1,0 +1,10 @@
+#!gbuild
+[Subproject]
+fcl_prog.c
+fcl_Erase.c
+fcl_Cfg.c
+fcl_descriptor.c
+fcl_user.c
+r_fcl_hw_access.c
+r_fcl_hw_access_asm.850
+r_fcl_user_if.c

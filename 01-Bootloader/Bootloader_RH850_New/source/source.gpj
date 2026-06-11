@@ -1,0 +1,9 @@
+#!gbuild
+[Subproject]
+ostm0.c
+main.c
+clock.c
+UDS\UDS.gpj
+ComDrv\ComDrv.gpj
+FCL\FCL.gpj
+fdl\fdl.gpj

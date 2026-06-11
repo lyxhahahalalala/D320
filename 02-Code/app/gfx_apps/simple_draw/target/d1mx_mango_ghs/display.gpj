@@ -1,0 +1,25 @@
+#!gbuild
+[Subproject]
+	:sourceDir=../../../../..
+	-I../../../../../app/gfx_apps/simple_draw/src/inc
+	-I../../../../../app/gfx_apps/simple_draw/src/main
+	-I../../../../../app/gfx_apps/simple_draw/src/fdl
+	-I../../../../../macro/sm/ism/src
+	-I../../../../../app/gfx_apps/simple_draw/src/zk
+	-I../../../../../app/gfx_apps/simple_draw/src/uds
+	-I../../../../../app/gfx_apps/simple_draw/src/key
+	-I../../../../../app/gfx_apps/simple_draw/src/ptmr
+	-I../../../../../app/gfx_apps/simple_draw/src/adc
+app\gfx_apps\simple_draw\src\lcd\init.c
+app\gfx_apps\simple_draw\src\zk\zk.c
+app\gfx_apps\simple_draw\src\zk\ffunicode.c
+app\gfx_apps\simple_draw\src\main\app_trip.c
+app\gfx_apps\simple_draw\src\main\app_telltale.c
+app\gfx_apps\simple_draw\src\main\app_temperature.c
+app\gfx_apps\simple_draw\src\main\app_time.c
+app\gfx_apps\simple_draw\src\main\app_texturewarning.c
+app\gfx_apps\simple_draw\src\main\app_tpmsmain.c
+app\gfx_apps\simple_draw\src\main\display.c
+
+
+

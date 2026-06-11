@@ -1,0 +1,13 @@
+<SendList m_dwCycles="1">
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="建立连接" obj="F117DA180000000000000001080210030000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="身份验证" obj="F117DA180000000000000001080227070000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" obj="F117DA180000000000000001080227080000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="链路保持" obj="F117DA18000000000000000108023E000000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取里程表传感器每转脉冲数" obj="F117DA180000000000000001080322014000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取里程表表头系数" obj="F117DA180000000000000001080322014100000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取变速箱里程表速比分子" obj="F117DA180000000000000001080322014200000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取变速箱里程表速比分母" obj="F117DA180000000000000001080322014300000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取变速箱类型" obj="F117DA180000000000000001080322014900000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取仪表类型零件号" obj="F117DA180000000000000001080322032000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取车速是否放大" obj="F117DA180000000000000001080322032100000000000000" />
+</SendList>

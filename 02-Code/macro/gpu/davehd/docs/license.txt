@@ -1,0 +1,21 @@
+TES Electronic Solutions GmbH
+Zettachring 8
+70567 Stuttgart
+Germany
+All rights reserved.
+
+LICENSEE has read, understood and accepted the terms and conditions defined in
+the license agreement valid for the LICENSEE, especially the usage rights.
+In any case, it is LICENSEE's responsibility to make sure that any user of the
+software complies with the terms and conditions of the signed license agreement.
+
+
+TES differentiates between 'product code' and 'example code':
+
+Product code is all code in the folders:
+- vlib/macro/gpu/davehd/common
+- vlib/macro/gpu/davehd/kernel/inc and vlib/macro/gpu/davehd/kernel/src
+- vlib/macro/gpu/davehd/user/inc and vlib/macro/gpu/davehd/user/src
+- vlib/macro/gpu/davehd/openvg1.1/include and vlib/macro/gpu/davehd/openvg1.1/src, if OpenVG is licensed by customer
+
+All other code is regarded as example code.

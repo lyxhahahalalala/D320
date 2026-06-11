@@ -1,0 +1,7 @@
+_ASMCACHE=0
+target syscalls off
+target rst
+load
+e main
+
+

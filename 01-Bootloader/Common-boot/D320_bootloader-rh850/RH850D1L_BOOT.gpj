@@ -1,0 +1,32 @@
+#!gbuild
+primaryTarget=v800_standalone.tgt
+[Program]
+	-Idevice
+	-Isource
+	-Isource\FCL
+	-Isource\ComDrv
+	-G
+	-object_dir=output/objects
+	-map
+	-gsize
+	-e _RESET
+	-list
+	-list_dir=output/list
+	-passsource
+	-Mx
+	-bsp generic
+	-sda=all
+	-callgraph
+	{optgroup=GhsCommonOptions} -o output/rh850d1l_boot
+	:postexec='gmemfile output/rh850d1l_boot -o output/rh850d1l_boot.mem'
+	:postexec='gsrec  -e 0 -hex386 output/rh850d1l_boot -o output/Common_D320BootLoaderV2.2.hex'
+	:postexec='gsrec  -e 0 -noS5 output/rh850d1l_boot -o output/rh850d1l_boot.rec'
+	--no_additional_output
+	-fsoft
+	-cpu=rh850
+	-locatedprogram
+	:sourceDirNonRelative=E:\Documents\RH850_D1L\D1L_GHS_StartUp_Clock\source
+readme.txt		[Documentation]
+device\device.gpj
+debug\debug.gpj
+source\source.gpj

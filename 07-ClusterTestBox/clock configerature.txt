@@ -1,0 +1,60 @@
+I/O: Board: D1M1_3.75M-MANGO, Board Version: V1.0
+I/O: ******* Configured Clock sources *************
+I/O: PLL0          : 480 MHz
+I/O: PLL1          : 480 MHz
+I/O: PLL2          :     OFF
+I/O: PLL0PIX       : 480 MHz
+I/O: SDRX          :     OFF
+I/O: ETNBP         :  80 MHz
+I/O: MLBP          :     OFF
+I/O: RSCANP        :  80 MHz
+I/O: XCC           :  80 MHz
+I/O: ETNBXCC       :  80 MHz
+I/O: MLBXCC        :     OFF
+I/O: CPU           : 160 MHz
+I/O: PLL1_INTERNAL : 480 MHz
+I/O: ISOPCLK       :  80 MHz
+I/O: FIX           :  80 MHz
+I/O: JIT           :  80 MHz
+I/O: PLLFIX        : 480 MHz
+I/O: LRNG          : 240 KHz
+I/O: HRING         :   8 MHz
+I/O: ERING         :   8 MHz
+I/O: MOSC          :   8 MHz
+I/O: SOSC          :     OFF
+I/O: 
+I/O: ******* Configured Clocks     *************
+I/O: WDT0       :   1 KHz, SrcClk: LRNG     , Divider: 128, StpMsk:  1
+I/O: AWOT       :   8 MHz, SrcClk: HRING    , Divider:   1, StpMsk:  0
+I/O: RTC        :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: FOUT       :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: CPU        : 160 MHz, SrcClk: PLL0     , Divider:   3, StpMsk:  0
+I/O: MLB        :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: SFMA       : 160 MHz, SrcClk: PLL1     , Divider:   3, StpMsk:  0
+I/O: RSCAN      :  40 MHz, SrcClk: PLLFIX   , Divider:  12, StpMsk:  0
+I/O: RSCANXIN   :   8 MHz, SrcClk: MOSC     , Divider:   1, StpMsk:  0
+I/O: SSIF       :  48 MHz, SrcClk: PLLFIX   , Divider:  10, StpMsk:  0
+I/O: TAUB0      :  10 MHz, SrcClk: CLKFIX_8 , Divider:   1, StpMsk:  0
+I/O: TAUB2      :  10 MHz, SrcClk: CLKFIX_8 , Divider:   1, StpMsk:  0
+I/O: TAUJ       :  10 MHz, SrcClk: CLKFIX_8 , Divider:   1, StpMsk:  0
+I/O: OSTM       :   8 MHz, SrcClk: MOSC     , Divider:   1, StpMsk:  0
+I/O: LCBI       :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: ADCE       :  40 MHz, SrcClk: CLKJIT   , Divider:   2, StpMsk:  0
+I/O: ISM        :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: RLIN       :  24 MHz, SrcClk: PLLFIX_20, Divider:   1, StpMsk:  0
+I/O: CLKJIT     :  80 MHz, SrcClk: PLL0     , Divider:   6, StpMsk:  0
+I/O: CLKFIX     :  80 MHz, SrcClk: PLLFIX   , Divider:   6, StpMsk:  0
+I/O: PLLFIX     : 480 MHz, SrcClk: PLL1     , Divider:   1, StpMsk:  0
+I/O: PLL2IN     :   8 MHz, SrcClk: MOSC     , Divider:   1, StpMsk:  0
+I/O: DOTCK0     :  30 MHz, SrcClk: PLL0PIX  , Divider:  16, StpMsk:  0
+I/O: DOTCK1     :  10 MHz, SrcClk: PLL0PIX  , Divider:  48, StpMsk:  0
+I/O: VDCE0CK    :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: VDCE1CK    :  10 MHz, SrcClk: DOTCK1   , Divider:   1, StpMsk:  0
+I/O: RSDSCK     :  30 MHz, SrcClk: DOTCK0   , Divider:   1, StpMsk:  0
+I/O: VI0CLK     :     OFF, SrcClk: DISABLED , Divider:   0, StpMsk:  0
+I/O: MIPIPLL    : 160 MHz, SrcClk: PLL0PIX_3, Divider:   1, StpMsk:  0
+I/O: MIPIPXL    :  53 MHz, SrcClk: MIPIPLL  , Divider:   3, StpMsk:  0
+I/O: FIX_JIT    :  80 MHz, SrcClk: PLL0     , Divider:   6, StpMsk:  0
+I/O: FIX_LOW    : 240 KHz, SrcClk: LRNG     , Divider:   1, StpMsk:  0
+I/O: VI0PIX     :     OFF, SrcClk: VI0PIX   , Divider:   1, StpMsk:  0
+I/O: VI1PIX     :     OFF, SrcClk: VI1PIX   , Divider:   1, StpMsk:  0

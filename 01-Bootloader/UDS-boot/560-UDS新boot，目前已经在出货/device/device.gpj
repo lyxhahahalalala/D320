@@ -1,0 +1,12 @@
+#!gbuild
+[Subproject]
+io_macros_v2.h
+icu_feret.h
+dr7f701403_startup.850
+dr7f701403_irq.h
+dr7f701403_0.grd
+dr7f701403.ld
+dr7f701403.dvf.h
+device.h
+dev_api.h
+cpu.h

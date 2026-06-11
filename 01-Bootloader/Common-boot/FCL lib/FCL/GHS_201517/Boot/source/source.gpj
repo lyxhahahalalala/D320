@@ -1,0 +1,18 @@
+#!gbuild
+[Subproject]
+	-Isource\\driver
+Srec.c
+Srec.h
+can_table.c
+can_table.h
+types.h
+fcl_cfg.h
+fcl_descriptor.c
+fcl_descriptor.h
+fcl_user.c
+fcl_user.h
+main.c
+target.h
+FCL\fcl.gpj
+rscan.c
+rscan.h

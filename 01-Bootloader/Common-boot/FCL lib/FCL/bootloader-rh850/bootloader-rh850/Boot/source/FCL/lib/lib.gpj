@@ -1,0 +1,8 @@
+#!gbuild
+[Subproject]
+r_fcl_env.h
+r_fcl_global.h
+r_fcl_hw_access.c
+r_fcl_hw_access_asm.850
+r_fcl_user_if.c
+r_typedefs.h

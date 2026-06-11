@@ -1,0 +1,3 @@
+---- SW_Input Matches (2 in 2 files) ----
+Bsp.h (source\driver):void SW_Input(void);
+SYSTEM.c (source\driver):        //SW_Input(); //¿ª¹Ø¶ÁÈ¡

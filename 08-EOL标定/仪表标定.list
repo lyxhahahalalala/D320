@@ -1,0 +1,50 @@
+<SendList m_dwCycles="1">
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="建立连接" obj="F117DA180000000000000001080210030000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="身份验证" obj="F117DA180000000000000001080227070000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" obj="F117DA180000000000000001080227080000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="链路保持" obj="F117DA18000000000000000108023E000000000000000000" />
+    <tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="里程表传感器每转脉冲数" obj="F117DA18000000000000000108042E014008000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="里程表表头系数" obj="F117DA18000000000000000108042E014104BE0000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="变速箱里程表速比分子" obj="F117DA18000000000000000108042E014201000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="变速箱里程表速比分母" obj="F117DA18000000000000000108042E014301000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="语言" obj="F117DA18000000000000000108042E014400000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="后处理方案" obj="F117DA18000000000000000108042E014513000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="发动机类型" obj="F117DA18000000000000000108042E014626000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="发动机经济转速区" obj="F117DA18000000000000000108042E014700000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="发动机报警转速区" obj="F117DA18000000000000000108042E014800000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="变速箱类型" obj="F117DA18000000000000000108042E014922000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="ABS或EBS及厂家" obj="F117DA18000000000000000108042E014A06000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="TPMS系统有无" obj="F117DA18000000000000000108042E014B01000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="ECAS类型" obj="F117DA18000000000000000108042E014C03000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="缓速器类型" obj="F117DA18000000000000000108042E014D02000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="盘式制动器磨损报警" obj="F117DA18000000000000000108042E014E03000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="ESC及厂家" obj="F117DA18000000000000000108042E014F02000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="LDWS车道偏离预警系统" obj="F117DA18000000000000000108042E015003000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="乘客侧安全带未系报警功能有无" obj="F117DA18000000000000000108042E015100000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="气压传感器数量" obj="F117DA18000000000000000108042E015202000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="车辆类别" obj="F117DA18000000000000000108042E015302000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="AEBS自动紧急制动系统" obj="F117DA18000000000000000108042E015400000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="排放及升级技术" obj="F117DA18000000000000000108042E015509000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="空调调节类型" obj="F117DA18000000000000000108042E015603000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="整车VECU匹配" obj="F117DA18000000000000000108042E015704000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="整车保养里程" obj="F117DA18000000000000000108042E015A27100000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="整车保养周期" obj="F117DA18000000000000000108042E015B0C000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="变速箱型号及速比" obj="F117DA18000000000000000108042E015CD4000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="驱动型式及位置" obj="F117DA18000000000000000108042E015D1 000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="超速报警值" obj="F117DA18000000000000000108042E015E3C000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="气压报警值" obj="F117DA18000000000000000108042E015F00000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="BSD 配置" obj="F117DA18000000000000000108042E016000000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="疲劳驾驶配置" obj="F117DA18000000000000000108042E016100000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="燃气瓶数量" obj="F117DA18000000000000000108042E016200000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="动力电池冷却方式" obj="F117DA18000000000000000108042E016401000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="TBOX配置" obj="F117DA18000000000000000108042E019100000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="水位传感器配置" obj="F117DA18000000000000000108042E0112FF000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="限速功能" obj="F117DA18000000000000000108042E019232000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="应急转向配置" obj="F117DA18000000000000000108042E0193FF000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="行驶记录仪" obj="F117DA18000000000000000108042E019400000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="仪表类型" obj="F117DA18000000000000000108042E032001000000000000" />
+	<tagSendUint iInterval="500" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="车速放大系数" obj="F117DA18000000000000000108042E032164000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="标定结束指令" obj="F117DA180000000000000001080431011008000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="仪表复位" obj="F117DA180000000000000001080211010000000000000000" />
+    <tagSendUint iInterval="100" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="读取标定指定DID值指令" obj="F117DA180000000000000001080322032000000000000000" />
+</SendList>

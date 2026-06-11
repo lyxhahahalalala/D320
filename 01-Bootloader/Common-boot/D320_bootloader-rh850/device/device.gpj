@@ -1,0 +1,6 @@
+#!gbuild
+[Subproject]
+dr7f701403_startup.850
+dr7f701403_startup_ram.850
+dr7f701403_0.grd
+dr7f701403.ld

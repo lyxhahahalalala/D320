@@ -1,0 +1,47 @@
+target_connection {
+     {
+        title = "IECUBE2 - 7f701403 - 8MHz MainOsc - target not connected"
+        type = "Renesas V850/V850E ICE (850eserv2)"
+        short_type = "850eserv"
+        args = "  -df=\"dr7f701403.dvf\" -rh850 -iecube -dclock=8000,0,swoff -useswbp -id ffffffffffffffffffffffffffffffff -ip=C:\\GHS\\DeviceFiles"
+        command = "850eserv2  -df=\"dr7f701403.dvf\" -rh850 -iecube -dclock=8000,0,swoff -useswbp -id ffffffffffffffffffffffffffffffff -ip=C:\\GHS\\DeviceFiles"
+        logfile = ""
+        mode = ""
+        setup_script = "debug\\d1x_connections.mbs"
+        run_mode_partner = ""
+        run_mode_policy = ""
+        sane = "yes"
+        log = "no"
+        timestamp = "0"
+    }
+     {
+        title = "IECUBE2 - 7f701403 - 8MHz MainOsc - target connected"
+        type = "Renesas V850/V850E ICE (850eserv2)"
+        short_type = "850eserv"
+        args = "  -df=\"dr7f701403.dvf\" -rh850 -iecube -dclock=8000,0,swoff -id ffffffffffffffffffffffffffffffff -ip=C:\\GHS\\DeviceFiles -tc"
+        command = "850eserv2  -df=\"dr7f701403.dvf\" -rh850 -iecube -dclock=8000,0,swoff -id ffffffffffffffffffffffffffffffff -ip=C:\\GHS\\DeviceFiles -tc"
+        logfile = ""
+        mode = ""
+        setup_script = "debug\\d1x_connections.mbs"
+        run_mode_partner = ""
+        run_mode_policy = ""
+        sane = "yes"
+        log = "no"
+        timestamp = "0"
+    }
+     {
+        title = "E1 Debugger - 7f701403 - 8MHz MainOsc - target power"
+        type = "Renesas V850/V850E ICE (850eserv2)"
+        short_type = "850eserv"
+        args = "  -df=\"dr7f701403.dvf\" -rh850 -e1lpd4=default -dclock=8000,0,swoff -id ffffffffffffffffffffffffffffffff -ip=C:\\GHS\\DeviceFiles"
+        command = "850eserv2  -df=\"dr7f701403.dvf\" -rh850 -e1lpd4=default -dclock=8000,0,swoff -id ffffffffffffffffffffffffffffffff -ip=C:\\GHS\\DeviceFiles"
+        logfile = ""
+        mode = "download"
+        setup_script = "debug\\d1x_connections.mbs"
+        run_mode_partner = ""
+        run_mode_policy = ""
+        sane = "yes"
+        log = "no"
+        timestamp = "0"
+    }
+}

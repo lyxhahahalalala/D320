@@ -1,0 +1,8 @@
+#!gbuild
+[Subproject]
+
+	-I ..\ComDrv\
+
+bt_tp.c
+bt_uds.c
+bt_init.c

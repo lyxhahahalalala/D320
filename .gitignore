@@ -1,0 +1,57 @@
+# Build outputs
+output/
+obj/
+objects/
+list/
+History/
+历史/
+target/**/output/
+target/**/obj/
+
+# Compiler/linker artifacts
+*.o
+*.obj
+*.d
+*.dep
+*.dla
+*.dnm
+*.map
+*.mem
+*.out
+*.rec
+*.siz
+*.lst
+*.dbo
+*.dlo
+*.hex
+*.bin
+*.mot
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.tlog
+*.recipe
+*.res
+*.lastbuildstate
+*.FileListAbsolute.txt
+BuildLog.htm
+Thumbs.db
+Desktop.ini
+
+# Large design/source assets and installers
+*.psd
+*.zip
+*.rar
+*.7z
+*.cab
+*.msi
+*.exe
+*.dll
+
+# Local IDE/user files
+.vscode/iar-vsc.json
+SourceInsight/
+templete/
