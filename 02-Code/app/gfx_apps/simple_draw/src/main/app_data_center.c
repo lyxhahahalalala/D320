@@ -176,6 +176,7 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	uint16_t u16_buffer;
 	uint32_t u32_buffer;
 	
+	VCU_04F02370_t *pVCU_04F02370 = NULL;
 	BMS_0CFFEAF4_t *pBMS_0CFFEAF4 = NULL;
 	GeneralUse_t   *pBMS_18FFEEF4 = NULL;
 	GeneralUse_t   *pBMS_18FFF2F4 = NULL;
@@ -190,6 +191,8 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	bHCU_18FFF631 = (GeneralUse_t*)can_getBCanBuffer(0x18FFF631);
 	bHCU_18FFF731 = (GeneralUse_t*)can_getBCanBuffer(0x18FFF731);
 	pBMS_19FF5CF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5CF3);
+	pVCU_04F02370 = (VCU_04F02370_t*)can_getPCanBuffer(0x04F02370);
+	
 	
 	//低压锂电SOC
 	if(can_getPCanRxState(0x19FF5CF3) == CAN_FRAME_ST_RECVED)
@@ -299,6 +302,26 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 		DataCenter.batt_pack_inspower = 0xffffu;
 		
 	}
+	if(can_getPCanRxState(0x04F02370) == CAN_FRAME_ST_RECVED)//LYX
+{
+    if(pVCU_04F02370->batt_soc <= 250)
+    {
+        DataCenter.batt_pack_soc = pVCU_04F02370->batt_soc * 2 / 5;
+        if(DataCenter.batt_pack_soc > 100)
+            DataCenter.batt_pack_soc = 100;
+    }
+    else DataCenter.batt_pack_soc = 0xffu;
+
+    DataCenter.batt_pack_curr = (int32_t)pVCU_04F02370->pack_current - 10000;
+
+    if(pVCU_04F02370->pack_voltage <= 10000)
+        DataCenter.batt_pack_volt = pVCU_04F02370->pack_voltage;
+    else
+        DataCenter.batt_pack_volt = 0;
+
+    s32_buffer = (int32_t)DataCenter.batt_pack_volt * DataCenter.batt_pack_curr;
+    DataCenter.batt_pack_inspower = s32_buffer / 10000;
+}
 	//电池组SOH，电池平均温度
 	if(can_getPCanRxState(0x18FFEEF4) == CAN_FRAME_ST_RECVED)
 	{
@@ -320,7 +343,25 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	0xfe-异常 
 	0xff-无效
 	*/
-	DataCenter.charge_status = pBMS_18FFF2F4->byte1.byte;
+	//DataCenter.charge_status = pBMS_18FFF2F4->byte1.byte;
+	if(can_getPCanRxState(0x04F02370) == CAN_FRAME_ST_RECVED)
+{
+    CAN_CHARGE_LINE = (pVCU_04F02370->chg_line_sts != 0);
+
+    if(pVCU_04F02370->charging_indication == 1)
+        DataCenter.charge_status = ParkingCharge;
+    else if(pVCU_04F02370->charging_indication == 2)
+        DataCenter.charge_status = ChargingOK;
+    else if(pVCU_04F02370->charging_indication == 3)
+        DataCenter.charge_status = ChargingAnomaly;
+    else
+        DataCenter.charge_status = NotCharged;
+}
+else
+{
+    DataCenter.charge_status = pBMS_18FFF2F4->byte1.byte;
+}
+	
 	
 	//剩余充电时间，小计电耗
 	if(can_getBCanRxState(0x18FFF731) == CAN_FRAME_ST_RECVED)
@@ -595,7 +636,20 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 		
 		DataCenter.gear_mode = 0xffu; //无效
 	}
-	
+	if(can_getPCanRxState(0x04F02370) == CAN_FRAME_ST_RECVED)//lyx
+{
+    VCU_04F02370_t *pVCU_04F02370 = NULL;
+    pVCU_04F02370 = (VCU_04F02370_t*)can_getPCanBuffer(0x04F02370);
+
+    if(pVCU_04F02370->abs_vehicle_speed <= 2500)
+    {
+        DataCenter.veh_speed = (float)pVCU_04F02370->abs_vehicle_speed / 10;
+        if(eol_speed_enlarge_factor > 0)
+            DataCenter.display_speed = (float)(DataCenter.veh_speed * 1.07);
+        else
+            DataCenter.display_speed = DataCenter.veh_speed;
+    }
+}
 	//E/P模式
 	if(eol_atmtype == 33U || eol_atmtype == 34U || eol_atmtype == 27U || eol_atmtype == 30U)
 	{

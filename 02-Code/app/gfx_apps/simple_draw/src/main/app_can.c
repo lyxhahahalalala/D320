@@ -243,6 +243,8 @@ const canRxFrameLCfg_t lct_PcanRxFrame[] =
 	{0x18EBFFA0, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
 	
 	{0x04F02270,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
+	{0x04F02370,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
+
 
 };
 static uint8_t l_u8PCanRxBuf[PCAN_RX_FRAME_COUNT][8];
@@ -1004,6 +1006,10 @@ void can_rxRoutine(void)
 			{
 				ZhongLianLockVehFlg = 0;
 			}
+			else if(l_tPCanRxFrame.lcfg[i].id == 0x04F02370)//lyx
+			{
+    			CAN_CHARGE_LINE = 0;
+			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FF1F31)
 			{
 				// LckVehBoundState = 0;
@@ -1678,7 +1684,7 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 		case 0x18FED631:
 			MSD_SwitchStatus  = ((buf[3]&0x30) == 0x10);
 			break;
-		case 0x18FFF531://lyx
+		case 0x18FFF531:
     		vcu_ready_18fff531 = ((buf[2]&0x10) == 0x10);
     		VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
     		break;
@@ -1686,6 +1692,9 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
     		vcu_ready_04f02270 = ((buf[0]&0x01) == 0x01);
     		VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
     		break;
+		case 0x04F02370://lyx
+			CAN_CHARGE_LINE = ((buf[1]&0x03) != 0);
+			break;
 		case 0x0CFFEAF4:
 			temp = (buf[0]&0x60);
 			CAN_CHARGE_LINE = (temp == 0x40);

@@ -376,6 +376,23 @@ typedef union {
 typedef union {
     uint8_t bData[8];
     struct {
+        uint8_t batt_soc;
+
+        uint8_t chg_line_sts:2,
+                charging_indication:2,
+                res1:4;
+
+        uint16_t pack_current;
+        uint16_t pack_voltage;
+        uint16_t abs_vehicle_speed;
+    };
+}VCU_04F02370_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
 	uint8_t  wheelID;
 	uint8_t  temperature;
 	unsigned pressure:10;
