@@ -1163,6 +1163,7 @@ void LED_Logic(void)
 	GeneralUse_t   *GU_18FF14E7_t = NULL;
 	GeneralUse_t   *GU_18FEF131_t = NULL;
 	VCU_18FFF531_t *VCU_18FFF531_d = NULL;
+	VCU_04F02270_t *VCU_04F02270_d = NULL;
 	GeneralUse_t   *VCU_18FDA403_d = NULL;
 	GeneralUse_t   *GU_0CEF3103_t = NULL;
 	// GeneralUse_t   *GU_18F7021E_t = NULL;
@@ -1185,6 +1186,7 @@ void LED_Logic(void)
 		GU_18FF14E7_t =  (GeneralUse_t*)can_getBCanBuffer(0x18FF14E7);
 		GU_18FEF131_t =  (GeneralUse_t*)can_getPCanBuffer(0x18FEF131);
 		VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
+		VCU_04F02270_d = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);//lyx
 		VCU_18FDA403_d = (GeneralUse_t *)can_getPCanBuffer(0x18FDA403);
 		GU_0CEF3103_t = (GeneralUse_t*)can_getPCanBuffer(0x0CEF3103);
 		// GU_18F7021E_t = (GeneralUse_t*)can_getPCanBuffer(0x18F7021E);
@@ -1243,9 +1245,9 @@ void LED_Logic(void)
 		LED_Park  = IN20;
 		LED_Park |= (GU_18FEF131_t->byte1.bit34 == 1);
 		LED_Park |= (pEPB_18FF3C50_t->parking_brake == 1); //驻车制动指示
-		
+		LED_Park |= VCU_04F02270_d->park_switch_status;//lyx
 		LED_PowerBatCutOff = ((get_mot_volt() < 2000) && (Vspeed > 5)); //动力电池切断
-		
+		LED_PowerBatCutOff |= VCU_04F02270_d->hv_batt_cutoff;//lyx
 		//巡航指示
 		ret = (VCU_18FFF531_d->cruise_switch == 1); //巡航开关
 		Set_Interval_Req(ret, F_CRUISE);
@@ -1301,11 +1303,11 @@ void LED_Logic(void)
 		// LED_SocL  = (get_dm1_flt_status(DM1_F4, 521309, 18) == true); //电池SOC一般低
 		// LED_SocL |= (get_dm1_flt_status(DM1_F4, 521309,  1) == true); //电池SOC严重低
 		LED_SocL  = 0;
-		
+		LED_SocL |= VCU_04F02270_d->soc_low_warning;//lyx
 		//电机过温
 		LED_MotorOverTmp  = (get_dm1_flt_status(DM1_EF, 521703, 16) == true);
 		LED_MotorOverTmp |= (get_dm1_flt_status(DM1_EF, 521704, 16) == true);
-		
+		LED_MotorOverTmp |= VCU_04F02270_d->vcu_mot_over_temp;//lyx
 		//EAC
 		LED_EAC  = (CurrentFltInfo[DM1_EF].FltBuf.AmberWarnLamp == 1);
 		LED_EAC |= (CurrentFltInfo[DM1_F0].FltBuf.AmberWarnLamp == 1);
@@ -1534,6 +1536,7 @@ void LED_Logic(void)
 			{
 				LED_ESC = (asr_lamp_indicator || esc_fun_abnormal);
 			}
+			LED_ESC |= VCU_04F02270_d->eps_fault;//lyx
 		}
 		
 		//刹车片报警
@@ -1749,7 +1752,7 @@ void LED_Logic(void)
 			
 			LED_SocL            = (get_dm1_flt_status(DM1_F4, 521309, 18) == true); //电池SOC一般低
 			LED_SocL           |= (get_dm1_flt_status(DM1_F4, 521309,  1) == true); //电池SOC严重低
-			
+			LED_SocL           |= VCU_04F02270_d->soc_low_warning;//lyx
 			LED_HighVolBatFault = (CurrentFltInfo[DM1_F4].FltBuf.RedStopLamp == 1); //动力电池故障
 			
 			LED_BatOverTmp      = (get_dm1_flt_status(DM1_F4, 521301, 16) == true); //单体温度一般高

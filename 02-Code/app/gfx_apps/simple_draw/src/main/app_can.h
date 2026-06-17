@@ -350,6 +350,28 @@ typedef union {
 }VCU_18FFF531_t;
 #pragma pack()
 
+//lyx
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t ready:1,
+                res1:2,
+                ep_fault_level_warning:1,
+                park_switch_status:1,
+                low_battery_warning:1,
+                hv_batt_cutoff:1,
+                eps_fault:1;
+
+        uint8_t vcu_mot_over_temp:1,
+                soc_low_warning:1,
+                res2:6;
+
+        uint8_t res3[6];
+    };
+}VCU_04F02270_t;
+#pragma pack()
+
 #pragma pack(1)
 typedef union {
     uint8_t bData[8];

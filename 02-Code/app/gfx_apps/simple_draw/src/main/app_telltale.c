@@ -1789,7 +1789,8 @@ void Display_Telltale(void)
 	//READY
     if((TotalDM == 0) && (dm1_show_flg == 0))
 	{
-		if(VCU_18FFF531_d->ready)
+		//if(VCU_18FFF531_d->ready)
+		if(VehicleReadyFlag)//lyx
 		{
 			loc_Render_FHP(339, 71, GREEN, "4"); // READY
 			

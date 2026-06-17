@@ -96,7 +96,8 @@ static uint8_t LockVehBound_cnt = 0;
 
 static uint32_t door_state_tmr = 0;
 static uint8_t  door_previous_state = 0;
-
+static uint8_t vcu_ready_18fff531 = 0;
+static uint8_t vcu_ready_04f02270 = 0;
 
 
 #define PCAN_RX_FRAME_COUNT (sizeof(lct_PcanRxFrame) / sizeof(canRxFrameLCfg_t))
@@ -241,6 +242,7 @@ const canRxFrameLCfg_t lct_PcanRxFrame[] =
 	{0x18ECFFA0, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFA0, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
 	
+	{0x04F02270,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
 
 };
 static uint8_t l_u8PCanRxBuf[PCAN_RX_FRAME_COUNT][8];
@@ -978,9 +980,15 @@ void can_rxRoutine(void)
 			{
 				isOverseasVer = 0;
 			}
-			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FFF531)
+			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FFF531)//lyx
 			{
-				VehicleReadyFlag = 0;
+    			vcu_ready_18fff531 = 0;
+    			VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
+			}
+			else if(l_tPCanRxFrame.lcfg[i].id == 0x04F02270)//lyx
+			{
+    			vcu_ready_04f02270 = 0;
+    			VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
 			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x0CFFEAF4)
 			{
@@ -1670,9 +1678,14 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 		case 0x18FED631:
 			MSD_SwitchStatus  = ((buf[3]&0x30) == 0x10);
 			break;
-		case 0x18FFF531:
-			VehicleReadyFlag = ((buf[2]&0x10) == 0x10);
-			break;
+		case 0x18FFF531://lyx
+    		vcu_ready_18fff531 = ((buf[2]&0x10) == 0x10);
+    		VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
+    		break;
+		case 0x04F02270://lyx
+    		vcu_ready_04f02270 = ((buf[0]&0x01) == 0x01);
+    		VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
+    		break;
 		case 0x0CFFEAF4:
 			temp = (buf[0]&0x60);
 			CAN_CHARGE_LINE = (temp == 0x40);
