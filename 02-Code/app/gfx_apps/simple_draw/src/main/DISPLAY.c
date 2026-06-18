@@ -73,7 +73,7 @@ enum menu{
 /*30*/Charge,
 /*31*/FCUWrkTm,
 /*32*/HMSMaxPress,
-
+/*33*/ControllerFault,//lyx
 }frame_ID;
 
 /*******************************************************************************
@@ -1939,20 +1939,20 @@ void MenuVehcleInfoFrame(void)
     uint8_t uniStr[64];
     uint16_t width;
 	
-	TEXT_LIST_t VehInfoMenu[] =
+	TEXT_LIST_t VehInfoMenu[] =//lyx
 	{
-		{ 0, {(uint8_t *)"SOH与K值",       (uint8_t *)"SOH and K Factor"     }, 295, 130 + 55 * 0, NULL},
-		{ 1, {(uint8_t *)"制动系统信息",   (uint8_t *)"Brake system info"    }, 295, 130 + 55 * 1, NULL},
-		{ 2, {(uint8_t *)"胎压监测系统",   (uint8_t *)"TPMS"                 }, 295, 130 + 55 * 2, NULL},
-		{ 3, {(uint8_t *)"电池信息",       (uint8_t *)"Batt. Info."         }, 295, 130 + 55 * 3, NULL},
-		{ 4, {(uint8_t *)"供应商",         (uint8_t *)"Suppliers"            }, 295, 130 + 55 * 4, NULL},
-		
-		{ 5, {(uint8_t *)"查看实时故障",   (uint8_t *)"Curr. Errors"         }, 550, 130 + 55 * 0, NULL},
-		{ 6, {(uint8_t *)"整车保养信息",   (uint8_t *)"Maintenance info"     }, 550, 130 + 55 * 1, NULL},
-		{ 7, {(uint8_t *)"轴荷信息",       (uint8_t *)"Axle load info"       }, 550, 130 + 55 * 2, NULL},
-		{ 8, {(uint8_t *)"电机电压",       (uint8_t *)"Motor Voltage"        }, 550, 130 + 55 * 3, NULL},
-		{ 9, {(uint8_t *)"查看控制器版本", (uint8_t *)"ICU version"          }, 550, 130 + 55 * 4, NULL},
-		
+		{ 0, {(uint8_t *)"SOH与K值",       (uint8_t *)"SOH and K Factor"     }, 295, 130 + 45 * 0, NULL},
+		{ 1, {(uint8_t *)"制动系统信息",   (uint8_t *)"Brake system info"    }, 295, 130 + 45 * 1, NULL},
+		{ 2, {(uint8_t *)"胎压监测系统",   (uint8_t *)"TPMS"                 }, 295, 130 + 45 * 2, NULL},
+		{ 3, {(uint8_t *)"电池信息",       (uint8_t *)"Batt. Info."         }, 295, 130 + 45 * 3, NULL},
+		{ 4, {(uint8_t *)"供应商",         (uint8_t *)"Suppliers"            }, 295, 130 + 45 * 4, NULL},
+		{ 5, {(uint8_t *)"查看实时故障",   (uint8_t *)"Curr. Errors"         }, 295, 130 + 45 * 5, NULL},
+
+		{ 6, {(uint8_t *)"整车保养信息",   (uint8_t *)"Maintenance info"     }, 550, 130 + 45 * 0, NULL},
+		{ 7, {(uint8_t *)"轴荷信息",       (uint8_t *)"Axle load info"       }, 550, 130 + 45 * 1, NULL},
+		{ 8, {(uint8_t *)"电机电压",       (uint8_t *)"Motor Voltage"        }, 550, 130 + 45 * 2, NULL},
+		{ 9, {(uint8_t *)"查看控制器版本", (uint8_t *)"ICU version"          }, 550, 130 + 45 * 3, NULL},
+		{10, {(uint8_t *)"查看控制器故障", (uint8_t *)"Controller faults"    }, 550, 130 + 45 * 4, NULL},
 	};
 	TEXT_LIST_t VehInfoMenu2[] =
 	{
@@ -1969,7 +1969,7 @@ void MenuVehcleInfoFrame(void)
 		{ 9, {(uint8_t *)"轴荷信息",       (uint8_t *)"Axle load info"       }, 550, 130 + 45 * 3, NULL},
 		{10, {(uint8_t *)"电机电压",       (uint8_t *)"Motor Voltage"        }, 550, 130 + 45 * 4, NULL},
 		{11, {(uint8_t *)"查看控制器版本", (uint8_t *)"ICU version"          }, 550, 130 + 45 * 5, NULL},
-		
+		{12, {(uint8_t *)"查看控制器故障", (uint8_t *)"Controller faults"}, 550, 130 + 45 * 6, NULL},//lyx
 	};
 	
 	
@@ -1988,7 +1988,7 @@ void MenuVehcleInfoFrame(void)
 		
 		if(eol_fadongjiorkaji==0x2d)
 		{
-			for(uint8_t i = 0; i < 12; i++)
+			for(uint8_t i = 0; i < 13; i++)
 			{
 				zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31, VM_COLOR_WHITE, 0);
 				zk_oem2uni(VehInfoMenu2[i].Text[eol_language], uniStr, sizeof(uniStr));
@@ -1997,7 +1997,7 @@ void MenuVehcleInfoFrame(void)
 		}
 		else
 		{
-			for(uint8_t i = 0; i < 10; i++)
+			for(uint8_t i = 0; i < 11; i++)
 			{
 				zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31, VM_COLOR_WHITE, 0);
 				zk_oem2uni(VehInfoMenu[i].Text[eol_language], uniStr, sizeof(uniStr));
@@ -2047,7 +2047,7 @@ void MenuVehicleInfoUpdate(void)
 				if(eol_fadongjiorkaji==0x2d)
 					update_choose_location(270, 134 + 45 * 0);
 				else
-					update_choose_location(270, 134 + 55 * 0);
+					update_choose_location(270, 134 + 45 * 0);
 			}
 		} else if (i == 9 ) {//
 			f_index = 0;
@@ -2067,7 +2067,7 @@ void MenuVehicleInfoUpdate(void)
 			if(eol_fadongjiorkaji==0x2d)
 			{
 				if(ichoose == 0)
-					ichoose = 11;
+					ichoose = 12;
 				else
 					ichoose --; 
 				
@@ -2076,17 +2076,17 @@ void MenuVehicleInfoUpdate(void)
 				else
 					update_choose_location(525, 134 + 45 * (ichoose - 6));
 			}
-			else
+			else//lyx
 			{
-				if(ichoose == 0)
-					ichoose = 9;
-				else
-					ichoose --; 
-				
-				if(ichoose < 5)
-					update_choose_location(270, 134 + 55 * ichoose);
-				else
-					update_choose_location(525, 134 + 55 * (ichoose - 5));
+			    if(ichoose == 0)
+			        ichoose = 10;
+			    else
+			        ichoose--;
+
+			    if(ichoose < 6)
+			        update_choose_location(270, 134 + 45 * ichoose);
+			    else
+			        update_choose_location(525, 134 + 45 * (ichoose - 6));
 			}
 		}
 
@@ -2095,7 +2095,7 @@ void MenuVehicleInfoUpdate(void)
 			
 			if(eol_fadongjiorkaji==0x2d)
 			{
-				if(ichoose == 11)
+				if(ichoose == 12)
 					ichoose = 0;
 				else
 					ichoose ++;
@@ -2104,18 +2104,18 @@ void MenuVehicleInfoUpdate(void)
 				else
 					update_choose_location(525, 134 + 45 * (ichoose - 6));
 			}
-			else
+			else//lyx
 			{
-				if(ichoose == 9)
+				if(ichoose == 10)
 					ichoose = 0;
 				else
 					ichoose ++; 
 				
 				
-				if(ichoose < 5)
-					update_choose_location(270, 134 + 55 * ichoose);
+				if(ichoose < 6)
+					update_choose_location(270, 134 + 45 * ichoose);
 				else
-					update_choose_location(525, 134 + 55 * (ichoose - 5));
+					update_choose_location(525, 134 + 45 * (ichoose - 6));
 			}
 		}
 
@@ -2138,6 +2138,7 @@ void MenuVehicleInfoUpdate(void)
 				else if (ichoose == 9) frmID = ZhouHe;
 				else if (ichoose ==10) frmID = MotorVol;
 				else if (ichoose ==11) frmID = VCUVersion;
+				else if (ichoose ==12) frmID = ControllerFault;
 				else ;
 			}
 			else
@@ -2152,7 +2153,8 @@ void MenuVehicleInfoUpdate(void)
 				else if (ichoose == 7) frmID = ZhouHe;
 				else if (ichoose == 8) frmID = MotorVol;
 				else if (ichoose == 9) frmID = VCUVersion;
-				else ;
+				else if (ichoose == 10) frmID = ControllerFault;
+				else;
 			}
 		}
     }
@@ -2680,6 +2682,7 @@ void SupplierFrame(unsigned char index, unsigned char page)
 
 /** 车辆信息——查看实时故障**/
 uint32_t faultcnt = 0;
+static uint8_t ControllerFaultUpdate = 0;//lyx
 void DMFrame(unsigned char index, unsigned char page)
 {
 	uint8_t  uniStr[64];
@@ -2837,6 +2840,184 @@ void DMFrameUpdate(unsigned char index)
 		f_index = 0;
 		frmID = Menu_VehicleInfo;             
     }
+}
+/** 车辆信息——查看控制器故障 **/
+void ControllerFaultFrame(unsigned char index, unsigned char page)
+{
+    uint8_t uniStr[100];
+    uint16_t width;
+
+    start_draw();
+    LCD_Clear();
+
+    if(eol_language == 0)
+    {
+        zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh38bold,
+                VM_COLOR_WHITE, 0);
+        zk_oem2uni((uint8_t *)"控制器故障查询",
+                   uniStr, sizeof(uniStr));
+        width = zk_getTextWidth((uint8_t *)"控制器故障查询");
+        zk_printZH(400 - width / 2, 70, uniStr);
+
+        zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31,
+                VM_COLOR_WHITE, 0);
+        zk_oem2uni((uint8_t *)"故障描述", uniStr, sizeof(uniStr));
+        zk_printZH(80, 115, uniStr);
+
+        zk_oem2uni((uint8_t *)"故障值", uniStr, sizeof(uniStr));
+        zk_printZH(650, 115, uniStr);
+
+        zk_oem2uni((uint8_t *)"故障总数", uniStr, sizeof(uniStr));
+        zk_printZH(80, 438, uniStr);
+    }
+    else
+    {
+        zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh38bold,
+                VM_COLOR_WHITE, 0);
+        zk_oem2uni((uint8_t *)"Controller Fault Query",
+                   uniStr, sizeof(uniStr));
+        width = zk_getTextWidth((uint8_t *)"Controller Fault Query");
+        zk_printZH(400 - width / 2, 70, uniStr);
+
+        zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31,
+                VM_COLOR_WHITE, 0);
+        zk_oem2uni((uint8_t *)"Fault description",
+                   uniStr, sizeof(uniStr));
+        zk_printZH(80, 115, uniStr);
+
+        zk_oem2uni((uint8_t *)"Value", uniStr, sizeof(uniStr));
+        zk_printZH(650, 115, uniStr);
+
+        zk_oem2uni((uint8_t *)"Fault Sum", uniStr, sizeof(uniStr));
+        zk_printZH(80, 438, uniStr);
+    }
+
+    ControllerFaultUpdate = 1;
+
+    disable_box();
+    disable_choose_image();
+    end_draw();
+}
+void ControllerFaultFrameUpdate(unsigned char index)
+{
+    VCU_04F02470_t *pVCU_04F02470 = NULL;
+
+    static const uint8_t *ControllerFaultText[][2] =
+    {
+        {(uint8_t *)"转向DCAC系统故障码",
+         (uint8_t *)"EPS DCAC fault code"},
+
+        {(uint8_t *)"制动DCAC系统故障码",
+         (uint8_t *)"ACM DCAC fault code"},
+
+        {(uint8_t *)"行车驱动系统故障码",
+         (uint8_t *)"Drive MCU fault code"},
+
+        {(uint8_t *)"混料MCU系统故障码",
+         (uint8_t *)"Stir MCU fault code"},
+
+        {(uint8_t *)"吸料头MCU系统故障码",
+         (uint8_t *)"Suction MCU fault code"},
+
+        {(uint8_t *)"前输送带MCU系统故障码",
+         (uint8_t *)"Conveyor MCU fault code"},
+    };
+
+    static uint8_t state_old = 0xff;
+    static uint16_t value_old[6] =
+    {
+        0xffff, 0xffff, 0xffff,
+        0xffff, 0xffff, 0xffff
+    };
+
+    uint8_t uniStr[100];
+    uint16_t value[6];
+    uint8_t state;
+    uint8_t fault_num = 0;
+    uint8_t update = 0;
+
+    pVCU_04F02470 =
+        (VCU_04F02470_t *)can_getPCanBuffer(0x04F02470);
+
+    state = can_getPCanRxState(0x04F02470);
+
+    value[0] = pVCU_04F02470->eps_sys_fault_code;
+    value[1] = pVCU_04F02470->acm_sys_fault_code;
+    value[2] = pVCU_04F02470->drive_mcu_sys_fault_code;
+    value[3] = pVCU_04F02470->stir_mcu_sys_fault_code;
+    value[4] = pVCU_04F02470->suction_head_mcu_sys_fault_code;
+    value[5] = pVCU_04F02470->front_conveyor_mcu_sys_fault_code;
+
+    if(ControllerFaultUpdate || state_old != state)
+    {
+        update = 1;
+    }
+    else
+    {
+        for(uint8_t i = 0; i < 6; i++)
+        {
+            if(value_old[i] != value[i])
+            {
+                update = 1;
+                break;
+            }
+        }
+    }
+
+    start_draw();
+
+    if(update)
+    {
+        /* 清除原故障列表和故障总数 */
+        loc_ClearRect(70, 150, 680, 250);
+        loc_ClearRect(220, 438, 80, 31);
+
+        if(state == CAN_FRAME_ST_RECVED)
+        {
+            for(uint8_t i = 0; i < 6; i++)
+            {
+                if(value[i] != 0)
+                {
+                    zk_init(loc_Drw2dDev,
+                            (GUI_FONT*)&GUI_Fontwryh31,
+                            VM_COLOR_RED, 0);
+
+                    zk_oem2uni(
+                        ControllerFaultText[i][eol_language],
+                        uniStr, sizeof(uniStr));
+
+                    zk_printZH(80,
+                               155 + 40 * fault_num,
+                               uniStr);
+
+                    zk_printNum(720,
+                                155 + 40 * fault_num,
+                                value[i],
+                                0,
+                                ZK_ALIGN_RIGHT);
+
+                    fault_num++;
+                }
+            }
+        }
+
+        zk_init(loc_Drw2dDev,
+                (GUI_FONT*)&GUI_Fontwryh31,
+                VM_COLOR_WHITE, 0);
+
+        zk_printNum(220, 438,
+                    fault_num, 0, ZK_ALIGN_LEFT);
+
+        for(uint8_t i = 0; i < 6; i++)
+        {
+            value_old[i] = value[i];
+        }
+
+        state_old = state;
+        ControllerFaultUpdate = 0;
+    }
+
+    end_draw();
 }
 /** 车辆信息——轴荷信息**/
 void ZhouHeFrame(unsigned char index, unsigned char page)
@@ -9475,7 +9656,11 @@ void LCD_Exec(void)
 			Gennal_Use[2].byte = 0;
 			frmpage(SensorTestFrame, SensorTestFrameUpdate, 1);
 			break;
-
+		case ControllerFault:
+			Gennal_Use[2].byte = 0;
+			mainview_update = 1;
+			frmpage(ControllerFaultFrame,ControllerFaultFrameUpdate, 1);
+			break;
 
 		default:
             key_up = 0;

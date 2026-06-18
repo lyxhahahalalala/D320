@@ -393,6 +393,20 @@ typedef union {
 typedef union {
     uint8_t bData[8];
     struct {
+        uint16_t eps_sys_fault_code;
+        uint16_t acm_sys_fault_code;
+        uint8_t drive_mcu_sys_fault_code;
+        uint8_t stir_mcu_sys_fault_code;
+        uint8_t suction_head_mcu_sys_fault_code;
+        uint8_t front_conveyor_mcu_sys_fault_code;
+    };
+}VCU_04F02470_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
 	uint8_t  wheelID;
 	uint8_t  temperature;
 	unsigned pressure:10;

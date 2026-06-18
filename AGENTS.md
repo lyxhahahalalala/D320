@@ -126,6 +126,95 @@ During debugging, `can_getPCanRxState(0x04F02270) == 2` meant the new message wa
 
 If a new CAN ID does not enter `Process_Can2()`, test with an old working PCAN frame such as `0x18FEF131` at the same breakpoint. If the old frame enters immediately and the new frame does not, focus on `rscan.c` hardware filtering before changing display logic.
 
+## 0x04F02370 Current Status
+
+The `0x04F02370` requirement is implemented and bench-tested successfully.
+
+Current setup:
+
+- Channel: CAN2 / PCAN
+- Baud rate: 500K on the current hardware
+- Frame type: extended CAN frame
+- DLC: 8
+- Recommended cycle: 100 ms
+- Direction: instrument receives this frame
+
+Signals handled from this frame:
+
+- `batt_soc`: byte0, battery SOC, resolution 0.4%, displayed as percent.
+- `chg_line_sts`: byte1 bit0-bit1, charge line connection state.
+- `charging_indication`: byte1 bit2-bit3, charging status.
+- `pack_current`: byte2-byte3, little-endian, resolution 0.1 A, offset -1000 A.
+- `pack_voltage`: byte4-byte5, little-endian, resolution 0.1 V.
+- `abs_vehicle_speed`: byte6-byte7, little-endian, resolution 0.1 km/h.
+
+Bench results:
+
+- SOC update works.
+- Charge line connection state works.
+- Charging status works.
+- Battery pack current works.
+- Battery pack voltage works.
+- Vehicle speed works.
+
+Known working test frames:
+
+```text
+ID:   0x04F02370
+Data: C8 05 8B 27 00 15 63 01
+Expected: SOC 80%, A gun connected, Charging, current 12.3 A, voltage 537.6 V, speed 35.5 km/h
+
+ID:   0x04F02370
+Data: 00 00 10 27 00 00 00 00
+Expected: SOC 0%, charge line not connected, NotCharged, current 0 A, voltage 0 V, speed 0 km/h
+
+ID:   0x04F02370
+Data: FA 0B 10 27 88 13 00 00
+Expected: SOC 100%, dual gun connected, Charge Finished, current 0 A, voltage 500.0 V, speed 0 km/h
+
+ID:   0x04F02370
+Data: 80 0D 10 27 88 13 00 00
+Expected: SOC about 51%, A gun connected, Charge error, current 0 A, voltage 500.0 V, speed 0 km/h
+```
+
+Useful MULTI debug checks:
+
+```text
+print can_getPCanRxState(0x04F02370)
+print CAN_CHARGE_LINE
+print ((VCU_04F02370_t*)can_getPCanBuffer(0x04F02370))->chg_line_sts
+```
+
+Expected charge line values:
+
+```text
+CAN_CHARGE_LINE:
+0 = not connected
+1 = connected
+
+chg_line_sts:
+0 = not connected
+1 = A gun connected
+2 = B gun connected
+3 = dual gun connected
+```
+
+When adding both `0x04F02270` and `0x04F02370`, make sure the PCAN receive rule table entries in `rscan.c` use unique receive buffer indexes. Do not duplicate the third field. The known-good pattern is:
+
+```c
+{0x0CF19682UL, 0x1FFFFFFFUL, 0x00005A00UL, 0x00000004UL}, /*47*/
+{0x04F02270UL, 0x1FFFFFFFUL, 0x00005B00UL, 0x00000004UL}, /*48*/
+{0x04F02370UL, 0x1FFFFFFFUL, 0x00005C00UL, 0x00000004UL}, /*49*/
+```
+
+For this rule count, the hardware filter count should cover the added PCAN entries. The tested value was:
+
+```c
+RSCAN0.GAFLCFG0.UINT32 = 0x00312D00;
+```
+
+If `can_getPCanRxState(0x04F02370)` stays at `2`, first check the hardware filter table and `GAFLCFG0` count before changing the signal parsing or display logic.
+
 ## File Modification Rule
 
 Do not modify, create, delete, format, or overwrite any project file unless the user has explicitly approved that specific file change first.
