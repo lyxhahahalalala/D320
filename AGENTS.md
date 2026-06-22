@@ -215,6 +215,184 @@ RSCAN0.GAFLCFG0.UINT32 = 0x00312D00;
 
 If `can_getPCanRxState(0x04F02370)` stays at `2`, first check the hardware filter table and `GAFLCFG0` count before changing the signal parsing or display logic.
 
+## Vehicle Information Menu Status
+
+The Vehicle Information menu in `02-Code\app\gfx_apps\simple_draw\src\main\DISPLAY.c` now includes the new `ControllerFault` page, displayed as:
+
+```text
+查看控制器故障
+Controller faults
+```
+
+Normal vehicle layout:
+
+- 11 menu items.
+- Two columns.
+- Left column has 6 items and right column has 5 items.
+- Row spacing is 45 pixels.
+- Valid `ichoose` range is `0` through `10`.
+- `ichoose == 10` enters `ControllerFault`.
+
+When `eol_fadongjiorkaji == 0x2d`:
+
+- 13 menu items.
+- Two columns with 45-pixel row spacing.
+- Valid `ichoose` range is `0` through `12`.
+- `ichoose == 12` enters `ControllerFault`.
+
+When adding another menu item, update all related parts together:
+
+- Menu text array.
+- Draw loop item count.
+- Forward and backward cursor boundary.
+- Cursor coordinate calculation.
+- `key_set` page mapping.
+- `frame_ID` enumeration and `LCD_Exec()` switch branch.
+
+Do not update only the displayed text. An item can be visible but impossible to select if the cursor range and `key_set` mapping are not updated.
+
+## 0x04F02470 Controller Fault Status
+
+The instrument receives controller fault values through:
+
+- ID: `0x04F02470`
+- Channel: CAN2 / PCAN
+- Baud rate: 500K on the current hardware
+- Frame type: extended CAN frame
+- DLC: 8
+- Recommended cycle: 100 ms
+- Software receive timeout: 3000 ms
+
+Current byte layout:
+
+```text
+byte0-byte1  EPS_Sys_Fault_Code
+             steering DCAC system fault code, uint16 little-endian
+
+byte2-byte3  ACM_Sys_Fault_Code
+             braking DCAC system fault code, uint16 little-endian
+
+byte4        DriveMCU_Sys_Fault_Code
+byte5        StirMCU_Sys_Fault_Code
+byte6        SuctionHeadMCU_Sys_Fault_Code
+byte7        FrontConveyorbeltMCU_Sys_Fault_Code
+```
+
+The receive structure is `VCU_04F02470_t` in `app_can.h`. The ID is present in `lct_PcanRxFrame[]` in `app_can.c`.
+
+The PCAN hardware filter entries currently end with:
+
+```c
+{0x04F02270UL, 0x1FFFFFFFUL, 0x00005B00UL, 0x00000004UL}, /*48*/
+{0x04F02370UL, 0x1FFFFFFFUL, 0x00005C00UL, 0x00000004UL}, /*49*/
+{0x04F02470UL, 0x1FFFFFFFUL, 0x00005D00UL, 0x00000004UL}, /*50*/
+```
+
+The matching CAN2 rule count is:
+
+```c
+RSCAN0.GAFLCFG0.UINT32 = 0x00322D00;
+```
+
+If another PCAN ID is appended, use the next unique rule index and increase the enabled CAN2 rule count again. Do not reuse `0x00005D00`.
+
+## Controller Fault Page Behavior
+
+The controller fault page is implemented through:
+
+```c
+ControllerFaultFrame()
+ControllerFaultFrameUpdate()
+```
+
+The page follows these rules:
+
+- A fault code equal to `0` is treated as no fault and its description is not displayed.
+- A nonzero fault code displays its description and numeric value in red.
+- Valid faults are packed from the first row downward with no blank rows between them.
+- If `0x04F02470` times out, no fault item is displayed.
+- Timeout is not displayed as `--` on this page.
+- The displayed fault total is the number of nonzero fault codes currently received.
+- The fault total is positioned below the lower horizontal line at approximately `Y = 438`.
+
+Known test frame:
+
+```text
+ID:   0x04F02470
+Data: D2 04 19 00 03 04 08 0C
+```
+
+Expected decoded values:
+
+```text
+steering DCAC system fault code       1234
+braking DCAC system fault code          25
+drive MCU system fault code              3
+stir MCU system fault code               4
+suction head MCU system fault code       8
+front conveyor MCU system fault code    12
+fault total                               6
+```
+
+For the current six signals, the page is called with:
+
+```c
+frmpage(ControllerFaultFrame, ControllerFaultFrameUpdate, 1);
+```
+
+If more fault signals are added later, follow the original project's direct paging style:
+
+```c
+frmpage(ControllerFaultFrame, ControllerFaultFrameUpdate, 2);
+```
+
+Then use the existing `index` argument to draw page 1 or page 2. Do not introduce generic page-count macros, helper layers, or a new paging framework unless the actual requirement needs them.
+
+## Font Coverage Pitfall
+
+The Chinese display fonts are generated subset fonts, not complete Chinese fonts. Before adding new Chinese UI text, verify that every character exists in the selected font source, such as:
+
+```text
+02-Code\app\gfx_apps\simple_draw\src\font\wryh31.c
+```
+
+`zk_printZH()` stops drawing the rest of a string when `zk_getCharInfo()` cannot find a character. This can look like a CAN parsing or layout problem even when the numeric value is correct.
+
+This occurred on the controller fault page:
+
+- The font did not contain `走`, so `行走驱动系统故障码` displayed only `行`.
+- The font did not contain `搅`, so `搅拌MCU系统故障码` displayed no description.
+- The numeric fault values `3` and `4` still displayed correctly, proving the CAN data and row calculation were working.
+
+The current display text uses characters already supported by `GUI_Fontwryh31`:
+
+```text
+行车驱动系统故障码
+混料MCU系统故障码
+```
+
+If the protocol wording must be displayed exactly, regenerate the font source with all required characters. Do not manually edit generated bitmap arrays in `wryh31.c`.
+
+When a Chinese string is partially or completely missing but the value beside it is correct, check font coverage before changing CAN decoding, fault filtering, or row positioning.
+
+## Guidance Quality Requirements
+
+When proposing project changes:
+
+- Read the relevant existing implementation first.
+- Follow the original project's direct C style and existing page/CAN patterns.
+- Avoid adding abstractions, helper layers, generic macros, or frameworks that the original project does not use.
+- Do not solve a six-item, one-page requirement with a generic paging design before more pages actually exist.
+- State the exact file, function, nearby code, and insertion or replacement position.
+- Do not give vague instructions such as only saying "add this", "replace this", or "put it nearby".
+- For every proposed edit, provide a searchable anchor from the current code and say whether the new code goes before it, after it, or replaces the whole function/block.
+- When several related edits are required, list every affected location separately, including enum values, menu arrays, loop counts, cursor boundaries, key mappings, page dispatch, CAN software tables, hardware filters, and filter counts.
+- Provide complete directly pasteable code for a new function or for any block that is safer to replace as a whole. Do not provide only disconnected fragments when their placement is ambiguous.
+- Base line references and code anchors on the user's current working tree, not an older version previously discussed.
+- For review requests, inspect the user's current code instead of repeating an earlier template.
+- Clearly distinguish among a proposed change, a change visible in the current files, a successful build, and a bench-tested behavior.
+- When values display correctly but labels do not, investigate font coverage and rendering behavior before blaming CAN reception.
+
 ## File Modification Rule
 
 Do not modify, create, delete, format, or overwrite any project file unless the user has explicitly approved that specific file change first.

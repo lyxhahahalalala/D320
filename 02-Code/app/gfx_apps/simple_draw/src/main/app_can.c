@@ -245,7 +245,12 @@ const canRxFrameLCfg_t lct_PcanRxFrame[] =
 	{0x04F02270,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
 	{0x04F02370,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
 	{0x04F02470,   3000, can_processTMO_PCan, 0},//lyx
-
+	{0x04F02570,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02670,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02770,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02870,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02970,   3000, can_processTMO_PCan, 0},//lyx
+	
 };
 static uint8_t l_u8PCanRxBuf[PCAN_RX_FRAME_COUNT][8];
 static ptmrType_t l_tpcanRxTimeCnt[PCAN_RX_FRAME_COUNT];

@@ -36,8 +36,8 @@ Macro definitions
 #define AD_R_B5_CTRL	 PORT_ISO.P17.BIT.P17_5
 #define AD_R_B18_CTRL 	 PORT_ISO.P17.BIT.P17_6
 
-#define AD_SAMPLE_MAX_VALUE    4096U //12Î»AD²ÉÑù£¬×î´óÎª0x0fff
-#define AD_REF_VOL             5000U //²Î¿¼µçÑ¹ µ¥Î» mV
+#define AD_SAMPLE_MAX_VALUE    4096U //12Î»ADï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0x0fff
+#define AD_REF_VOL             5000U //ï¿½Î¿ï¿½ï¿½ï¿½Ñ¹ ï¿½ï¿½Î» mV
 #define AD_FIFO_SIZE           15U
 
 #define WAIT_TIME              10U
@@ -72,7 +72,7 @@ void PBG_disable(void)
 static void ADC0_sg1_start(void)
 {
     ADCE0.SGSTCR1.UINT32 = 0x01;   /* Scan Group 1 Start Trigger */
-    // while((ADCE0.SGSTR.BIT.SGACT&0x200) != 0); /* µÈ´ý×ª»»Íê³É */
+    // while((ADCE0.SGSTR.BIT.SGACT&0x200) != 0); /* ï¿½È´ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ */
     for(int i = 0; i < 2000; i++); //delay a while
 	
 }
@@ -85,11 +85,11 @@ static void ADC0_sg1_stop(void)
 
 void adce_init(void)
 {
-	AD_R_B1_CTRL  = 0;  //AD_R_B1  ½ÓÈë10KÉÏÀ­µç×è
-	AD_R_B5_CTRL  = 0;  //AD_R_B5  ½ÓÈë10KÉÏÀ­µç×è
-	AD_R_B18_CTRL = 0;  //AD_R_B18 ½ÓÈë10KÉÏÀ­µç×è
+	AD_R_B1_CTRL  = 0;  //AD_R_B1  ï¿½ï¿½ï¿½ï¿½10Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	AD_R_B5_CTRL  = 0;  //AD_R_B5  ï¿½ï¿½ï¿½ï¿½10Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	AD_R_B18_CTRL = 0;  //AD_R_B18 ï¿½ï¿½ï¿½ï¿½10Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	//choose AD_V_B19  Ô¤Áô-×¤³µ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ
+	//choose AD_V_B19  Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½
 	AD_S0 = 0;
 	AD_S1 = 0;
 	AD_S2 = 1;
@@ -143,7 +143,7 @@ void adce_init(void)
 	
 	ADCE0.SGVCSP1.UINT32=0x00000000;  /* Bits[5..0]=0 -> select the virtual channel 0 from which the scan is to be started */
 	ADCE0.SGVCEP1.UINT32=0x00000009;  /* Bits[5..0]=0 -> select the virtual channel 0 from which the scan is to be ended */  
-	ADCE0.SGMCYCR1.UINT32=0x00000003; /* Bits[1,0]=3 -> specify the number  of times for scanning in multicycle scan mode */ /*¶àÖØÑ­»·É¨Ãè´ÎÊý*/
+	ADCE0.SGMCYCR1.UINT32=0x00000003; /* Bits[1,0]=3 -> specify the number  of times for scanning in multicycle scan mode */ /*ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	
 	ADCE0.SGCR1.UINT32=0x00000008;    /* Bit[0]=0 -> SGx_TRG trigger is disabled
 									   * Bits[3,2]=10b -> Channel repeat times is one
@@ -155,11 +155,11 @@ void adce_init(void)
 	
 }
 
-/** @brief   AD_To_Volt  ADC×ª»¯ÎªµçÑ¹Öµ µ¥Î» mV
-  * @param   divider_Res:·ÖÑ¹µç×è µ¥Î» ¦¸/k¦¸ (Ïàµ±ÓÚÉÏÀ­µç×è)
-  * @param   sample_Res: ²ÉÑùµç×è µ¥Î» ¦¸/k¦¸
-  * @param   ad_sample_buf: ²ÉÑùÖµ
-  * @retval  ·µ»ØµçÑ¹Öµµ¥Î»mV;
+/** @brief   AD_To_Volt  ADC×ªï¿½ï¿½Îªï¿½ï¿½Ñ¹Öµ ï¿½ï¿½Î» mV
+  * @param   divider_Res:ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î» ï¿½ï¿½/kï¿½ï¿½ (ï¿½àµ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+  * @param   sample_Res: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î» ï¿½ï¿½/kï¿½ï¿½
+  * @param   ad_sample_buf: ï¿½ï¿½ï¿½ï¿½Öµ
+  * @retval  ï¿½ï¿½ï¿½Øµï¿½Ñ¹Öµï¿½ï¿½Î»mV;
   */
 static uint16_t AD_To_Volt(float divider_Res, float sample_Res, uint32_t ad_sample_buf)
 {
@@ -180,65 +180,65 @@ static uint16_t AD_To_Volt(float divider_Res, float sample_Res, uint32_t ad_samp
 	return (uint16_t)volt;
 	
 }
-/** @brief   AD_To_Res1  ADÖµ×ª»¯Îªµç×èÖµ µ¥Î» ¦¸
-  * @param   Vu:ÉÏÀ­µçÑ¹Öµ µ¥Î» mv
-  * @param   Ru:ÉÏÀ­µç×è×èÖµ µ¥Î» ¦¸
-  * @param   Rd: ²¢Áª·ÖÁ÷µç×è×èÖµ µ¥Î» ¦¸
-  * @param   ad_sample_buf: ²ÉÑùÖµ
-  * @retval  ·µ»Øµç×èÖµ µ¥Î» ¦¸
+/** @brief   AD_To_Res1  ADÖµ×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½Î» ï¿½ï¿½
+  * @param   Vu:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹Öµ ï¿½ï¿½Î» mv
+  * @param   Ru:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½Î» ï¿½ï¿½
+  * @param   Rd: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½Î» ï¿½ï¿½
+  * @param   ad_sample_buf: ï¿½ï¿½ï¿½ï¿½Öµ
+  * @retval  ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Öµ ï¿½ï¿½Î» ï¿½ï¿½
   */
 static uint32_t AD_To_Res(uint32_t Vu, uint32_t Ru, uint32_t Rd, uint32_t ad_sample_buf)
 {
 	/*
-	Vu : ¾­¹ý¶þ¼«¹Ü½µÑ¹ºóµÄÉÏÀ­µçÑ¹
-	Vo  : ²ÉÑùµçÑ¹
-	Ru  : ÉÏÀ­µçÑ¹Öµ
-	Rd  : ÏÂÀ­²¢Áª·ÖÁ÷µç×è×èÖµ
-	Rx  : ÊäÈëµç×è
-	R   : ²ÉÑùµç×è£¨RxÓëRd²¢ÁªÖ®ºóµÄµç×è£©
+	Vu : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹
+	Vo  : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹
+	Ru  : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹Öµ
+	Rd  : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+	Rx  : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	R   : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è£¨Rxï¿½ï¿½Rdï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Äµï¿½ï¿½è£©
 	
 	
-	ÈôSER ½ÓµØ , ¼´ Rx = 0  
+	ï¿½ï¿½SER ï¿½Óµï¿½ , ï¿½ï¿½ Rx = 0  
 		Vo = 0 
 	
-	Èô SER Ðü¿Õ
+	ï¿½ï¿½ SER ï¿½ï¿½ï¿½ï¿½
 			  Vu * Rd      AD_REF_VOL * adc_sample 
-		Vo = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+		Vo = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			 (Ru + Rd)      AD_SAMPLE_MAX_VALUE
 		
 					  Vu * Rd * AD_SAMPLE_MAX_VALUE   
-		adc_sample = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª   //ADC²ÉÑùÖµ
+		adc_sample = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   //ADCï¿½ï¿½ï¿½ï¿½Öµ
 					     (Ru + Rd) * AD_REF_VOL 
 		
 								  Vu * Rd * AD_SAMPLE_MAX_VALUE 
-		¼´£¬Èô²ÉÑùÖµ adc_sample >= ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª Ê±£¬SERÐü¿Õ
+		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ adc_sample >= ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ê±ï¿½ï¿½SERï¿½ï¿½ï¿½ï¿½
 						            Ru + Rd) * AD_REF_VOL 
 	
-	Èô SER ½ÓÈëµç×è Rx
-		ÈôRd = 0Ê±
+	ï¿½ï¿½ SER ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Rx
+		ï¿½ï¿½Rd = 0Ê±
 				R = Rx
 				
 					 Vu * R    Vu * Rx      AD_REF_VOL * adc_sample 
-				Vo = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+				Vo = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					 Ru + R    Ru + Rx      AD_SAMPLE_MAX_VALUE
 				
 				
 						     AD_REF_VOL * adc_sample * Ru
-				Rx = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+				Rx = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					  Vu * AD_SAMPLE_MAX_VALUE - AD_REF_VOL * adc_sample
 		
-		ÈôRd ¡Ù 0Ê±
+		ï¿½ï¿½Rd ï¿½ï¿½ 0Ê±
 					 Rx * Rd 
-				R  = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+				R  = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					 Rx + Rd
 				
 					 Vu * R         Vu * Rx * Rd                   Vu * Rd * Rx            AD_REF_VOL * adc_sample 
-				Vo = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª =  ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+				Vo = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					 Ru + R     Ru * (Rx + Rd) + Rx * Rd      Ru * Rd + (Ru + Rd) * Rx      AD_SAMPLE_MAX_VALUE
 				
 				
 									AD_REF_VOL * adc_sample * Ru * Rd 
-				Rx = ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+				Rx = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					  Vu * AD_SAMPLE_MAX_VALUE * Rd - AD_REF_VOL * adc_sample * (Ru + Rd)
 	*/
 	double temp1;
@@ -261,7 +261,7 @@ static uint32_t AD_To_Res(uint32_t Vu, uint32_t Ru, uint32_t Rd, uint32_t ad_sam
 			}
 			else
 			{
-				Rx = 0xffffffff; //ÎÞÇî´ó 20251031
+				Rx = 0xffffffff; //ï¿½ï¿½ï¿½ï¿½ï¿½ 20251031
 			}
 		}
 		else
@@ -271,7 +271,7 @@ static uint32_t AD_To_Res(uint32_t Vu, uint32_t Ru, uint32_t Rd, uint32_t ad_sam
 			temp2 = (double)AD_SAMPLE_MAX_VALUE *  Vu * Rd - (double)ad_sample_buf * AD_REF_VOL * (Ru + Rd );
 			if(temp2 <= 0)
 			{
-				Rx = Rd; //ÎÞÇî´ó 20251031
+				Rx = Rd; //ï¿½ï¿½ï¿½ï¿½ï¿½ 20251031
 			}
 			else
 			{
@@ -283,26 +283,26 @@ static uint32_t AD_To_Res(uint32_t Vu, uint32_t Ru, uint32_t Rd, uint32_t ad_sam
 }
 
 /*
-P10_0  AD_V_B3      Ç°ÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ  0.3V~5V
-P10_1  AD_R_B4      ³Ë¿Í²àÑ¹Á¦¿ª¹Ø£¬ÊÜµ½Ñ¹Á¦ºó£¬×èÖµ0¦¸~150¦¸
-P10_2  AD_R_B17     Ë®Î»´«¸ÐÆ÷ÐÅºÅ  >140K¦¸±¨¾¯
-P10_3  AD_R_B18     »·¾³ÎÂ¶È´«¸ÐÆ÷ÐÅºÅ  83¦¸~96K¦¸
-P10_4  AD_V_B20     ºóÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ  0.3V~5V
+P10_0  AD_V_B3      Ç°ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  0.3V~5V
+P10_1  AD_R_B4      ï¿½Ë¿Í²ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½Üµï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ0ï¿½ï¿½~150ï¿½ï¿½
+P10_2  AD_R_B17     Ë®Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  >140Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+P10_3  AD_R_B18     ï¿½ï¿½ï¿½ï¿½ï¿½Â¶È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  83ï¿½ï¿½~96Kï¿½ï¿½
+P10_4  AD_V_B20     ï¿½ï¿½ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  0.3V~5V
 
-P10_5  Í¨¹ý 74HC4051D ÇÐ»»ÊäÈë
-AD_S2=0, AD_S1=0, AD_S0=0,  AD_R_B1      Ô¤Áô-Ä£ÄâÐÅºÅ  20¦¸~37k¦¸
-AD_S2=0, AD_S1=0, AD_S0=1,  AD_R_B2      Ô¤Áô-Ä£ÄâÐÅºÅ  0~180¦¸
-AD_S2=0, AD_S1=1, AD_S0=0,  AD_R_B5      Ô¤Áô-Ä£ÄâÐÅºÅ  0~4.6M¦¸
-AD_S2=0, AD_S1=1, AD_S0=1,  AD_R_B6      Ô¤Áô-Ä£ÄâÐÅºÅ  µç×è
-AD_S2=1, AD_S1=0, AD_S0=0,  AD_V_B19     Ô¤Áô-×¤³µ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ  0.3V~5V
-AD_S2=1, AD_S1=0, AD_S0=1,  AD_V_B21     Ô¤Áô-Ä£ÄâÐÅºÅ  µçÑ¹
-AD_S2=1, AD_S1=1, AD_S0=0,  AD_V_B22     Ô¤Áô-Ä£ÄâÐÅºÅ  µçÑ¹
-AD_S2=1, AD_S1=1, AD_S0=1,  B27_12V_DET  ³µËÙ´«¸ÐÆ÷µçÔ´  12V¡À0.3V
+P10_5  Í¨ï¿½ï¿½ 74HC4051D ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
+AD_S2=0, AD_S1=0, AD_S0=0,  AD_R_B1      Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  20ï¿½ï¿½~37kï¿½ï¿½
+AD_S2=0, AD_S1=0, AD_S0=1,  AD_R_B2      Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  0~180ï¿½ï¿½
+AD_S2=0, AD_S1=1, AD_S0=0,  AD_R_B5      Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  0~4.6Mï¿½ï¿½
+AD_S2=0, AD_S1=1, AD_S0=1,  AD_R_B6      Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½ï¿½ï¿½
+AD_S2=1, AD_S1=0, AD_S0=0,  AD_V_B19     Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  0.3V~5V
+AD_S2=1, AD_S1=0, AD_S0=1,  AD_V_B21     Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½Ñ¹
+AD_S2=1, AD_S1=1, AD_S0=0,  AD_V_B22     Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½Ñ¹
+AD_S2=1, AD_S1=1, AD_S0=1,  B27_12V_DET  ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  12Vï¿½ï¿½0.3V
 
-P10_6  BAT_V        Ðîµç³ØµçÑ¹
-P10_7  B24_5V_DET   Ç°ÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷µçÔ´  5V¡À0.1V/8.0mA
-P10_8  B25_5V_DET   Ç°ÇÅÆøÑ¹´«¸ÐÆ÷µçÔ´£¨Ô¤Áô£©  5V¡À0.1V/8.0mA
-P10_9  B26_5V_DET   Ô¤Áô-×¤³µÆøÑ¹´«¸ÐÆ÷µçÔ´  5V¡À0.1V/8.0mA 
+P10_6  BAT_V        ï¿½ï¿½ï¿½Øµï¿½Ñ¹
+P10_7  B24_5V_DET   Ç°ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  5Vï¿½ï¿½0.1V/8.0mA
+P10_8  B25_5V_DET   Ç°ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½  5Vï¿½ï¿½0.1V/8.0mA
+P10_9  B26_5V_DET   Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  5Vï¿½ï¿½0.1V/8.0mA 
 */
 static uint16_t ADC_ReadChannelValue(uint8_t index)	/*ADCE0 Scan group 1 read () */
 {
@@ -352,7 +352,7 @@ static uint16_t ADC_ReadChannelValue(uint8_t index)	/*ADCE0 Scan group 1 read ()
 
 static uint32_t ADC_SampleConversionValue(uint8_t index)	/*ADCE0 Scan group 1 read () */
 {
-	const uint32_t Vin  = 4750;  // 4600 mV  ,¾­¹ý¶þ¼«¹Ü½µÑ¹ºóµÄµçÑ¹
+	const uint32_t Vin  = 4750;  // 4600 mV  ,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½Ñ¹ï¿½ï¿½Äµï¿½Ñ¹
     uint32_t sample_value = 0;
     uint32_t conversion_value = 0;
 	uint64_t temp = 0;
@@ -360,28 +360,28 @@ static uint32_t ADC_SampleConversionValue(uint8_t index)	/*ADCE0 Scan group 1 re
 	
 	switch(index)
     {
-		case AD_V_B3:  /* Ç°ÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ 0.3V~5V */
+		case AD_V_B3:  /* Ç°ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ 0.3V~5V */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_0);
-			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case AD_R_B4:  /* ³Ë¿Í²àÑ¹Á¦¿ª¹Ø£¬ÊÜµ½Ñ¹Á¦ºó£¬×èÖµ0¦¸~150¦¸ */
+		case AD_R_B4:  /* ï¿½Ë¿Í²ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½Üµï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ0ï¿½ï¿½~150ï¿½ï¿½ */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_1);
-			// if(sample_value >= 3920) //Ðü¿ÕÖµ  Õë¶ÔC7Ò»ÏÂ°å×ÓÕâ¸öÖµÊÇ3768£¬C7ÒÔÉÏµÄÊÇ3915
+			// if(sample_value >= 3920) //ï¿½ï¿½ï¿½ï¿½Öµ  ï¿½ï¿½ï¿½C7Ò»ï¿½Â°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½3768ï¿½ï¿½C7ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½3915
 			// {
 				// sample_value = 0;
 			// }
-			conversion_value = AD_To_Res(Vin, 100, 0, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 100, 0, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 		    break;
-		case AD_R_B17:  /* Ë®Î»´«¸ÐÆ÷ÐÅºÅ  >140K¦¸±¨¾¯ */
+		case AD_R_B17:  /* Ë®Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  >140Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_2);
-			if(sample_value >= 3892) //Ðü¿ÕÖµ = Vin * AD_SAMPLE_MAX_VALUE / AD_REF_VOL
+			if(sample_value >= 3892) //ï¿½ï¿½ï¿½ï¿½Öµ = Vin * AD_SAMPLE_MAX_VALUE / AD_REF_VOL
 				sample_value = 0;
-			conversion_value = AD_To_Res(Vin, 82000, 0, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 82000, 0, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 		    break;
-		case AD_R_B18:  /* »·¾³ÎÂ¶È´«¸ÐÆ÷ÐÅºÅ  83¦¸~96K¦¸ */
+		case AD_R_B18:  /* ï¿½ï¿½ï¿½ï¿½ï¿½Â¶È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  83ï¿½ï¿½~96Kï¿½ï¿½ */
 			#if 1
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_3);
-			if(sample_value < 3690) //MCUÒý½Å×è¿¹ÉèÖÃÎª220k/1200k
+			if(sample_value < 3690) //MCUï¿½ï¿½ï¿½ï¿½ï¿½è¿¹ï¿½ï¿½ï¿½ï¿½Îª220k/1200k
 				temp = (uint64_t) (12000000.0 * sample_value/ (1200 * AD_SAMPLE_MAX_VALUE - 1210 * sample_value));
 			else
 				temp = 0;
@@ -399,31 +399,31 @@ static uint32_t ADC_SampleConversionValue(uint8_t index)	/*ADCE0 Scan group 1 re
 			else
 				conversion_value = (uint32_t)(tmptdata * 1.03);
 			#else
-			AD_R_B18_CTRL = 0;  //AD_R_B18 ½ÓÈë10KÉÏÀ­µç×è
+			AD_R_B18_CTRL = 0;  //AD_R_B18 ï¿½ï¿½ï¿½ï¿½10Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			system_wait_us(WAIT_TIME);
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_3);
 			if(sample_value >= 3690)
 				sample_value = 0;
-			conversion_value = AD_To_Res(Vin, 10000, 470000, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 10000, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 			if(conversion_value < 2500)
 			{
-				AD_R_B18_CTRL = 1;  //AD_R_B18 ½ÓÈë1KÉÏÀ­µç×è
+				AD_R_B18_CTRL = 1;  //AD_R_B18 ï¿½ï¿½ï¿½ï¿½1Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				system_wait_us(WAIT_TIME);
 				sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_3);
-				if(sample_value >= 3760) //Ðü¿ÕÖµ
+				if(sample_value >= 3760) //ï¿½ï¿½ï¿½ï¿½Öµ
 					sample_value = 0;
-				conversion_value = AD_To_Res(Vin, 1000, 470000, sample_value); //µ¥Î» ¦¸
+				conversion_value = AD_To_Res(Vin, 1000, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 			}
 			#endif
 		    break;
-		case AD_V_B20:  /* ºóÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ 0.3V~5V */
+		case AD_V_B20:  /* ï¿½ï¿½ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ 0.3V~5V */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_4);
-			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
 		
 		
-		case AD_R_B1:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  20¦¸~37k¦¸ */
-			// AD_R_B1_CTRL  = 0;  //AD_R_B1  ½ÓÈë10KÉÏÀ­µç×è
+		case AD_R_B1:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  20ï¿½ï¿½~37kï¿½ï¿½ */
+			// AD_R_B1_CTRL  = 0;  //AD_R_B1  ï¿½ï¿½ï¿½ï¿½10Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			AD_S0 = 0;
 			AD_S1 = 0;
 			AD_S2 = 0;
@@ -431,29 +431,29 @@ static uint32_t ADC_SampleConversionValue(uint8_t index)	/*ADCE0 Scan group 1 re
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
 			if(sample_value >= 3690)
 				sample_value = 0;
-			conversion_value = AD_To_Res(Vin, 10000, 470000, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 10000, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 			/* if(conversion_value < 2500)
 			{
-				AD_R_B1_CTRL = 1;  //AD_R_B1 ½ÓÈë1KÉÏÀ­µç×è
+				AD_R_B1_CTRL = 1;  //AD_R_B1 ï¿½ï¿½ï¿½ï¿½1Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				system_wait_us(WAIT_TIME);
 				sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_3);
-				if(sample_value >= 3760) //Ðü¿ÕÖµ
+				if(sample_value >= 3760) //ï¿½ï¿½ï¿½ï¿½Öµ
 					sample_value = 0;
-				conversion_value = AD_To_Res(Vin, 1000, 470000, sample_value); //µ¥Î» ¦¸
+				conversion_value = AD_To_Res(Vin, 1000, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 			} */
 		    break;
-		case AD_R_B2:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  0~180¦¸ */
+		case AD_R_B2:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  0~180ï¿½ï¿½ */
 			AD_S0 = 1;
 			AD_S1 = 0;
 			AD_S2 = 0;
 			system_wait_us(WAIT_TIME);
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
-			if(sample_value >= 3768) //Ðü¿ÕÖµ
+			if(sample_value >= 3768) //ï¿½ï¿½ï¿½ï¿½Öµ
 				sample_value = 0;
-			conversion_value = AD_To_Res(Vin, 100, 470000, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 100, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 		    break;
-		case AD_R_B5:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  0~4.6M¦¸ */
-			// AD_R_B5_CTRL  = 0;  //AD_R_B5  ½ÓÈë10KÉÏÀ­µç×è
+		case AD_R_B5:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  0~4.6Mï¿½ï¿½ */
+			// AD_R_B5_CTRL  = 0;  //AD_R_B5  ï¿½ï¿½ï¿½ï¿½10Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			AD_S0 = 0;
 			AD_S1 = 1;
 			AD_S2 = 0;
@@ -461,76 +461,76 @@ static uint32_t ADC_SampleConversionValue(uint8_t index)	/*ADCE0 Scan group 1 re
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
 			if(sample_value >= 3690)
 				sample_value = 0;
-			conversion_value = AD_To_Res(Vin, 10000, 470000, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 10000, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 			/* if(conversion_value < 2500)
 			{
-				AD_R_B5_CTRL = 1;  //AD_R_B5 ½ÓÈë1KÉÏÀ­µç×è
+				AD_R_B5_CTRL = 1;  //AD_R_B5 ï¿½ï¿½ï¿½ï¿½1Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				system_wait_us(WAIT_TIME);
 				sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_3);
-				if(sample_value >= 3760) //Ðü¿ÕÖµ
+				if(sample_value >= 3760) //ï¿½ï¿½ï¿½ï¿½Öµ
 					sample_value = 0;
-				conversion_value = AD_To_Res(Vin, 1000, 470000, sample_value); //µ¥Î» ¦¸
+				conversion_value = AD_To_Res(Vin, 1000, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 			} */
 		    break;
-		case AD_R_B6:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  µç×è */
+		case AD_R_B6:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½ï¿½ï¿½ */
 			AD_S0 = 1;
 			AD_S1 = 1;
 			AD_S2 = 0;
 			system_wait_us(WAIT_TIME);
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
-			if(sample_value >= 3768) //Ðü¿ÕÖµ
+			if(sample_value >= 3768) //ï¿½ï¿½ï¿½ï¿½Öµ
 				sample_value = 0;
-			conversion_value = AD_To_Res(Vin, 100, 470000, sample_value); //µ¥Î» ¦¸
+			conversion_value = AD_To_Res(Vin, 100, 470000, sample_value); //ï¿½ï¿½Î» ï¿½ï¿½
 		    break;
-		case AD_V_B19:  /* Ô¤Áô-×¤³µ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ 0.3V~5V */
+		case AD_V_B19:  /* Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ 0.3V~5V */
 			AD_S0 = 0;
 			AD_S1 = 0;
 			AD_S2 = 1;
 			system_wait_us(WAIT_TIME);
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
-			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case AD_V_B21:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  µçÑ¹ */
+		case AD_V_B21:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½Ñ¹ */
 			AD_S0 = 1;
 			AD_S1 = 0;
 			AD_S2 = 1;
 			system_wait_us(WAIT_TIME);
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
-			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case AD_V_B22:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  µçÑ¹  */
+		case AD_V_B22:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½Ñ¹  */
 			AD_S0 = 0;
 			AD_S1 = 1;
 			AD_S2 = 1;
 			system_wait_us(WAIT_TIME);
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
-			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(0, 0, sample_value) + 0; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case B27_12V_DET:  /* ³µËÙ´«¸ÐÆ÷µçÔ´  12V¡À0.3V */
+		case B27_12V_DET:  /* ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  12Vï¿½ï¿½0.3V */
 			AD_S0 = 1;
 			AD_S1 = 1;
 			AD_S2 = 1;
 			system_wait_us(WAIT_TIME);
 			sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_5);
-			conversion_value = AD_To_Volt(56, 10, sample_value) + 0; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(56, 10, sample_value) + 0; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
 		
 		
-		case BAT_V:  /* Ðîµç³ØµçÑ¹ */
+		case BAT_V:  /* ï¿½ï¿½ï¿½Øµï¿½Ñ¹ */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_6);
-			conversion_value = AD_To_Volt(51, 5.1, sample_value) + 150; //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(51, 5.1, sample_value) + 150; //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case B24_5V_DET:  /* Ç°ÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷µçÔ´  5V¡À0.1V/8.0mA */
+		case B24_5V_DET:  /* Ç°ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  5Vï¿½ï¿½0.1V/8.0mA */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_7);
-			conversion_value = AD_To_Volt(56, 0, sample_value); //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(56, 0, sample_value); //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case B25_5V_DET:  /* Ç°ÇÅÆøÑ¹´«¸ÐÆ÷µçÔ´£¨Ô¤Áô£©  5V¡À0.1V/8.0mA */
+		case B25_5V_DET:  /* Ç°ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½  5Vï¿½ï¿½0.1V/8.0mA */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_8);
-			conversion_value = AD_To_Volt(56, 0, sample_value); //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(56, 0, sample_value); //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 		    break;
-		case B26_5V_DET:  /* Ô¤Áô-×¤³µÆøÑ¹´«¸ÐÆ÷µçÔ´  5V¡À0.1V/8.0mA  */
+		case B26_5V_DET:  /* Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  5Vï¿½ï¿½0.1V/8.0mA  */
 		    sample_value = (uint32_t)ADC_ReadChannelValue(AD_SAMPLE_CH_9);
-			conversion_value = AD_To_Volt(56, 0, sample_value); //µ¥Î» mv  ²¹³¥ 0 mv
+			conversion_value = AD_To_Volt(56, 0, sample_value); //ï¿½ï¿½Î» mv  ï¿½ï¿½ï¿½ï¿½ 0 mv
 			break;
 		default:
 			sample_value = 0;
@@ -550,7 +550,7 @@ void ADC_Filter(void)
 	{
 		switch(index)
 		{
-			case AD_V_B3:  /* Ç°ÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ 0.3V~5V */
+			case AD_V_B3:  /* Ç°ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ 0.3V~5V */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -559,7 +559,7 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case AD_R_B4:  /* ³Ë¿Í²àÑ¹Á¦¿ª¹Ø£¬ÊÜµ½Ñ¹Á¦ºó£¬×èÖµ0¦¸~150¦¸ */
+			case AD_R_B4:  /* ï¿½Ë¿Í²ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½Üµï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ0ï¿½ï¿½~150ï¿½ï¿½ */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -568,7 +568,7 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case AD_R_B17:  /* Ë®Î»´«¸ÐÆ÷ÐÅºÅ  >140K¦¸±¨¾¯ */
+			case AD_R_B17:  /* Ë®Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  >140Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -577,7 +577,7 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case AD_R_B18:  /* »·¾³ÎÂ¶È´«¸ÐÆ÷ÐÅºÅ  83¦¸~96K¦¸ */
+			case AD_R_B18:  /* ï¿½ï¿½ï¿½ï¿½ï¿½Â¶È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½  83ï¿½ï¿½~96Kï¿½ï¿½ */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -586,80 +586,7 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case AD_V_B20:  /* ºóÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ 0.3V~5V */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			
-			case AD_R_B1:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  20¦¸~37k¦¸ */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case AD_R_B2:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  0~180¦¸ */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case AD_R_B5:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  0~4.6M¦¸ */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case AD_R_B6:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  µç×è */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case AD_V_B19:  /* Ô¤Áô-×¤³µ»ØÂ·ÆøÑ¹´«¸ÐÆ÷ÐÅºÅ 0.3V~5V */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case AD_V_B21:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  µçÑ¹ */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case AD_V_B22:  /* Ô¤Áô-Ä£ÄâÐÅºÅ  µçÑ¹  */
-				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
-					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
-				else
-					ADFiller[index].TotalValue = 0;
-				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
-				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
-				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
-				break;
-			case B27_12V_DET:  /* ³µËÙ´«¸ÐÆ÷µçÔ´  12V¡À0.3V */
+			case AD_V_B20:  /* ï¿½ï¿½ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ 0.3V~5V */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -669,7 +596,43 @@ void ADC_Filter(void)
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
 			
-			case BAT_V:  /* Ðîµç³ØµçÑ¹ */
+			case AD_R_B1:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  20ï¿½ï¿½~37kï¿½ï¿½ */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case AD_R_B2:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  0~180ï¿½ï¿½ */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case AD_R_B5:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  0~4.6Mï¿½ï¿½ */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case AD_R_B6:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½ï¿½ï¿½ */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case AD_V_B19:  /* Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ 0.3V~5V */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -678,7 +641,25 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case B24_5V_DET:  /* Ç°ÇÅ»ØÂ·ÆøÑ¹´«¸ÐÆ÷µçÔ´  5V¡À0.1V/8.0mA */
+			case AD_V_B21:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½Ñ¹ */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case AD_V_B22:  /* Ô¤ï¿½ï¿½-Ä£ï¿½ï¿½ï¿½Åºï¿½  ï¿½ï¿½Ñ¹  */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = (0); //ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case B27_12V_DET:  /* ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  12Vï¿½ï¿½0.3V */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -687,7 +668,8 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case B25_5V_DET:  /* Ç°ÇÅÆøÑ¹´«¸ÐÆ÷µçÔ´£¨Ô¤Áô£©  5V¡À0.1V/8.0mA */
+			
+			case BAT_V:  /* ï¿½ï¿½ï¿½Øµï¿½Ñ¹ */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else
@@ -696,7 +678,25 @@ void ADC_Filter(void)
 				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
 				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
 				break;
-			case B26_5V_DET:  /* Ô¤Áô-×¤³µÆøÑ¹´«¸ÐÆ÷µçÔ´  5V¡À0.1V/8.0mA  */
+			case B24_5V_DET:  /* Ç°ï¿½Å»ï¿½Â·ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  5Vï¿½ï¿½0.1V/8.0mA */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case B25_5V_DET:  /* Ç°ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½  5Vï¿½ï¿½0.1V/8.0mA */
+				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
+					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
+				else
+					ADFiller[index].TotalValue = 0;
+				ADFiller[index].Container[ADC_Counter] = ADC_SampleConversionValue(index);
+				ADFiller[index].TotalValue += ADFiller[index].Container[ADC_Counter];
+				ADFiller[index].ResultBuf   = ADFiller[index].TotalValue / AD_FIFO_SIZE;
+				break;
+			case B26_5V_DET:  /* Ô¤ï¿½ï¿½-×¤ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´  5Vï¿½ï¿½0.1V/8.0mA  */
 				if(ADFiller[index].TotalValue > ADFiller[index].Container[ADC_Counter])
 					ADFiller[index].TotalValue -= ADFiller[index].Container[ADC_Counter];
 				else

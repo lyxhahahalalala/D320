@@ -71,7 +71,7 @@ extern DATA_BIT Gennal_Use[12];
 #define from_charge_to_ign  Gennal_Use[0].bit4
 #define charge_submenu      Gennal_Use[0].bit5
 #define dm1_show_flg        Gennal_Use[0].bit6
-#define PAGE                Gennal_Use[0].bit7
+//#define PAGE                Gennal_Use[0].bit7
 
 #define M_ON                Gennal_Use[1].bit0
 #define ignoffon            Gennal_Use[1].bit1

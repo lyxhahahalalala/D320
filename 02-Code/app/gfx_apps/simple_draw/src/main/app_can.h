@@ -403,6 +403,88 @@ typedef union {
 }VCU_04F02470_t;
 #pragma pack()
 
+#pragma pack(1)//lyx
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t vcu_sys_fault_code;
+        uint8_t bms_sys_fault_code;
+        uint16_t dcdc_sys_fault_code;
+        uint16_t pdu_sys_fault_code;
+        uint8_t power_unit_mcu_sys_fault_code;
+        uint8_t sprinkle_tape_mcu_sys_fault_code;
+    };
+}VCU_04F02570_t;
+#pragma pack()
+
+#pragma pack(1)//lyx
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t vcu_sys_fault_level:2,
+                drive_mcu_sys_fault_level:2,
+                eps_sys_fault_level:2,
+                acm_sys_fault_level:2;
+
+        uint8_t dcdc_sys_fault_level:2,
+                bms_sys_fault_level:2,
+                stir_mcu_sys_fault_level:2,
+                suction_head_mcu_sys_fault_level:2;
+
+        uint8_t front_conveyor_mcu_sys_fault_level:2,
+                pdu_sys_fault_level:2,
+                power_unit_mcu_sys_fault_level:2,
+                sprinkle_tape_mcu_sys_fault_level:2;
+
+        uint8_t res[5];
+    };
+}VCU_04F02670_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t drive_mcu_temperature;
+        uint8_t drive_mot_temperature;
+        uint8_t eps_dcac_temperature;
+        uint8_t eps_mot_temperature;
+        uint8_t acm_dcac_temperature;
+        uint8_t acm_mot_temperature;
+        uint8_t eps_dcdc_temperature;
+        uint8_t res;
+    };
+}VCU_04F02770_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t stir_mcu_temperature;
+        uint8_t stir_mot_temperature;
+        uint8_t suction_head_mcu_temperature;
+        uint8_t suction_head_mot_temperature;
+        uint8_t front_conveyor_mcu_temperature;
+        uint8_t front_conveyor_mot_temperature;
+        uint8_t res[2];
+    };
+}VCU_04F02870_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t power_unit_mcu_temperature;
+        uint8_t power_unit_mot_temperature;
+        uint8_t sprinkle_tape_mcu_temperature;
+        uint8_t sprinkle_tape_mot_temperature;
+        uint8_t res[4];
+    };
+}VCU_04F02970_t;
+#pragma pack()
+
 #pragma pack(1)
 typedef union {
     uint8_t bData[8];
