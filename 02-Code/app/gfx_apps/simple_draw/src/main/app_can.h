@@ -489,6 +489,125 @@ typedef union {
 typedef union {
     uint8_t bData[8];
     struct {
+        uint16_t drive_mot_speed;
+        uint16_t eps_mot_speed;
+        uint16_t acm_mot_speed;
+        uint8_t brk_air_pressure1;
+        uint8_t res;
+    };
+}VCU_04F02A70_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint16_t stir_mot_speed;
+        uint16_t suction_head_mot_speed;
+        uint16_t front_conveyor_mot_speed;
+        uint8_t brk_air_pressure2;
+        uint8_t res;
+    };
+}VCU_04F02B70_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint16_t power_unit_mot_speed;
+        uint16_t sprinkle_tape_mot_speed;
+        uint8_t res[4];
+    };
+}VCU_04F02C70_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t k1_relay_state:2,
+                k2_relay_state:2,
+                k3_relay_state:2,
+                k4_relay_state:2;
+
+        uint8_t k5_relay_state:2,
+                k6_relay_state:2,
+                k7_relay_state:2,
+                k8_relay_state:2;
+
+        uint8_t k9_relay_state:2,
+                k10_relay_state:2,
+                k11_relay_state:2,
+                k12_relay_state:2;
+
+        uint8_t k13_relay_state:2,
+                k14_relay_state:2,
+                k15_relay_state:2,
+                k16_relay_state:2;
+
+        uint8_t res[4];
+    };
+}VCU_04F02D70_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint16_t positive_insulation;
+        uint16_t negative_insulation;
+        uint16_t system_insulation;
+        uint8_t res[2];
+    };
+}BMS_1885EFF3_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t max_temperature;
+        uint8_t min_temperature;
+        uint8_t avg_temperature;
+        uint8_t max_temp_csc_no;
+        uint8_t max_temp_position;
+        uint8_t min_temp_csc_no;
+        uint8_t min_temp_position;
+        uint8_t res;
+    };
+}BMS_1886EFF3_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint16_t max_ucell;
+        uint16_t min_ucell;
+        uint16_t avg_ucell;
+        uint8_t res[2];
+    };
+}BMS_1887EFF3_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
+        uint8_t max_ucell_csc_no;
+        uint16_t max_ucell_position;
+        uint8_t min_ucell_csc_no;
+        uint16_t min_ucell_position;
+        uint8_t res[2];
+    };
+}BMS_1888EFF3_t;
+#pragma pack()
+
+#pragma pack(1)
+typedef union {
+    uint8_t bData[8];
+    struct {
 	uint8_t  wheelID;
 	uint8_t  temperature;
 	unsigned pressure:10;
@@ -572,6 +691,8 @@ void BCAN_Send_TPMSLearningEnd(void);
 extern void PCAN_Send_AUXIO1(void);
 extern void CAN_Send_TCO1(void);
 
+void CAN_Send_MotSpeedObj1(void);
+void CAN_Send_MotSpeedObj2(void);
 /**
  * end of group CAN
  * @}

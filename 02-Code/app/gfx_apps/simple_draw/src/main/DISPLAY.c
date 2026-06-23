@@ -75,6 +75,8 @@ enum menu{
 /*32*/HMSMaxPress,
 /*33*/ControllerFault,//lyx
 /*34*/StirTempMonitor,//lyx
+/*35*/RelayState,//lyx
+/*36*/BatteryManageInfo,//lyx
 }frame_ID;
 
 /*******************************************************************************
@@ -479,6 +481,16 @@ void mainFrame(void)
                    zk_oem2uniStr((uint8_t *)"驱动电机温度"));
         zk_printZH(224, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"℃"));
+
+        zk_printZH(520, 142,
+                   zk_oem2uniStr((uint8_t *)"动力单元转速"));
+        zk_printZH(750, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"料带电机转速"));
+        zk_printZH(750, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
     }
     else
     {
@@ -494,6 +506,122 @@ void mainFrame(void)
                    zk_oem2uniStr((uint8_t *)"Drive MOT Temp."));
         zk_printZH(224, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"C"));
+
+        zk_printZH(520, 142,
+                   zk_oem2uniStr((uint8_t *)"Power MOT Speed"));
+        zk_printZH(750, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"Tape MOT Speed"));
+        zk_printZH(750, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+    }
+}
+else if(PAGE == 3)
+{
+    if(eol_language == 0)
+    {
+        zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
+                VM_COLOR_GRAY, 0);
+
+        zk_printZH(14, 142,
+                   zk_oem2uniStr((uint8_t *)"驱动电机转速"));
+        zk_printZH(224, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(14, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"转向电机转速"));
+        zk_printZH(224, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142,
+                   zk_oem2uniStr((uint8_t *)"制动电机转速"));
+        zk_printZH(750, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"制动气压1"));
+        zk_printZH(750, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"MPa"));
+    }
+    else
+    {
+        zk_init(loc_Drw2dDev, &GUI_Fontwryh24,
+                VM_COLOR_GRAY, 0);
+
+        zk_printZH(14, 142,
+                   zk_oem2uniStr((uint8_t *)"Drive MOT Speed"));
+        zk_printZH(224, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(14, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"EPS MOT Speed"));
+        zk_printZH(224, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142,
+                   zk_oem2uniStr((uint8_t *)"ACM MOT Speed"));
+        zk_printZH(750, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"Brake Pressure1"));
+        zk_printZH(750, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"MPa"));
+    }
+}
+else if(PAGE == 4)
+{
+    if(eol_language == 0)
+    {
+        zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
+                VM_COLOR_GRAY, 0);
+
+        zk_printZH(14, 142,
+                   zk_oem2uniStr((uint8_t *)"混料电机转速"));
+        zk_printZH(224, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(14, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"吸料头电机转速"));
+        zk_printZH(224, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142,
+                   zk_oem2uniStr((uint8_t *)"前输送带转速"));
+        zk_printZH(750, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"制动气压2"));
+        zk_printZH(750, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"MPa"));
+    }
+    else
+    {
+        zk_init(loc_Drw2dDev, &GUI_Fontwryh24,
+                VM_COLOR_GRAY, 0);
+
+        zk_printZH(14, 142,
+                   zk_oem2uniStr((uint8_t *)"Mixer MOT Speed"));
+        zk_printZH(224, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(14, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"Suction MOT Speed"));
+        zk_printZH(224, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142,
+                   zk_oem2uniStr((uint8_t *)"Conveyor MOT Speed"));
+        zk_printZH(750, 142,
+                   zk_oem2uniStr((uint8_t *)"rpm"));
+
+        zk_printZH(520, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"Brake Pressure2"));
+        zk_printZH(750, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"MPa"));
     }
 }
 	if(0U == e_uint)
@@ -1143,6 +1271,240 @@ void Update_DriveTemperature(void)
         drive_mcu_temp_old = drive_mcu_temp;
         drive_mot_temp_old = drive_mot_temp;
         state_old = state;
+    }
+}
+void Update_MotorSpeedInfo(void)
+{
+    VCU_04F02A70_t *pVCU_04F02A70 = NULL;
+    VCU_04F02B70_t *pVCU_04F02B70 = NULL;
+    VCU_04F02C70_t *pVCU_04F02C70 = NULL;
+
+    static int32_t value_old[4] =
+    {
+        0x7fffffff, 0x7fffffff,
+        0x7fffffff, 0x7fffffff
+    };
+    static uint8_t state_old = 0xff;
+    static uint8_t page_old = 0xff;
+
+    int32_t value[4] = {0};
+    uint16_t value_x[4] = {0};
+    uint16_t value_y[4] = {0};
+    uint8_t dot_pos[4] = {0};
+    uint8_t state;
+    uint8_t item_num;
+    uint8_t update = 0;
+
+    if(PAGE == 2)
+    {
+        pVCU_04F02C70 =
+            (VCU_04F02C70_t *)can_getPCanBuffer(0x04F02C70);
+
+        state = can_getPCanRxState(0x04F02C70);
+        item_num = 2;
+
+        value[0] =
+            (int32_t)pVCU_04F02C70->power_unit_mot_speed - 15000;
+
+        value[1] =
+            (int32_t)pVCU_04F02C70->sprinkle_tape_mot_speed - 15000;
+
+        value_x[0] = 736;
+        value_y[0] = 142;
+
+        value_x[1] = 736;
+        value_y[1] = 142 + 30;
+    }
+    else if(PAGE == 3)
+    {
+        pVCU_04F02A70 =
+            (VCU_04F02A70_t *)can_getPCanBuffer(0x04F02A70);
+
+        state = can_getPCanRxState(0x04F02A70);
+        item_num = 4;
+
+        value[0] =
+            (int32_t)pVCU_04F02A70->drive_mot_speed - 15000;
+
+        value[1] =
+            (int32_t)pVCU_04F02A70->eps_mot_speed - 15000;
+
+        value[2] =
+            (int32_t)pVCU_04F02A70->acm_mot_speed - 15000;
+
+        value[3] = pVCU_04F02A70->brk_air_pressure1;
+
+        value_x[0] = 220;
+        value_y[0] = 142;
+
+        value_x[1] = 220;
+        value_y[1] = 142 + 30;
+
+        value_x[2] = 736;
+        value_y[2] = 142;
+
+        value_x[3] = 736;
+        value_y[3] = 142 + 30;
+        dot_pos[3] = 2;
+    }
+    else if(PAGE == 4)
+    {
+        pVCU_04F02B70 =
+            (VCU_04F02B70_t *)can_getPCanBuffer(0x04F02B70);
+
+        state = can_getPCanRxState(0x04F02B70);
+        item_num = 4;
+
+        value[0] =
+            (int32_t)pVCU_04F02B70->stir_mot_speed - 15000;
+
+        value[1] =
+            (int32_t)pVCU_04F02B70->suction_head_mot_speed - 15000;
+
+        value[2] =
+            (int32_t)pVCU_04F02B70->front_conveyor_mot_speed - 15000;
+
+        value[3] = pVCU_04F02B70->brk_air_pressure2;
+
+        value_x[0] = 220;
+        value_y[0] = 142;
+
+        value_x[1] = 220;
+        value_y[1] = 142 + 30;
+
+        value_x[2] = 736;
+        value_y[2] = 142;
+
+        value_x[3] = 736;
+        value_y[3] = 142 + 30;
+        dot_pos[3] = 2;
+    }
+    else
+    {
+        return;
+    }
+
+    if(mainview_update
+    || state_old != state
+    || page_old != PAGE)
+    {
+        update = 1;
+    }
+    else
+    {
+        for(uint8_t i = 0; i < item_num; i++)
+        {
+            if(value_old[i] != value[i])
+            {
+                update = 1;
+                break;
+            }
+        }
+    }
+
+    if(update)
+    {
+        start_draw();
+
+        for(uint8_t i = 0; i < item_num; i++)
+        {
+            if(value_x[i] == 220)
+{
+    loc_ClearRect(14, value_y[i], 206, 32);
+}
+else
+{
+    loc_ClearRect(520, value_y[i], 216, 32);
+}
+
+zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
+        VM_COLOR_GRAY, 0);
+
+if(PAGE == 2)
+{
+    if(i == 0)
+    {
+        zk_printZH(520, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"动力单元转速"));
+    }
+    else
+    {
+        zk_printZH(520, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"料带电机转速"));
+    }
+}
+else if(PAGE == 3)
+{
+    if(i == 0)
+    {
+        zk_printZH(14, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"驱动电机转速"));
+    }
+    else if(i == 1)
+    {
+        zk_printZH(14, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"转向电机转速"));
+    }
+    else if(i == 2)
+    {
+        zk_printZH(520, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"制动电机转速"));
+    }
+    else
+    {
+        zk_printZH(520, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"制动气压1"));
+    }
+}
+else
+{
+    if(i == 0)
+    {
+        zk_printZH(14, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"混料电机转速"));
+    }
+    else if(i == 1)
+    {
+        zk_printZH(14, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"吸料头电机转速"));
+    }
+    else if(i == 2)
+    {
+        zk_printZH(520, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"前输送带转速"));
+    }
+    else
+    {
+        zk_printZH(520, value_y[i],
+                   zk_oem2uniStr((uint8_t *)"制动气压2"));
+    }
+}
+
+            zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
+                    VM_COLOR_WHITE, 0);
+
+            if(state == CAN_FRAME_ST_RECVED)
+            {
+                zk_printNum(value_x[i],
+                            value_y[i],
+                            value[i],
+                            dot_pos[i],
+                            ZK_ALIGN_RIGHT);
+            }
+            else
+            {
+                zk_printZH(value_x[i] - 22,
+                           value_y[i],
+                           zk_oem2uniStr((uint8_t *)"--"));
+            }
+
+            value_old[i] = value[i];
+        }
+
+        state_old = state;
+        page_old = PAGE;
+
+        end_draw();
     }
 }
 void Update_Soc(void)
@@ -1871,6 +2233,7 @@ void frmMain(void)
         f_index = 6;
 		Update_power_vol_current();
 		Update_DriveTemperature();//lyx
+		Update_MotorSpeedInfo();//lyx
     }
 	else if (f_index == 6)
 	{
@@ -1930,7 +2293,7 @@ if(key_clear)
     key_clear = 0;
 
     PAGE++;
-    if(PAGE > 2)
+    if(PAGE > 4)
     {
         PAGE = 0;
     }
@@ -2035,11 +2398,13 @@ void UndefinedFrameUpdate(unsigned char index)
     }
 }
 
-
+static uint8_t VehicleInfoMenuPage = 1;//lyx
+static uint8_t VehicleInfoChoose = 0;//lyx	
 /******************************************************/
 /** 车辆信息菜单 **/
 void MenuVehcleInfoFrame(void)
 {
+	
     uint8_t uniStr[64];
     uint16_t width;
 	
@@ -2077,45 +2442,137 @@ void MenuVehcleInfoFrame(void)
     {12, {(uint8_t *)"查看控制器故障", (uint8_t *)"Controller faults"    }, 550, 130 + 40 * 5, NULL},
     {13, {(uint8_t *)"混料模块温度监测",(uint8_t *)"Mixer temperature"   }, 550, 130 + 40 * 6, NULL},
 };
-	
+	TEXT_LIST_t VehInfoMenuPage2[] =
+{
+    {0, {(uint8_t *)"继电器状态",
+         (uint8_t *)"Relay State"},
+         295, 130, NULL},
+
+    {1, {(uint8_t *)"电池管理信息",
+         (uint8_t *)"Battery Management"},
+         295, 130 + 45 * 1, NULL},
+};
 	
     start_draw();
-    if(!Menu_VehicleInfo_f)
-	{
-		LCD_Clear();
-		
-		for(uint8_t i = 0; i < MAJ_MENU_ITEM_SUM; i++)
-		{
-			zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh38bold, VM_COLOR_WHITE, 0);
-			zk_oem2uni(MajMenu[i].Text[eol_language], uniStr, sizeof(uniStr));
-			width = zk_getTextWidth(MajMenu[i].Text[eol_language]);
-			zk_printZH(MajMenu[i].Pos_X - width / 2,  MajMenu[i].Pos_Y, uniStr);
-		}
-		
-		if(eol_fadongjiorkaji==0x2d)
-		{
-			for(uint8_t i = 0; i < 14; i++)
-			{
-				zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31, VM_COLOR_WHITE, 0);
-				zk_oem2uni(VehInfoMenu2[i].Text[eol_language], uniStr, sizeof(uniStr));
-				zk_printZH(VehInfoMenu2[i].Pos_X,  VehInfoMenu2[i].Pos_Y, uniStr);
-			}
-		}
-		else
-		{
-			for(uint8_t i = 0; i < 12; i++)
-			{
-				zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31, VM_COLOR_WHITE, 0);
-				zk_oem2uni(VehInfoMenu[i].Text[eol_language], uniStr, sizeof(uniStr));
-				zk_printZH(VehInfoMenu[i].Pos_X,  VehInfoMenu[i].Pos_Y, uniStr);
-			}
-		}
-		
-		
-		
+    LCD_Clear();
+
+for(uint8_t i = 0; i < MAJ_MENU_ITEM_SUM; i++)
+{
+    zk_init(loc_Drw2dDev,
+            (GUI_FONT *)&GUI_Fontwryh38bold,
+            VM_COLOR_WHITE, 0);
+
+    zk_oem2uni(MajMenu[i].Text[eol_language],
+               uniStr, sizeof(uniStr));
+
+    width = zk_getTextWidth(MajMenu[i].Text[eol_language]);
+
+    zk_printZH(MajMenu[i].Pos_X - width / 2,
+               MajMenu[i].Pos_Y,
+               uniStr);
+}
+
+if(VehicleInfoMenuPage == 1)
+{
+    if(eol_fadongjiorkaji == 0x2d)
+    {
+        for(uint8_t i = 0; i < 14; i++)
+        {
+            zk_init(loc_Drw2dDev,
+                    (GUI_FONT *)&GUI_Fontwryh31,
+                    VM_COLOR_WHITE, 0);
+
+            zk_oem2uni(VehInfoMenu2[i].Text[eol_language],
+                       uniStr, sizeof(uniStr));
+
+            zk_printZH(VehInfoMenu2[i].Pos_X,
+                       VehInfoMenu2[i].Pos_Y,
+                       uniStr);
+        }
     }
-    update_box_location(22,124);
+    else
+    {
+        for(uint8_t i = 0; i < 12; i++)
+        {
+            zk_init(loc_Drw2dDev,
+                    (GUI_FONT *)&GUI_Fontwryh31,
+                    VM_COLOR_WHITE, 0);
+
+            zk_oem2uni(VehInfoMenu[i].Text[eol_language],
+                       uniStr, sizeof(uniStr));
+
+            zk_printZH(VehInfoMenu[i].Pos_X,
+                       VehInfoMenu[i].Pos_Y,
+                       uniStr);
+        }
+    }
+}
+else
+{
+    for(uint8_t i = 0; i < 2; i++)
+    {
+        zk_init(loc_Drw2dDev,
+                (GUI_FONT *)&GUI_Fontwryh31,
+                VM_COLOR_WHITE, 0);
+
+        zk_oem2uni(VehInfoMenuPage2[i].Text[eol_language],
+                   uniStr, sizeof(uniStr));
+
+        zk_printZH(VehInfoMenuPage2[i].Pos_X,
+                   VehInfoMenuPage2[i].Pos_Y,
+                   uniStr);
+    }
+}
+    update_box_location(22, 124);
+
+if(Menu_VehicleInfo_f)
+{
+    update_updown(VehicleInfoMenuPage, 2, 680, 0);
+
+    if(VehicleInfoMenuPage == 2)
+    {
+        if(eol_fadongjiorkaji == 0x2d)
+{
+    update_choose_location(
+        270, 134 + 45 * (VehicleInfoChoose - 14));
+}
+else
+{
+    update_choose_location(
+        270, 134 + 45 * (VehicleInfoChoose - 12));
+}
+    }
+    else if(eol_fadongjiorkaji == 0x2d)
+    {
+        if(VehicleInfoChoose < 7)
+        {
+            update_choose_location(
+                270, 134 + 40 * VehicleInfoChoose);
+        }
+        else
+        {
+            update_choose_location(
+                525, 134 + 40 * (VehicleInfoChoose - 7));
+        }
+    }
+    else
+    {
+        if(VehicleInfoChoose < 6)
+        {
+            update_choose_location(
+                270, 134 + 45 * VehicleInfoChoose);
+        }
+        else
+        {
+            update_choose_location(
+                525, 134 + 45 * (VehicleInfoChoose - 6));
+        }
+    }
+}
+else
+{
     disable_choose_image();
+}
     //  Menu_VehicleInfo_f = 0;
     Menu_TripInfo_f = 0;
     Menu_PSNInfo_f = 0;
@@ -2127,7 +2584,6 @@ void MenuVehcleInfoFrame(void)
 void MenuVehicleInfoUpdate(void)
 {
     static unsigned char i = 8 ;
-    static unsigned char ichoose = 10 ;
 	
     if(!Menu_VehicleInfo_f)
 	{
@@ -2149,11 +2605,10 @@ void MenuVehicleInfoUpdate(void)
 				frmID = Menu_VehicleInfo;
 				Menu_VehicleInfo_f = 1;
 				i=10;
-				ichoose = 0;
-				if(eol_fadongjiorkaji==0x2d)
-					update_choose_location(270, 134 + 40 * 0);
-				else
-					update_choose_location(270, 134 + 45 * 0);
+				VehicleInfoChoose = 0;
+				VehicleInfoMenuPage = 1;
+				f_index = 0;
+				
 			}
 		} else if (i == 9 ) {//
 			f_index = 0;
@@ -2167,78 +2622,72 @@ void MenuVehicleInfoUpdate(void)
     }
     else
 	{
-		if (key_AV) {//光标向前移动
- key_AV = 0;
+		if(key_AV) /* 光标向前移动 */
+{
+    key_AV = 0;
 
     if(eol_fadongjiorkaji == 0x2d)
-    {
-        /* 特殊车型共14项，序号0~13 */
-        if(ichoose == 0)
-            ichoose = 13;
-        else
-            ichoose--;
+{
+    if(VehicleInfoChoose == 0)
+        VehicleInfoChoose = 15;
+    else
+        VehicleInfoChoose--;
+}
+else
+{
+    if(VehicleInfoChoose == 0)
+        VehicleInfoChoose = 13;
+    else
+        VehicleInfoChoose--;
+}
 
-        /* 左侧0~6，右侧7~13 */
-        if(ichoose < 7)
-            update_choose_location(270,
-                                   134 + 40 * ichoose);
-        else
-            update_choose_location(525,
-                                   134 + 40 * (ichoose - 7));
+    if((eol_fadongjiorkaji == 0x2d
+        && VehicleInfoChoose >= 14)
+    || (eol_fadongjiorkaji != 0x2d
+        && VehicleInfoChoose >= 12))
+    {
+        VehicleInfoMenuPage = 2;
     }
     else
     {
-        /* 普通车型共12项，序号0~11 */
-        if(ichoose == 0)
-            ichoose = 11;
-        else
-            ichoose--;
-
-        /* 左侧0~5，右侧6~11 */
-        if(ichoose < 6)
-            update_choose_location(270,
-                                   134 + 45 * ichoose);
-        else
-            update_choose_location(525,
-                                   134 + 45 * (ichoose - 6));
+        VehicleInfoMenuPage = 1;
     }
+
+    f_index = 0;
 }
 
-		if (key_up) {//光标向后移动
+if(key_up) /* 光标向后移动 */
+{
     key_up = 0;
 
     if(eol_fadongjiorkaji == 0x2d)
-    {
-        /* 特殊车型共14项，序号0~13 */
-        if(ichoose == 13)
-            ichoose = 0;
-        else
-            ichoose++;
+{
+    if(VehicleInfoChoose >= 15)
+        VehicleInfoChoose = 0;
+    else
+        VehicleInfoChoose++;
+}
+else
+{
+    if(VehicleInfoChoose >= 13)
+        VehicleInfoChoose = 0;
+    else
+        VehicleInfoChoose++;
+}
 
-        /* 左侧0~6，右侧7~13 */
-        if(ichoose < 7)
-            update_choose_location(270,
-                                   134 + 40 * ichoose);
-        else
-            update_choose_location(525,
-                                   134 + 40 * (ichoose - 7));
+    if((eol_fadongjiorkaji == 0x2d
+        && VehicleInfoChoose >= 14)
+    || (eol_fadongjiorkaji != 0x2d
+        && VehicleInfoChoose >= 12))
+    {
+        VehicleInfoMenuPage = 2;
     }
     else
     {
-        /* 普通车型共12项，序号0~11 */
-        if(ichoose == 11)
-            ichoose = 0;
-        else
-            ichoose++;
-
-        /* 左侧0~5，右侧6~11 */
-        if(ichoose < 6)
-            update_choose_location(270,
-                                   134 + 45 * ichoose);
-        else
-            update_choose_location(525,
-                                   134 + 45 * (ichoose - 6));
+        VehicleInfoMenuPage = 1;
     }
+
+    f_index = 0;
 }
 
 		if (key_set) { //子菜单间切换
@@ -2247,37 +2696,41 @@ void MenuVehicleInfoUpdate(void)
 			
 			if(eol_fadongjiorkaji==0x2d)
 			{
-				     if (ichoose == 0) frmID = Kvalue;
-				else if (ichoose == 1) frmID = BrakeInfo;
-				else if (ichoose == 2) frmID = TPMS; 
-				else if (ichoose == 3) frmID = BatVol;
-				else if (ichoose == 4) frmID = Supplier;
-				else if (ichoose == 5) frmID = FaultInfo;
+				     if (VehicleInfoChoose == 0) frmID = Kvalue;
+				else if (VehicleInfoChoose == 1) frmID = BrakeInfo;
+				else if (VehicleInfoChoose == 2) frmID = TPMS; 
+				else if (VehicleInfoChoose == 3) frmID = BatVol;
+				else if (VehicleInfoChoose == 4) frmID = Supplier;
+				else if (VehicleInfoChoose == 5) frmID = FaultInfo;
 				
-				else if (ichoose == 6) frmID = FCUWrkTm;
-				else if (ichoose == 7) frmID = HMSMaxPress;
-				else if (ichoose == 8) frmID = Maintain;
-				else if (ichoose == 9) frmID = ZhouHe;
-				else if (ichoose ==10) frmID = MotorVol;
-				else if (ichoose ==11) frmID = VCUVersion;
-				else if (ichoose ==12) frmID = ControllerFault;
-				else if (ichoose ==13) frmID = StirTempMonitor;
+				else if (VehicleInfoChoose == 6) frmID = FCUWrkTm;
+				else if (VehicleInfoChoose == 7) frmID = HMSMaxPress;
+				else if (VehicleInfoChoose == 8) frmID = Maintain;
+				else if (VehicleInfoChoose == 9) frmID = ZhouHe;
+				else if (VehicleInfoChoose ==10) frmID = MotorVol;
+				else if (VehicleInfoChoose ==11) frmID = VCUVersion;
+				else if (VehicleInfoChoose ==12) frmID = ControllerFault;
+				else if (VehicleInfoChoose ==13) frmID = StirTempMonitor;
+				else if(VehicleInfoChoose == 14) frmID = RelayState;
+				else if(VehicleInfoChoose == 15) frmID = BatteryManageInfo;
 				else ;
 			}
 			else
 			{
-				     if (ichoose == 0) frmID = Kvalue;
-				else if (ichoose == 1) frmID = BrakeInfo;
-				else if (ichoose == 2) frmID = TPMS; 
-				else if (ichoose == 3) frmID = BatVol;
-				else if (ichoose == 4) frmID = Supplier;
-				else if (ichoose == 5) frmID = FaultInfo;
-				else if (ichoose == 6) frmID = Maintain;
-				else if (ichoose == 7) frmID = ZhouHe;
-				else if (ichoose == 8) frmID = MotorVol;
-				else if (ichoose == 9) frmID = VCUVersion;
-				else if (ichoose == 10) frmID = ControllerFault;
-				else if (ichoose == 11) frmID = StirTempMonitor;
+				     if (VehicleInfoChoose == 0) frmID = Kvalue;
+				else if (VehicleInfoChoose == 1) frmID = BrakeInfo;
+				else if (VehicleInfoChoose == 2) frmID = TPMS; 
+				else if (VehicleInfoChoose == 3) frmID = BatVol;
+				else if (VehicleInfoChoose == 4) frmID = Supplier;
+				else if (VehicleInfoChoose == 5) frmID = FaultInfo;
+				else if (VehicleInfoChoose == 6) frmID = Maintain;
+				else if (VehicleInfoChoose == 7) frmID = ZhouHe;
+				else if (VehicleInfoChoose == 8) frmID = MotorVol;
+				else if (VehicleInfoChoose == 9) frmID = VCUVersion;
+				else if (VehicleInfoChoose == 10) frmID = ControllerFault;
+				else if (VehicleInfoChoose == 11) frmID = StirTempMonitor;
+				else if(VehicleInfoChoose == 12) frmID = RelayState;
+				else if(VehicleInfoChoose == 13) frmID = BatteryManageInfo;
 				else;
 			}
 		}
@@ -3379,6 +3832,7 @@ else
     else
     {
         for(uint8_t i = 0; i < item_num; i++)
+			
         {
             if(temp_old[i] != temp[i])
             {
@@ -3424,6 +3878,470 @@ else
     }
 
     end_draw();
+}
+static uint8_t RelayStateUpdate = 0;//lyx
+/** 车辆信息——继电器状态 **/
+void RelayStateFrame(unsigned char index, unsigned char page)
+{
+    uint8_t uniStr[100];
+    uint16_t width;
+    uint8_t text_index;
+
+    static const uint8_t *RelayText[][2] =
+    {
+        {(uint8_t *)"K1 行车MCU预充继电器",     (uint8_t *)"K1 Drive MCU precharge"},
+        {(uint8_t *)"K2 行车MCU继电器",         (uint8_t *)"K2 Drive MCU relay"},
+        {(uint8_t *)"K3 辅控预充继电器",        (uint8_t *)"K3 Aux precharge"},
+        {(uint8_t *)"K4 辅控继电器",            (uint8_t *)"K4 Aux relay"},
+
+        {(uint8_t *)"K5 辅控空调继电器",        (uint8_t *)"K5 Aux A/C relay"},
+        {(uint8_t *)"K6 辅控PTC继电器",         (uint8_t *)"K6 Aux PTC relay"},
+        {(uint8_t *)"K7 混料MCU预充继电器",     (uint8_t *)"K7 Mixer precharge"},
+        {(uint8_t *)"K8 混料MCU继电器",         (uint8_t *)"K8 Mixer MCU relay"},
+
+        {(uint8_t *)"K9 吸料头MCU预充继电器",   (uint8_t *)"K9 Suction precharge"},
+        {(uint8_t *)"K10 吸料头MCU继电器",      (uint8_t *)"K10 Suction relay"},
+        {(uint8_t *)"K11 前输送带MCU预充继电器",(uint8_t *)"K11 Conveyor precharge"},
+        {(uint8_t *)"K12 前输送带MCU继电器",    (uint8_t *)"K12 Conveyor relay"},
+
+        {(uint8_t *)"K13 动力单元MCU预充继电器",(uint8_t *)"K13 Power precharge"},
+        {(uint8_t *)"K14 动力单元MCU继电器",    (uint8_t *)"K14 Power MCU relay"},
+        {(uint8_t *)"K15 料带MCU预充继电器",    (uint8_t *)"K15 Tape precharge"},
+        {(uint8_t *)"K16 料带MCU继电器",        (uint8_t *)"K16 Tape MCU relay"}
+    };
+
+    start_draw();
+    LCD_Clear();
+
+    if(eol_language == 0)
+    {
+        zk_init(loc_Drw2dDev,
+                (GUI_FONT *)&GUI_Fontwryh38bold,
+                VM_COLOR_WHITE, 0);
+
+        zk_oem2uni((uint8_t *)"继电器状态",
+                   uniStr, sizeof(uniStr));
+
+        width = zk_getTextWidth((uint8_t *)"继电器状态");
+    }
+    else
+    {
+        zk_init(loc_Drw2dDev,
+                (GUI_FONT *)&GUI_Fontwryh38bold,
+                VM_COLOR_WHITE, 0);
+
+        zk_oem2uni((uint8_t *)"Relay State",
+                   uniStr, sizeof(uniStr));
+
+        width = zk_getTextWidth((uint8_t *)"Relay State");
+    }
+
+    zk_printZH(400 - width / 2, 70, uniStr);
+
+    update_updown(index, page, 680, 0);
+
+    text_index = (index - 1) * 4;
+
+    for(uint8_t i = 0; i < 4; i++)
+    {
+        zk_init(loc_Drw2dDev,
+                (GUI_FONT *)&GUI_Fontwryh31,
+                VM_COLOR_WHITE, 0);
+
+        zk_oem2uni(RelayText[text_index + i][eol_language],
+                   uniStr, sizeof(uniStr));
+
+        zk_printZH(80, 145 + 55 * i, uniStr);
+    }
+
+    RelayStateUpdate = 1;
+
+    disable_box();
+    disable_choose_image();
+    end_draw();
+}
+void RelayStateFrameUpdate(unsigned char index)
+{
+    VCU_04F02D70_t *pVCU_04F02D70 = NULL;
+
+    static uint8_t relay_old[4] =
+    {
+        0xff, 0xff, 0xff, 0xff
+    };
+    static uint8_t state_old = 0xff;
+    static uint8_t index_old = 0xff;
+
+    uint8_t relay[16];
+    uint8_t state;
+    uint8_t start_index;
+    uint8_t update = 0;
+
+    static const uint8_t *StateText[][2] =
+    {
+        {(uint8_t *)"无效", (uint8_t *)"Invalid"},
+        {(uint8_t *)"断开", (uint8_t *)"Open"},
+        {(uint8_t *)"保留", (uint8_t *)"Reserved"},
+        {(uint8_t *)"无效", (uint8_t *)"Invalid"}
+    };
+
+    pVCU_04F02D70 =
+        (VCU_04F02D70_t *)can_getPCanBuffer(0x04F02D70);
+
+    state = can_getPCanRxState(0x04F02D70);
+
+    relay[0]  = pVCU_04F02D70->k1_relay_state;
+    relay[1]  = pVCU_04F02D70->k2_relay_state;
+    relay[2]  = pVCU_04F02D70->k3_relay_state;
+    relay[3]  = pVCU_04F02D70->k4_relay_state;
+    relay[4]  = pVCU_04F02D70->k5_relay_state;
+    relay[5]  = pVCU_04F02D70->k6_relay_state;
+    relay[6]  = pVCU_04F02D70->k7_relay_state;
+    relay[7]  = pVCU_04F02D70->k8_relay_state;
+    relay[8]  = pVCU_04F02D70->k9_relay_state;
+    relay[9]  = pVCU_04F02D70->k10_relay_state;
+    relay[10] = pVCU_04F02D70->k11_relay_state;
+    relay[11] = pVCU_04F02D70->k12_relay_state;
+    relay[12] = pVCU_04F02D70->k13_relay_state;
+    relay[13] = pVCU_04F02D70->k14_relay_state;
+    relay[14] = pVCU_04F02D70->k15_relay_state;
+    relay[15] = pVCU_04F02D70->k16_relay_state;
+
+    start_index = (index - 1) * 4;
+
+    if(RelayStateUpdate
+    || state_old != state
+    || index_old != index)
+    {
+        update = 1;
+    }
+    else
+    {
+        for(uint8_t i = 0; i < 4; i++)
+        {
+            if(relay_old[i] != relay[start_index + i])
+            {
+                update = 1;
+                break;
+            }
+        }
+    }
+
+    if(update)
+    {
+        start_draw();
+
+        for(uint8_t i = 0; i < 4; i++)
+        {
+            loc_ClearRect(630,
+                          145 + 55 * i,
+                          110,
+                          32);
+
+            zk_init(loc_Drw2dDev,
+                    (GUI_FONT *)&GUI_Fontwryh31,
+                    VM_COLOR_WHITE, 0);
+
+            if(state == CAN_FRAME_ST_RECVED)
+            {
+                zk_printZH(650,
+                           145 + 55 * i,
+                           zk_oem2uniStr(
+                               StateText[relay[start_index + i]]
+                                        [eol_language]));
+            }
+            else
+            {
+                zk_printZH(680,
+                           145 + 55 * i,
+                           zk_oem2uniStr((uint8_t *)"--"));
+            }
+
+            relay_old[i] = relay[start_index + i];
+        }
+
+        state_old = state;
+        index_old = index;
+        RelayStateUpdate = 0;
+
+        end_draw();
+    }
+}
+/** 车辆信息——电池管理信息**/
+static uint8_t BatteryManageInfoUpdate = 0;//lyx
+
+void BatteryManageInfoFrame(unsigned char index,
+                            unsigned char page)
+{
+    uint8_t uniStr[100];
+    uint16_t width;
+    uint8_t item_num;
+
+    static const uint8_t *Text[][2] =
+    {
+        {(uint8_t *)"BMS正极绝缘值",
+         (uint8_t *)"Positive insulation"},
+        {(uint8_t *)"BMS负极绝缘值",
+         (uint8_t *)"Negative insulation"},
+        {(uint8_t *)"BMS系统绝缘值",
+         (uint8_t *)"System insulation"},
+
+        {(uint8_t *)"电芯温度最大值",
+         (uint8_t *)"Maximum cell temperature"},
+        {(uint8_t *)"电芯温度最小值",
+         (uint8_t *)"Minimum cell temperature"},
+        {(uint8_t *)"电芯温度平均值",
+         (uint8_t *)"Average cell temperature"},
+        {(uint8_t *)"最高温度CSC编号",
+         (uint8_t *)"Max temperature CSC"},
+        {(uint8_t *)"最高温度探针位置",
+         (uint8_t *)"Max temperature position"},
+        {(uint8_t *)"最低温度CSC编号",
+         (uint8_t *)"Min temperature CSC"},
+        {(uint8_t *)"最低温度探针位置",
+         (uint8_t *)"Min temperature position"},
+
+        {(uint8_t *)"电芯电压最大值",
+         (uint8_t *)"Maximum cell voltage"},
+        {(uint8_t *)"电芯电压最小值",
+         (uint8_t *)"Minimum cell voltage"},
+        {(uint8_t *)"电芯电压平均值",
+         (uint8_t *)"Average cell voltage"},
+        {(uint8_t *)"最高电压CSC编号",
+         (uint8_t *)"Max voltage CSC"},
+        {(uint8_t *)"最高电压电芯位置",
+         (uint8_t *)"Max voltage position"},
+        {(uint8_t *)"最低电压CSC编号",
+         (uint8_t *)"Min voltage CSC"},
+        {(uint8_t *)"最低电压电芯位置",
+         (uint8_t *)"Min voltage position"}
+    };
+
+    start_draw();
+    LCD_Clear();
+
+    zk_init(loc_Drw2dDev,
+            (GUI_FONT *)&GUI_Fontwryh38bold,
+            VM_COLOR_WHITE, 0);
+
+    if(eol_language == 0)
+    {
+        zk_oem2uni((uint8_t *)"电池管理信息",
+                   uniStr, sizeof(uniStr));
+        width = zk_getTextWidth((uint8_t *)"电池管理信息");
+    }
+    else
+    {
+        zk_oem2uni((uint8_t *)"Battery Management",
+                   uniStr, sizeof(uniStr));
+        width = zk_getTextWidth((uint8_t *)"Battery Management");
+    }
+
+    zk_printZH(400 - width / 2, 70, uniStr);
+    update_updown(index, page, 680, 0);
+
+    if(index == 1)
+        item_num = 3;
+    else
+        item_num = 7;
+
+    for(uint8_t i = 0; i < item_num; i++)
+    {
+        uint8_t text_index;
+
+        if(index == 1)
+            text_index = i;
+        else if(index == 2)
+            text_index = i + 3;
+        else
+            text_index = i + 10;
+
+        zk_init(loc_Drw2dDev,
+                (GUI_FONT *)&GUI_Fontwryh31,
+                VM_COLOR_WHITE, 0);
+
+        zk_oem2uni(Text[text_index][eol_language],
+                   uniStr, sizeof(uniStr));
+
+        zk_printZH(70, 120 + 40 * i, uniStr);
+    }
+	zk_init(loc_Drw2dDev,
+        (GUI_FONT *)&GUI_Fontwryh31,
+        VM_COLOR_WHITE, 0);
+
+if(index == 1)
+{
+    for(uint8_t i = 0; i < 3; i++)
+    {
+        zk_printZH(720,
+                   120 + 40 * i,
+                   zk_oem2uniStr((uint8_t *)"kohm"));
+    }
+}
+else if(index == 2)
+{
+    for(uint8_t i = 0; i < 3; i++)
+    {
+        zk_printZH(720,
+                   120 + 40 * i,
+                   zk_oem2uniStr((uint8_t *)"℃"));
+    }
+}
+else
+{
+    for(uint8_t i = 0; i < 3; i++)
+    {
+        zk_printZH(720,
+                   120 + 40 * i,
+                   zk_oem2uniStr((uint8_t *)"V"));
+    }
+}
+    BatteryManageInfoUpdate = 1;
+
+    disable_box();
+    disable_choose_image();
+    end_draw();
+}
+void BatteryManageInfoFrameUpdate(unsigned char index)
+{
+    BMS_1885EFF3_t *p1885 = NULL;
+    BMS_1886EFF3_t *p1886 = NULL;
+    BMS_1887EFF3_t *p1887 = NULL;
+    BMS_1888EFF3_t *p1888 = NULL;
+
+    static int32_t value_old[7] =
+    {
+        0x7fffffff, 0x7fffffff, 0x7fffffff,
+        0x7fffffff, 0x7fffffff, 0x7fffffff,
+        0x7fffffff
+    };
+    static uint8_t state_old[7] =
+    {
+        0xff, 0xff, 0xff, 0xff,
+        0xff, 0xff, 0xff
+    };
+    static uint8_t index_old = 0xff;
+
+    int32_t value[7] = {0};
+    uint8_t state[7] = {0};
+    uint8_t dot_pos[7] = {0};
+    uint8_t item_num;
+    uint8_t update = 0;
+
+    p1885 = (BMS_1885EFF3_t *)
+            can_getPCanBuffer(0x1885EFF3);
+
+    p1886 = (BMS_1886EFF3_t *)
+            can_getPCanBuffer(0x1886EFF3);
+
+    p1887 = (BMS_1887EFF3_t *)
+            can_getPCanBuffer(0x1887EFF3);
+
+    p1888 = (BMS_1888EFF3_t *)
+            can_getPCanBuffer(0x1888EFF3);
+
+    if(index == 1)
+    {
+        item_num = 3;
+
+        value[0] = p1885->positive_insulation;
+        value[1] = p1885->negative_insulation;
+        value[2] = p1885->system_insulation;
+
+        for(uint8_t i = 0; i < item_num; i++)
+            state[i] = can_getPCanRxState(0x1885EFF3);
+    }
+    else if(index == 2)
+    {
+        item_num = 7;
+
+        value[0] = (int32_t)p1886->max_temperature - 40;
+        value[1] = (int32_t)p1886->min_temperature - 40;
+        value[2] = (int32_t)p1886->avg_temperature - 40;
+        value[3] = p1886->max_temp_csc_no;
+        value[4] = p1886->max_temp_position;
+        value[5] = p1886->min_temp_csc_no;
+        value[6] = p1886->min_temp_position;
+
+        for(uint8_t i = 0; i < item_num; i++)
+            state[i] = can_getPCanRxState(0x1886EFF3);
+    }
+    else
+    {
+        item_num = 7;
+
+        value[0] = p1887->max_ucell;
+        value[1] = p1887->min_ucell;
+        value[2] = p1887->avg_ucell;
+
+        dot_pos[0] = 3;
+        dot_pos[1] = 3;
+        dot_pos[2] = 3;
+
+        value[3] = p1888->max_ucell_csc_no;
+        value[4] = p1888->max_ucell_position;
+        value[5] = p1888->min_ucell_csc_no;
+        value[6] = p1888->min_ucell_position;
+
+        for(uint8_t i = 0; i < 3; i++)
+            state[i] = can_getPCanRxState(0x1887EFF3);
+
+        for(uint8_t i = 3; i < item_num; i++)
+            state[i] = can_getPCanRxState(0x1888EFF3);
+    }
+
+    if(BatteryManageInfoUpdate || index_old != index)
+    {
+        update = 1;
+    }
+    else
+    {
+        for(uint8_t i = 0; i < item_num; i++)
+        {
+            if(value_old[i] != value[i]
+            || state_old[i] != state[i])
+            {
+                update = 1;
+                break;
+            }
+        }
+    }
+
+    if(update)
+    {
+        start_draw();
+
+        for(uint8_t i = 0; i < item_num; i++)
+        {
+            loc_ClearRect(590, 120 + 40 * i, 110, 32);
+
+            zk_init(loc_Drw2dDev,
+                    (GUI_FONT *)&GUI_Fontwryh31,
+                    VM_COLOR_WHITE, 0);
+
+            if(state[i] == CAN_FRAME_ST_RECVED)
+            {
+                zk_printNum(700,
+                            120 + 40 * i,
+                            value[i],
+                            dot_pos[i],
+                            ZK_ALIGN_RIGHT);
+            }
+            else
+            {
+                zk_printZH(678,
+                           120 + 40 * i,
+                           zk_oem2uniStr((uint8_t *)"--"));
+            }
+
+            value_old[i] = value[i];
+            state_old[i] = state[i];
+        }
+
+        index_old = index;
+        BatteryManageInfoUpdate = 0;
+
+        end_draw();
+    }
 }
 /** 车辆信息——轴荷信息**/
 void ZhouHeFrame(unsigned char index, unsigned char page)
@@ -10072,6 +10990,18 @@ void LCD_Exec(void)
 			mainview_update = 1;
 			frmpage(StirTempMonitorFrame,
             StirTempMonitorFrameUpdate, 3);
+			break;
+		case RelayState:
+			Gennal_Use[2].byte = 0;
+			mainview_update = 1;
+			frmpage(RelayStateFrame,
+            RelayStateFrameUpdate, 4);
+			break;
+		case BatteryManageInfo:
+			Gennal_Use[2].byte = 0;
+			mainview_update = 1;
+			frmpage(BatteryManageInfoFrame,
+            BatteryManageInfoFrameUpdate, 3);
 			break;
 		default:
             key_up = 0;

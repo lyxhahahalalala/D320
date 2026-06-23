@@ -250,6 +250,14 @@ const canRxFrameLCfg_t lct_PcanRxFrame[] =
 	{0x04F02770,   3000, can_processTMO_PCan, 0},//lyx
 	{0x04F02870,   3000, can_processTMO_PCan, 0},//lyx
 	{0x04F02970,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02A70,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02B70,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02C70,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02D70,   3000, can_processTMO_PCan, 0},//lyx
+	{0x1885EFF3,   3000, can_processTMO_PCan, 0},//lyx
+	{0x1886EFF3,   3000, can_processTMO_PCan, 0},//lyx
+	{0x1887EFF3,   3000, can_processTMO_PCan, 0},//lyx
+	{0x1888EFF3,   3000, can_processTMO_PCan, 0},//lyx
 	
 };
 static uint8_t l_u8PCanRxBuf[PCAN_RX_FRAME_COUNT][8];
@@ -2611,26 +2619,121 @@ void CAN_Send_AMB(void)     //0x18FEF517  1000ms 环境温度
 	CAN2_SendFIFOMessage(&msg);
 	
 }
-void CAN_Send_VDHR(void)    //0x18FEC1EE  1000ms 里程
+void CAN_Send_VDHR(void)    //0x18FEC117  1000ms 里程
 {
     CAN_MESSAGE msg;
+    uint32_t total_mileage;
+    uint32_t subtotal_mileage;
 
-    msg.data[0] = (unsigned char)(Miles.total_miles*20); 
-    msg.data[1] = (unsigned char)(Miles.total_miles*20 >> 8);       
-    msg.data[2] = (unsigned char)(Miles.total_miles*20 >> 16);       
-    msg.data[3] = (unsigned char)(Miles.total_miles*20 >> 24);       
-    
-    msg.data[4] = (unsigned char)(Miles.single_miles*20); 
-    msg.data[5] = (unsigned char)(Miles.single_miles*20 >> 8);
-    msg.data[6] = (unsigned char)(Miles.single_miles*20 >> 16);
-    msg.data[7] = (unsigned char)(Miles.single_miles*20 >> 24);
+    total_mileage = Miles.total_miles * 20;
+    subtotal_mileage = Miles.single_miles * 20;
 
-    msg.id = 0x18FEC1EE;
+    msg.data[0] = (uint8_t)total_mileage;
+    msg.data[1] = (uint8_t)(total_mileage >> 8);
+    msg.data[2] = (uint8_t)(total_mileage >> 16);
+    msg.data[3] = (uint8_t)(total_mileage >> 24);
+
+    msg.data[4] = (uint8_t)subtotal_mileage;
+    msg.data[5] = (uint8_t)(subtotal_mileage >> 8);
+    msg.data[6] = (uint8_t)(subtotal_mileage >> 16);
+    msg.data[7] = (uint8_t)(subtotal_mileage >> 24);
+
+    msg.id = 0x18FEC117;
     msg.len = 0x08;
     msg.type = 0x00;
-	CAN1_SendFIFOMessage(&msg);
-	CAN2_SendFIFOMessage(&msg);
-    
+
+    CAN1_SendFIFOMessage(&msg);
+    CAN2_SendFIFOMessage(&msg);
+}
+void CAN_Send_MotSpeedObj1(void)
+{
+    CAN_MESSAGE msg;
+    VCU_04F02B70_t *pVCU_04F02B70 = NULL;
+
+    pVCU_04F02B70 =
+        (VCU_04F02B70_t *)can_getPCanBuffer(0x04F02B70);
+
+    if(can_getPCanRxState(0x04F02B70)
+       == CAN_FRAME_ST_RECVED)
+    {
+        msg.data[0] =
+            (uint8_t)pVCU_04F02B70->stir_mot_speed;
+
+        msg.data[1] =
+            (uint8_t)(pVCU_04F02B70->stir_mot_speed >> 8);
+
+        msg.data[2] =
+            (uint8_t)pVCU_04F02B70->suction_head_mot_speed;
+
+        msg.data[3] =
+            (uint8_t)(pVCU_04F02B70->suction_head_mot_speed >> 8);
+
+        msg.data[4] =
+            (uint8_t)pVCU_04F02B70->front_conveyor_mot_speed;
+
+        msg.data[5] =
+            (uint8_t)(pVCU_04F02B70->front_conveyor_mot_speed >> 8);
+    }
+    else
+    {
+        msg.data[0] = 0xFF;
+        msg.data[1] = 0xFF;
+        msg.data[2] = 0xFF;
+        msg.data[3] = 0xFF;
+        msg.data[4] = 0xFF;
+        msg.data[5] = 0xFF;
+    }
+
+    msg.data[6] = 0xFF;
+    msg.data[7] = 0xFF;
+
+    msg.id = 0x18FEC218;
+    msg.len = 0x08;
+    msg.type = 0x00;
+
+    CAN2_SendFIFOMessage(&msg);
+}
+void CAN_Send_MotSpeedObj2(void)
+{
+    CAN_MESSAGE msg;
+    VCU_04F02C70_t *pVCU_04F02C70 = NULL;
+
+    pVCU_04F02C70 =
+        (VCU_04F02C70_t *)can_getPCanBuffer(0x04F02C70);
+
+    if(can_getPCanRxState(0x04F02C70)
+       == CAN_FRAME_ST_RECVED)
+    {
+        msg.data[0] =
+            (uint8_t)pVCU_04F02C70->power_unit_mot_speed;
+
+        msg.data[1] =
+            (uint8_t)(pVCU_04F02C70->power_unit_mot_speed >> 8);
+
+        msg.data[2] =
+            (uint8_t)pVCU_04F02C70->sprinkle_tape_mot_speed;
+
+        msg.data[3] =
+            (uint8_t)(pVCU_04F02C70->sprinkle_tape_mot_speed >> 8);
+    }
+    else
+    {
+        msg.data[0] = 0xFF;
+        msg.data[1] = 0xFF;
+        msg.data[2] = 0xFF;
+        msg.data[3] = 0xFF;
+    }
+
+    msg.data[4] = 0xFF;
+    msg.data[5] = 0xFF;
+    msg.data[6] = 0xFF;
+    msg.data[7] = 0xFF;
+
+    msg.id = 0x18FEC319;
+    msg.len = 0x08;
+    msg.type = 0x00;
+
+    CAN2_SendFIFOMessage(&msg);
 }
 void CAN_Send_AIR1(void)    //0x18FEAE30/0x18F13017  1000ms 气压
 {
@@ -3131,10 +3234,18 @@ void Pcan_to_Bcan_N100ms(void)
 void Task100ms_can_send(void) //100ms task
 {
     static unsigned char sendcontrol = 0;
-	
+	static uint8_t mot_speed_send_cnt = 0;
     if(Test_Mode!=0) //测试模式不外发报文
 		return;
-	
+	mot_speed_send_cnt++;
+
+if(mot_speed_send_cnt >= 2)
+{
+    mot_speed_send_cnt = 0;
+
+    CAN_Send_MotSpeedObj1();
+    CAN_Send_MotSpeedObj2();
+}
 	for(uint8_t num = 0; num < 4; num++)
 	{
 		for(uint8_t i = 0;i < 4; i++)

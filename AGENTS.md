@@ -393,6 +393,177 @@ When proposing project changes:
 - Clearly distinguish among a proposed change, a change visible in the current files, a successful build, and a bench-tested behavior.
 - When values display correctly but labels do not, investigate font coverage and rendering behavior before blaming CAN reception.
 
+## Mileage Transmission Update
+
+The instrument mileage transmission now uses:
+
+- ID: `0x18FEC117`
+- Cycle: 1000 ms
+- Frame type: extended CAN frame
+- DLC: 8
+- Transmission: both CAN1 and CAN2, following the existing `CAN_Send_VDHR()` behavior
+
+The byte layout is:
+
+```text
+byte0-byte3  total mileage
+byte4-byte7  subtotal/trip mileage
+```
+
+Both values are unsigned 32-bit little-endian values with a resolution of
+`0.005 km/bit`.
+
+The existing mileage variables are already stored in units compatible with
+`0.1 km`. The send function therefore converts them with:
+
+```c
+total_mileage = Miles.total_miles * 20;
+subtotal_mileage = Miles.single_miles * 20;
+```
+
+Do not add another set of mileage state variables. Continue using
+`Miles.total_miles` and `Miles.single_miles`, as the original project does.
+
+The implementation is in:
+
+```text
+02-Code\app\gfx_apps\simple_draw\src\main\app_can.c
+CAN_Send_VDHR()
+```
+
+The function body and transmitted ID are correct in the current working tree.
+The old comment beside the `CAN_Send_VDHR()` call in `Task100ms_can_send()`
+still mentions `0x18FEC1EE`; this is only a stale comment and does not change
+the transmitted ID.
+
+## Motor Target Speed Transmission
+
+The instrument now forwards five received motor speeds as two target-speed
+frames. The existing receive buffers are reused directly. No duplicate speed
+variables or additional synchronization layer is needed.
+
+Source frame `0x04F02B70` supplies:
+
+```text
+byte0-byte1  stir MCU motor speed
+byte2-byte3  suction head MCU motor speed
+byte4-byte5  front conveyor MCU motor speed
+```
+
+It is forwarded as:
+
+```text
+ID:          0x18FEC218
+byte0-byte1  stir MCU target motor speed
+byte2-byte3  suction head MCU target motor speed
+byte4-byte5  front conveyor MCU target motor speed
+byte6-byte7  FF FF
+```
+
+Source frame `0x04F02C70` supplies:
+
+```text
+byte0-byte1  power unit MCU motor speed
+byte2-byte3  sprinkle tape MCU motor speed
+```
+
+It is forwarded as:
+
+```text
+ID:          0x18FEC319
+byte0-byte1  power unit MCU target motor speed
+byte2-byte3  sprinkle tape MCU target motor speed
+byte4-byte7  FF FF FF FF
+```
+
+All motor-speed fields are unsigned 16-bit little-endian raw values with a
+physical offset of `-15000 rpm`. Because the received and transmitted signals
+use the same scaling and offset, copy the raw 16-bit value. Do not subtract
+`15000` and encode it again in the send function.
+
+The current functions are:
+
+```text
+CAN_Send_MotSpeedObj1()
+CAN_Send_MotSpeedObj2()
+```
+
+They are declared in `app_can.h`, implemented in `app_can.c`, and called from
+`Task100ms_can_send()`. They transmit on CAN2 and have been bench-tested
+successfully.
+
+Known test pairs:
+
+```text
+Input:
+ID:   0x04F02B70
+Data: 80 3E 68 42 50 46 C8 00
+
+Expected output:
+ID:   0x18FEC218
+Data: 80 3E 68 42 50 46 FF FF
+
+Input:
+ID:   0x04F02C70
+Data: F0 55 D8 59 00 00 00 00
+
+Expected output:
+ID:   0x18FEC319
+Data: F0 55 D8 59 FF FF FF FF
+```
+
+The source IDs are registered in the PCAN software receive table with a
+3000 ms timeout. Their PCAN hardware filter rules use unique receive-buffer
+indexes:
+
+```c
+{0x04F02B70UL, 0x1FFFFFFFUL, 0x00006400UL, 0x00000004UL}, /*57*/
+{0x04F02C70UL, 0x1FFFFFFFUL, 0x00006500UL, 0x00000004UL}, /*58*/
+```
+
+## Motor Target Speed Debugging Note
+
+`CAN_Send_MotSpeedObj1()` and `CAN_Send_MotSpeedObj2()` check the corresponding
+PCAN receive state before copying data. If the source frame has never been
+received or has timed out, the target-speed frame is still transmitted, but
+its data bytes are filled with `0xFF`.
+
+Therefore, an output such as:
+
+```text
+ID:   0x18FEC319
+Data: FF FF FF FF FF FF FF FF
+```
+
+does not by itself indicate a packing or transmission bug. First verify that
+the source frame is being transmitted continuously on CAN2 and inspect:
+
+```text
+print can_getPCanRxState(0x04F02B70)
+print can_getPCanRxState(0x04F02C70)
+```
+
+Receive-state meanings:
+
+```text
+0  not received
+1  received
+2  timed out
+```
+
+If the state is `1`, inspect the receive buffer values:
+
+```text
+print ((VCU_04F02B70_t*)can_getPCanBuffer(0x04F02B70))->stir_mot_speed
+print ((VCU_04F02C70_t*)can_getPCanBuffer(0x04F02C70))->power_unit_mot_speed
+print ((VCU_04F02C70_t*)can_getPCanBuffer(0x04F02C70))->sprinkle_tape_mot_speed
+```
+
+During the latest test, an all-`FF` frame was initially mistaken for a software
+problem. The implementation was later tested again with the correct source
+frame setup and worked as intended. Do not change the packing or timeout logic
+solely because a single captured target-speed frame contains all `FF`.
+
 ## File Modification Rule
 
 Do not modify, create, delete, format, or overwrite any project file unless the user has explicitly approved that specific file change first.
