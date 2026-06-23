@@ -170,7 +170,7 @@ const CanRxRuleCfg_t CanDrvRxRule[] = \
 	{0x1886EFF3UL, 0x1FFFFFFFUL, 0x00006800UL, 0x00000004UL}, /*61*/ /* lyx */
 	{0x1887EFF3UL, 0x1FFFFFFFUL, 0x00006900UL, 0x00000004UL}, /*62*/ /* lyx */
 	{0x1888EFF3UL, 0x1FFFFFFFUL, 0x00006A00UL, 0x00000004UL}, /*63*/ /* lyx */
-	
+	{0x04F02E70UL, 0x1FFFFFFFUL, 0x00006B00UL, 0x00000004UL}, /*64*/ /* lyx */
 };
 
 
@@ -181,7 +181,7 @@ static void Can_SetRxRule(void)
 	uint8_t  PageRxRuleIdx;
 	
 	/* Set Rx rule number per channel */
-    RSCAN0.GAFLCFG0.UINT32 = 0x003F2D00;//lyx
+    RSCAN0.GAFLCFG0.UINT32 = 0x00402D00;//lyx
 	
 	/* Receive Rule Table Write Enable, and select page 0
     RSCAN0GAFLECTR- Receive Rule Entry Control Register

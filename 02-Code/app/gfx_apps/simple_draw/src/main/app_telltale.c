@@ -105,7 +105,10 @@ static uint8_t absRequestDisp = 0;
 static uint8_t Trailer_absRequestDisp = 0;
 static uint8_t LmtSpdRequestDisp = 0;
 static uint8_t aduRequestDisp = 0;
-
+static uint8_t ptcRequestDisp = 0;
+static uint8_t acRequestDisp = 0;
+static uint8_t ptcSwitchOld = 0;
+static uint8_t acSwitchOld = 0;
 
 #define BIG_ICON_NUM  (sizeof(BigIconInfo) / sizeof(BigIcon_t))
 static const BigIcon_t BigIconInfo[] = 
@@ -146,7 +149,9 @@ static const BigIcon_t BigIconInfo[] =
 /*32*/{   "T",    BIG_X - 40,  BIG_Y - 31,  0xffffff00,   5000,  {{(uint8_t *)"检测到使用手机，请注意安全",   NULL}, {(uint8_t *)"Cell phone use detected", (uint8_t *)"Please be safe"}}}, /*黄色-智驾 A 类报警:检测到使用手机，请注意安全*/
 /*33*/{   "T",    BIG_X - 40,  BIG_Y - 31,  0xffffff00,   5000,  {{(uint8_t *)"检测到视线偏移，请注意安全",   NULL}, {(uint8_t *)"Eye drift detected", (uint8_t *)"Please be safe"}}}, /*黄色-智驾 A 类报警:检测到视线偏移，请注意安全*/
 /*34*/{   "T",    BIG_X - 40,  BIG_Y - 31,  0xffffff00,   5000,  {{(uint8_t *)"驾驶员疲劳",   (uint8_t *)"建议前往服务区休息"}, {(uint8_t *)"Driver fatigue, advised to", (uint8_t *)"Go to the service area to rest"}}}, /*黄色-智驾 A 类报警:驾驶员疲劳，建议前往服务区休息*/
-	
+/*35*/{   NULL,    BIG_X - 79,  BIG_Y,       0xffffff00,   3000,  {{(uint8_t *)"驾驶室取暖已开启", NULL}, {(uint8_t *)"Cab heater ON", NULL}}}, /*黄色-驾驶室取暖开启*/
+/*36*/{   NULL,    BIG_X - 79,  BIG_Y,       0xffffff00,   3000,  {{(uint8_t *)"驾驶室空调已开启", NULL}, {(uint8_t *)"Cab A/C ON", NULL}}}, /*黄色-驾驶室空调开启*/
+
 	
 };
 
@@ -194,6 +199,19 @@ void Display_TruckArea(void)
 	start_draw();
 	if(0xFF == Zijian)
 	{
+		if((PTC_SwitchStatus == 1) && (ptcSwitchOld == 0))
+		{
+			ptcRequestDisp = 1;
+		}
+
+		if((AC_SwitchStatus == 1) && (acSwitchOld == 0))
+		{
+			acRequestDisp = 1;
+		}
+
+		ptcSwitchOld = PTC_SwitchStatus;
+		acSwitchOld = AC_SwitchStatus;
+		
 		BigIconShowReq[ 0] = hazardRequestDisp;  /*黄色-紧急故障 HAZARD*/
 		BigIconShowReq[ 1] = absRequestDisp;  /*黄色-主车 ABS 警告*/
 		BigIconShowReq[ 2] = Trailer_absRequestDisp;  /*黄色-挂车 ABS 故障*/
@@ -230,7 +248,8 @@ void Display_TruckArea(void)
 		BigIconShowReq[32] = (aduRequestDisp == 146); /*黄色-智驾 A 类报警:检测到使用手机，请注意安全*/
 		BigIconShowReq[33] = (aduRequestDisp == 147); /*黄色-智驾 A 类报警:检测到视线偏移，请注意安全*/
 		BigIconShowReq[34] = (aduRequestDisp == 148); /*黄色-智驾 A 类报警:驾驶员疲劳，建议前往服务区休息*/
-		
+		BigIconShowReq[35] = ptcRequestDisp;
+		BigIconShowReq[36] = acRequestDisp;
 		for(uint8_t i = 0; i < BIG_ICON_NUM; i++)
 		{
 			if(PopupWinBigIcon.ShowReq[i] == 1)
@@ -243,10 +262,13 @@ void Display_TruckArea(void)
 						
 						Clear_TruckArea();
 						
-						loc_Render_BigIcon(PopupWinBigIcon.IconInfo[i].posX, \
-										   PopupWinBigIcon.IconInfo[i].posY, \
-										   PopupWinBigIcon.IconInfo[i].color, \
-										   PopupWinBigIcon.IconInfo[i].posNum);
+						if(PopupWinBigIcon.IconInfo[i].posNum != NULL)
+						{
+    						loc_Render_BigIcon(PopupWinBigIcon.IconInfo[i].posX, \
+							PopupWinBigIcon.IconInfo[i].posY, \
+							PopupWinBigIcon.IconInfo[i].color, \
+							PopupWinBigIcon.IconInfo[i].posNum);
+						}
 						
 						if(PopupWinBigIcon.IconInfo[i].text[eol_language][0] != NULL)
 						{
@@ -279,7 +301,14 @@ void Display_TruckArea(void)
 								PopupWinBigIcon.ShowEnd[i] = 1;
 								PopupWinBigIcon.Showing[i] = 0;
 								// PopupWinBigIcon.ShowReq[i] = 0;
-								
+								if(i == 35)
+								{
+									ptcRequestDisp = 0;
+								}
+								else if(i == 36)
+								{
+									acRequestDisp = 0;
+								}
 								Clear_TruckArea();
 								
 								ptmr_Stop(&PopupWinBigIcon.timer[i]);

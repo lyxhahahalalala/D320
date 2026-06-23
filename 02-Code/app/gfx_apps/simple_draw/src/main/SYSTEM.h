@@ -204,7 +204,8 @@ extern DATA_BIT CAN_KEY[5];
 #define GetOffReminderStatus CAN_KEY[3].bit7
 
 #define GetOffReminderViewFlg CAN_KEY[4].bit0
-
+#define PTC_SwitchStatus       CAN_KEY[4].bit1
+#define AC_SwitchStatus        CAN_KEY[4].bit2
 
 #define CAN_TIME  40 //CAN½Úµã¹ÊÕÏ±¨¾¯
 // #define AP_LOWER_LMT_VALUE   535

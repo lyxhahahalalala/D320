@@ -258,6 +258,7 @@ const canRxFrameLCfg_t lct_PcanRxFrame[] =
 	{0x1886EFF3,   3000, can_processTMO_PCan, 0},//lyx
 	{0x1887EFF3,   3000, can_processTMO_PCan, 0},//lyx
 	{0x1888EFF3,   3000, can_processTMO_PCan, 0},//lyx
+	{0x04F02E70,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
 	
 };
 static uint8_t l_u8PCanRxBuf[PCAN_RX_FRAME_COUNT][8];
@@ -1023,6 +1024,11 @@ void can_rxRoutine(void)
 			{
     			CAN_CHARGE_LINE = 0;
 			}
+			else if(l_tPCanRxFrame.lcfg[i].id == 0x04F02E70)//lyx
+			{
+				PTC_SwitchStatus = 0;
+				AC_SwitchStatus  = 0;
+			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FF1F31)
 			{
 				// LckVehBoundState = 0;
@@ -1707,6 +1713,10 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
     		break;
 		case 0x04F02370://lyx
 			CAN_CHARGE_LINE = ((buf[1]&0x03) != 0);
+			break;
+		case 0x04F02E70://lyx
+			PTC_SwitchStatus = ((buf[0]&0x01) == 0x01);
+			AC_SwitchStatus  = ((buf[0]&0x02) == 0x02);
 			break;
 		case 0x0CFFEAF4:
 			temp = (buf[0]&0x60);
