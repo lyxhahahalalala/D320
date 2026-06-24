@@ -29,4 +29,4 @@ gfx_apps\simple_draw\src\image\Img_truck.c
 gfx_apps\simple_draw\src\image\Img_up_down.c
 gfx_apps\simple_draw\src\image\Img_tireframe.c
 gfx_apps\simple_draw\src\image\Img_tirePressure.c
-
+gfx_apps\simple_draw\src\image\Img_EPS.c

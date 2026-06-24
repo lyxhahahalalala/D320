@@ -365,9 +365,22 @@ typedef union {
 
         uint8_t vcu_mot_over_temp:1,
                 soc_low_warning:1,
-                res2:6;
+                isolation_warning:1,
+                hv_batt_warning:1,
+                res2:1,
+                motor_warning:1,
+                over_speed:1,
+                batt_pack_temp_warning:1;
 
-        uint8_t res3[6];
+        uint8_t lv_batt_voltage;
+        uint16_t remaining_driving_range;
+        uint8_t res3[2];
+
+        uint8_t instrument_display_1:1,
+                instrument_display_2:1,
+                instrument_display_3:1,
+                res4:1,
+                current_gear:4;
     };
 }VCU_04F02270_t;
 #pragma pack()

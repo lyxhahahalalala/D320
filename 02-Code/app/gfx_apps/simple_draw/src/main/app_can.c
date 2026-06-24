@@ -311,7 +311,7 @@ const canRxFrameLCfg_t lct_BcanRxFrame[] =
 /* 33*/{0x18FED631, 3000, can_processTMO_BCan, canRXFrame_recvHandle}, //HCU
 /* 34*/{0x18FF8F25, 3000, can_processTMO_BCan, 0}, //TBOX
 /* 35*/{0x0CF6034D, 3000, can_processTMO_PCan, 0}, //µÍÑ¹×ªÏò
-
+/* 36*/{0x04F02270, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
 	{0x18FECA32, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF32, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF32, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},

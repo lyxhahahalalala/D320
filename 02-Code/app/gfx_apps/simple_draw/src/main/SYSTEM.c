@@ -1174,7 +1174,7 @@ void LED_Logic(void)
 	GeneralUse_t   *DCMD_18FF28EC = NULL;
 	
 	uint8_t Vspeed = get_vehicle_speed();
-	
+	VCU_04F02270_d = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
 	if(Test_Mode != 0)
 	{
 		Test_Needle();
@@ -1186,7 +1186,6 @@ void LED_Logic(void)
 		GU_18FF14E7_t =  (GeneralUse_t*)can_getBCanBuffer(0x18FF14E7);
 		GU_18FEF131_t =  (GeneralUse_t*)can_getPCanBuffer(0x18FEF131);
 		VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
-		VCU_04F02270_d = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);//lyx
 		VCU_18FDA403_d = (GeneralUse_t *)can_getPCanBuffer(0x18FDA403);
 		GU_0CEF3103_t = (GeneralUse_t*)can_getPCanBuffer(0x0CEF3103);
 		// GU_18F7021E_t = (GeneralUse_t*)can_getPCanBuffer(0x18F7021E);
@@ -1224,7 +1223,7 @@ void LED_Logic(void)
 			}
 		}
 		LED_OverSpeed = (overSpeed_flg);
-		
+		LED_OverSpeed |= VCU_04F02270_d->over_speed;
 		/* static ptmrType_t driverLock_Tmr = 0;
 		if(IN31) //驾驶室锁止不到位报警开关
 		{
@@ -1277,11 +1276,11 @@ void LED_Logic(void)
 		LED_MotorFault |= (can_getPCanRxState(0x0CFF11EF) == CAN_FRAME_ST_TIMEOUT);
 		LED_MotorFault |= (CurrentFltInfo[DM1_F0].FltBuf.AmberWarnLamp == 1);
 		LED_MotorFault |= (CurrentFltInfo[DM1_F0].FltBuf.RedStopLamp == 1);
-		
+		LED_MotorFault |= VCU_04F02270_d->motor_warning;
 		//绝缘报警
 		LED_InsulationFault = (get_dm1_flt_status(DM1_F4, 521300, 18) == true); //绝缘电阻一般低
 		LED_InsulationFault|= (get_dm1_flt_status(DM1_F4, 521300,  1) == true); //绝缘电阻严重低
-		
+		LED_InsulationFault |= VCU_04F02270_d->isolation_warning;
 		//dcdc故障
 		LED_DCDC  = (CurrentFltInfo[DM1_1A].FltBuf.AmberWarnLamp == 1);
 		LED_DCDC |= (CurrentFltInfo[DM1_1A].FltBuf.RedStopLamp == 1);
@@ -1290,7 +1289,7 @@ void LED_Logic(void)
 		LED_HighVolBatFault  = (CurrentFltInfo[DM1_F4].FltBuf.AmberWarnLamp == 1);
 		LED_HighVolBatFault |= (CurrentFltInfo[DM1_F4].FltBuf.RedStopLamp == 1);
 		LED_HighVolBatFault |= (can_getPCanRxState(0x0CFFEAF4) == CAN_FRAME_ST_TIMEOUT);
-		
+		LED_HighVolBatFault |= VCU_04F02270_d->hv_batt_warning;
 		//充电连接
 		LED_ChargeConnected = (CAN_CHARGE_LINE); //充电连接 20200311
 		
@@ -1298,7 +1297,7 @@ void LED_Logic(void)
 		LED_BatOverTmp      = (get_dm1_flt_status(DM1_F4, 521301, 16) == true); //单体温度一般高
 		LED_BatOverTmp     |= (get_dm1_flt_status(DM1_F4, 521301,  0) == true); //单体温度严重高
 		LED_BatOverTmp     |= (get_dm1_flt_status(DM1_F4, 521335,  3) == true); //REESS热事件报警
-		
+		LED_BatOverTmp |= VCU_04F02270_d->batt_pack_temp_warning;
 		//SOC过低报警
 		// LED_SocL  = (get_dm1_flt_status(DM1_F4, 521309, 18) == true); //电池SOC一般低
 		// LED_SocL |= (get_dm1_flt_status(DM1_F4, 521309,  1) == true); //电池SOC严重低
@@ -1372,7 +1371,10 @@ void LED_Logic(void)
 			LED_SysFault= 1;
 		else
 			LED_SysFault = 0;
-		
+		if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+{
+    LED_SysFault |= VCU_04F02270_d->ep_fault_level_warning;
+}
 		//取力指示  //(BCMI_18FF2732->byte4.bit34 == 1)
 		ret = ((VCU_18FDA403_d->byte1.bit78 == 1)&&(VCU_18FDA403_d->byte5.bit78 != 1)); //取力开关=1，取力控制≠1，取力指示闪烁，1Hz。
 		Set_Interval_Req(ret, F_PTO);
@@ -1536,7 +1538,7 @@ void LED_Logic(void)
 			{
 				LED_ESC = (asr_lamp_indicator || esc_fun_abnormal);
 			}
-			LED_ESC |= VCU_04F02270_d->eps_fault;//lyx
+			
 		}
 		
 		//刹车片报警
@@ -1749,16 +1751,18 @@ void LED_Logic(void)
 			
 			LED_InsulationFault = (get_dm1_flt_status(DM1_F4, 521300, 18) == true); //绝缘电阻一般低
 			LED_InsulationFault|= (get_dm1_flt_status(DM1_F4, 521300,  1) == true); //绝缘电阻严重低
+			LED_InsulationFault |= VCU_04F02270_d->isolation_warning;
 			
 			LED_SocL            = (get_dm1_flt_status(DM1_F4, 521309, 18) == true); //电池SOC一般低
 			LED_SocL           |= (get_dm1_flt_status(DM1_F4, 521309,  1) == true); //电池SOC严重低
 			LED_SocL           |= VCU_04F02270_d->soc_low_warning;//lyx
 			LED_HighVolBatFault = (CurrentFltInfo[DM1_F4].FltBuf.RedStopLamp == 1); //动力电池故障
+			LED_HighVolBatFault |= VCU_04F02270_d->hv_batt_warning;
 			
 			LED_BatOverTmp      = (get_dm1_flt_status(DM1_F4, 521301, 16) == true); //单体温度一般高
 			LED_BatOverTmp     |= (get_dm1_flt_status(DM1_F4, 521301,  0) == true); //单体温度严重高
 			LED_BatOverTmp     |= (get_dm1_flt_status(DM1_F4, 521335,  3) == true); //REESS热事件报警
-			
+			LED_BatOverTmp      |= VCU_04F02270_d->batt_pack_temp_warning;
 			if((CurrentFltInfo[DM1_F4].FltBuf.RedStopLamp == 1) \
 			|| (CurrentFltInfo[DM1_EF].FltBuf.RedStopLamp == 1) \
 			|| (CurrentFltInfo[DM1_F0].FltBuf.RedStopLamp == 1) \
@@ -1775,6 +1779,10 @@ void LED_Logic(void)
 			{
 				LED_SysFault = 0;
 			}
+			if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+{
+    LED_SysFault |= VCU_04F02270_d->ep_fault_level_warning;
+}
 		}
 		
 		if(LED_LocaLight_OFF_Old != LED_LocationLight) //开机，位置灯未打开

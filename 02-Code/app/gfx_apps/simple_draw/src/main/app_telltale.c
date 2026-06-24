@@ -40,7 +40,8 @@
 #define Y_LOCATION  13
 #define BIG_X       400
 #define BIG_Y       278
-
+#define EPS_X_LOCATION  20
+#define EPS_Y_LOCATION  110
 /*******************************************************************************
  * TYPEDEFS
  */
@@ -109,6 +110,14 @@ static uint8_t ptcRequestDisp = 0;
 static uint8_t acRequestDisp = 0;
 static uint8_t ptcSwitchOld = 0;
 static uint8_t acSwitchOld = 0;
+static uint8_t instrument1RequestDisp = 0;
+static uint8_t instrument2RequestDisp = 0;
+static uint8_t instrument3RequestDisp = 0;
+
+static uint8_t instrument1Old = 0;
+static uint8_t instrument2Old = 0;
+static uint8_t instrument3Old = 0;
+
 
 #define BIG_ICON_NUM  (sizeof(BigIconInfo) / sizeof(BigIcon_t))
 static const BigIcon_t BigIconInfo[] = 
@@ -151,7 +160,9 @@ static const BigIcon_t BigIconInfo[] =
 /*34*/{   "T",    BIG_X - 40,  BIG_Y - 31,  0xffffff00,   5000,  {{(uint8_t *)"驾驶员疲劳",   (uint8_t *)"建议前往服务区休息"}, {(uint8_t *)"Driver fatigue, advised to", (uint8_t *)"Go to the service area to rest"}}}, /*黄色-智驾 A 类报警:驾驶员疲劳，建议前往服务区休息*/
 /*35*/{   NULL,    BIG_X - 79,  BIG_Y,       0xffffff00,   3000,  {{(uint8_t *)"驾驶室取暖已开启", NULL}, {(uint8_t *)"Cab heater ON", NULL}}}, /*黄色-驾驶室取暖开启*/
 /*36*/{   NULL,    BIG_X - 79,  BIG_Y,       0xffffff00,   3000,  {{(uint8_t *)"驾驶室空调已开启", NULL}, {(uint8_t *)"Cab A/C ON", NULL}}}, /*黄色-驾驶室空调开启*/
-
+/*37*/{	  NULL,    BIG_X, 		BIG_Y, 		 0xffff0000,   5000,  {{(uint8_t *)"请尽快离开车辆！", NULL}, {(uint8_t *)"Please leave the vehicle!", NULL}}},
+/*38*/{   NULL,    BIG_X,       BIG_Y,       0xffff0000,   5000,  {{(uint8_t *)"驻车故障，请安全停车检查！", NULL}, {(uint8_t *)"Parking fault, stop safely!", NULL}}},
+/*39*/{ NULL,      BIG_X,       BIG_Y,       0xffff0000,   5000,  {{(uint8_t *)"高压未断开，请驻车下电！", NULL},   {(uint8_t *)"High voltage remains on!", NULL}}},
 	
 };
 
@@ -211,6 +222,41 @@ void Display_TruckArea(void)
 
 		ptcSwitchOld = PTC_SwitchStatus;
 		acSwitchOld = AC_SwitchStatus;
+		VCU_04F02270_t *pVCU_04F02270 = NULL;
+
+pVCU_04F02270 =
+    (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
+
+if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+{
+    if((pVCU_04F02270->instrument_display_1 == 1)
+    && (instrument1Old == 0))
+    {
+        instrument1RequestDisp = 1;
+    }
+
+    if((pVCU_04F02270->instrument_display_2 == 1)
+    && (instrument2Old == 0))
+    {
+        instrument2RequestDisp = 1;
+    }
+
+    if((pVCU_04F02270->instrument_display_3 == 1)
+    && (instrument3Old == 0))
+    {
+        instrument3RequestDisp = 1;
+    }
+
+    instrument1Old = pVCU_04F02270->instrument_display_1;
+    instrument2Old = pVCU_04F02270->instrument_display_2;
+    instrument3Old = pVCU_04F02270->instrument_display_3;
+}
+else
+{
+    instrument1Old = 0;
+    instrument2Old = 0;
+    instrument3Old = 0;
+}
 		
 		BigIconShowReq[ 0] = hazardRequestDisp;  /*黄色-紧急故障 HAZARD*/
 		BigIconShowReq[ 1] = absRequestDisp;  /*黄色-主车 ABS 警告*/
@@ -250,6 +296,9 @@ void Display_TruckArea(void)
 		BigIconShowReq[34] = (aduRequestDisp == 148); /*黄色-智驾 A 类报警:驾驶员疲劳，建议前往服务区休息*/
 		BigIconShowReq[35] = ptcRequestDisp;
 		BigIconShowReq[36] = acRequestDisp;
+		BigIconShowReq[37] = instrument1RequestDisp;
+		BigIconShowReq[38] = instrument2RequestDisp;
+		BigIconShowReq[39] = instrument3RequestDisp;
 		for(uint8_t i = 0; i < BIG_ICON_NUM; i++)
 		{
 			if(PopupWinBigIcon.ShowReq[i] == 1)
@@ -303,11 +352,23 @@ void Display_TruckArea(void)
 								// PopupWinBigIcon.ShowReq[i] = 0;
 								if(i == 35)
 								{
-									ptcRequestDisp = 0;
+   								 ptcRequestDisp = 0;
 								}
 								else if(i == 36)
 								{
-									acRequestDisp = 0;
+   								 acRequestDisp = 0;
+								}
+								else if(i == 37)
+								{
+    								instrument1RequestDisp = 0;
+								}
+								else if(i == 38)
+								{
+    								instrument2RequestDisp = 0;
+								}
+								else if(i == 39)
+								{
+    								instrument3RequestDisp = 0;
 								}
 								Clear_TruckArea();
 								
@@ -1250,10 +1311,11 @@ void Display_Telltale(void)
 	
 	GeneralUse_t *pPROP_18FF5527 = NULL;
 	GeneralUse_t *pBMS_19FF5BF3 = NULL;
+	VCU_04F02270_t *pVCU_04F02270 = NULL;
 	
 	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
 	GU_18F0010B_t  =  (GeneralUse_t*)can_getPCanBuffer(0x18F0010B);
-	
+	pVCU_04F02270 = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
 	
 	start_draw();
 	
@@ -1732,7 +1794,7 @@ void Display_Telltale(void)
 		}
 		else ;
 	}
-	
+
 	//ECAS失效、ECAS警告灯、高度控制指示、举升桥提升状态指示、驱动辅助状态指示
 	if(0xFF == Zijian)
 	{
@@ -1912,6 +1974,10 @@ void Display_Telltale(void)
 			{
 				// 锂电相关
 				pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
+				if((can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
+				{
+					loc_Render_FHP_LowBatt(535, Y_LOCATION, YELLOW, "#");
+				}
 				if(pBMS_19FF5BF3->byte1.bit1234 == 7) //电池加热中
 				{
 					loc_Render_FHP_LowBatt(535, Y_LOCATION, YELLOW, "#");
@@ -1950,6 +2016,10 @@ void Display_Telltale(void)
 			{
 				// 锂电相关
 				pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
+				if((can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
+				{
+					loc_Render_FHP_LowBatt(535, Y_LOCATION, YELLOW, "#");
+				}
 				if(pBMS_19FF5BF3->byte1.bit1234 == 7) //电池加热中
 				{
 					loc_Render_FHP_LowBatt(535, Y_LOCATION, YELLOW, "#");
@@ -2477,7 +2547,17 @@ void Display_Telltale(void)
 			}
 		}
 	}
-	
+	if((0xFF == Zijian)
+    && (can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+    && (pVCU_04F02270->eps_fault == 1))
+    {
+        loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);
+		loc_RenderImg(EPS_X_LOCATION, EPS_Y_LOCATION, &Img_EPS);
+    }
+    else
+    {
+        loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);
+    }
 	end_draw();
 	
 }

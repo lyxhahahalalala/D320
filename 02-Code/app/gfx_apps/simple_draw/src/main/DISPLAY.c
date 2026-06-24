@@ -1953,6 +1953,10 @@ void Update_Gear(void)
 			{
 				loc_Render_FHP(395,434,GREEN,"R");//N
 			}
+			else if(0xfeu == gear)
+{
+    loc_Render_FHP(395,434,GREEN,"T");//D
+}
 			else if((gear > 0) && (gear < 100))
 			{
 				loc_Render_FHP(395,434,GREEN,"T");//D
@@ -1962,7 +1966,7 @@ void Update_Gear(void)
 				}
 				else
 				{
-					if(eol_atmtype != 33U && eol_atmtype != 34U)
+					if((eol_atmtype != 33U && eol_atmtype != 34U)|| (can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED))
 					{
 						if(gear < 10)
 						{
@@ -1977,6 +1981,9 @@ void Update_Gear(void)
 				}
 			}
 			else if(100 == gear)
+				
+			
+			
 			{
 				loc_Render_FHP(395,434,YELLOW,"S");//R
 				if(peristalsis_mode == 1)

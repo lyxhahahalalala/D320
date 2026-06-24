@@ -177,6 +177,7 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	uint32_t u32_buffer;
 	
 	VCU_04F02370_t *pVCU_04F02370 = NULL;
+	VCU_04F02270_t *pVCU_04F02270 = NULL;
 	BMS_0CFFEAF4_t *pBMS_0CFFEAF4 = NULL;
 	GeneralUse_t   *pBMS_18FFEEF4 = NULL;
 	GeneralUse_t   *pBMS_18FFF2F4 = NULL;
@@ -192,7 +193,7 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	bHCU_18FFF731 = (GeneralUse_t*)can_getBCanBuffer(0x18FFF731);
 	pBMS_19FF5CF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5CF3);
 	pVCU_04F02370 = (VCU_04F02370_t*)can_getPCanBuffer(0x04F02370);
-	
+	pVCU_04F02270 = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
 	
 	//低压锂电SOC
 	if(can_getPCanRxState(0x19FF5CF3) == CAN_FRAME_ST_RECVED)
@@ -404,7 +405,14 @@ else
 		DataCenter.avg_power_consp = 0xffffu; //无效值
 		DataCenter.total_power_consp = 0xffffffffu; //无效值
 	}
-	
+	if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+{
+    DataCenter.aux_bat_volt =
+        (uint16_t)pVCU_04F02270->lv_batt_voltage * 2;
+
+    DataCenter.driving_range =
+        pVCU_04F02270->remaining_driving_range;
+}
 	//上装续航里程  km
 	if(can_getBCanRxState(0x18FFF931) == CAN_FRAME_ST_RECVED)
 	{
@@ -443,7 +451,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	VCU_18FFF531_t *pHCU_18FFF531  = NULL; //(VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
 	GeneralUse_t   *bATS_0C3DD7A7  = NULL; //(GeneralUse_t*)can_getBCanBuffer(0x0C3DD7A7);
 	GeneralUse_t   *pPROP_18FF5527 = (GeneralUse_t*)can_getPCanBuffer(0x18FF5527);
-	
+	VCU_04F02270_t *pVCU_04F02270 = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
 	//电机冷却温度指示
 	if(can_getBCanRxState(0x0C3DD7A7) == CAN_FRAME_ST_RECVED)
 	{
@@ -636,6 +644,40 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 		
 		DataCenter.gear_mode = 0xffu; //无效
 	}
+	if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+{
+    switch(pVCU_04F02270->current_gear)
+    {
+        case 0:
+            DataCenter.gear = 0;       //N挡
+            break;
+
+        case 1:
+            DataCenter.gear = 100;     //R挡
+            break;
+
+        case 2:
+            DataCenter.gear = 0xfeu;   //D挡，不带数字
+            break;
+
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            DataCenter.gear =
+                pVCU_04F02270->current_gear - 2; //D1~D7
+            break;
+
+        default:
+            DataCenter.gear = 0xffu;   //无效
+            break;
+    }
+
+    DataCenter.gear_mode = 0xffu;       //无M/A模式
+}
 	if(can_getPCanRxState(0x04F02370) == CAN_FRAME_ST_RECVED)//lyx
 {
     VCU_04F02370_t *pVCU_04F02370 = NULL;
