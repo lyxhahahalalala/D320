@@ -44,6 +44,7 @@ int32_t get_batt_pack_inspower(void);    //电池瞬时功率  比例 0.1Kw
 uint8_t get_batt_pack_soh(void);         //电池组SOH
 int16_t get_batt_pack_avg_tmp(void);     //电池平均温度
 uint8_t get_charge_status(void);         //当前充电状态
+uint8_t get_charging_indication(void);   //充电指示原始值
 uint16_t get_remain_chg_time(void);      //剩余充电时间
 uint16_t get_low_batt_soc(void);         //低压锂电SOC
 

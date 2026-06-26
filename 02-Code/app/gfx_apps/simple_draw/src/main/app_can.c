@@ -77,8 +77,19 @@ static uint8_t uds_can = 0;
 static uint8_t single_dm1_tmo_flg[DM1_OWNER_NUM]  = {0};
 static uint8_t mupti_dm1_tmo_flg[DM1_OWNER_NUM] = {0};
 
+static uint8_t l_chargeLine_04F02370Valid = 0;
+static uint8_t l_chargeLine_04F02370 = 0;
+static uint8_t l_chargeLine_0CFFEAF4Valid = 0;
+static uint8_t l_chargeLine_0CFFEAF4 = 0;
+
 BCM_18FFE633_t Wheels[4][4];
 uint8_t  wheelupdatedtimer[4][4];
+
+static void loc_UpdateCanChargeLine(void)
+{
+	CAN_CHARGE_LINE = ((l_chargeLine_04F02370Valid && l_chargeLine_04F02370)
+					|| (l_chargeLine_0CFFEAF4Valid && l_chargeLine_0CFFEAF4));
+}
 uint32_t wheelupdated = 0;
 uint8_t  backvalue;
 uint8_t  study=0;
@@ -1008,7 +1019,9 @@ void can_rxRoutine(void)
 			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x0CFFEAF4)
 			{
-				CAN_CHARGE_LINE = 0;
+				l_chargeLine_0CFFEAF4Valid = 0;
+				l_chargeLine_0CFFEAF4 = 0;
+				loc_UpdateCanChargeLine();
 				BMS_SAFETY_LINE_SG = 0;
 			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FFA6F5)
@@ -1022,7 +1035,9 @@ void can_rxRoutine(void)
 			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x04F02370)//lyx
 			{
-    			CAN_CHARGE_LINE = 0;
+    			l_chargeLine_04F02370Valid = 0;
+    			l_chargeLine_04F02370 = 0;
+    			loc_UpdateCanChargeLine();
 			}
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x04F02E70)//lyx
 			{
@@ -1712,7 +1727,9 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
     		VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
     		break;
 		case 0x04F02370://lyx
-			CAN_CHARGE_LINE = ((buf[1]&0x03) != 0);
+			l_chargeLine_04F02370Valid = 1;
+			l_chargeLine_04F02370 = ((buf[1]&0x03) != 0);
+			loc_UpdateCanChargeLine();
 			break;
 		case 0x04F02E70://lyx
 			PTC_SwitchStatus = ((buf[0]&0x01) == 0x01);
@@ -1720,7 +1737,9 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 			break;
 		case 0x0CFFEAF4:
 			temp = (buf[0]&0x60);
-			CAN_CHARGE_LINE = (temp == 0x40);
+			l_chargeLine_0CFFEAF4Valid = 1;
+			l_chargeLine_0CFFEAF4 = (temp == 0x40);
+			loc_UpdateCanChargeLine();
 			BMS_SAFETY_LINE_SG = ((buf[0]&0x10) == 0);
 			break;
 		case 0x18FFA6F5:

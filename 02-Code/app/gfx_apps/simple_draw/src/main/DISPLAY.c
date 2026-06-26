@@ -356,23 +356,23 @@ void mainFrame(void)
 			zk_init(loc_Drw2dDev, &GUI_Fontwryh31, VM_COLOR_GRAY, 0);
 			
 			zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"续航里程"));
-			zk_printZH(224, 142, zk_oem2uniStr((uint8_t *)"km"));
+			zk_printZH(284, 142, zk_oem2uniStr((uint8_t *)"km"));
 			
 			zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"剩余功率"));
-			zk_printZH(224, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
+			zk_printZH(284, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 			
 			if(0x2d == eol_fadongjiorkaji)
 			{
-				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"小计氢耗"));
+				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"小计氢耗"));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kg"));
 			}
 			else
 			{
-				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"小计电耗"));
+				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"小计电耗"));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"电机功率"));
+			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"电机功率"));
 			zk_printZH(740, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 			
 		}
@@ -381,23 +381,23 @@ void mainFrame(void)
 			zk_init(loc_Drw2dDev, &GUI_Fontwryh24, VM_COLOR_GRAY, 0);
 			
 			zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"Driving Range"));
-			zk_printZH(224, 142, zk_oem2uniStr((uint8_t *)"km"));
+			zk_printZH(284, 142, zk_oem2uniStr((uint8_t *)"km"));
 			
 			zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"Residual Power"));
-			zk_printZH(224, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
+			zk_printZH(284, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 			
 			if(0x2d == eol_fadongjiorkaji)
 			{
-				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"Subtot H2 Cons."));
+				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"Subtot H2 Cons."));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kg"));
 			}
 			else
 			{
-				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"Subtot PWR Cons."));
+				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"Subtot PWR Cons."));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"Motor Power"));
+			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"Motor Power"));
 			zk_printZH(740, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 		}
 	}
@@ -423,10 +423,10 @@ void mainFrame(void)
 				zk_printZH(268, 142+30, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"高压电池电压"));
+			zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"高压电池电压"));
 			zk_printZH(760, 142, zk_oem2uniStr((uint8_t *)"V"));
 			
-			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"低压电池电压"));
+			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"低压电池电压"));
 			zk_printZH(760, 142+30, zk_oem2uniStr((uint8_t *)"V"));
 			
 			// zk_printZH(520, 142-30, zk_oem2uniStr((uint8_t *)"电池平均温度"));
@@ -454,10 +454,10 @@ void mainFrame(void)
 				zk_printZH(268, 142+30, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"Power Batt.Volt."));
+			zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"Power Batt.Volt."));
 			zk_printZH(760, 142, zk_oem2uniStr((uint8_t *)"V"));
 			
-			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"Auxil.Batt.Volt."));
+			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"Auxil.Batt.Volt."));
 			zk_printZH(760, 142+30, zk_oem2uniStr((uint8_t *)"V"));
 			
 			// zk_printZH(520, 142-30, zk_oem2uniStr((uint8_t *)"Avg Batt.Temp"));
@@ -474,20 +474,20 @@ void mainFrame(void)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"驱动电控温度"));
-        zk_printZH(224, 142,
+        zk_printZH(304, 142,
                    zk_oem2uniStr((uint8_t *)"℃"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"驱动电机温度"));
-        zk_printZH(224, 142 + 30,
+        zk_printZH(304, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"℃"));
 
-        zk_printZH(520, 142,
+        zk_printZH(460, 142,
                    zk_oem2uniStr((uint8_t *)"动力单元转速"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142 + 30,
+        zk_printZH(460, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"料带电机转速"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
@@ -499,20 +499,20 @@ void mainFrame(void)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"Drive MCU Temp."));
-        zk_printZH(224, 142,
+        zk_printZH(304, 142,
                    zk_oem2uniStr((uint8_t *)"C"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Drive MOT Temp."));
-        zk_printZH(224, 142 + 30,
+        zk_printZH(304, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"C"));
 
-        zk_printZH(520, 142,
+        zk_printZH(460, 142,
                    zk_oem2uniStr((uint8_t *)"Power MOT Speed"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142 + 30,
+        zk_printZH(460, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Tape MOT Speed"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
@@ -527,20 +527,20 @@ else if(PAGE == 3)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"驱动电机转速"));
-        zk_printZH(224, 142,
+        zk_printZH(304, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"转向电机转速"));
-        zk_printZH(224, 142 + 30,
+        zk_printZH(304, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142,
+        zk_printZH(460, 142,
                    zk_oem2uniStr((uint8_t *)"制动电机转速"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142 + 30,
+        zk_printZH(460, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"制动气压1"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"MPa"));
@@ -552,20 +552,20 @@ else if(PAGE == 3)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"Drive MOT Speed"));
-        zk_printZH(224, 142,
+        zk_printZH(304, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"EPS MOT Speed"));
-        zk_printZH(224, 142 + 30,
+        zk_printZH(304, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142,
+        zk_printZH(460, 142,
                    zk_oem2uniStr((uint8_t *)"ACM MOT Speed"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142 + 30,
+        zk_printZH(460, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Brake Pressure1"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"MPa"));
@@ -580,20 +580,20 @@ else if(PAGE == 4)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"混料电机转速"));
-        zk_printZH(224, 142,
+        zk_printZH(304, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"吸料头电机转速"));
-        zk_printZH(224, 142 + 30,
+        zk_printZH(304, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142,
+        zk_printZH(460, 142,
                    zk_oem2uniStr((uint8_t *)"前输送带转速"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142 + 30,
+        zk_printZH(460, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"制动气压2"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"MPa"));
@@ -605,20 +605,20 @@ else if(PAGE == 4)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"Mixer MOT Speed"));
-        zk_printZH(224, 142,
+        zk_printZH(304, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Suction MOT Speed"));
-        zk_printZH(224, 142 + 30,
+        zk_printZH(304, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142,
+        zk_printZH(460, 142,
                    zk_oem2uniStr((uint8_t *)"Conveyor MOT Speed"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(520, 142 + 30,
+        zk_printZH(460, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Brake Pressure2"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"MPa"));
@@ -872,15 +872,15 @@ void Update_power_vol_current(void)
 			speedlimit = (Vspeed < 5);
 			
 			start_draw();
-			loc_ClearRect(220 - 56, 142, 56, 32);
+			loc_ClearRect(280 - 80, 142, 80, 32);
 			if(extendmiles == 0xffffu)
 			{
 				zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-				zk_printZH(222-22, 142, uniStr);
+				zk_printZH(280-22, 142, uniStr);
 			}
 			else
 			{
-				zk_printNum(220, 142, extendmiles, 0, ZK_ALIGN_RIGHT);
+				zk_printNum(280, 142, extendmiles, 0, ZK_ALIGN_RIGHT);
 			}
 			end_draw();
 			
@@ -935,15 +935,15 @@ void Update_power_vol_current(void)
 			leftpower_old = leftpower;
 			
 			start_draw();
-			loc_ClearRect(220 - 56, 142+30, 56, 32);
+			loc_ClearRect(280 - 80, 142+30, 80, 32);
 			if(leftpower == 0xffffu)
 			{
 				zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-				zk_printZH(220-22, 142+30, uniStr);
+				zk_printZH(280-22, 142+30, uniStr);
 			}
 			else
 			{
-				zk_printNum(220, 142+30,leftpower, 0, ZK_ALIGN_RIGHT);
+				zk_printNum(280, 142+30,leftpower, 0, ZK_ALIGN_RIGHT);
 			}
 			end_draw();
 			
@@ -1243,26 +1243,26 @@ void Update_DriveTemperature(void)
     {
         start_draw();
 
-        loc_ClearRect(160, 142, 60, 32);
-        loc_ClearRect(160, 142 + 30, 60, 32);
+        loc_ClearRect(220, 142, 60, 32);
+        loc_ClearRect(220, 142 + 30, 60, 32);
 
         zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
                 VM_COLOR_WHITE, 0);
 
         if(state == CAN_FRAME_ST_RECVED)
         {
-            zk_printNum(220, 142,
+            zk_printNum(300, 142,
                         drive_mcu_temp, 0, ZK_ALIGN_RIGHT);
 
-            zk_printNum(220, 142 + 30,
+            zk_printNum(300, 142 + 30,
                         drive_mot_temp, 0, ZK_ALIGN_RIGHT);
         }
         else
         {
-            zk_printZH(198, 142,
+            zk_printZH(300, 142,
                        zk_oem2uniStr((uint8_t *)"--"));
 
-            zk_printZH(198, 142 + 30,
+            zk_printZH(300, 142 + 30,
                        zk_oem2uniStr((uint8_t *)"--"));
         }
 
@@ -1334,10 +1334,10 @@ void Update_MotorSpeedInfo(void)
 
         value[3] = pVCU_04F02A70->brk_air_pressure1;
 
-        value_x[0] = 220;
+        value_x[0] = 300;
         value_y[0] = 142;
 
-        value_x[1] = 220;
+        value_x[1] = 300;
         value_y[1] = 142 + 30;
 
         value_x[2] = 736;
@@ -1366,10 +1366,10 @@ void Update_MotorSpeedInfo(void)
 
         value[3] = pVCU_04F02B70->brk_air_pressure2;
 
-        value_x[0] = 220;
+        value_x[0] = 300;
         value_y[0] = 142;
 
-        value_x[1] = 220;
+        value_x[1] = 300;
         value_y[1] = 142 + 30;
 
         value_x[2] = 736;
@@ -1408,77 +1408,77 @@ void Update_MotorSpeedInfo(void)
 
         for(uint8_t i = 0; i < item_num; i++)
         {
-            if(value_x[i] == 220)
-{
-    loc_ClearRect(14, value_y[i], 206, 32);
-}
-else
-{
-    loc_ClearRect(520, value_y[i], 216, 32);
-}
+            if(value_x[i] == 300)
+			{
+				loc_ClearRect(14, value_y[i], 286, 32);
+			}
+			else
+			{
+				loc_ClearRect(460, value_y[i], 276, 32);
+			}
 
-zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
-        VM_COLOR_GRAY, 0);
+			zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
+					VM_COLOR_GRAY, 0);
 
-if(PAGE == 2)
-{
-    if(i == 0)
-    {
-        zk_printZH(520, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"动力单元转速"));
-    }
-    else
-    {
-        zk_printZH(520, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"料带电机转速"));
-    }
-}
-else if(PAGE == 3)
-{
-    if(i == 0)
-    {
-        zk_printZH(14, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"驱动电机转速"));
-    }
-    else if(i == 1)
-    {
-        zk_printZH(14, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"转向电机转速"));
-    }
-    else if(i == 2)
-    {
-        zk_printZH(520, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"制动电机转速"));
-    }
-    else
-    {
-        zk_printZH(520, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"制动气压1"));
-    }
-}
-else
-{
-    if(i == 0)
-    {
-        zk_printZH(14, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"混料电机转速"));
-    }
-    else if(i == 1)
-    {
-        zk_printZH(14, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"吸料头电机转速"));
-    }
-    else if(i == 2)
-    {
-        zk_printZH(520, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"前输送带转速"));
-    }
-    else
-    {
-        zk_printZH(520, value_y[i],
-                   zk_oem2uniStr((uint8_t *)"制动气压2"));
-    }
-}
+			if(PAGE == 2)
+			{
+				if(i == 0)
+				{
+					zk_printZH(460, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"动力单元转速"));
+				}
+				else
+				{
+					zk_printZH(460, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"料带电机转速"));
+				}
+			}
+			else if(PAGE == 3)
+			{
+				if(i == 0)
+				{
+					zk_printZH(14, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"驱动电机转速"));
+				}
+				else if(i == 1)
+				{
+					zk_printZH(14, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"转向电机转速"));
+				}
+				else if(i == 2)
+				{
+					zk_printZH(460, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"制动电机转速"));
+				}
+				else
+				{
+					zk_printZH(460, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"制动气压1"));
+				}
+			}
+			else
+			{
+				if(i == 0)
+				{
+					zk_printZH(14, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"混料电机转速"));
+				}
+				else if(i == 1)
+				{
+					zk_printZH(14, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"吸料头电机转速"));
+				}
+				else if(i == 2)
+				{
+					zk_printZH(460, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"前输送带转速"));
+				}
+				else
+				{
+					zk_printZH(460, value_y[i],
+							   zk_oem2uniStr((uint8_t *)"制动气压2"));
+				}
+			}
 
             zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
                     VM_COLOR_WHITE, 0);
@@ -1518,12 +1518,7 @@ void Update_Soc(void)
 	uint8_t  soc_status;
 	
     static uint8_t  old_charge_status = 5;
-	uint8_t  charge_status;
-	
-    static uint16_t old_Remain_time;
-	uint16_t Remain_time;
-	uint8_t  Remain_hour;
-	uint8_t  Remain_min;
+	uint8_t  charging_indication;
 	
 	const Img_t * const ImgSocBar[] = {
 		&Img_socBar,
@@ -1579,110 +1574,68 @@ void Update_Soc(void)
 	
 	if(CAN_CHARGE_LINE)
 	{
-		charge_status = get_charge_status();
-		Remain_time = get_remain_chg_time();
-		if(mainview_update || (old_charge_status != charge_status) || (old_Remain_time != Remain_time))
+		charging_indication = get_charging_indication();
+		if(mainview_update || (old_charge_status != charging_indication))
 		{
-			old_charge_status = charge_status;
-			old_Remain_time = Remain_time;
+			old_charge_status = charging_indication;
 			
 			start_draw();
+			loc_ClearRect(70, 230, 50, 45);
+			loc_ClearRect(0, 350, 260, 45);
+			loc_RenderImg(82, 235, &Img_ChargeConnected);
 			
-			loc_ClearRect(0, 350, 185, 22);
-			
-			if(charge_status == ParkingCharge)
+			if(charging_indication == 0)
 			{
-				if(Remain_time != 0xffff)
-				{
-					Remain_hour = Remain_time / 60;
-					Remain_min = Remain_time % 60;
-					
-					if(eol_language == 0)
-					{
-						zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_GRAY, 0);
-						zk_printZH( 10, 350, zk_oem2uniStr((uint8_t *)"剩余充电时间")); 
-						zk_printZH(132, 350, zk_oem2uniStr((uint8_t *)"时"));
-						zk_printZH(165, 350, zk_oem2uniStr((uint8_t *)"分"));
-						
-						loc_ClearRect(132 - 25, 350, 25, 22);
-						loc_ClearRect(165 - 18, 350, 19, 22);
-						
-						zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_WHITE, 0);
-						zk_printPosNum(132, 350,Remain_hour, 0, ZK_ALIGN_RIGHT);
-						zk_printPosNum(165, 350,Remain_min, 0, ZK_ALIGN_RIGHT);
-						
-					}
-					else
-					{
-						zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_GRAY, 0);
-						zk_printZH(10, 350, zk_oem2uniStr((uint8_t *)"Remaining")); 
-						zk_printZH(132 - 11, 350, zk_oem2uniStr((uint8_t *)"h"));
-						zk_printZH(165 - 13, 350, zk_oem2uniStr((uint8_t *)"min"));
-						
-						loc_ClearRect(132 - 11 - 25, 350, 25, 22);
-						loc_ClearRect(165 - 13 - 18, 350, 19, 22);
-						
-						zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_WHITE, 0);
-						zk_printPosNum(132 - 11, 350,Remain_hour, 0, ZK_ALIGN_RIGHT);
-						zk_printPosNum(165 - 13, 350,Remain_min, 0, ZK_ALIGN_RIGHT);
-						
-					}
-				}
-			}
-			else if(charge_status == NotCharged)
-			{
+				zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_WHITE, 0);
 				if(eol_language == 0)
-				{
-					zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_WHITE, 0);
 					zk_oem2uni((uint8_t *)"未充电", uniStr, sizeof(uniStr));
-					zk_printZH(10, 350, uniStr); 
-					
-				}
 				else
-				{
-					zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_WHITE, 0);
 					zk_oem2uni((uint8_t *)"Not charging", uniStr, sizeof(uniStr));
-					zk_printZH(10, 350, uniStr); 
-					
-				}
+				zk_printZH(10, 350, uniStr);
 			}
-			else if(charge_status == ChargingOK)
+			else if(charging_indication == 1)
 			{
+				zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_GREEN, 0);
 				if(eol_language == 0)
-				{
-					zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_GREEN, 0);
+					zk_oem2uni((uint8_t *)"充电", uniStr, sizeof(uniStr));
+				else
+					zk_oem2uni((uint8_t *)"Charging", uniStr, sizeof(uniStr));
+				zk_printZH(10, 350, uniStr);
+			}
+			else if(charging_indication == 2)
+			{
+				zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_GREEN, 0);
+				if(eol_language == 0)
 					zk_oem2uni((uint8_t *)"充电完成", uniStr, sizeof(uniStr));
-					zk_printZH(10, 350, uniStr); 
-					
-				}
 				else
-				{
-					zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_GREEN, 0);
-					zk_oem2uni((uint8_t *)"charge complete", uniStr, sizeof(uniStr));
-					zk_printZH(10, 350, uniStr); 
-					
-				}
+					zk_oem2uni((uint8_t *)"Charge Finished", uniStr, sizeof(uniStr));
+				zk_printZH(10, 350, uniStr);
 			}
-			else if(charge_status == ChargingAnomaly)
+			else if(charging_indication == 3)
 			{
+				zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_RED, 0);
 				if(eol_language == 0)
-				{
-					zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_RED, 0);
 					zk_oem2uni((uint8_t *)"充电异常", uniStr, sizeof(uniStr));
-					zk_printZH(10, 350, uniStr); 
-					
-				}
 				else
-				{
-					zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_RED, 0);
-					zk_oem2uni((uint8_t *)"Abnormal charge", uniStr, sizeof(uniStr));
-					zk_printZH(10, 350, uniStr); 
-					
-				}
+					zk_oem2uni((uint8_t *)"Charge error", uniStr, sizeof(uniStr));
+				zk_printZH(10, 350, uniStr);
 			}
-			else ;
+			else
+			{
+				zk_init(loc_Drw2dDev, &GUI_Fontwryh22, VM_COLOR_WHITE, 0);
+				zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
+				zk_printZH(10, 350, uniStr);
+			}
 			end_draw();
 		}
+	}
+	else if(mainview_update || (old_charge_status != 0xff))
+	{
+		old_charge_status = 0xff;
+		start_draw();
+		loc_ClearRect(70, 230, 50, 45);
+		loc_ClearRect(0, 350, 260, 45);
+		end_draw();
 	}
     if(Test_Mode == 5)
 	{
@@ -3529,6 +3482,11 @@ void ControllerFaultFrameUpdate(unsigned char index)
         0xffff, 0xffff, 0xffff,
         0xffff, 0xffff, 0xffff
     };
+	static uint8_t text_index_old[6] =
+	{
+		0xff, 0xff, 0xff,
+		0xff, 0xff, 0xff
+	};
     static uint8_t fault_total_old = 0xff;
 
     uint8_t uniStr[100];
@@ -3582,18 +3540,39 @@ void ControllerFaultFrameUpdate(unsigned char index)
         all_value[23] = pVCU_04F02670->sprinkle_tape_mcu_sys_fault_level;
     }
 
-    for(uint8_t i = 0; i < 24; i++)
-    {
-        if(all_value[i] != 0)
-            fault_total++;
-    }
+    uint8_t fault_text_index[24] = {0};
+	uint16_t fault_value[24] = {0};
+	uint8_t display_text_index[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 
-    text_start = (index - 1) * 6;
+	fault_total = 0;
 
-    for(uint8_t i = 0; i < 6; i++)
-    {
-        value[i] = all_value[text_start + i];
-    }
+	for(uint8_t i = 0; i < 24; i++)
+	{
+		if(all_value[i] != 0)
+		{
+			fault_text_index[fault_total] = i;
+			fault_value[fault_total] = all_value[i];
+			fault_total++;
+		}
+	}
+
+	text_start = (index - 1) * 6;
+
+	for(uint8_t i = 0; i < 6; i++)
+	{
+		uint8_t list_index = text_start + i;
+
+		if(list_index < fault_total)
+		{
+			display_text_index[i] = fault_text_index[list_index];
+			value[i] = fault_value[list_index];
+		}
+		else
+		{
+			display_text_index[i] = 0xff;
+			value[i] = 0;
+		}
+	}
 
     if(ControllerFaultUpdate || fault_total_old != fault_total)
     {
@@ -3602,13 +3581,14 @@ void ControllerFaultFrameUpdate(unsigned char index)
     else
     {
         for(uint8_t i = 0; i < 6; i++)
-        {
-            if(value_old[i] != value[i])
-            {
-                update = 1;
-                break;
-            }
-        }
+		{
+			if((value_old[i] != value[i])
+			|| (text_index_old[i] != display_text_index[i]))
+			{
+				update = 1;
+				break;
+			}
+		}
     }
 
     start_draw();
@@ -3619,25 +3599,23 @@ void ControllerFaultFrameUpdate(unsigned char index)
         loc_ClearRect(220, 438, 80, 31);
 
         for(uint8_t i = 0; i < 6; i++)
-        {
-            if(value[i] != 0)
-            {
-                zk_init(loc_Drw2dDev,
-                        (GUI_FONT*)&GUI_Fontwryh31,
-                        VM_COLOR_RED, 0);
+		{
+			if(display_text_index[i] != 0xff)
+			{
+				zk_init(loc_Drw2dDev,
+						(GUI_FONT*)&GUI_Fontwryh31,
+						VM_COLOR_RED, 0);
 
-                zk_oem2uni(
-                    ControllerFaultText[text_start + i][eol_language],
-                    uniStr, sizeof(uniStr));
+				zk_oem2uni(
+					ControllerFaultText[display_text_index[i]][eol_language],
+					uniStr, sizeof(uniStr));
 
-                zk_printZH(80, 155 + 40 * fault_num, uniStr);
+				zk_printZH(80, 155 + 40 * i, uniStr);
 
-                zk_printNum(720, 155 + 40 * fault_num,
-                            value[i], 0, ZK_ALIGN_RIGHT);
-
-                fault_num++;
-            }
-        }
+				zk_printNum(720, 155 + 40 * i,
+							value[i], 0, ZK_ALIGN_RIGHT);
+			}
+		}
 
         zk_init(loc_Drw2dDev,
                 (GUI_FONT*)&GUI_Fontwryh31,
@@ -3650,9 +3628,10 @@ void ControllerFaultFrameUpdate(unsigned char index)
 					
 
         for(uint8_t i = 0; i < 6; i++)
-        {
-            value_old[i] = value[i];
-        }
+		{
+			value_old[i] = value[i];
+			text_index_old[i] = display_text_index[i];
+		}
 
         fault_total_old = fault_total;
         ControllerFaultUpdate = 0;
@@ -10572,7 +10551,6 @@ void update_charge(void)
 void LCD_Charge(void)
 {
 	uint8_t uniStr[64];
-	
 	if(CAN_CHARGE_LINE)
 	{
 		ChuiSaoViewEnable = 0;

@@ -91,6 +91,7 @@ typedef struct
 	uint8_t  batt_pack_soh;     //电池组SOH
 	int16_t  batt_pack_avg_tmp; //电池平均温度
 	uint8_t  charge_status;     //当前充电状态
+	uint8_t  charging_indication;    //充电指示原始值 0~3
 	uint16_t remain_chg_time;   //剩余充电时间
 	
 	uint16_t low_batt_soc;      //低压锂电SOC
@@ -347,8 +348,7 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	//DataCenter.charge_status = pBMS_18FFF2F4->byte1.byte;
 	if(can_getPCanRxState(0x04F02370) == CAN_FRAME_ST_RECVED)
 {
-    CAN_CHARGE_LINE = (pVCU_04F02370->chg_line_sts != 0);
-
+	DataCenter.charging_indication = pVCU_04F02370->charging_indication;
     if(pVCU_04F02370->charging_indication == 1)
         DataCenter.charge_status = ParkingCharge;
     else if(pVCU_04F02370->charging_indication == 2)
@@ -357,11 +357,12 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
         DataCenter.charge_status = ChargingAnomaly;
     else
         DataCenter.charge_status = NotCharged;
-}
-else
-{
-    DataCenter.charge_status = pBMS_18FFF2F4->byte1.byte;
-}
+	}
+	else
+	{
+		DataCenter.charging_indication = 0xff;
+		DataCenter.charge_status = pBMS_18FFF2F4->byte1.byte;
+	}
 	
 	
 	//剩余充电时间，小计电耗
@@ -406,13 +407,13 @@ else
 		DataCenter.total_power_consp = 0xffffffffu; //无效值
 	}
 	if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
-{
-    DataCenter.aux_bat_volt =
-        (uint16_t)pVCU_04F02270->lv_batt_voltage * 2;
+	{
+		DataCenter.aux_bat_volt =
+			(uint16_t)pVCU_04F02270->lv_batt_voltage * 2;
 
-    DataCenter.driving_range =
-        pVCU_04F02270->remaining_driving_range;
-}
+		DataCenter.driving_range =
+			pVCU_04F02270->remaining_driving_range;
+	}
 	//上装续航里程  km
 	if(can_getBCanRxState(0x18FFF931) == CAN_FRAME_ST_RECVED)
 	{
@@ -912,7 +913,10 @@ uint16_t get_low_batt_soc(void)         //低压锂电SOC
 {
 	return DataCenter.low_batt_soc;
 }
-
+uint8_t get_charging_indication(void)	//充电指示状态
+{
+    return DataCenter.charging_indication;
+}
 
 int16_t get_mot_cooling_temp(void)      //电机冷却温度 ℃
 {

@@ -1372,9 +1372,9 @@ void LED_Logic(void)
 		else
 			LED_SysFault = 0;
 		if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
-{
-    LED_SysFault |= VCU_04F02270_d->ep_fault_level_warning;
-}
+		{
+			LED_SysFault |= VCU_04F02270_d->ep_fault_level_warning;
+		}
 		//取力指示  //(BCMI_18FF2732->byte4.bit34 == 1)
 		ret = ((VCU_18FDA403_d->byte1.bit78 == 1)&&(VCU_18FDA403_d->byte5.bit78 != 1)); //取力开关=1，取力控制≠1，取力指示闪烁，1Hz。
 		Set_Interval_Req(ret, F_PTO);
@@ -1780,9 +1780,9 @@ void LED_Logic(void)
 				LED_SysFault = 0;
 			}
 			if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
-{
-    LED_SysFault |= VCU_04F02270_d->ep_fault_level_warning;
-}
+			{
+				LED_SysFault |= VCU_04F02270_d->ep_fault_level_warning;
+			}
 		}
 		
 		if(LED_LocaLight_OFF_Old != LED_LocationLight) //开机，位置灯未打开

@@ -24,6 +24,7 @@ gfx_apps\simple_draw\src\image\Img_motor.c
 gfx_apps\simple_draw\src\image\Img_soc.c
 gfx_apps\simple_draw\src\image\Img_box.c
 gfx_apps\simple_draw\src\image\Img_charge.c
+gfx_apps\simple_draw\src\image\Img_ChargeConnected.c
 gfx_apps\simple_draw\src\image\Img_spdn.c
 gfx_apps\simple_draw\src\image\Img_truck.c
 gfx_apps\simple_draw\src\image\Img_up_down.c

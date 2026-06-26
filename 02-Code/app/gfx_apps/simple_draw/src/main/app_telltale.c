@@ -40,8 +40,8 @@
 #define Y_LOCATION  13
 #define BIG_X       400
 #define BIG_Y       278
-#define EPS_X_LOCATION  20
-#define EPS_Y_LOCATION  110
+#define EPS_X_LOCATION  286
+#define EPS_Y_LOCATION  105
 /*******************************************************************************
  * TYPEDEFS
  */
@@ -296,9 +296,9 @@ else
 		BigIconShowReq[34] = (aduRequestDisp == 148); /*黄色-智驾 A 类报警:驾驶员疲劳，建议前往服务区休息*/
 		BigIconShowReq[35] = ptcRequestDisp;
 		BigIconShowReq[36] = acRequestDisp;
-		BigIconShowReq[37] = instrument1RequestDisp;
-		BigIconShowReq[38] = instrument2RequestDisp;
-		BigIconShowReq[39] = instrument3RequestDisp;
+		BigIconShowReq[37] = 0;
+		BigIconShowReq[38] = 0;
+		BigIconShowReq[39] = 0;
 		for(uint8_t i = 0; i < BIG_ICON_NUM; i++)
 		{
 			if(PopupWinBigIcon.ShowReq[i] == 1)
@@ -2284,7 +2284,16 @@ void Display_Telltale(void)
 			loc_RenderImg(190, 105, &Img_RearLamp);
 		else
 			LCD_DrawRect(190, 105, 40, 38, TOUMING);
-		
+		if((can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+		&& (pVCU_04F02270->eps_fault == 1))
+		{
+			loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);
+			loc_RenderImg(EPS_X_LOCATION, EPS_Y_LOCATION, &Img_EPS);
+		}
+		else
+		{
+			loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);
+		}
 		// loc_Render_FHP(10, 105, YELLOW,"x"); //PTO上装指示灯
 		// loc_Render_FHP(56, 105, YELLOW,"z"); //转向锁止
 		// loc_Render_FHP(92, 105, RED,"~");    //变速箱故障
@@ -2547,17 +2556,7 @@ void Display_Telltale(void)
 			}
 		}
 	}
-	if((0xFF == Zijian)
-    && (can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
-    && (pVCU_04F02270->eps_fault == 1))
-    {
-        loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);
-		loc_RenderImg(EPS_X_LOCATION, EPS_Y_LOCATION, &Img_EPS);
-    }
-    else
-    {
-        loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);
-    }
+	
 	end_draw();
 	
 }
