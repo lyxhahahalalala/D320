@@ -120,6 +120,7 @@ extern const Img_t Img_AutoLowBeam;
 extern const Img_t Img_RearLamp;
 extern const Img_t Img_EPS;
 extern const Img_t Img_ChargeConnected;
+extern const Img_t Img_LowBatteryWarning;
 void loc_RenderRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int color);
 
 void show_BG(void);

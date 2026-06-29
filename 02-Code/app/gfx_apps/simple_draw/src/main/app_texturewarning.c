@@ -270,9 +270,9 @@ static void TextWarn_condition_check(void)
 	Buzz_GearMismatched = (pPROP_18FF5527->byte1.bit3 == 1);
 	TextWarnList[49].condition = (Buzz_GearMismatched); //ÇëÖØĞÂ¹Òµ²
 	
-	VCU_04F02270_t *pVCU_04F02270 = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
+	VCU_04F02270_t *pVCU_04F02270 = (VCU_04F02270_t*)can_getBCanBuffer(0x04F02270);
 
-	if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
 	{
 		TextWarnList[50].condition = pVCU_04F02270->instrument_display_1;
 		TextWarnList[51].condition = pVCU_04F02270->instrument_display_2;

@@ -225,9 +225,9 @@ void Display_TruckArea(void)
 		VCU_04F02270_t *pVCU_04F02270 = NULL;
 
 pVCU_04F02270 =
-    (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
+    (VCU_04F02270_t*)can_getBCanBuffer(0x04F02270);
 
-if(can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+if(can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
 {
     if((pVCU_04F02270->instrument_display_1 == 1)
     && (instrument1Old == 0))
@@ -1315,7 +1315,7 @@ void Display_Telltale(void)
 	
 	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
 	GU_18F0010B_t  =  (GeneralUse_t*)can_getPCanBuffer(0x18F0010B);
-	pVCU_04F02270 = (VCU_04F02270_t*)can_getPCanBuffer(0x04F02270);
+	pVCU_04F02270 = (VCU_04F02270_t*)can_getBCanBuffer(0x04F02270);
 	
 	start_draw();
 	
@@ -1974,9 +1974,9 @@ void Display_Telltale(void)
 			{
 				// 锂电相关
 				pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
-				if((can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
+				if((can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
 				{
-					loc_Render_FHP_LowBatt(535, Y_LOCATION, YELLOW, "#");
+					loc_RenderImg(535, Y_LOCATION, &Img_LowBatteryWarning);
 				}
 				if(pBMS_19FF5BF3->byte1.bit1234 == 7) //电池加热中
 				{
@@ -2016,9 +2016,9 @@ void Display_Telltale(void)
 			{
 				// 锂电相关
 				pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
-				if((can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
+				if((can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
 				{
-					loc_Render_FHP_LowBatt(535, Y_LOCATION, YELLOW, "#");
+					loc_RenderImg(535, Y_LOCATION, &Img_LowBatteryWarning);
 				}
 				if(pBMS_19FF5BF3->byte1.bit1234 == 7) //电池加热中
 				{
@@ -2284,7 +2284,7 @@ void Display_Telltale(void)
 			loc_RenderImg(190, 105, &Img_RearLamp);
 		else
 			LCD_DrawRect(190, 105, 40, 38, TOUMING);
-		if((can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
+		if((can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)
 		&& (pVCU_04F02270->eps_fault == 1))
 		{
 			loc_ClearRect(EPS_X_LOCATION, EPS_Y_LOCATION, 55, 40);

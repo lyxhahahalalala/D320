@@ -356,23 +356,23 @@ void mainFrame(void)
 			zk_init(loc_Drw2dDev, &GUI_Fontwryh31, VM_COLOR_GRAY, 0);
 			
 			zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"续航里程"));
-			zk_printZH(284, 142, zk_oem2uniStr((uint8_t *)"km"));
+			zk_printZH(244, 142, zk_oem2uniStr((uint8_t *)"km"));
 			
 			zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"剩余功率"));
-			zk_printZH(284, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
+			zk_printZH(244, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 			
 			if(0x2d == eol_fadongjiorkaji)
 			{
-				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"小计氢耗"));
+				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"小计氢耗"));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kg"));
 			}
 			else
 			{
-				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"小计电耗"));
+				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"小计电耗"));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"电机功率"));
+			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"电机功率"));
 			zk_printZH(740, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 			
 		}
@@ -381,23 +381,23 @@ void mainFrame(void)
 			zk_init(loc_Drw2dDev, &GUI_Fontwryh24, VM_COLOR_GRAY, 0);
 			
 			zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"Driving Range"));
-			zk_printZH(284, 142, zk_oem2uniStr((uint8_t *)"km"));
+			zk_printZH(244, 142, zk_oem2uniStr((uint8_t *)"km"));
 			
 			zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"Residual Power"));
-			zk_printZH(284, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
+			zk_printZH(244, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 			
 			if(0x2d == eol_fadongjiorkaji)
 			{
-				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"Subtot H2 Cons."));
+				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"Subtot H2 Cons."));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kg"));
 			}
 			else
 			{
-				zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"Subtot PWR Cons."));
+				zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"Subtot PWR Cons."));
 				zk_printZH(740, 142, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"Motor Power"));
+			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"Motor Power"));
 			zk_printZH(740, 142+30, zk_oem2uniStr((uint8_t *)"kW"));
 		}
 	}
@@ -409,24 +409,24 @@ void mainFrame(void)
 			if(0x2d == eol_fadongjiorkaji)
 			{
 				zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"平均氢耗"));
-				zk_printZH(180, 142, zk_oem2uniStr((uint8_t *)"kg/100km"));
+				zk_printZH(168, 142, zk_oem2uniStr((uint8_t *)"kg/100km"));
 				
 				zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"累计氢耗"));
-				zk_printZH(268, 142+30, zk_oem2uniStr((uint8_t *)"kg"));
+				zk_printZH(256, 142+30, zk_oem2uniStr((uint8_t *)"kg"));
 			}
 			else
 			{
 				zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"平均电耗"));
-				zk_printZH(180, 142, zk_oem2uniStr((uint8_t *)"kWh/100km"));
+				zk_printZH(168, 142, zk_oem2uniStr((uint8_t *)"kWh/100km"));
 				
 				zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"累计电耗"));
-				zk_printZH(268, 142+30, zk_oem2uniStr((uint8_t *)"kWh"));
+				zk_printZH(256, 142+30, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"高压电池电压"));
+			zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"高压电池电压"));
 			zk_printZH(760, 142, zk_oem2uniStr((uint8_t *)"V"));
 			
-			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"低压电池电压"));
+			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"低压电池电压"));
 			zk_printZH(760, 142+30, zk_oem2uniStr((uint8_t *)"V"));
 			
 			// zk_printZH(520, 142-30, zk_oem2uniStr((uint8_t *)"电池平均温度"));
@@ -440,24 +440,24 @@ void mainFrame(void)
 			if(0x2d == eol_fadongjiorkaji)
 			{
 				zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"Avg H2 Cons."));
-				zk_printZH(200, 142, zk_oem2uniStr((uint8_t *)"kg/100km"));
+				zk_printZH(188, 142, zk_oem2uniStr((uint8_t *)"kg/100km"));
 				
 				zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"Tot H2 Cons."));
-				zk_printZH(268, 142+30, zk_oem2uniStr((uint8_t *)"kg"));
+				zk_printZH(256, 142+30, zk_oem2uniStr((uint8_t *)"kg"));
 			}
 			else
 			{
 				zk_printZH( 14, 142, zk_oem2uniStr((uint8_t *)"Avg PWR Cons."));
-				zk_printZH(200, 142, zk_oem2uniStr((uint8_t *)"kWh/100km"));
+				zk_printZH(188, 142, zk_oem2uniStr((uint8_t *)"kWh/100km"));
 				
 				zk_printZH( 14, 142+30, zk_oem2uniStr((uint8_t *)"Tot PWR Cons."));
-				zk_printZH(268, 142+30, zk_oem2uniStr((uint8_t *)"kWh"));
+				zk_printZH(256, 142+30, zk_oem2uniStr((uint8_t *)"kWh"));
 			}
 			
-			zk_printZH(460, 142, zk_oem2uniStr((uint8_t *)"Power Batt.Volt."));
+			zk_printZH(520, 142, zk_oem2uniStr((uint8_t *)"Power Batt.Volt."));
 			zk_printZH(760, 142, zk_oem2uniStr((uint8_t *)"V"));
 			
-			zk_printZH(460, 142+30, zk_oem2uniStr((uint8_t *)"Auxil.Batt.Volt."));
+			zk_printZH(520, 142+30, zk_oem2uniStr((uint8_t *)"Auxil.Batt.Volt."));
 			zk_printZH(760, 142+30, zk_oem2uniStr((uint8_t *)"V"));
 			
 			// zk_printZH(520, 142-30, zk_oem2uniStr((uint8_t *)"Avg Batt.Temp"));
@@ -474,20 +474,20 @@ void mainFrame(void)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"驱动电控温度"));
-        zk_printZH(304, 142,
+        zk_printZH(244, 142,
                    zk_oem2uniStr((uint8_t *)"℃"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"驱动电机温度"));
-        zk_printZH(304, 142 + 30,
+        zk_printZH(244, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"℃"));
 
-        zk_printZH(460, 142,
+        zk_printZH(520, 142,
                    zk_oem2uniStr((uint8_t *)"动力单元转速"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142 + 30,
+        zk_printZH(520, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"料带电机转速"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
@@ -499,20 +499,20 @@ void mainFrame(void)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"Drive MCU Temp."));
-        zk_printZH(304, 142,
+        zk_printZH(244, 142,
                    zk_oem2uniStr((uint8_t *)"C"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Drive MOT Temp."));
-        zk_printZH(304, 142 + 30,
+        zk_printZH(244, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"C"));
 
-        zk_printZH(460, 142,
+        zk_printZH(520, 142,
                    zk_oem2uniStr((uint8_t *)"Power MOT Speed"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142 + 30,
+        zk_printZH(520, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Tape MOT Speed"));
         zk_printZH(750, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
@@ -527,23 +527,23 @@ else if(PAGE == 3)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"驱动电机转速"));
-        zk_printZH(304, 142,
+        zk_printZH(244, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"转向电机转速"));
-        zk_printZH(304, 142 + 30,
+        zk_printZH(244, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142,
+        zk_printZH(514, 142,
                    zk_oem2uniStr((uint8_t *)"制动电机转速"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142 + 30,
+        zk_printZH(520, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"制动气压1"));
-        zk_printZH(750, 142 + 30,
-                   zk_oem2uniStr((uint8_t *)"MPa"));
+        zk_printZH(742, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"mpa"));
     }
     else
     {
@@ -552,23 +552,23 @@ else if(PAGE == 3)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"Drive MOT Speed"));
-        zk_printZH(304, 142,
+        zk_printZH(244, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"EPS MOT Speed"));
-        zk_printZH(304, 142 + 30,
+        zk_printZH(244, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142,
+        zk_printZH(520, 142,
                    zk_oem2uniStr((uint8_t *)"ACM MOT Speed"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142 + 30,
+        zk_printZH(520, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Brake Pressure1"));
-        zk_printZH(750, 142 + 30,
-                   zk_oem2uniStr((uint8_t *)"MPa"));
+        zk_printZH(742, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"mpa"));
     }
 }
 else if(PAGE == 4)
@@ -580,23 +580,23 @@ else if(PAGE == 4)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"混料电机转速"));
-        zk_printZH(304, 142,
+        zk_printZH(244, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"吸料头电机转速"));
-        zk_printZH(304, 142 + 30,
+        zk_printZH(244, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142,
+        zk_printZH(520, 142,
                    zk_oem2uniStr((uint8_t *)"前输送带转速"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142 + 30,
+        zk_printZH(520, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"制动气压2"));
-        zk_printZH(750, 142 + 30,
-                   zk_oem2uniStr((uint8_t *)"MPa"));
+        zk_printZH(742, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"mpa"));
     }
     else
     {
@@ -605,23 +605,23 @@ else if(PAGE == 4)
 
         zk_printZH(14, 142,
                    zk_oem2uniStr((uint8_t *)"Mixer MOT Speed"));
-        zk_printZH(304, 142,
+        zk_printZH(244, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
         zk_printZH(14, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Suction MOT Speed"));
-        zk_printZH(304, 142 + 30,
+        zk_printZH(244, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142,
+        zk_printZH(520, 142,
                    zk_oem2uniStr((uint8_t *)"Conveyor MOT Speed"));
         zk_printZH(750, 142,
                    zk_oem2uniStr((uint8_t *)"rpm"));
 
-        zk_printZH(460, 142 + 30,
+        zk_printZH(520, 142 + 30,
                    zk_oem2uniStr((uint8_t *)"Brake Pressure2"));
-        zk_printZH(750, 142 + 30,
-                   zk_oem2uniStr((uint8_t *)"MPa"));
+        zk_printZH(742, 142 + 30,
+                   zk_oem2uniStr((uint8_t *)"mpa"));
     }
 }
 	if(0U == e_uint)
@@ -704,7 +704,7 @@ void Update_AirPressures(void)
 	
 	//后桥气压
     apstatus[1] = ( (Qiya[1] < QiyaLowLmt) || (Qiya[1] > QiyaHighLmt) );
-    if(((0x00 == eol_airsensortype) || (0x02 == eol_airsensortype) && (0x00 == PAGE))
+    if(((0x00 == eol_airsensortype) || (0x02 == eol_airsensortype))
 	&& (mainview_update || ((Qiya[1]/10) != Qiya_old[1]) || apstatus[1] != apstatusold[1]) )
 	{
 		vw_clearFont31Value(742, 400-1, 10);
@@ -872,15 +872,15 @@ void Update_power_vol_current(void)
 			speedlimit = (Vspeed < 5);
 			
 			start_draw();
-			loc_ClearRect(280 - 80, 142, 80, 32);
+			loc_ClearRect(240 - 80, 142, 80, 32);
 			if(extendmiles == 0xffffu)
 			{
 				zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-				zk_printZH(280-22, 142, uniStr);
+				zk_printZH(240-22, 142, uniStr);
 			}
 			else
 			{
-				zk_printNum(280, 142, extendmiles, 0, ZK_ALIGN_RIGHT);
+				zk_printNum(240, 142, extendmiles, 0, ZK_ALIGN_RIGHT);
 			}
 			end_draw();
 			
@@ -935,15 +935,15 @@ void Update_power_vol_current(void)
 			leftpower_old = leftpower;
 			
 			start_draw();
-			loc_ClearRect(280 - 80, 142+30, 80, 32);
+			loc_ClearRect(240 - 80, 142+30, 80, 32);
 			if(leftpower == 0xffffu)
 			{
 				zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-				zk_printZH(280-22, 142+30, uniStr);
+				zk_printZH(240-22, 142+30, uniStr);
 			}
 			else
 			{
-				zk_printNum(280, 142+30,leftpower, 0, ZK_ALIGN_RIGHT);
+				zk_printNum(240, 142+30,leftpower, 0, ZK_ALIGN_RIGHT);
 			}
 			end_draw();
 			
@@ -1011,27 +1011,27 @@ void Update_power_vol_current(void)
 				start_draw();
 				
 				if(eol_language == 0)
-					loc_ClearRect(176-66, 142, 66, 32);
+					loc_ClearRect(164-66, 142, 66, 32);
 				else
-					loc_ClearRect(196 - 55, 142, 55, 26);
+					loc_ClearRect(184 - 55, 142, 55, 26);
 				
 				if(AvgH2Consp == 0xffffffffu)
 				{
 					zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
 					if(eol_language == 0)
-						zk_printZH(176-26, 142, uniStr);
+						zk_printZH(164-26, 142, uniStr);
 					else
-						zk_printZH(196-26, 142, uniStr);
+						zk_printZH(184-26, 142, uniStr);
 				}
 				else
 				{
 					if(eol_language == 0)
 					{
-						zk_printNum(176, 142, AvgH2Consp, 1, ZK_ALIGN_RIGHT);
+						zk_printNum(164, 142, AvgH2Consp, 1, ZK_ALIGN_RIGHT);
 					}
 					else
 					{
-						zk_printNum(196, 142, AvgH2Consp, 1, ZK_ALIGN_RIGHT);
+						zk_printNum(184, 142, AvgH2Consp, 1, ZK_ALIGN_RIGHT);
 					}
 				}
 				end_draw();
@@ -1049,28 +1049,28 @@ void Update_power_vol_current(void)
 				{
 					if(eol_language == 0)
 					{
-						loc_ClearRect(176-50, 142, 50, 32);
+						loc_ClearRect(164-50, 142, 50, 32);
 						zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-						zk_printZH(176-26, 142, uniStr);
+						zk_printZH(164-26, 142, uniStr);
 					}
 					else
 					{
-						loc_ClearRect(196-50, 142, 50, 32);
+						loc_ClearRect(184-50, 142, 50, 32);
 						zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-						zk_printZH(196-26, 142, uniStr);
+						zk_printZH(184-26, 142, uniStr);
 					}
 				}
 				else
 				{
 					if(eol_language == 0)
 					{
-						loc_ClearRect(176-50, 142,50, 32);
-						zk_printNum(176, 142,avepower, 0, ZK_ALIGN_RIGHT);
+						loc_ClearRect(164-50, 142,50, 32);
+						zk_printNum(164, 142,avepower, 0, ZK_ALIGN_RIGHT);
 					}
 					else
 					{
-						loc_ClearRect(196-50, 142, 50, 32);
-						zk_printNum(196, 142,avepower, 0, ZK_ALIGN_RIGHT);
+						loc_ClearRect(184-50, 142, 50, 32);
+						zk_printNum(184, 142,avepower, 0, ZK_ALIGN_RIGHT);
 					}
 				}
 				end_draw();
@@ -1087,18 +1087,18 @@ void Update_power_vol_current(void)
 				start_draw();
 				
 				if(eol_language == 0)
-					loc_ClearRect(264 - 145, 142+30, 145, 32);
+					loc_ClearRect(252 - 145, 142+30, 145, 32);
 				else
-					loc_ClearRect(264 - 66, 142+30, 66, 26);
+					loc_ClearRect(252 - 66, 142+30, 66, 26);
 				
 				if(TotalH2Consp >= 0xfffe)
 				{
 					zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-					zk_printZH(238, 142+30, uniStr);
+					zk_printZH(226, 142+30, uniStr);
 				}
 				else
 				{
-					zk_printPosNum(264, 142+30, TotalH2Consp, 0, ZK_ALIGN_RIGHT);
+					zk_printPosNum(252, 142+30, TotalH2Consp, 0, ZK_ALIGN_RIGHT);
 				}
 				end_draw();
 			}
@@ -1113,18 +1113,18 @@ void Update_power_vol_current(void)
 				
 				start_draw();
 				if(eol_language == 0)
-					loc_ClearRect(264 - 140, 142+30, 140, 32);
+					loc_ClearRect(252 - 140, 142+30, 140, 32);
 				else
-					loc_ClearRect(264 - 110, 142+30, 110, 32);
+					loc_ClearRect(252 - 110, 142+30, 110, 32);
 				
 				if(totalpower == 0xffffffffu)
 				{
 					zk_oem2uni((uint8_t *)"--", uniStr, sizeof(uniStr));
-					zk_printZH(238, 142+30, uniStr);
+					zk_printZH(226, 142+30, uniStr);
 				}
 				else
 				{
-					zk_printPosNum(264, 142+30,totalpower, 0, ZK_ALIGN_RIGHT);
+					zk_printPosNum(252, 142+30,totalpower, 0, ZK_ALIGN_RIGHT);
 				}
 				end_draw();
 			}
@@ -1226,9 +1226,9 @@ void Update_DriveTemperature(void)
     }
 
     pVCU_04F02770 =
-        (VCU_04F02770_t *)can_getPCanBuffer(0x04F02770);
+        (VCU_04F02770_t *)can_getBCanBuffer(0x04F02770);
 
-    state = can_getPCanRxState(0x04F02770);
+    state = can_getBCanRxState(0x04F02770);
 
     drive_mcu_temp =
         (int16_t)pVCU_04F02770->drive_mcu_temperature - 40;
@@ -1243,26 +1243,26 @@ void Update_DriveTemperature(void)
     {
         start_draw();
 
-        loc_ClearRect(220, 142, 60, 32);
-        loc_ClearRect(220, 142 + 30, 60, 32);
+        loc_ClearRect(160, 142, 80, 32);
+        loc_ClearRect(160, 142 + 30, 80, 32);
 
         zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
                 VM_COLOR_WHITE, 0);
 
         if(state == CAN_FRAME_ST_RECVED)
         {
-            zk_printNum(300, 142,
+            zk_printNum(240, 142,
                         drive_mcu_temp, 0, ZK_ALIGN_RIGHT);
 
-            zk_printNum(300, 142 + 30,
+            zk_printNum(240, 142 + 30,
                         drive_mot_temp, 0, ZK_ALIGN_RIGHT);
         }
         else
         {
-            zk_printZH(300, 142,
+            zk_printZH(218, 142,
                        zk_oem2uniStr((uint8_t *)"--"));
 
-            zk_printZH(300, 142 + 30,
+            zk_printZH(218, 142 + 30,
                        zk_oem2uniStr((uint8_t *)"--"));
         }
 
@@ -1298,9 +1298,9 @@ void Update_MotorSpeedInfo(void)
     if(PAGE == 2)
     {
         pVCU_04F02C70 =
-            (VCU_04F02C70_t *)can_getPCanBuffer(0x04F02C70);
+            (VCU_04F02C70_t *)can_getBCanBuffer(0x04F02C70);
 
-        state = can_getPCanRxState(0x04F02C70);
+        state = can_getBCanRxState(0x04F02C70);
         item_num = 2;
 
         value[0] =
@@ -1318,9 +1318,9 @@ void Update_MotorSpeedInfo(void)
     else if(PAGE == 3)
     {
         pVCU_04F02A70 =
-            (VCU_04F02A70_t *)can_getPCanBuffer(0x04F02A70);
+            (VCU_04F02A70_t *)can_getBCanBuffer(0x04F02A70);
 
-        state = can_getPCanRxState(0x04F02A70);
+        state = can_getBCanRxState(0x04F02A70);
         item_num = 4;
 
         value[0] =
@@ -1334,25 +1334,25 @@ void Update_MotorSpeedInfo(void)
 
         value[3] = pVCU_04F02A70->brk_air_pressure1;
 
-        value_x[0] = 300;
+        value_x[0] = 240;
         value_y[0] = 142;
 
-        value_x[1] = 300;
+        value_x[1] = 240;
         value_y[1] = 142 + 30;
 
         value_x[2] = 736;
         value_y[2] = 142;
 
-        value_x[3] = 736;
+        value_x[3] = 728;
         value_y[3] = 142 + 30;
         dot_pos[3] = 2;
     }
     else if(PAGE == 4)
     {
         pVCU_04F02B70 =
-            (VCU_04F02B70_t *)can_getPCanBuffer(0x04F02B70);
+            (VCU_04F02B70_t *)can_getBCanBuffer(0x04F02B70);
 
-        state = can_getPCanRxState(0x04F02B70);
+        state = can_getBCanRxState(0x04F02B70);
         item_num = 4;
 
         value[0] =
@@ -1366,16 +1366,16 @@ void Update_MotorSpeedInfo(void)
 
         value[3] = pVCU_04F02B70->brk_air_pressure2;
 
-        value_x[0] = 300;
+        value_x[0] = 240;
         value_y[0] = 142;
 
-        value_x[1] = 300;
+        value_x[1] = 240;
         value_y[1] = 142 + 30;
 
         value_x[2] = 736;
         value_y[2] = 142;
 
-        value_x[3] = 736;
+        value_x[3] = 728;
         value_y[3] = 142 + 30;
         dot_pos[3] = 2;
     }
@@ -1408,13 +1408,20 @@ void Update_MotorSpeedInfo(void)
 
         for(uint8_t i = 0; i < item_num; i++)
         {
-            if(value_x[i] == 300)
+            if(value_x[i] == 240)
 			{
-				loc_ClearRect(14, value_y[i], 286, 32);
+				loc_ClearRect(14, value_y[i], 226, 32);
 			}
 			else
 			{
-				loc_ClearRect(460, value_y[i], 276, 32);
+				if((PAGE == 3) && (i == 2))
+					{
+						loc_ClearRect(500, value_y[i], 240, 32);
+					}
+					else
+					{
+						loc_ClearRect(520, value_y[i], 220, 32);
+					}
 			}
 
 			zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
@@ -1424,12 +1431,12 @@ void Update_MotorSpeedInfo(void)
 			{
 				if(i == 0)
 				{
-					zk_printZH(460, value_y[i],
+					zk_printZH(520, value_y[i],
 							   zk_oem2uniStr((uint8_t *)"动力单元转速"));
 				}
 				else
 				{
-					zk_printZH(460, value_y[i],
+					zk_printZH(520, value_y[i],
 							   zk_oem2uniStr((uint8_t *)"料带电机转速"));
 				}
 			}
@@ -1447,12 +1454,12 @@ void Update_MotorSpeedInfo(void)
 				}
 				else if(i == 2)
 				{
-					zk_printZH(460, value_y[i],
+					zk_printZH(514, value_y[i],
 							   zk_oem2uniStr((uint8_t *)"制动电机转速"));
 				}
 				else
 				{
-					zk_printZH(460, value_y[i],
+					zk_printZH(520, value_y[i],
 							   zk_oem2uniStr((uint8_t *)"制动气压1"));
 				}
 			}
@@ -1470,12 +1477,12 @@ void Update_MotorSpeedInfo(void)
 				}
 				else if(i == 2)
 				{
-					zk_printZH(460, value_y[i],
+					zk_printZH(520, value_y[i],
 							   zk_oem2uniStr((uint8_t *)"前输送带转速"));
 				}
 				else
 				{
-					zk_printZH(460, value_y[i],
+					zk_printZH(520, value_y[i],
 							   zk_oem2uniStr((uint8_t *)"制动气压2"));
 				}
 			}
@@ -1496,6 +1503,15 @@ void Update_MotorSpeedInfo(void)
                 zk_printZH(value_x[i] - 22,
                            value_y[i],
                            zk_oem2uniStr((uint8_t *)"--"));
+            }
+
+
+            if(((PAGE == 3) || (PAGE == 4)) && (i == 3))
+            {
+                zk_init(loc_Drw2dDev, &GUI_Fontwryh31,
+                        VM_COLOR_GRAY, 0);
+                zk_printZH(742, value_y[i],
+                           zk_oem2uniStr((uint8_t *)"mpa"));
             }
 
             value_old[i] = value[i];
@@ -1919,7 +1935,7 @@ void Update_Gear(void)
 				}
 				else
 				{
-					if((eol_atmtype != 33U && eol_atmtype != 34U)|| (can_getPCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED))
+					if((eol_atmtype != 33U && eol_atmtype != 34U)|| (can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED))
 					{
 						if(gear < 10)
 						{
@@ -3498,13 +3514,13 @@ void ControllerFaultFrameUpdate(unsigned char index)
     uint8_t update = 0;
 
     pVCU_04F02470 =
-        (VCU_04F02470_t *)can_getPCanBuffer(0x04F02470);
+        (VCU_04F02470_t *)can_getBCanBuffer(0x04F02470);
     pVCU_04F02570 =
-        (VCU_04F02570_t *)can_getPCanBuffer(0x04F02570);
+        (VCU_04F02570_t *)can_getBCanBuffer(0x04F02570);
     pVCU_04F02670 =
-        (VCU_04F02670_t *)can_getPCanBuffer(0x04F02670);
+        (VCU_04F02670_t *)can_getBCanBuffer(0x04F02670);
 
-    if(can_getPCanRxState(0x04F02470) == CAN_FRAME_ST_RECVED)
+    if(can_getBCanRxState(0x04F02470) == CAN_FRAME_ST_RECVED)
     {
         all_value[0] = pVCU_04F02470->eps_sys_fault_code;
         all_value[1] = pVCU_04F02470->acm_sys_fault_code;
@@ -3514,7 +3530,7 @@ void ControllerFaultFrameUpdate(unsigned char index)
         all_value[5] = pVCU_04F02470->front_conveyor_mcu_sys_fault_code;
     }
 
-    if(can_getPCanRxState(0x04F02570) == CAN_FRAME_ST_RECVED)
+    if(can_getBCanRxState(0x04F02570) == CAN_FRAME_ST_RECVED)
     {
         all_value[6]  = pVCU_04F02570->vcu_sys_fault_code;
         all_value[7]  = pVCU_04F02570->bms_sys_fault_code;
@@ -3524,7 +3540,7 @@ void ControllerFaultFrameUpdate(unsigned char index)
         all_value[11] = pVCU_04F02570->sprinkle_tape_mcu_sys_fault_code;
     }
 
-    if(can_getPCanRxState(0x04F02670) == CAN_FRAME_ST_RECVED)
+    if(can_getBCanRxState(0x04F02670) == CAN_FRAME_ST_RECVED)
     {
         all_value[12] = pVCU_04F02670->vcu_sys_fault_level;
         all_value[13] = pVCU_04F02670->drive_mcu_sys_fault_level;
@@ -3757,16 +3773,16 @@ void StirTempMonitorFrameUpdate(unsigned char index)
     uint8_t update = 0;
 
     pVCU_04F02770 =
-        (VCU_04F02770_t *)can_getPCanBuffer(0x04F02770);
+        (VCU_04F02770_t *)can_getBCanBuffer(0x04F02770);
 
     pVCU_04F02870 =
-        (VCU_04F02870_t *)can_getPCanBuffer(0x04F02870);
+        (VCU_04F02870_t *)can_getBCanBuffer(0x04F02870);
 	pVCU_04F02970 =
-		(VCU_04F02970_t *)can_getPCanBuffer(0x04F02970);
+		(VCU_04F02970_t *)can_getBCanBuffer(0x04F02970);
     if(index == 1)
 {
     /* 第1页：0x04F02770 */
-    state = can_getPCanRxState(0x04F02770);
+    state = can_getBCanRxState(0x04F02770);
     item_num = 7;
 
     temp[0] = (int16_t)pVCU_04F02770->drive_mcu_temperature - 40;
@@ -3780,7 +3796,7 @@ void StirTempMonitorFrameUpdate(unsigned char index)
 else if(index == 2)
 {
     /* 第2页：0x04F02870 */
-    state = can_getPCanRxState(0x04F02870);
+    state = can_getBCanRxState(0x04F02870);
     item_num = 6;
 
     temp[0] = (int16_t)pVCU_04F02870->stir_mcu_temperature - 40;
@@ -3793,7 +3809,7 @@ else if(index == 2)
 else
 {
     /* 第3页：0x04F02970 */
-    state = can_getPCanRxState(0x04F02970);
+    state = can_getBCanRxState(0x04F02970);
     item_num = 4;
 
     temp[0] =
@@ -3971,9 +3987,9 @@ void RelayStateFrameUpdate(unsigned char index)
     };
 
     pVCU_04F02D70 =
-        (VCU_04F02D70_t *)can_getPCanBuffer(0x04F02D70);
+        (VCU_04F02D70_t *)can_getBCanBuffer(0x04F02D70);
 
-    state = can_getPCanRxState(0x04F02D70);
+    state = can_getBCanRxState(0x04F02D70);
 
     relay[0]  = pVCU_04F02D70->k1_relay_state;
     relay[1]  = pVCU_04F02D70->k2_relay_state;
@@ -4214,16 +4230,16 @@ void BatteryManageInfoFrameUpdate(unsigned char index)
     uint8_t update = 0;
 
     p1885 = (BMS_1885EFF3_t *)
-            can_getPCanBuffer(0x1885EFF3);
+            can_getBCanBuffer(0x1885EFF3);
 
     p1886 = (BMS_1886EFF3_t *)
-            can_getPCanBuffer(0x1886EFF3);
+            can_getBCanBuffer(0x1886EFF3);
 
     p1887 = (BMS_1887EFF3_t *)
-            can_getPCanBuffer(0x1887EFF3);
+            can_getBCanBuffer(0x1887EFF3);
 
     p1888 = (BMS_1888EFF3_t *)
-            can_getPCanBuffer(0x1888EFF3);
+            can_getBCanBuffer(0x1888EFF3);
 
     if(index == 1)
     {
@@ -4234,7 +4250,7 @@ void BatteryManageInfoFrameUpdate(unsigned char index)
         value[2] = p1885->system_insulation;
 
         for(uint8_t i = 0; i < item_num; i++)
-            state[i] = can_getPCanRxState(0x1885EFF3);
+            state[i] = can_getBCanRxState(0x1885EFF3);
     }
     else if(index == 2)
     {
@@ -4249,7 +4265,7 @@ void BatteryManageInfoFrameUpdate(unsigned char index)
         value[6] = p1886->min_temp_position;
 
         for(uint8_t i = 0; i < item_num; i++)
-            state[i] = can_getPCanRxState(0x1886EFF3);
+            state[i] = can_getBCanRxState(0x1886EFF3);
     }
     else
     {
@@ -4269,10 +4285,10 @@ void BatteryManageInfoFrameUpdate(unsigned char index)
         value[6] = p1888->min_ucell_position;
 
         for(uint8_t i = 0; i < 3; i++)
-            state[i] = can_getPCanRxState(0x1887EFF3);
+            state[i] = can_getBCanRxState(0x1887EFF3);
 
         for(uint8_t i = 3; i < item_num; i++)
-            state[i] = can_getPCanRxState(0x1888EFF3);
+            state[i] = can_getBCanRxState(0x1888EFF3);
     }
 
     if(BatteryManageInfoUpdate || index_old != index)
@@ -4318,6 +4334,9 @@ void BatteryManageInfoFrameUpdate(unsigned char index)
                            120 + 40 * i,
                            zk_oem2uniStr((uint8_t *)"--"));
             }
+
+
+            
 
             value_old[i] = value[i];
             state_old[i] = state[i];
@@ -4717,7 +4736,7 @@ void HMSFrame(unsigned char index, unsigned char page)
 		zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31, VM_COLOR_WHITE, 0);
 		zk_oem2uni((uint8_t *)"车载氢系统最高压力:", uniStr, sizeof(uniStr));
 		zk_printZH(200, 200, uniStr);
-		zk_oem2uni((uint8_t *)"Mpa", uniStr, sizeof(uniStr));
+		zk_oem2uni((uint8_t *)"mpa", uniStr, sizeof(uniStr));
 		zk_printZH(600, 200, uniStr);
 	}
 	else
@@ -4725,7 +4744,7 @@ void HMSFrame(unsigned char index, unsigned char page)
 		zk_init(loc_Drw2dDev, (GUI_FONT*)&GUI_Fontwryh31, VM_COLOR_WHITE, 0);
 		zk_oem2uni((uint8_t *)"Maximum hydrogen pressure :", uniStr, sizeof(uniStr));
 		zk_printZH(150, 200, uniStr);
-		zk_oem2uni((uint8_t *)"Mpa", uniStr, sizeof(uniStr));
+		zk_oem2uni((uint8_t *)"mpa", uniStr, sizeof(uniStr));
 		zk_printZH(600, 200, uniStr);
 	}
 	

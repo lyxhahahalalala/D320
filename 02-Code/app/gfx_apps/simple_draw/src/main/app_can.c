@@ -168,109 +168,92 @@ const canRxFrameLCfg_t lct_PcanRxFrame[] =
 // {0x18FEEE00,   3000, can_processTMO_PCan, 0}, //转发
 // {0x18F00029,   3000, 0, 0}, //转发
 // {0x18F0000F,   3000, 0, 0}, //转发
-	
+
 	{0x18FECA31, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //整车控制器(HCU)
 	{0x18ECFF31, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF31, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA03, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //自动变速箱(AMT)
 	{0x18ECFF03, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF03, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAF4, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //电池管理系统(BMS)
 	{0x18ECFFF4, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFF4, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAEF, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //电机控制器(MCU)
 	{0x18ECFFEF, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFEF, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAF0, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //电机控制器(MCU2)
 	{0x18ECFFF0, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFF0, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA82, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //电池冷却系统(TMS)
 	{0x18ECFF82, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF82, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA0B, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //ABS/EBS KNORR
 	{0x18ECFF0B, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF0B, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA05, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //SCU
 	{0x18ECFF05, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF05, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECADB, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //换电系统(PECU)
 	{0x18ECFFDB, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFDB, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAA7, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //冷却系统(ATS)
 	{0x18ECFFA7, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFA7, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAA8, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //冷却系统(ATS2)
 	{0x18ECFFA8, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFA8, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA50, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //Knorr/科密瑞立 EPB
 	{0x18ECFF50, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF50, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA13, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //电液转向机(EHPS)
 	{0x18ECFF13, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF13, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAF5, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //燃料电池控制器(FCU)/燃电DCDC
 	{0x18ECFFF5, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFF5, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAF6, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //氢管理系统(HMU)
 	{0x18ECFFF6, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFF6, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA84, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //外挂DCDC
 	{0x18ECFF84, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF84, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA85, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //外挂DCDC2
 	{0x18ECFF85, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF85, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA8F, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //燃料电池冷却系统(FTS)
 	{0x18ECFF8F, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF8F, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAE8, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //月照松/Knorr 摄像头
 	{0x18ECFFE8, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFE8, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA2A, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //Knorr 雷达
 	{0x18ECFF2A, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF2A, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAA0, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler}, //月照松 雷达
 	{0x18ECFFA0, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFA0, 3000, can_processTMO_PCan, canRXFrame_DM1_Handler},
-	
-	{0x04F02270,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
-	{0x04F02370,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
-	{0x04F02470,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02570,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02670,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02770,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02870,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02970,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02A70,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02B70,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02C70,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02D70,   3000, can_processTMO_PCan, 0},//lyx
-	{0x1885EFF3,   3000, can_processTMO_PCan, 0},//lyx
-	{0x1886EFF3,   3000, can_processTMO_PCan, 0},//lyx
-	{0x1887EFF3,   3000, can_processTMO_PCan, 0},//lyx
-	{0x1888EFF3,   3000, can_processTMO_PCan, 0},//lyx
-	{0x04F02E70,   3000, can_processTMO_PCan, canRXFrame_recvHandle},//lyx
-	
+
+
 };
 static uint8_t l_u8PCanRxBuf[PCAN_RX_FRAME_COUNT][8];
 static ptmrType_t l_tpcanRxTimeCnt[PCAN_RX_FRAME_COUNT];
@@ -323,51 +306,67 @@ const canRxFrameLCfg_t lct_BcanRxFrame[] =
 /* 34*/{0x18FF8F25, 3000, can_processTMO_BCan, 0}, //TBOX
 /* 35*/{0x0CF6034D, 3000, can_processTMO_PCan, 0}, //低压转向
 /* 36*/{0x04F02270, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
+/* 37*/{0x04F02370, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
+/* 38*/{0x04F02470, 3000, can_processTMO_BCan, 0},//lyx
+/* 39*/{0x04F02570, 3000, can_processTMO_BCan, 0},//lyx
+/* 40*/{0x04F02670, 3000, can_processTMO_BCan, 0},//lyx
+/* 41*/{0x04F02770, 3000, can_processTMO_BCan, 0},//lyx
+/* 42*/{0x04F02870, 3000, can_processTMO_BCan, 0},//lyx
+/* 43*/{0x04F02970, 3000, can_processTMO_BCan, 0},//lyx
+/* 44*/{0x04F02A70, 3000, can_processTMO_BCan, 0},//lyx
+/* 45*/{0x04F02B70, 3000, can_processTMO_BCan, 0},//lyx
+/* 46*/{0x04F02C70, 3000, can_processTMO_BCan, 0},//lyx
+/* 47*/{0x04F02D70, 3000, can_processTMO_BCan, 0},//lyx
+/* 48*/{0x1885EFF3, 3000, can_processTMO_BCan, 0},//lyx
+/* 49*/{0x1886EFF3, 3000, can_processTMO_BCan, 0},//lyx
+/* 50*/{0x1887EFF3, 3000, can_processTMO_BCan, 0},//lyx
+/* 51*/{0x1888EFF3, 3000, can_processTMO_BCan, 0},//lyx
+/* 52*/{0x04F02E70, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
 	{0x18FECA32, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF32, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF32, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA41, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF41, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF41, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAE7, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFFE7, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFE7, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA33, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF33, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF33, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECAEC, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFFEC, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFFEC, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA2E, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF2E, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF2E, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA4D, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF4D, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF4D, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA1E, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF1E, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF1E, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA30, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF30, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF30, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA1A, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF1A, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF1A, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
+
 	{0x18FECA2F, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF2F, 3000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF2F, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
-	
-	
+
+
 };
 static uint8_t l_u8BCanRxBuf[BCAN_RX_FRAME_COUNT][8];
 static ptmrType_t l_tbcanRxTimeCnt[BCAN_RX_FRAME_COUNT];
@@ -399,7 +398,7 @@ static void NodeTmoInit(void)
 	ptmr_Start(&ecasNodeTmr);
 	ptmr_Start(&ldwsNodeTmr);
 	ptmr_Start(&aebsNodeTmr);
-	
+
 	BCM_NODE_TMO_FLG  = 0;
 	TPMS_NODE_TMO_FLG = 0;
 	ABS_NODE_TMO_FLG  = 0;
@@ -408,7 +407,7 @@ static void NodeTmoInit(void)
 	ECAS_NODE_TMO_FLG = 0;
 	LDWS_NODE_TMO_FLG = 0;
 	AEBS_NODE_TMO_FLG = 0;
-	
+
 }
 static void BcanNodeTmoClear(uint32_t id)
 {
@@ -438,13 +437,13 @@ static void BcanNodeTmoClear(uint32_t id)
 				ptmr_Start(&ecasNodeTmr);
 				ECAS_NODE_TMO_FLG = 0;
 			}
-            
+
 			break;
 		default:
-			
+
 			break;
     }
-	
+
 }
 static void PcanNodeTmoClear(uint32_t id)
 {
@@ -464,7 +463,7 @@ static void PcanNodeTmoClear(uint32_t id)
 				ptmr_Start(&absNodeTmr);
 				ABS_NODE_TMO_FLG = 0;
 			}
-			
+
 			if((eol_ebs ==5)||(eol_ebs == 6)||(eol_ebs ==10)|| (eol_ebs == 13))
 			{
 				ptmr_Start(&ebsNodeTmr);
@@ -500,10 +499,10 @@ static void PcanNodeTmoClear(uint32_t id)
 			}
 			break;
 		default:
-			
+
 			break;
     }
-	
+
 }
 static void canNodeTmoCheck(void)
 {
@@ -512,7 +511,7 @@ static void canNodeTmoCheck(void)
 		ptmr_Stop(&bcmNodeTmr);
 		BCM_NODE_TMO_FLG = 1;
 	}
-	
+
 	if(ptmr_Get(&tpmsNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&tpmsNodeTmr);
@@ -521,7 +520,7 @@ static void canNodeTmoCheck(void)
 		else
 			TPMS_NODE_TMO_FLG = 0;
 	}
-	
+
 	if(ptmr_Get(&absNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&absNodeTmr);
@@ -538,7 +537,7 @@ static void canNodeTmoCheck(void)
 		else
 			ABS_NODE_TMO_FLG = 0;
 	}
-	
+
 	if(ptmr_Get(&ebsNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&ebsNodeTmr);
@@ -546,9 +545,9 @@ static void canNodeTmoCheck(void)
 			EBS_NODE_TMO_FLG = 1;
 		else
 			EBS_NODE_TMO_FLG = 0;
-		
+
 	}
-	
+
 	if(ptmr_Get(&amtNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&amtNodeTmr);
@@ -557,7 +556,7 @@ static void canNodeTmoCheck(void)
 		else
 			AMT_NODE_TMO_FLG = 0;
 	}
-	
+
 	if(ptmr_Get(&ecasNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&ecasNodeTmr);
@@ -566,7 +565,7 @@ static void canNodeTmoCheck(void)
 		else
 			ECAS_NODE_TMO_FLG = 0;
 	}
-	
+
 	if(ptmr_Get(&ldwsNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&ldwsNodeTmr);
@@ -575,7 +574,7 @@ static void canNodeTmoCheck(void)
 		else
 			LDWS_NODE_TMO_FLG = 0;
 	}
-	
+
 	if(ptmr_Get(&aebsNodeTmr) >= 30000)
 	{
 		ptmr_Stop(&aebsNodeTmr);
@@ -584,7 +583,7 @@ static void canNodeTmoCheck(void)
 		else
 			AEBS_NODE_TMO_FLG = 0;
 	}
-	
+
 }
 
 
@@ -598,12 +597,12 @@ void can_init(void)
     for (uint32_t i = 0; i < PCAN_RX_FRAME_COUNT; i ++)
     {
         l_tPCanRxFrame.st[i] = CAN_FRAME_ST_INIT;
-		
+
 		for (uint32_t k = 0; k < 8; k ++)
 		{
 			l_tPCanRxFrame.buffer[i][k] = 0;
 		}
-		
+
 		if(l_tPCanRxFrame.lcfg[i].id == 0x0CFFEAF4)
 		{
 			if(eol_battcoolmd==0)
@@ -622,24 +621,24 @@ void can_init(void)
 				l_tPCanRxFrame.buffer[i][4] = 0x75;
 			}
 		}
-		
+
         ptmr_Start(&l_tPCanRxFrame.timer[i]);
     }
-	
+
 	for (uint32_t i = 0; i < BCAN_RX_FRAME_COUNT; i ++)
     {
         l_tBCanRxFrame.st[i] = CAN_FRAME_ST_INIT;
-		
+
 		for (uint32_t k = 0; k < 8; k ++)
 		{
 			l_tBCanRxFrame.buffer[i][k] = 0;
 		}
-		
+
         ptmr_Start(&l_tBCanRxFrame.timer[i]);
     }
-	
+
 	NodeTmoInit();
-	
+
 }
 void can_chip_mode_switch(uint8_t channel,can_mode_t mode)
 {
@@ -695,11 +694,11 @@ void Process_Can1(void)  //BCAN
 {
     CAN_MESSAGE msg;
     CAN_MESSAGE tx_msg;
-	
+
     memset(&msg, 0, sizeof(CAN_MESSAGE));
     CAN1_ReceiveMessage(&msg);
     CANCounters.BCAN = 0;
-	
+
     switch (msg.id)
 	{
 		case 0x18DA17F1:
@@ -736,7 +735,7 @@ void Process_Can1(void)  //BCAN
 			tx_msg.data[7]= CAN_BL_App;
 			tx_msg.len = 8;
 			tx_msg.type = 0;
-			CAN1_SendFIFOMessage(&tx_msg);                                   				 
+			CAN1_SendFIFOMessage(&tx_msg);
 			break;
 		case 0x01F9:  //专用于通用UDS固件跳转
 			if((msg.data[0]+msg.data[1]+msg.data[2]+msg.data[3]+msg.data[4]+msg.data[5]+msg.data[6]+msg.data[7]) == 0)
@@ -755,7 +754,7 @@ void Process_Can1(void)  //BCAN
 			tx_msg.data[7]= CAN_BL_App;
 			tx_msg.len = 8;
 			tx_msg.type = 0;
-			CAN1_SendFIFOMessage(&tx_msg);                                   				 
+			CAN1_SendFIFOMessage(&tx_msg);
 			break;
 		case 0x0888:  //test jump from boot layer to app layer ok
 			timer.hour   = msg.data[2];
@@ -783,7 +782,7 @@ void Process_Can1(void)  //BCAN
 				e_total_miles  = e_total_miles*10;
 				EEROM_WriteTotalMiles();
 				Miles.total_miles = e_total_miles;
-				
+
 				mile_key_ok_flg = 0;
 			}
 			break;	 
@@ -793,7 +792,7 @@ void Process_Can1(void)  //BCAN
 				if (l_tBCanRxFrame.lcfg[i].id == msg.id)
 				{
 					BcanNodeTmoClear(msg.id);
-					
+
 					memcpy(&l_tBCanRxFrame.buffer[i][0], msg.data, 8);
 					ptmr_Start(&l_tBCanRxFrame.timer[i]);          // 清零计数器
 					l_tBCanRxFrame.st[i] = CAN_FRAME_ST_RECVED;     // 接收状态
@@ -811,11 +810,11 @@ void Process_Can2(void)  //PCAN
 {
     CAN_MESSAGE msg;
     CAN_MESSAGE tx_msg;   
-	
+
     memset(&msg, 0, sizeof(CAN_MESSAGE));
     CAN2_ReceiveMessage(&msg);
     CANCounters.PCAN = 0;
-	
+
     switch (msg.id) 
 	{
 		case 0x18DA17F1:
@@ -850,7 +849,7 @@ void Process_Can2(void)  //PCAN
 	    	tx_msg.data[7]= CAN_BL_App;
 	    	tx_msg.len = 8;
 	    	tx_msg.type = 0;
-			CAN2_SendFIFOMessage(&tx_msg);                                   				 
+			CAN2_SendFIFOMessage(&tx_msg);
 	    	break;
 		case 0x01F9:  //专用于通用UDS固件跳转
 			if((msg.data[0]+msg.data[1]+msg.data[2]+msg.data[3]+msg.data[4]+msg.data[5]+msg.data[6]+msg.data[7]) == 0)
@@ -869,7 +868,7 @@ void Process_Can2(void)  //PCAN
 			tx_msg.data[7]= CAN_BL_App;
 			tx_msg.len = 8;
 			tx_msg.type = 0;
-			CAN2_SendFIFOMessage(&tx_msg);                                   				 
+			CAN2_SendFIFOMessage(&tx_msg);
 			break;
 		case 0x0888:  //test jump from boot layer to app layer ok
 	   	 	timer.hour   = msg.data[2];
@@ -897,7 +896,7 @@ void Process_Can2(void)  //PCAN
 				e_total_miles  = e_total_miles*10;
 				EEROM_WriteTotalMiles();
 				Miles.total_miles = e_total_miles;
-				
+
 				mile_key_ok_flg = 0;
 			}
 	    	break;	 
@@ -907,7 +906,7 @@ void Process_Can2(void)  //PCAN
                 if (l_tPCanRxFrame.lcfg[i].id == msg.id)
                 {
 					PcanNodeTmoClear(msg.id);
-					
+
                     memcpy(&l_tPCanRxFrame.buffer[i][0], msg.data, 8);
                     ptmr_Start(&l_tPCanRxFrame.timer[i]);          
                     l_tPCanRxFrame.st[i] = CAN_FRAME_ST_RECVED;     
@@ -926,7 +925,7 @@ void Process_Can2(void)  //PCAN
 }
 void Process_Can0(void)
 {
-   
+
 }
 void Process_Can(void)
 {
@@ -934,7 +933,7 @@ void Process_Can(void)
     {
         Process_Can0();
     } */
-    
+
     if((RSCAN0.RFSTS1.UINT32 & 0xFF00) > 0)
     {
 		if(can_busoff_flg[1] == 0)
@@ -946,10 +945,10 @@ void Process_Can(void)
 		if(can_busoff_flg[2] == 0)
 			Process_Can2();
     }
-	
+
 	wake_can = 1;
 	wake_can_cnt = 0;
-	
+
 }
 
 
@@ -982,7 +981,7 @@ void can_processTMO_BCan(uint32_t id, uint8_t *buf)
 void can_rxRoutine(void)
 {
 	static uint32_t  clear_keyflg_cnt = 0;
-	
+
 	if(clear_keyflg_cnt >= 20)
 	{
 		mile_key_ok_flg = 0;
@@ -991,18 +990,18 @@ void can_rxRoutine(void)
 	{
 		clear_keyflg_cnt++;
 	}
-	
+
 	for (int32_t i = 0; i < PCAN_RX_FRAME_COUNT; i ++)
 	{
 		if(ptmr_Get(&l_tPCanRxFrame.timer[i]) >= l_tPCanRxFrame.lcfg[i].tmoMs)
 		{
 			ptmr_Stop(&l_tPCanRxFrame.timer[i]);
-			
+
 			if (R_NULL != l_tPCanRxFrame.lcfg[i].tmoHandle)
 			{
 				l_tPCanRxFrame.lcfg[i].tmoHandle(l_tPCanRxFrame.lcfg[i].id, l_tPCanRxFrame.buffer[i]);
 			}
-			
+
 			if(l_tPCanRxFrame.lcfg[i].id == 0x18FF7FDE)
 			{
 				isOverseasVer = 0;
@@ -1050,7 +1049,7 @@ void can_rxRoutine(void)
 				// LckVehdiplayState = 0;
 				Remaining_unlocked_times = 0;
 				SuperviseMode = 0;
-				
+
 				LockVehBound_cnt = 0;
 				ptmr_Stop(&LockVehBoundTmr);
 			}
@@ -1103,18 +1102,18 @@ void can_rxRoutine(void)
 			else ;
 		}
 	}
-	
+
 	for (int32_t i = 0; i < BCAN_RX_FRAME_COUNT; i ++)
 	{
 		if (ptmr_Get(&l_tBCanRxFrame.timer[i]) >= l_tBCanRxFrame.lcfg[i].tmoMs)
 		{
 			ptmr_Stop(&l_tBCanRxFrame.timer[i]);
-			
+
 			if (R_NULL != l_tBCanRxFrame.lcfg[i].tmoHandle)
 			{
 				l_tBCanRxFrame.lcfg[i].tmoHandle(l_tBCanRxFrame.lcfg[i].id, l_tBCanRxFrame.buffer[i]);
 			}
-			
+
 			if(l_tBCanRxFrame.lcfg[i].id == 0x18FF2232)
 			{
 				CAN_KEY_ACC = 0;
@@ -1131,6 +1130,22 @@ void can_rxRoutine(void)
 				MSD_SwitchStatus = 0;
 			}
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FEE6EE) TD_MsgEnable = 0;
+			else if(l_tBCanRxFrame.lcfg[i].id == 0x04F02270)//lyx
+			{
+			vcu_ready_04f02270 = 0;
+			VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
+			}
+			else if(l_tBCanRxFrame.lcfg[i].id == 0x04F02370)//lyx
+			{
+			l_chargeLine_04F02370Valid = 0;
+			l_chargeLine_04F02370 = 0;
+			loc_UpdateCanChargeLine();
+			}
+			else if(l_tBCanRxFrame.lcfg[i].id == 0x04F02E70)//lyx
+			{
+				PTC_SwitchStatus = 0;
+				AC_SwitchStatus  = 0;
+			}
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FECA41) single_dm1_tmo_flg[DM1_41] = 1;
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FECAE7) single_dm1_tmo_flg[DM1_E7] = 1;
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FECA33) single_dm1_tmo_flg[DM1_33] = 1;
@@ -1154,10 +1169,10 @@ void can_rxRoutine(void)
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18ECFF1A || l_tBCanRxFrame.lcfg[i].id == 0x18EBFF1A) mupti_dm1_tmo_flg[DM1_1A] = 1;
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18ECFF2F || l_tBCanRxFrame.lcfg[i].id == 0x18EBFF2F) mupti_dm1_tmo_flg[DM1_2F] = 1;
 			else ;
-			
+
 		}
 	}
-	
+
 	for(uint8_t i = 0; i < DM1_OWNER_NUM; i++)
 	{
 		if((single_dm1_tmo_flg[i] == 1) && (mupti_dm1_tmo_flg[i] == 1))
@@ -1167,7 +1182,7 @@ void can_rxRoutine(void)
 			CurrentFltInfo[i].FltNum = 0;
 			CurrentFltInfo[i].FltBuf.byte[0] = 0;
 			CurrentFltInfo[i].FltBuf.byte[1] = 0;
-			
+
 			for(uint8_t j = 0; j < MAX_ERR_NUM; j++)
 			{
 				CurrentFltInfo[i].FltBuf.DTC[j].SPN = 0;
@@ -1175,15 +1190,15 @@ void can_rxRoutine(void)
 				CurrentFltInfo[i].FltBuf.DTC[j].OC  = 0;
 				CurrentFltInfo[i].FltBuf.DTC[j].CM  = 0;
 			}
-			
+
 			single_dm1_tmo_flg[i] = 1;
 			mupti_dm1_tmo_flg[i] = 1;
-			
+
 		}
 	}
-	
+
 	canNodeTmoCheck();
-	
+
 }
 
 
@@ -1196,21 +1211,21 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 	static uint16_t EffectiveBytes;
 	static uint8_t  FltPacketsNum;
 	static uint32_t PGN;
-	
+
 	uint8_t  bms_flt_lamp_flg = 0;
 	uint8_t  atm_flt_lamp_flg = 0;
 	// uint8_t  mcu_flt_lamp_flg = 0;
 	uint8_t  owner = DM1_NULL;
-	
+
 	J1939_CAN_ID_t canID;
-	
+
 	canID.id = id;
-	
+
 	if(canID.BIT.Priority != 6)
 	{
 		return;
 	}
-	
+
 	switch(canID.BIT.SA)
 	{
 		case 0x82: owner = DM1_82; break;
@@ -1234,11 +1249,11 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 		case 0xA8: owner = DM1_A8; break;
 		case 0x8F: owner = DM1_8F; break;
 		case 0x13: owner = DM1_13; break;
-		
+
 		// case 0x10: owner = DM1_10; break;
 		// case 0x53: owner = DM1_53; break;
-		
-		
+
+
 		case 0x41: owner = DM1_41; break;
 		case 0xE7: owner = DM1_E7; break;
 		case 0x33: owner = DM1_33; break;
@@ -1250,17 +1265,17 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 		case 0x30: owner = DM1_30; break;
 		case 0x1A: owner = DM1_1A; break;
 		case 0x2F: owner = DM1_2F; break;
-		
+
 		default:
 			owner = DM1_NULL;
 			break;
 	}
-	
+
 	if(owner == DM1_NULL)
 	{
 		return;
 	}
-	
+
 	switch(canID.BIT.PDU)
     {
 		case 0xFECA:
@@ -1273,12 +1288,12 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 			CurrentFltInfo[owner].FltBuf.DTC[0].FMI = (buf[4]&0x1F);
 			CurrentFltInfo[owner].FltBuf.DTC[0].OC  = (buf[5]&0x7F);
 			CurrentFltInfo[owner].FltBuf.DTC[0].CM  = (buf[5]&0x80)>>7;
-			
+
 			if(CurrentFltInfo[owner].FltBuf.DTC[0].SPN > 0)
 				CurrentFltInfo[owner].FltNum = 1;
 			else
 				CurrentFltInfo[owner].FltNum = 0;
-			
+
 			for(uint8_t i = 1; i < MAX_ERR_NUM; i++)
 			{
 				CurrentFltInfo[owner].FltBuf.DTC[i].SPN = 0;
@@ -1286,14 +1301,14 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 				CurrentFltInfo[owner].FltBuf.DTC[i].OC  = 0;
 				CurrentFltInfo[owner].FltBuf.DTC[i].CM  = 0;
 			}
-			
+
 			MuptiErrPcktFlg[owner] = 0;
 			MuptiErrPcktNum[owner] = 0;
 			Broadcast = 0;
 			EffectiveBytes = 0;
 			FltPacketsNum = 0;
 			PGN = 0;
-			
+
 			if(CurrentFltInfo[owner].SA == 0xF4)
 			{
 				if(CurrentFltInfo[owner].FltBuf.DTC[0].SPN == 522243)
@@ -1358,7 +1373,7 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 			EffectiveBytes = buf[1] + buf[2] * 256;
 			FltPacketsNum = buf[3];
 			PGN = buf[5] + buf[6] *256 + buf[7] * 65536;
-			
+
 			if(Broadcast == 0x20
 			&& EffectiveBytes >= 10
 			&& FltPacketsNum >= 2
@@ -1381,25 +1396,25 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 			{
 				if(CurrentFltInfo[owner].FltNum == 0 || MuptiErrPcktNum[owner] == 0 || MuptiErrPcktFlg[owner] == 0)
 					break;
-				
+
 				mupti_dm1_tmo_flg[owner] = 0;
 				CurrentFltInfo[owner].clearfltflg = 0;
 				CurrentFltInfo[owner].SA = canID.BIT.SA;
-				
+
 				if(buf[0] == 1)
 				{
 					CurrentFltInfo[owner].FltBuf.byte[0] = buf[1];
 					CurrentFltInfo[owner].FltBuf.byte[1] = buf[2];
-					
+
 					memcpy(&MuptiErrBuf[0], buf+3, 5);
-					
+
 				}
 				else if(buf[0] <= MultipDM1_MaxErrPacketNum)
 				{
 					memcpy(&MuptiErrBuf[7*(buf[0] - 2) + 5], buf+1, 7);
 				}
 				else ;
-				
+
 				if(buf[0] == MuptiErrPcktNum[owner])
 				{
 					for(uint8_t i = 0; i < MAX_ERR_NUM; i++)
@@ -1410,7 +1425,7 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 							CurrentFltInfo[owner].FltBuf.DTC[i].FMI = (MuptiErrBuf[i*4+2]&0x1F);
 							CurrentFltInfo[owner].FltBuf.DTC[i].OC  = (MuptiErrBuf[i*4+3]&0x7F);
 							CurrentFltInfo[owner].FltBuf.DTC[i].CM  = (MuptiErrBuf[i*4+3]&0x80)>>7;
-							
+
 							if(CurrentFltInfo[owner].SA == 0xF4)
 							{
 								if(CurrentFltInfo[owner].FltBuf.DTC[i].SPN == 522243)
@@ -1435,7 +1450,7 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 								{
 									bms_flt_lamp_flg = 1;
 								}
-								
+
 								/* if((CurrentFltInfo[owner].FltBuf.DTC[i].SPN < 522237) || (CurrentFltInfo[owner].FltBuf.DTC[i].SPN > 522244) \
 								|| (CurrentFltInfo[owner].FltBuf.DTC[i].SPN == 522240) || (CurrentFltInfo[owner].FltBuf.DTC[i].SPN == 5))
 								{
@@ -1478,7 +1493,7 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 							CurrentFltInfo[owner].FltBuf.DTC[i].CM  = 0;
 						}
 					}
-					
+
 					if(CurrentFltInfo[owner].SA == 0xF4)
 					{
 						if(!bms_flt_lamp_flg)
@@ -1486,7 +1501,7 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 							CurrentFltInfo[owner].FltBuf.byte[0] = 0;
 							CurrentFltInfo[owner].FltBuf.byte[1] = 0;
 						}
-						
+
 					}
 					else if(CurrentFltInfo[owner].SA == 0x03)
 					{
@@ -1495,7 +1510,7 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 							CurrentFltInfo[owner].FltBuf.byte[0] = 0;
 							CurrentFltInfo[owner].FltBuf.byte[1] = 0;
 						}
-						
+
 					}
 					/* else if(CurrentFltInfo[owner].SA == 0xEF || CurrentFltInfo[owner].SA == 0xF0)
 					{
@@ -1504,17 +1519,17 @@ static void canRXFrame_DM1_Handler(uint32_t id, uint8_t *buf)
 							CurrentFltInfo[owner].FltBuf.byte[0] = 0;
 							CurrentFltInfo[owner].FltBuf.byte[1] = 0;
 						}
-						
+
 					} */
 					else ;
 				}
 			}
 			break;
 		default:
-			
+
 			break;
     }
-	
+
 }
 static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 {
@@ -1522,7 +1537,7 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 	uint8_t LockVehSt = 0;
 	uint8_t LmtSpdSt = 0;
 	uint8_t LmtSpdWarnSt = 0;
-	
+
 	switch(id)
     {
 		case 0x18FF7FDE:
@@ -1541,7 +1556,7 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 					{
 						LckVehBoundState = 1;
 						LckVehdiplayState = 9;  //车辆受控中！
-						
+
 						LockVehBound_cnt = 0;
 						ptmr_Stop(&LockVehBoundTmr);
 					}
@@ -1549,13 +1564,13 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 					{
 						LckVehBoundState = 0;
 						LckVehdiplayState = 0;  //NULL
-						
+
 						LockVehSt = 0;
 						Remaining_unlocked_times = 0;
 						SuperviseMode = 0;
 						LmtSpdWarnSt = 0;
 						LmtSpdSt = 0;
-						
+
 						LockVehBound_cnt = 0;
 						ptmr_Stop(&LockVehBoundTmr);
 					}
@@ -1566,13 +1581,13 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 					{
 						LckVehBoundState = 0;
 						LckVehdiplayState = 0;  //NULL
-						
+
 						LockVehSt = 0;
 						Remaining_unlocked_times = 0;
 						SuperviseMode = 0;
 						LmtSpdWarnSt = 0;
 						LmtSpdSt = 0;
-						
+
 						LockVehBound_cnt = 0;
 						ptmr_Stop(&LockVehBoundTmr);
 					}
@@ -1590,7 +1605,7 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 						{
 							LckVehBoundState = 1;
 							LckVehdiplayState = 9;  //车辆受控中！
-							
+
 							LockVehBound_cnt = 0;
 							ptmr_Stop(&LockVehBoundTmr);
 						}
@@ -1607,7 +1622,7 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 						SuperviseMode = (buf[6]&0x03);
 						LmtSpdWarnSt = ((buf[6]>>4)&0x03);
 						LmtSpdSt = ((buf[6]>>6)&0x03);
-						
+
 						if(LockVehSt == 7)
 						{
 							LckVehdiplayState = 1;  //临时解除限速输入模式
@@ -1651,25 +1666,25 @@ static void canRXFrame_LockVeh_Handler(uint32_t id, uint8_t *buf)
 								LckVehdiplayState = 10; //仪表仅在菜单-车辆信息-K 值界面显示 "监管模式"
 							}
 						}
-						
+
 					}
 					break;
 				default:
-					
+
 					break;
 			}
 			break;
 		default:
-			
+
 			break;
     }
-	
+
 }
 static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 {
 	uint8_t door_current_state = 0;
 	uint8_t temp = 0;
-	
+
 	switch(id)
 	{
 		case 0x11FF3F32:
@@ -1678,7 +1693,7 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 		case 0x18FF2232:
 			CAN_KEY_ACC = ((buf[0]&0x30) == 0x10);
 			door_current_state  = (((buf[4]&0x0C) == 0x04) || ((buf[4]&0x30) == 0x10));
-			
+
 			if(!M_ON && CAN_KEY_ACC)
 			{
 				if(door_current_state)  /* Door ON */
@@ -1687,12 +1702,12 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 					{
 						if(!ptmr_IsStart(&door_state_tmr))
 							ptmr_Start(&door_state_tmr);
-						
+
 						if(ptmr_Get(&door_state_tmr) >= 1000)
 						{
 							ptmr_Stop(&door_state_tmr);
 							GetOffReminderStatus = 1;
-							
+
 							door_previous_state = 1;
 						}
 					}
@@ -1708,7 +1723,7 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 			{
 				GetOffReminderStatus = 0;
 				ptmr_Stop(&door_state_tmr);
-				
+
 				if(M_ON && door_current_state)
 				{
 					door_previous_state = 1;
@@ -1753,7 +1768,7 @@ static void canRXFrame_recvHandle(uint32_t id, uint8_t *buf)
 		default:
 			break;
 	}
-	
+
 }
 
 
@@ -1784,7 +1799,7 @@ uint8_t can_getPCanRxState(uint32_t canid)
             break;
         }
     }
-	
+
     return ret;
 }
 uint8_t * can_getBCanBuffer(uint32_t canid)
@@ -1822,7 +1837,7 @@ uint8_t can_getBCanRxState(uint32_t canid)
 uint8_t *can_GetCanRxBuffer(CanNode_e node_index, uint32_t canid)
 {
     uint8_t * ret = NULL;
-	
+
 	switch(node_index)
 	{
 		case NODE_BCAN:
@@ -1849,16 +1864,16 @@ uint8_t *can_GetCanRxBuffer(CanNode_e node_index, uint32_t canid)
 			break;
 		default:
 			break;
-		
+
 	}
-    
+
     return ret;
-	
+
 }
 uint8_t can_GetCanRxState(CanNode_e node_index, uint32_t canid)
 {
     uint8_t ret = CAN_FRAME_ST_INIT;
-	
+
 	switch(node_index)
 	{
 		case NODE_BCAN:
@@ -1883,11 +1898,11 @@ uint8_t can_GetCanRxState(CanNode_e node_index, uint32_t canid)
 			break;
 		default:
 			break;
-		
+
 	}
-    
+
     return ret;
-	
+
 }
 
 
@@ -1929,7 +1944,7 @@ void PCAN_StartTime(uint32_t id)
 void PCAN_UDS_SEND (uint8_t msg_buf[], uint8_t length)
 {
 	CAN_MESSAGE msg;
-	
+
 	if(length < 9)
 		memcpy(&msg.data[0], msg_buf, length);
 	else
@@ -1946,7 +1961,7 @@ void PCAN_UDS_SEND (uint8_t msg_buf[], uint8_t length)
 		CAN2_SendFIFOMessage(&msg);
 	}
 	else;
-	
+
 }
 void PCAN_Send_Route(uint32_t id, uint8_t *buf)
 {
@@ -1983,19 +1998,19 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdated |= 0x01;
 		wheelupdatedtimer[0][0] = 0;
 		memcpy(&Wheels[0][0],buf,8);
-		
+
 		TyreLocation_pressureh[0].bit0   = (Wheels[0][0].pressure_status == 0x02)||(Wheels[0][0].pressure_status == 0x03);
 		TyreLocation_pressurel[0].bit0   = (Wheels[0][0].pressure_status == 0x05)||(Wheels[0][0].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[0].bit0 = (Wheels[0][0].fast_pressure_lost==1);
 		TyreLocation_temperature[0].bit0 = (Wheels[0][0].over_temperature_status == 0x01);
-		
+
     }
     else if(buf[0]==0x19)
 	{
 		wheelupdated |= 0x02;
 		wheelupdatedtimer[0][1] = 0;
 		memcpy(&Wheels[0][1],buf,8);
-		
+
 		TyreLocation_pressureh[0].bit1   = (Wheels[0][1].pressure_status == 0x02)||(Wheels[0][1].pressure_status == 0x03);
 		TyreLocation_pressurel[0].bit1   = (Wheels[0][1].pressure_status == 0x05)||(Wheels[0][1].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[0].bit1 = (Wheels[0][1].fast_pressure_lost==1);
@@ -2006,7 +2021,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdated |= 0x04;
 		wheelupdatedtimer[1][0] = 0;
 		memcpy(&Wheels[1][0],buf,8);
-		
+
 		TyreLocation_pressureh[1].bit0   = (Wheels[1][0].pressure_status == 0x02)||(Wheels[1][0].pressure_status == 0x03);
 		TyreLocation_pressurel[1].bit0   = (Wheels[1][0].pressure_status == 0x05)||(Wheels[1][0].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[1].bit0 = (Wheels[1][0].fast_pressure_lost==1);
@@ -2017,7 +2032,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdated |= 0x08;
 		wheelupdatedtimer[1][1] = 0;
 		memcpy(&Wheels[1][1],buf,8);
-		
+
 		TyreLocation_pressureh[1].bit1   = (Wheels[1][1].pressure_status == 0x02)||(Wheels[1][1].pressure_status == 0x03);
 		TyreLocation_pressurel[1].bit1   = (Wheels[1][1].pressure_status == 0x05)||(Wheels[1][1].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[1].bit1 = (Wheels[1][1].fast_pressure_lost==1);
@@ -2028,19 +2043,19 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdated |= 0x10;
 		wheelupdatedtimer[1][2] = 0;
 		memcpy(&Wheels[1][2],buf,8);
-		
+
 		TyreLocation_pressureh[1].bit2   = (Wheels[1][2].pressure_status == 0x02)||(Wheels[1][2].pressure_status == 0x03);
 		TyreLocation_pressurel[1].bit2   = (Wheels[1][2].pressure_status == 0x05)||(Wheels[1][2].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[1].bit2 = (Wheels[1][2].fast_pressure_lost==1);
 		TyreLocation_temperature[1].bit2 = (Wheels[1][2].over_temperature_status == 0x01);
-		
+
     }
     else if(buf[0]==0x2A)
 	{
 		wheelupdated |= 0x20;
 		wheelupdatedtimer[1][3] = 0;
 		memcpy(&Wheels[1][3],buf,8);
-		
+
 		TyreLocation_pressureh[1].bit3   = (Wheels[1][3].pressure_status == 0x02)||(Wheels[1][3].pressure_status == 0x03);
 		TyreLocation_pressurel[1].bit3   = (Wheels[1][3].pressure_status == 0x05)||(Wheels[1][3].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[1].bit3 = (Wheels[1][3].fast_pressure_lost==1);
@@ -2051,7 +2066,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[2][0] = 0;
 		wheelupdated |= 0x40;
 		memcpy(&Wheels[2][0],buf,8);
-		
+
 		TyreLocation_pressureh[2].bit0   = (Wheels[2][0].pressure_status == 0x02)||(Wheels[2][0].pressure_status == 0x03);
 		TyreLocation_pressurel[2].bit0   = (Wheels[2][0].pressure_status == 0x05)||(Wheels[2][0].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[2].bit0 = (Wheels[2][0].fast_pressure_lost==1);
@@ -2062,7 +2077,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[2][1] = 0;
 		wheelupdated |= 0x80;
 		memcpy(&Wheels[2][1],buf,8);
-		
+
 		TyreLocation_pressureh[2].bit1   = (Wheels[2][1].pressure_status == 0x02)||(Wheels[2][1].pressure_status == 0x03);
 		TyreLocation_pressurel[2].bit1   = (Wheels[2][1].pressure_status == 0x05)||(Wheels[2][1].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[2].bit1 = (Wheels[2][1].fast_pressure_lost==1);
@@ -2073,7 +2088,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[2][2] = 0;
 		wheelupdated |= 0x100;
 		memcpy(&Wheels[2][2],buf,8);
-		
+
 		TyreLocation_pressureh[2].bit2   = (Wheels[2][2].pressure_status == 0x02)||(Wheels[2][2].pressure_status == 0x03);
 		TyreLocation_pressurel[2].bit2   = (Wheels[2][2].pressure_status == 0x05)||(Wheels[2][2].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[2].bit2 = (Wheels[2][2].fast_pressure_lost==1);
@@ -2084,7 +2099,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[2][3] = 0;
 		wheelupdated |= 0x200;
 		memcpy(&Wheels[2][3],buf,8);
-		
+
 		TyreLocation_pressureh[2].bit3   = (Wheels[2][3].pressure_status == 0x02)||(Wheels[2][3].pressure_status == 0x03);
 		TyreLocation_pressurel[2].bit3   = (Wheels[2][3].pressure_status == 0x05)||(Wheels[2][3].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[2].bit3 = (Wheels[2][3].fast_pressure_lost==1);
@@ -2095,7 +2110,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[3][0] = 0;
 		wheelupdated |= 0x400;
 		memcpy(&Wheels[3][0],buf,8);
-		
+
 		TyreLocation_pressureh[3].bit0   = (Wheels[3][0].pressure_status == 0x02)||(Wheels[3][0].pressure_status == 0x03);
 		TyreLocation_pressurel[3].bit0   = (Wheels[3][0].pressure_status == 0x05)||(Wheels[3][0].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[3].bit0 = (Wheels[3][0].fast_pressure_lost==1);
@@ -2106,7 +2121,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[3][1] = 0;
 		wheelupdated |= 0x800;
 		memcpy(&Wheels[3][1],buf,8);
-		
+
 		TyreLocation_pressureh[3].bit1   = (Wheels[3][1].pressure_status == 0x02)||(Wheels[3][1].pressure_status == 0x03);
 		TyreLocation_pressurel[3].bit1   = (Wheels[3][1].pressure_status == 0x05)||(Wheels[3][1].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[3].bit1 = (Wheels[3][1].fast_pressure_lost==1);
@@ -2117,7 +2132,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[3][2] = 0;
 		wheelupdated |= 0x1000;
 		memcpy(&Wheels[3][2],buf,8);
-		
+
 		TyreLocation_pressureh[3].bit2   = (Wheels[3][2].pressure_status == 0x02)||(Wheels[3][2].pressure_status == 0x03);
 		TyreLocation_pressurel[3].bit2   = (Wheels[3][2].pressure_status == 0x05)||(Wheels[3][2].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[3].bit2 = (Wheels[3][2].fast_pressure_lost==1);
@@ -2128,7 +2143,7 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 		wheelupdatedtimer[3][3] = 0;
 		wheelupdated |= 0x2000;
 		memcpy(&Wheels[3][3],buf,8);
-		
+
 		TyreLocation_pressureh[3].bit3   = (Wheels[3][3].pressure_status == 0x02)||(Wheels[3][3].pressure_status == 0x03);
 		TyreLocation_pressurel[3].bit3   = (Wheels[3][3].pressure_status == 0x05)||(Wheels[3][3].pressure_status == 0x06);;
 		TyreLocation_fastlostgas[3].bit3 = (Wheels[3][3].fast_pressure_lost==1);
@@ -2141,12 +2156,12 @@ void can_processTPMS(uint32_t id, uint8_t *buf)
 uint32_t ICU_DM1_Data_Conversion(DTC_BUF_t dtcBuf)
 {
 	uint32_t u32_buffer = 0;
-    
+
 	u32_buffer  = (uint32_t)(dtcBuf.SPN&0x0000ffff);
 	u32_buffer += (uint32_t)dtcBuf.FMI << 16;
 	u32_buffer += (uint32_t)(dtcBuf.SPN&0x00070000) << 5;
 	u32_buffer += (uint32_t)dtcBuf.byte[3] << 24;
-	
+
     return u32_buffer;
 }
 void PCAN_Send_ICU_DM1(void)  //100ms
@@ -2158,18 +2173,18 @@ void PCAN_Send_ICU_DM1(void)  //100ms
 	uint32_t u32_buffer;
 	uint16_t u16_buffer;
 	uint8_t  u8_buffer;
-	
+
 	if(icuCrtFltNum <= 1)
 	{
 		if(icuSendTimer > 9)
 		{
 			icuSendTimer = 0;
-			
+
 			if(icuCrtFltNum == 1)
 				u32_buffer = ICU_DM1_Data_Conversion(icuCrtDM1Flt[0]);
 			else
 				u32_buffer = 0;
-			
+
 			msg.id = 0x18FECA17;
 			msg.len = 0x08;
 			msg.type = 0x00;
@@ -2192,7 +2207,7 @@ void PCAN_Send_ICU_DM1(void)  //100ms
 		{
 			u16_buffer = ErrValidDataNum(icuCrtFltNum);
 			u8_buffer  = DM1ErrPacketNum(icuCrtFltNum);
-			
+
 			msg.id = 0x18ECFF17;
 			msg.len = 0x08;
 			msg.type = 0x00;
@@ -2206,9 +2221,9 @@ void PCAN_Send_ICU_DM1(void)  //100ms
 			msg.data[7] = (uint8_t)(0x00);
 			CAN1_SendFIFOMessage(&msg);
 			CAN2_SendFIFOMessage(&msg);
-			
+
 			icuSendCnt = 1;
-			
+
 			for(uint8_t i = 0; i < ICU_MAX_ERR_NUM; i++)
 			{
 				if(i < icuCrtFltNum)
@@ -2251,29 +2266,29 @@ void PCAN_Send_ICU_DM1(void)  //100ms
 			}
 			CAN1_SendFIFOMessage(&msg);
 			CAN2_SendFIFOMessage(&msg);
-			
+
 			icuSendCnt = icuSendCnt % DM1ErrPacketNum(icuCrtFltNum);
 			if(icuSendCnt != 0)
 				icuSendCnt++;
 		}
 	}
-	
+
 }
 
 void BCAN_Send_GearR(void)  //0x18F00503  100ms
 {
     CAN_MESSAGE msg;
 	uint8_t temp;
-	
+
     memset(msg.data,0,8);
     msg.id = 0x18F00503;
-	
+
 	temp = get_vehicle_current_gear();
 	if(temp == 100)
 		msg.data[3] = 124;
 	else
 		msg.data[3] = 125;
-	
+
     msg.len = 0x08;
     msg.type = 0x00;
 	CAN1_SendFIFOMessage(&msg);
@@ -2281,7 +2296,7 @@ void BCAN_Send_GearR(void)  //0x18F00503  100ms
 void BCAN_Send_CCSV(void)   //0x18FEF100  100ms
 {
 	uint8_t *tmp = NULL;
-	
+
 	if(0x01 ==  can_getPCanRxState(0x18FEF131)) //CCSV
 	{
 		tmp = can_getPCanBuffer(0x18FEF131);
@@ -2297,14 +2312,14 @@ void BCAN_Send_Tipian(void) //0x18FF2C47  1000ms 蹄片信号
     if(eol_mcpbaojing == 1)
 	{
     	msg.data[3] = msg.data[3]|(IN17);    //制动蹄片磨损L1
-    	
+
     	msg.data[4] = msg.data[4]|(IN15);    //制动蹄片磨损R1
 	}
 	else if(eol_mcpbaojing == 3)
 	{
     	msg.data[3] = msg.data[3]|(IN17);    //制动蹄片磨损L1
     	msg.data[3] = msg.data[3]|(IN21<<2); //制动蹄片磨损L2
-    	
+
     	msg.data[4] = msg.data[4]|(IN15);    //制动蹄片磨损R1
     	msg.data[4] = msg.data[4]|(IN19<<2); //制动蹄片磨损R2
 	}
@@ -2313,7 +2328,7 @@ void BCAN_Send_Tipian(void) //0x18FF2C47  1000ms 蹄片信号
     	msg.data[3] = msg.data[3]|(IN17);    //制动蹄片磨损L1
     	msg.data[3] = msg.data[3]|(IN21<<2); //制动蹄片磨损L2
     	msg.data[3] = msg.data[3]|(IN18<<4); //制动蹄片磨损L3
-    	
+
     	msg.data[4] = msg.data[4]|(IN15);    //制动蹄片磨损R1
     	msg.data[4] = msg.data[4]|(IN19<<2); //制动蹄片磨损R2
     	msg.data[4] = msg.data[4]|(IN23<<4); //制动蹄片磨损R3
@@ -2324,7 +2339,7 @@ void BCAN_Send_Tipian(void) //0x18FF2C47  1000ms 蹄片信号
     	msg.data[3] = msg.data[3]|(IN21<<2); //制动蹄片磨损L2
     	msg.data[3] = msg.data[3]|(IN18<<4); //制动蹄片磨损L3
     	msg.data[3] = msg.data[3]|(IN22<<6); //制动蹄片磨损L4
-    	
+
     	msg.data[4] = msg.data[4]|(IN15);    //制动蹄片磨损R1
     	msg.data[4] = msg.data[4]|(IN19<<2); //制动蹄片磨损R2
     	msg.data[4] = msg.data[4]|(IN23<<4); //制动蹄片磨损R3
@@ -2336,15 +2351,15 @@ void BCAN_Send_Tipian(void) //0x18FF2C47  1000ms 蹄片信号
     	msg.data[3] = msg.data[3]|(IN21<<2); //制动蹄片磨损L2
     	msg.data[3] = msg.data[3]|(IN18<<4); //制动蹄片磨损L3
     	msg.data[3] = msg.data[3]|(IN22<<6); //制动蹄片磨损L4
-    	
+
     	msg.data[4] = msg.data[4]|(IN15);    //制动蹄片磨损R1
     	msg.data[4] = msg.data[4]|(IN19<<2); //制动蹄片磨损R2
     	msg.data[4] = msg.data[4]|(IN23<<4); //制动蹄片磨损R3
     	msg.data[4] = msg.data[4]|(IN16<<6); //制动蹄片磨损R4
-		
+
 		msg.data[5] = msg.data[5]|(IN27);    //制动蹄片磨损L5
 		msg.data[5] = msg.data[5]|(IN13<<2); //制动蹄片磨损R5
-		
+
 	}
 	else{}
     msg.len = 0x08;
@@ -2357,12 +2372,12 @@ void BCAN_Send_TPMSLearning(void) //0x18FFE817
     msg.data[0]  =0;                    
     msg.data[1] = 1;        
     back = 1;
-	
-	
+
+
          if(tire == 1) msg.data[2] = 0x17;       
     else if(tire == 2) msg.data[2] = 0x19;
 	else ;
-	
+
 	if(eol_drivetype==0)
 	{
 		     if(tire == 3) msg.data[2] = 0x26;
@@ -2455,11 +2470,11 @@ void BCAN_Send_TPMSLearningEnd(void) //0x18FFE817
     back = 0;
     msg.data[0] = 0;                    
     msg.data[1] = 0;
-	
+
          if(tire == 1) msg.data[2] = 0x17;       
     else if(tire == 2) msg.data[2] = 0x19;
 	else ;
-	
+
 	if(eol_drivetype==0)
 	{
 		     if(tire == 3) msg.data[2] = 0x26;
@@ -2553,7 +2568,7 @@ void CAN_Send_TCO1(void)    //0x0CFE6CEE  50ms   输出轴转速和车速
 	uint16_t u16_vspeed;
 	u16_rpm = get_shaft_speed();
 	u16_vspeed = get_vehicle_speed() * 256;
-	
+
 	msg.data[0] = 0;                    
 	msg.data[1] = 0;       
 	msg.data[2] = 0;       
@@ -2567,14 +2582,14 @@ void CAN_Send_TCO1(void)    //0x0CFE6CEE  50ms   输出轴转速和车速
 	msg.type = 0x00;
 	CAN1_SendFIFOMessage(&msg);
 	CAN2_SendFIFOMessage(&msg);
-	
+
 }
 void CAN_Send_TD(void)      //0x18FEE6EE  1000ms 时间
 {
     CAN_MESSAGE msg;
-    
+
 	static uint8_t Cntr_10S = 0x00;
-	
+
 	if(Cntr_10S < 10)
 	{
 		Cntr_10S++;
@@ -2621,7 +2636,7 @@ void CAN_Send_AMB(void)     //0x18FEF517  1000ms 环境温度
     CAN_MESSAGE msg;
     uint32_t offset ;
     uint32_t currenttemp;
-    
+
     msg.data[0] = 0xCA;                    
     msg.data[1] = 0;       
     msg.data[2] = 0;         
@@ -2646,7 +2661,7 @@ void CAN_Send_AMB(void)     //0x18FEF517  1000ms 环境温度
     msg.type = 0x00;
 	CAN1_SendFIFOMessage(&msg);
 	CAN2_SendFIFOMessage(&msg);
-	
+
 }
 void CAN_Send_VDHR(void)    //0x18FEC117  1000ms 里程
 {
@@ -2672,7 +2687,7 @@ void CAN_Send_VDHR(void)    //0x18FEC117  1000ms 里程
     msg.type = 0x00;
 
     CAN1_SendFIFOMessage(&msg);
-    CAN2_SendFIFOMessage(&msg);
+    //CAN2_SendFIFOMessage(&msg);
 }
 void CAN_Send_MotSpeedObj1(void)
 {
@@ -2680,9 +2695,9 @@ void CAN_Send_MotSpeedObj1(void)
     VCU_04F02B70_t *pVCU_04F02B70 = NULL;
 
     pVCU_04F02B70 =
-        (VCU_04F02B70_t *)can_getPCanBuffer(0x04F02B70);
+        (VCU_04F02B70_t *)can_getBCanBuffer(0x04F02B70);
 
-    if(can_getPCanRxState(0x04F02B70)
+    if(can_getBCanRxState(0x04F02B70)
        == CAN_FRAME_ST_RECVED)
     {
         msg.data[0] =
@@ -2720,7 +2735,7 @@ void CAN_Send_MotSpeedObj1(void)
     msg.len = 0x08;
     msg.type = 0x00;
 
-    CAN2_SendFIFOMessage(&msg);
+    CAN1_SendFIFOMessage(&msg);
 }
 void CAN_Send_MotSpeedObj2(void)
 {
@@ -2728,9 +2743,9 @@ void CAN_Send_MotSpeedObj2(void)
     VCU_04F02C70_t *pVCU_04F02C70 = NULL;
 
     pVCU_04F02C70 =
-        (VCU_04F02C70_t *)can_getPCanBuffer(0x04F02C70);
+        (VCU_04F02C70_t *)can_getBCanBuffer(0x04F02C70);
 
-    if(can_getPCanRxState(0x04F02C70)
+    if(can_getBCanRxState(0x04F02C70)
        == CAN_FRAME_ST_RECVED)
     {
         msg.data[0] =
@@ -2762,7 +2777,7 @@ void CAN_Send_MotSpeedObj2(void)
     msg.len = 0x08;
     msg.type = 0x00;
 
-    CAN2_SendFIFOMessage(&msg);
+    CAN1_SendFIFOMessage(&msg);
 }
 void CAN_Send_AIR1(void)    //0x18FEAE30/0x18F13017  1000ms 气压
 {
@@ -2772,7 +2787,7 @@ void CAN_Send_AIR1(void)    //0x18FEAE30/0x18F13017  1000ms 气压
 	uint16_t RearP = 0;
 	uint16_t ZhuceP = 0;
 	double   ap_sensor_scale = 0;
-	
+
 	if(M_ON)
 	{
 		if(ap_delay_cnt >= 3)
@@ -2780,28 +2795,28 @@ void CAN_Send_AIR1(void)    //0x18FEAE30/0x18F13017  1000ms 气压
 			// FrontP = get_front_airpressure();
     		// RearP  = get_rear_airpressure();
    			// ZhuceP = get_parking_airpressure();
-			
+
 			//前桥气压
 			ap_sensor_scale = get_input_analog_quantity(AD_V_B3) * 100 / get_input_analog_quantity(B24_5V_DET);
 			if(ap_sensor_scale < 96 && ap_sensor_scale > 10)
 				FrontP = ((double)ap_sensor_scale - 10 ) / 54.422 * 1000; //单位Kpa 
 			else
 				FrontP  = 0;
-			
+
 			//后桥气压
 			ap_sensor_scale = get_input_analog_quantity(AD_V_B20) * 100 / get_input_analog_quantity(B24_5V_DET);
 			if(ap_sensor_scale < 96 && ap_sensor_scale > 10)
 				RearP = ((double)ap_sensor_scale - 10) / 54.422 * 1000; //单位Kpa
 			else
 				RearP  = 0;
-			
+
 			//驻车气压
 			ap_sensor_scale = get_input_analog_quantity(AD_V_B19) * 100 / get_input_analog_quantity(B26_5V_DET);
 			if(ap_sensor_scale < 96 && ap_sensor_scale > 10)
 				ZhuceP = ((double)ap_sensor_scale - 10) / 54.422 * 1000; //单位Kpa
 			else
 				ZhuceP = 0;
-			
+
 			if(FrontP > 2000)
 				FrontP = 2000;
 			if(RearP > 2000)
@@ -2812,12 +2827,12 @@ void CAN_Send_AIR1(void)    //0x18FEAE30/0x18F13017  1000ms 气压
 		else 
 		{
 			ap_delay_cnt++;
-			
+
 			// FrontP = 320;
 			// RearP  = 320;
 			// ZhuceP = 320;
 		}
-		
+
 		// if(eol_icutype == 0)
 		{
 			msg.data[0] = (uint8_t)(FrontP/10);
@@ -2854,7 +2869,7 @@ void CAN_Send_AIR1(void)    //0x18FEAE30/0x18F13017  1000ms 气压
 	else 
 	{
 		ap_delay_cnt = 0;
-		
+
 		// if(eol_icutype == 0)
 		{
 			msg.data[0] = (uint8_t)(0xffu);
@@ -2893,42 +2908,42 @@ void CAN_Send_ICS(void)     //0x18FF7117  1000ms 仪表开关信号
 {
     CAN_MESSAGE msg;
     BYTE_t tmpdata;
-	
+
 	tmpdata.byte = 0;
     tmpdata.bit12 = 0;
 	tmpdata.bit34 = 0;
     tmpdata.bit56 = LED_LOCK;//驾驶室锁止不到位
 	tmpdata.bit78 = LED_SaftyBelt; //安全带未系指示
     msg.data[0] = tmpdata.byte;
-	
+
 	tmpdata.byte = 0;
     tmpdata.bit12 = LED_CoolingLiquied;//冷却液液位过低报警
 	tmpdata.bit34 = 0;
     tmpdata.bit56 = IN4;//干燥器指示
     tmpdata.bit78 = IN5;//后照灯指示
     msg.data[1] = tmpdata.byte;   
-	
+
 	tmpdata.byte = 0;
     tmpdata.bit12 = IN28;//轴间差速指示
     tmpdata.bit34 = IN26;//轮间差速指示
 	tmpdata.bit56 = 0;
 	tmpdata.bit78 = IN25; //挂车ABS指示
     msg.data[2] = tmpdata.byte; 
-    
+
 	tmpdata.byte = 0;
     tmpdata.bit12 = (IN2);//举升桥提升状态指示 
     tmpdata.bit34 = 0;//ECAS警告指示预留
     tmpdata.bit56 = 0;//ECAS失效指示预留
     tmpdata.bit78 = LED_Park;//驻车制动指示
     msg.data[3] = tmpdata.byte;
-	
+
 	tmpdata.byte = 0;
     tmpdata.bit12 = C4_OK_L_MCU ;	 //功能按键
     tmpdata.bit34 = C5_CANCEL_L_MCU; //功能按键
     tmpdata.bit56 = C7_DOWN_L_MCU;	 //功能按键
     tmpdata.bit78 = C6_UP_L_MCU;     //功能按键
     msg.data[4] = tmpdata.byte;  
-    
+
     tmpdata.byte = 0;
     tmpdata.bit12 = IN3;//空气悬架指示
 	tmpdata.bit34 = 0;
@@ -2936,10 +2951,10 @@ void CAN_Send_ICS(void)     //0x18FF7117  1000ms 仪表开关信号
 		tmpdata.bit56 = 1; /*0x01-已放大7%  0x00-未放大*/
 	else
 		tmpdata.bit56 = 0; /*0x01-已放大7%  0x00-未放大*/
-	
+
 	tmpdata.bit78 = 0;
     msg.data[5]=tmpdata.byte; 
-	
+
 	tmpdata.byte = 0;
     tmpdata.bit12 = IN11;//翼门开关
     msg.data[6] = tmpdata.byte; 
@@ -2950,7 +2965,7 @@ void CAN_Send_ICS(void)     //0x18FF7117  1000ms 仪表开关信号
     msg.type = 0x00;
 	CAN1_SendFIFOMessage(&msg);
 	CAN2_SendFIFOMessage(&msg);
-	
+
 }
 void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 {
@@ -2958,11 +2973,11 @@ void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 	CAN_MESSAGE msg;
 	GeneralUse_t    *GU_18F00150_t   = NULL;
 	GeneralUse_t    *GU_18FED932_t   = NULL;
-	
+
 	GU_18FED932_t   = (GeneralUse_t *)can_getBCanBuffer(0x18FED932);
-	
+
 	memset(msg.data,0,8);
-	
+
 	if(can_getPCanRxState(0x18F00150) == CAN_FRAME_ST_RECVED)
 	{
 		GU_18F00150_t   = (GeneralUse_t *)can_getPCanBuffer(0x18F00150);
@@ -2972,7 +2987,7 @@ void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 	{
 		msg.data[0] &= 0xFC;
 	}
-	
+
 	//Byte2-bit34的逻辑
 	if(M_ON)
 	{
@@ -2999,7 +3014,7 @@ void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 		msg.data[1] |= 0x04;//01 Normal
 		ptmr_Stop(&abs_wait_Tmr);
 	}
-	
+
 	//检测挂车ABS - Byte2-bit56的逻辑
 	if(TrailerABS_CheckFlg)
 	{
@@ -3009,7 +3024,7 @@ void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 	{
 		msg.data[1] &= 0xCF;
 	}
-	
+
 	//检测车辆是否带挂车 - Byte2-bit78的逻辑
 	if(GU_18FED932_t->byte2.bit78 == 1 || TrailerABS_CheckFlg)
 	{
@@ -3019,12 +3034,12 @@ void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 	{
 		msg.data[1] &= 0x3F;
 	}
-	
+
     msg.id = 0x18FED917;
     msg.len = 0x08;
     msg.type = 0x00;
 	CAN2_SendFIFOMessage(&msg);
-	
+
 }
 void PCAN_Send_CollingLiquidLevel(void) //0x18FEEF17  1000ms 冷却液位信号
 {
@@ -3051,7 +3066,7 @@ void Bcan_to_Pcan_N10ms(void)
 {
 	static uint8_t pSendCtrl_10ms = 0x00;
 	uint8_t *tmp = NULL;
-	
+
 	/* 50ms */
 	if(0x00 == (pSendCtrl_10ms % 5))
 	{
@@ -3065,7 +3080,7 @@ void Bcan_to_Pcan_N10ms(void)
 			}
 		}
 	}
-	
+
 	if(0x09 == pSendCtrl_10ms)
 	{
 		pSendCtrl_10ms = 0x00;
@@ -3074,13 +3089,13 @@ void Bcan_to_Pcan_N10ms(void)
 	{
 		pSendCtrl_10ms++;
 	}
-	
+
 }
 void Pcan_to_Bcan_N10ms(void)
 {
 	static uint8_t bSendCtrl_10ms = 0x00;
 	uint8_t *tmp = NULL;
-	
+
 	/* 20ms */
 	if(0x00 == (bSendCtrl_10ms % 2))
 	{
@@ -3091,7 +3106,7 @@ void Pcan_to_Bcan_N10ms(void)
 			BCAN_Send_Route(0x18F0090B,tmp);
 		}
 	}
-	
+
 	if(0x09 == bSendCtrl_10ms)
 	{
 		bSendCtrl_10ms = 0x00;
@@ -3100,14 +3115,14 @@ void Pcan_to_Bcan_N10ms(void)
 	{
 		bSendCtrl_10ms++;
 	}
-	
+
 }
 void Task10ms_can_send(void)
 {
 	if(eol_icutype == 0 || eol_icutype == 1 || eol_icutype == 3)
 	{
 		Bcan_to_Pcan_N10ms();
-		
+
 		Pcan_to_Bcan_N10ms();
 	}
 }
@@ -3129,7 +3144,7 @@ void Bcan_to_Pcan_N100ms(void)
 				// tmp = can_getBCanBuffer(0x0CFDCC32);
 				// PCAN_Send_Route(0x0CFDCC32,tmp);
 			// }
-			
+
 			if(0x01 ==  can_getBCanRxState(0x18A9E832)) //FLIC
 			{
 				tmp = can_getBCanBuffer(0x18A9E832);
@@ -3139,20 +3154,20 @@ void Bcan_to_Pcan_N100ms(void)
 					tmp[7] &= 0xfc;
 				PCAN_Send_Route(0x18A9E832,tmp);
 			}
-			
+
 			if(0x01 ==  can_getBCanRxState(0x18FDCD32)) //OWW
 			{
 				tmp = can_getBCanBuffer(0x18FDCD32);
 				PCAN_Send_Route(0x18FDCD32,tmp);
 			}
 		}
-		
+
 		if(0x01 ==  can_getBCanRxState(0x0CFDCC32))  //OEL  针对中联搅拌车
 		{
 			tmp = can_getBCanBuffer(0x0CFDCC32);
 			PCAN_Send_Route(0x0CFDCC32,tmp);
 		}
-		
+
 		if(0x01 ==  can_getBCanRxState(0x18FF2130)) /*TZ8C*/
 		{
 			tmp = can_getBCanBuffer(0x18FF2130);
@@ -3170,7 +3185,7 @@ void Bcan_to_Pcan_N100ms(void)
 		tmp = can_getBCanBuffer(0x18FF6DD8);
 		PCAN_Send_Route(0x18FF6DD8,tmp);
 	}
-	
+
 	if(eol_aebstype > 0)
 	{
 		if(0x01 ==	can_getBCanRxState(0x18FF2C32)) //BCMS
@@ -3179,19 +3194,19 @@ void Bcan_to_Pcan_N100ms(void)
 			PCAN_Send_Route(0x18FF2C32,tmp);
 		}
 	}
-	
+
 	if(0x01 ==	can_getBCanRxState(0x18FF2732)) //BCMI
 	{
 		tmp = can_getBCanBuffer(0x18FF2732);
 		PCAN_Send_Route(0x18FF2732,tmp);
 	}
-	
+
 	if(0x01 ==	can_getBCanRxState(0x1CFEC303))
 	{
 		tmp = can_getBCanBuffer(0x1CFEC303);
 		PCAN_Send_Route(0x1CFEC303,tmp);
 	}
-	
+
 	if((eol_ebs == 5)||(eol_ebs == 6)||(eol_ebs ==10)|| (eol_ebs == 13))//标定为EBS系统时，显示EBS
 	{
 		if(0x01 ==	can_getBCanRxState(0x18FEEA2F))
@@ -3199,20 +3214,20 @@ void Bcan_to_Pcan_N100ms(void)
 			tmp = can_getBCanBuffer(0x18FEEA2F);
 			PCAN_Send_Route(0x18FEEA2F,tmp);
 		}
-		
+
 		if(0x01 ==	can_getBCanRxState(0x0CFE5A2F))
 		{
 			tmp = can_getBCanBuffer(0x0CFE5A2F);
 			PCAN_Send_Route(0x0CFE5A2F,tmp);
 		}
-		
+
 		if(0x01 ==	can_getBCanRxState(0x18FE592F))
 		{
 			tmp = can_getBCanBuffer(0x18FE592F);
 			PCAN_Send_Route(0x18FE592F,tmp);
 		}
 	}
-	
+
 	if(0x09 == pSendCtrl_100ms)
 	{
 		pSendCtrl_100ms = 0x00;
@@ -3249,7 +3264,7 @@ void Pcan_to_Bcan_N100ms(void)
 			BCAN_Send_Route(0x18FEBF0B,tmp);
 		}
 	}
-	
+
 	if(0x09 == bSendCtrl_100ms)
 	{
 		bSendCtrl_100ms = 0x00;
@@ -3258,7 +3273,7 @@ void Pcan_to_Bcan_N100ms(void)
 	{
 		bSendCtrl_100ms++;
 	}
-	
+
 }
 void Task100ms_can_send(void) //100ms task
 {
@@ -3272,8 +3287,8 @@ if(mot_speed_send_cnt >= 2)
 {
     mot_speed_send_cnt = 0;
 
-    CAN_Send_MotSpeedObj1();
-    CAN_Send_MotSpeedObj2();
+    //CAN_Send_MotSpeedObj1();
+    //CAN_Send_MotSpeedObj2();
 }
 	for(uint8_t num = 0; num < 4; num++)
 	{
@@ -3284,14 +3299,14 @@ if(mot_speed_send_cnt >= 2)
 			else
 			{
 				wheelupdatedtimer[num][i] = 30;
-				
+
 				Wheels[num][i].wheelID = 0;
 				Wheels[num][i].temperature = 0;
 				Wheels[num][i].pressure = 0;
 				Wheels[num][i].fast_pressure_lost = 0;
 				Wheels[num][i].pressure_status = 0;
 				Wheels[num][i].over_temperature_status = 0;
-				
+
 				if(i==0)
 				{
 					TyreLocation_pressureh[num].bit0 = 0;
@@ -3323,7 +3338,7 @@ if(mot_speed_send_cnt >= 2)
 			}
 		}
 	}
-	
+
 	if(learnstatus==1)
 	{
 		if(study==1)
@@ -3334,7 +3349,7 @@ if(mot_speed_send_cnt >= 2)
 				BCAN_StartTime(0x18FFE833);
 				BCAN_Send_TPMSLearning();
 			}
-			
+
 			if((can_getBCanRxState(0x18FFE833)==2)&&back)
 			{
 				study = 0;
@@ -3350,20 +3365,20 @@ if(mot_speed_send_cnt >= 2)
 			}
 		}
 	}
-	
+
 	if(eol_icutype == 0 || eol_icutype == 1 || eol_icutype == 3)
 	{
 		Bcan_to_Pcan_N100ms();
 		Pcan_to_Bcan_N100ms();
 	}
-	
+
 	if((can_getPCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
 	|| (can_getPCanRxState(0x18F00503) == CAN_FRAME_ST_RECVED)
 	|| (can_getPCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED))
 		BCAN_Send_GearR();
 	BCAN_Send_CCSV();
 	PCAN_Send_AUXIO1();
-	
+
 	if(Test_Mode == 0)
 	{
 		if(M_ON && delay_cnt<1)
@@ -3371,7 +3386,7 @@ if(mot_speed_send_cnt >= 2)
 			PCAN_Send_ICU_DM1();
 		}
 	}
-	
+
     switch (sendcontrol)
 	{
 		case 0:
@@ -3433,7 +3448,7 @@ void PCAN_Send_TestRequest(uint8_t req)
     msg.len = 0x08;
     msg.type = 0x00;
 	CAN2_SendFIFOMessage(&msg);
-	
+
 }
 void PCAN_Send_TestResult(void) //Miles
 {
@@ -3449,11 +3464,11 @@ void PCAN_Send_TestResult(void) //Miles
 	msg.data[2] = testResultData[2]; //switch test status
 	msg.data[3] = testResultData[3]; //switch test status
 	msg.data[4] = testResultData[4]; //step
-	
+
 	msg.data[5] = testResultData[5]; //ad test result 1-8
 	msg.data[6] = testResultData[6]; //9-10
 	msg.data[7] = !(bcancnt>5); //
-	
+
 	if((msg.data[0] == 0) \
 	&& (msg.data[1] == 0) \
 	&& (msg.data[2] == 0) \
@@ -3465,16 +3480,16 @@ void PCAN_Send_TestResult(void) //Miles
 		TestResult = 0x55;
 	else
 		TestResult = 0xAA;//failed
-	
+
 	if(testStep == 3)
 		testStep = 4;
-	
+
 	msg.id = 0x18FEFF20; //
 	msg.len = 0x08;
 	msg.type = 0x00;
-	
+
 	CAN2_SendFIFOMessage(&msg);
-	
+
 }
 
 
@@ -3483,9 +3498,9 @@ void canBusOffDetectionTask(void)
 {
 	static uint32_t can_busoff_recover_cnt[CAN_CHN] = {0, 0, 0}; //bus off 恢复次数
 	static uint32_t can_busoff_time_cnt[CAN_CHN] = {0, 0, 0};    //
-	
+
 	uint8_t recover_time[CAN_CHN];
-	
+
 	for(uint8_t i = 1; i < CAN_CHN; i++)
 	{
 		if(can_busoff_flg[i] == 1)
@@ -3494,21 +3509,21 @@ void canBusOffDetectionTask(void)
 				recover_time[i] = 4;
 			else
 				recover_time[i] = 19;
-			
+
 			if(can_busoff_time_cnt[i] > recover_time[i])
 			{
 				can_busoff_flg[i] = 0;
-				
+
 				can_busoff_recover_cnt[i]++;
-				
+
 				RS_CAN_BusOff_Recovery(i);
-				
+
 			}
 			else can_busoff_time_cnt[i]++;
 		}
 		else can_busoff_time_cnt[i] = 0;
 	}
-	
+
 }
 
 

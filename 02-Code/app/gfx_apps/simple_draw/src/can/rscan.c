@@ -5,7 +5,7 @@
                            C O P Y R I G H T
 ============================================================================
  Copyright (c) 2017 by SHFY. All rights reserved.
- 
+
 ============================================================================
 
 
@@ -67,7 +67,7 @@ const CanRxRuleCfg_t CanDrvRxRule[] = \
 	{0x18FECA00UL, 0x1FFFFF00UL, 0x00000500UL, 0x00000002UL},
 	{0x18ECFF00UL, 0x1FFFFF00UL, 0x00000600UL, 0x00000002UL},
 	{0x18EBFF00UL, 0x1FFFFF00UL, 0x00000700UL, 0x00000002UL}, /*8*/
-	
+
 	{0x18FF2232UL, 0x1FFFFFFFUL, 0x00000800UL, 0x00000002UL},
 	{0x18FF2732UL, 0x1FFFFFFFUL, 0x00000900UL, 0x00000002UL},
 	{0x18FED932UL, 0x1FFFFFFFUL, 0x00000A00UL, 0x00000002UL},
@@ -103,20 +103,26 @@ const CanRxRuleCfg_t CanDrvRxRule[] = \
 	{0x11FF3F32UL, 0x1FFFFFFFUL, 0x00002800UL, 0x00000002UL},
 	{0x18FED631UL, 0x1FFFFFFFUL, 0x00002900UL, 0x00000002UL}, /*42*/
 	{0x18FF8F25UL, 0x1FFFFFFFUL, 0x00002A00UL, 0x00000002UL}, /*43*/
-	{0x0CF6034DUL, 0x1FFFFFFFUL, 0x00002B00UL, 0x00000004UL}, /*44*/
-	
+	{0x0CF6034DUL, 0x1FFFFFFFUL, 0x00002B00UL, 0x00000002UL}, /*44*/
+	{0x04F02070UL, 0x1FFFF0FFUL, 0x00005B00UL, 0x00000002UL}, /* 0x04F02070~0x04F02F70 */
+	{0x1885EFF3UL, 0x1FFFFFFFUL, 0x00006700UL, 0x00000002UL}, /**/ /* lyx */
+	{0x1886EFF3UL, 0x1FFFFFFFUL, 0x00006800UL, 0x00000002UL}, /**/ /* lyx */
+	{0x1887EFF3UL, 0x1FFFFFFFUL, 0x00006900UL, 0x00000002UL}, /**/ /* lyx */
+	{0x1888EFF3UL, 0x1FFFFFFFUL, 0x00006A00UL, 0x00000002UL}, /**/ /* lyx */
+
 	/*CAN2 - PCAN*/
 	{0x18DA17F1UL, 0x1FFFFFF0UL, 0x00002C00UL, 0x00000004UL}, /*1*/
 	{0x00000151UL, 0x1FFFFFF0UL, 0x00002D00UL, 0x00000004UL},
 	{0x000001F1UL, 0x1FFFFFF0UL, 0x00002E00UL, 0x00000004UL},
 	{0x00000888UL, 0x1FFFFFFFUL, 0x00002F00UL, 0x00000004UL},
 	{0x00000610UL, 0x1FFFFFFFUL, 0x00003000UL, 0x00000004UL},
+
 	{0x18FECA00UL, 0x1FFFFF00UL, 0x00003100UL, 0x00000004UL},
 	{0x18ECFF00UL, 0x1FFFFF00UL, 0x00003200UL, 0x00000004UL},
 	{0x18EBFF00UL, 0x1FFFFF00UL, 0x00003300UL, 0x00000004UL}, /*8*/
 	{0x18FFA0F5UL, 0x1FFFF0FFUL, 0x00003400UL, 0x00000004UL},
 	{0x18FFA0F6UL, 0x1FFFF0FFUL, 0x00003500UL, 0x00000004UL}, /*10*/
-	
+
 	{0x0CFFEAF4UL, 0x1FFFFFFFUL, 0x00003600UL, 0x00000004UL},
 	{0x18FFEEF4UL, 0x1FFFFFFFUL, 0x00003700UL, 0x00000004UL},
 	{0x18FFF2F4UL, 0x1FFFFFFFUL, 0x00003800UL, 0x00000004UL},
@@ -154,23 +160,7 @@ const CanRxRuleCfg_t CanDrvRxRule[] = \
 	{0x18FF0B03UL, 0x1FFFFFFFUL, 0x00005800UL, 0x00000004UL}, /*45*/
 	{0x18FF0B04UL, 0x1FFFFFFFUL, 0x00005900UL, 0x00000004UL}, /*46*/
 	{0x0CF19682UL, 0x1FFFFFFFUL, 0x00005A00UL, 0x00000004UL}, /*47*/
-	{0x04F02270UL, 0x1FFFFFFFUL, 0x00005B00UL, 0x00000004UL}, /*48*/ /* lyx */
-	{0x04F02370UL, 0x1FFFFFFFUL, 0x00005C00UL, 0x00000004UL}, /*49*/ /* lyx */
-	{0x04F02470UL, 0x1FFFFFFFUL, 0x00005D00UL, 0x00000004UL}, /*50*/ /* lyx */
-	{0x04F02570UL, 0x1FFFFFFFUL, 0x00005E00UL, 0x00000004UL}, /*51*/ /* lyx */
-	{0x04F02670UL, 0x1FFFFFFFUL, 0x00005F00UL, 0x00000004UL}, /*52*/ /* lyx */
-	{0x04F02770UL, 0x1FFFFFFFUL, 0x00006000UL, 0x00000004UL}, /*53*/ /* lyx */
-	{0x04F02870UL, 0x1FFFFFFFUL, 0x00006100UL, 0x00000004UL}, /*54*/ /* lyx */
-	{0x04F02970UL, 0x1FFFFFFFUL, 0x00006200UL, 0x00000004UL}, /*55*/ /* lyx */
-	{0x04F02A70UL, 0x1FFFFFFFUL, 0x00006300UL, 0x00000004UL}, /*56*/ /* lyx */
-	{0x04F02B70UL, 0x1FFFFFFFUL, 0x00006400UL, 0x00000004UL}, /*57*/ /* lyx */
-	{0x04F02C70UL, 0x1FFFFFFFUL, 0x00006500UL, 0x00000004UL}, /*58*/ /* lyx */
-	{0x04F02D70UL, 0x1FFFFFFFUL, 0x00006600UL, 0x00000004UL}, /*59*/ /* lyx */
-	{0x1885EFF3UL, 0x1FFFFFFFUL, 0x00006700UL, 0x00000004UL}, /*60*/ /* lyx */
-	{0x1886EFF3UL, 0x1FFFFFFFUL, 0x00006800UL, 0x00000004UL}, /*61*/ /* lyx */
-	{0x1887EFF3UL, 0x1FFFFFFFUL, 0x00006900UL, 0x00000004UL}, /*62*/ /* lyx */
-	{0x1888EFF3UL, 0x1FFFFFFFUL, 0x00006A00UL, 0x00000004UL}, /*63*/ /* lyx */
-	{0x04F02E70UL, 0x1FFFFFFFUL, 0x00006B00UL, 0x00000004UL}, /*64*/ /* lyx */
+
 };
 
 
@@ -179,10 +169,10 @@ static void Can_SetRxRule(void)
 	volatile CanRxRuleCfg_t* RuleCfg;
 	uint16_t RxRuleIdx;
 	uint8_t  PageRxRuleIdx;
-	
+
 	/* Set Rx rule number per channel */
-    RSCAN0.GAFLCFG0.UINT32 = 0x00402D00;//lyx
-	
+    RSCAN0.GAFLCFG0.UINT32 = 0x002F2D00;//lyx
+
 	/* Receive Rule Table Write Enable, and select page 0
     RSCAN0GAFLECTR- Receive Rule Entry Control Register
     b31:b 9                  - Reserved set to 0
@@ -191,24 +181,24 @@ static void Can_SetRxRule(void)
     b 4:b 0         AFLPN    - Receive Rule Table Page Number
                                Configuration                       - select pages 0. set to 00000'b */
     RSCAN0.GAFLECTR.UINT32  = 0x100UL;
-	
+
 	/* Get access base address of Rx rule */
     RuleCfg = (volatile CanRxRuleCfg_t*)&(RSCAN0_GAFLIDj(0));
-	
+
 	for (RxRuleIdx = 0U; RxRuleIdx < CAN_RX_RULE_NUM; RxRuleIdx++) 
 	{
 		PageRxRuleIdx = (uint8_t) (RxRuleIdx & 0x0fu);
-		
+
 		/* Update target Rx rule page if necessary. */
 		if (PageRxRuleIdx == 0U) 
 		{
 			RSCAN0.GAFLECTR.BIT.AFLPN = (RxRuleIdx >> 4u);
 		}
-		
+
 		/* Set a single Rx rule.*/
 		RuleCfg[PageRxRuleIdx] = CanDrvRxRule[RxRuleIdx];
 	}
-	
+
     /* Receive Rule Table Write Disabel
     RSCAN0GAFLECTR- Receive Rule Entry Control Register
     b31:b 9                  - Reserved set to 0
@@ -217,7 +207,7 @@ static void Can_SetRxRule(void)
     b 4:b 0         AFLPN    - Receive Rule Table Page Number
                                Configuration                       - unused. set to 00000'b */
     RSCAN0.GAFLECTR.UINT32 &= ~0x100UL;
-	
+
 }
 
 /*****************************************************************************
@@ -231,71 +221,71 @@ void RS_CAN_init(void)
     /* default seting: Main Osc/1 -> CAN */
     //protected_write(SYSPROTCMDD1,SYSPROTS1,SYSCKSC_IRSCANXINS_CTL,0x01);
     //while (SYSCKSC_IRSCANXINS_ACT !=0x01); //wait for clk active
-    
+
     //set the pull down pin
     //PORT_AWO.PM0.UINT16               &= 0xfffe;
     //PORT_AWO.PMC0.UINT16              &= 0xfffe;
     //PORT_AWO.P0.UINT16                &= 0xfffe;
-	
+
     /* Set CAN0TX as P0_4 and CAN0RX as P0_5 */
     /* PORT_AWO.PMC0.UINT16  |= 0x0030;
     PORT_AWO.PFCE0.UINT16 |= (0x0030);
     PORT_AWO.PFC0.UINT16  |= (0x0030);
     PORT_AWO.PM0.UINT16   &= ~(1 << 4);
     PORT_AWO.PM0.UINT16   |= 1 << 5; */
-	
+
 	/* Set CAN1TX as P0_6 and CAN1RX as P0_7 */
     PORT_AWO.PMC0.UINT16  |= (0x00C0);
     PORT_AWO.PFCE0.UINT16 |= (0x00C0);
     PORT_AWO.PFC0.UINT16  |= (0x00C0);
     PORT_AWO.PM0.UINT16   &= ~(1 << 6);
     PORT_AWO.PM0.UINT16   |= 1 << 7;
-	
+
 	/* Set CAN2TX as P0_8 and CAN2RX as P0_9 */
 	PORT_AWO.PMC0.UINT16  |= (0x0300);
     PORT_AWO.PFCE0.UINT16 |= (0x0300);
     PORT_AWO.PFC0.UINT16  |= (0x0300);
     PORT_AWO.PM0.UINT16   &= ~(1 << 8);
     PORT_AWO.PM0.UINT16   |= 1 << 9;
-	
+
 	#if 0
     /* Wait while CAN RAM initialization is ongoing */
     while((RSCAN0.GSTS.UINT32 & 0x00000008));
-	
+
 	/* Switch to global/channel reset mode */
 	RSCAN0.GCTR.UINT32  &= ~R_CAN_GSLPR_MASK; /* GSLPR = 0 */
 	// RSCAN0.C0CTR.UINT32 &= ~R_CAN_CSLPR_MASK; /* CSLPR = 0 */
 	RSCAN0.C1CTR.UINT32 &= ~R_CAN_CSLPR_MASK; /* CSLPR = 0 */
 	RSCAN0.C2CTR.UINT32 &= ~R_CAN_CSLPR_MASK; /* CSLPR = 0 */
-	
+
 	while ((RSCAN0.GSTS.UINT32 & R_CAN_GSLPSTS_ON) != 0UL);
 	while ((RSCAN0.C1STS.UINT32 & R_CAN_CSLPSTS_ON) != 0UL);
 	while ((RSCAN0.C2STS.UINT32 & R_CAN_CSLPSTS_ON) != 0UL);
-	
+
 	#else
 	RSCAN0.GCTR.UINT32   = 0x00000005UL;
 	while((RSCAN0.GSTS.UINT32 & 0x00000008));
 	RSCAN0.GCTR.UINT32  &= 0xFFFFFFFB;
 	RSCAN0.GCTR.UINT32  |= 0x00000001;
 	while ((RSCAN0.GSTS.UINT32 & 0x00000001) != 0x00000001);
-	
+
 	RSCAN0.C1CTR.UINT32   = 0x00000005UL;
 	while((RSCAN0.C1STS.UINT32 & 0x00000008));
 	RSCAN0.C1CTR.UINT32  &= 0xFFFFFFFB;
 	RSCAN0.C1CTR.UINT32  |= 0x00000001;
 	while ((RSCAN0.C1STS.UINT32 & 0x00000001) != 0x00000001);
-	
+
 	RSCAN0.C2CTR.UINT32   = 0x00000005UL;
 	while((RSCAN0.C2STS.UINT32 & 0x00000008));
 	RSCAN0.C2CTR.UINT32  &= 0xFFFFFFFB;
 	RSCAN0.C2CTR.UINT32  |= 0x00000001;
 	while ((RSCAN0.C2STS.UINT32 & 0x00000001) != 0x00000001);
-	
+
 	#endif
-	
+
     /* Configure clk_xincan as CAN-ClockSource */
     RSCAN0.GCFG.UINT32 = 0x00000010;
-	
+
 	/**
 	Bits[9..0]   = 0  -> BRP
     Bits[19..16] = 12 -> TSEG1
@@ -303,8 +293,8 @@ void RS_CAN_init(void)
     Bits[25,24]  = 0  -> SJW
 	必须满足 TSEG2 >= SJW
 	当前 fCAN = 8MHz
-    波特率 Bitrate = fCAN/(BRP+1)/(1+TSEG1+TSEG2)
-	采样率 Sample  =(1+TSEG1)/(1+TSEG1+TSEG2) = ( 1 + 13 ) / ( 1 + 13 + 2 ) = 87.5%
+    Bitrate = fCAN/(BRP+1)/(1+TSEG1+TSEG2)
+	Sample  =(1+TSEG1)/(1+TSEG1+TSEG2) = ( 1 + 13 ) / ( 1 + 13 + 2 ) = 87.5%
 	*/
 	// RSCAN0.C0CFG.UINT32 = 0x001C0000; //SJW=1TQ, TSEG1=13TQ, TSEG2=2TQ, BRP=0 -->> Bitrate 500k
 	// RSCAN0.C1CFG.UINT32 = 0x001C0001; //SJW=1TQ, TSEG1=13TQ, TSEG2=2TQ, BRP=1 -->> Bitrate 250k
@@ -329,26 +319,26 @@ void RS_CAN_init(void)
 		RSCAN0.C1CFG.UINT32 = 0x001C0001; //BCAN1  Bitrate 250k
 		RSCAN0.C2CFG.UINT32 = 0x001C0001; //PCAN2  Bitrate 250k
 	}
-	
+
     /* ==== Rx rule setting ==== */
     Can_SetRxRule();
-	
+
     /* ====receive buffer setting ==== */
     RSCAN0.RMNB.UINT32 = 0x00; //Can_SetGlobalBuffer--16
-    
+
 	/* Set THLEIE disabled, MEIE(FIFO Message Lost Interrupt disabled)  */
     RSCAN0.GCTR.UINT32 &= 0xfffff8ff;
-	
+
 	/* receive FIFO buffer configuration and control setting */
 	// RSCAN0.RFCC0.UINT32 = 0x00007102;
 	RSCAN0.RFCC1.UINT32 = 0x0000F702;
 	RSCAN0.RFCC2.UINT32 = 0x0000F702;
-	
+
 	/* transmit/receive FIFO buffer configuration and control setting */
 	// RSCAN0.CFCC0.UINT32 = 0x00016104;
 	RSCAN0.CFCC3.UINT32 = 0x8015F300;
 	RSCAN0.CFCC6.UINT32 = 0x8015F300;
-	
+
     /* If GlobalChannel in halt or reset mode */
     if(RSCAN0.GSTS.UINT32 & 0x03)
     {
@@ -390,7 +380,7 @@ void RS_CAN_init(void)
             ;/* While reset mode */
         }
     }
-	
+
 	/* If Channel-2 in halt or reset mode */
     if(RSCAN0.C2STS.UINT32 & 0x03)
     {
@@ -404,19 +394,19 @@ void RS_CAN_init(void)
             ;/* While reset mode */
         }
     }
-	
+
 	// RSCAN0.RFCC0.UINT32 |= 0x01;
 	RSCAN0.RFCC1.UINT32 |= 0x01;
 	RSCAN0.RFCC2.UINT32 |= 0x01;
-	
+
 	// RSCAN0.CFCC0.UINT32 |= 0x01;
 	RSCAN0.CFCC3.UINT32 |= 0x01;
 	RSCAN0.CFCC6.UINT32 |= 0x01;
-	
+
 	PBG.FSGD0BPROT0.UINT32 = 0x07FFFFFF;
 	PBG.FSGD0BPROT1.UINT32 = 0x07FFFFFF;
 	INTC2.EIC70.UINT16 = 0x0047u;
-	
+
 }
 
 
@@ -453,7 +443,7 @@ uint8_t isCanBusOff(uint8_t channel)
 {
 	uint8_t  ret = 0;
 	uint32_t canSTS = 0;
-	
+
 	switch(channel)
 	{
 		case 1:
@@ -478,7 +468,7 @@ uint8_t isCanBusOff(uint8_t channel)
 			ret = 0;
 			break;
 	}
-	
+
 	return ret;
 }
 
@@ -495,7 +485,7 @@ void RS_CAN_BusOff_Recovery(uint8_t channel)
 		default:
 			break;
 	}
-	
+
 }
 
 
@@ -507,7 +497,7 @@ void RS_CAN_BusOff_Recovery(uint8_t channel)
 void CAN1_SendMessage(CAN_MESSAGE *message)
 {
 	int iTimeOut = 0;
-	
+
 	/* Check the Transmit Buffer Transmit Request Status
     RSCAN0TMSTSp  - Transmit Buffer Status Register 0
     b7:b5                    - Reserved set to 0
@@ -519,7 +509,7 @@ void CAN1_SendMessage(CAN_MESSAGE *message)
     {
         /* Clear status. */
         RSCAN0.TMSTS16.UINT8  = 0x00U;
-		
+
         /* Set message data. */
         /* Set RSCAN0TMIDp register.
         RSCAN0TMIDp   - Transmit Buffer ID Register 0
@@ -530,7 +520,7 @@ void CAN1_SendMessage(CAN_MESSAGE *message)
         b28:b0          TMID    - Transmit Buffer ID Data */
 		RSCAN0.TMID16.UINT32  = (message->id & 0x1FFFFFFF);
 		RSCAN0.TMID16.UINT32 |= 0x80000000;                   //Ext
-		
+
         /* Set RSCAN0TMIDp register.
         RSCAN0TMPTRp  - Transmit Buffer Pointer Register 0
         b31:b28         TMDLC   - Transmit Buffer DLC Data
@@ -538,7 +528,7 @@ void CAN1_SendMessage(CAN_MESSAGE *message)
         b23:b16         TMPTR   - Transmit Buffer Label Data
         b15:b 0                 - Reserved set to 0  */
         RSCAN0.TMPTR16.UINT32 = (message->len & 0xF) << 28;
-		
+
         /* Set RSCAN0TMDF0p register.
         RSCAN0TMDF0p  - Transmit Buffer Data Field 0 Register 0
         b31:b24         TMDB3   - Transmit Buffer Data Byte 3
@@ -546,7 +536,7 @@ void CAN1_SendMessage(CAN_MESSAGE *message)
         b15:b 8         TMDB1   - Transmit Buffer Data Byte 1
         b 7:b 0         TMDB0   - Transmit Buffer Data Byte 0 */
         RSCAN0.TMDF016.UINT32 = *((uint32_t *)&(message->data[0]));
-		
+
         /* Set RSCAN0TMDF1p register.
         RSCAN0TMDF1p  - Transmit Buffer Data Field 0 Register 1
         b31:b24         TMDB7   - Transmit Buffer Data Byte 7
@@ -554,7 +544,7 @@ void CAN1_SendMessage(CAN_MESSAGE *message)
         b15:b 8         TMDB5   - Transmit Buffer Data Byte 5
         b 7:b 0         TMDB4   - Transmit Buffer Data Byte 4 */
         RSCAN0.TMDF116.UINT32 = *((uint32_t *)&(message->data[4]));
-		
+
         /* Set transmission request.
         RSCAN0TMCp    - Transmit Buffer Control Register 0
         b 7:b 3                 - Reserved set to 0
@@ -562,10 +552,10 @@ void CAN1_SendMessage(CAN_MESSAGE *message)
         b 1             TMTAR   - Transmit Abort Request             - unused
         b 0             TMTR    - Transmit Request                   - Transmission is requested. set to 1 */
         RSCAN0.TMC16.UINT8    = R_CAN_TMTR_ON;
-		
+
         /* Normal completion or time out. */
         while((RSCAN0.TMSTS16.UINT8 & 0x4) != 0x4)if(iTimeOut++ > 50000)break;
-		
+
 	}
 }
 /******************************************************************************
@@ -587,7 +577,7 @@ void CAN2_SendMessage(CAN_MESSAGE *message)
     {
         /* Clear status. */
         RSCAN0.TMSTS32.UINT8  = 0x00U;
-		
+
         /* Set message data. */
         /* Set RSCAN0TMIDp register.
         RSCAN0TMIDp   - Transmit Buffer ID Register 0
@@ -633,7 +623,7 @@ void CAN2_SendMessage(CAN_MESSAGE *message)
 
         /* Normal completion or time out. */
         while((RSCAN0.TMSTS32.UINT8 & 0x4) != 0x4)if(iTimeOut++ > 50000)break;
-		
+
     }
 }
 
@@ -647,12 +637,12 @@ void CAN1_ReceiveMessage(CAN_MESSAGE *message)
 {
 	message->id  = RSCAN0.RFID1.UINT32 & 0x1FFFFFFF;
 	message->len = RSCAN0.RFPTR1.UINT32 >> 28;
-	
+
 	*((int*)&(message->data[0]))  = RSCAN0.RFDF01.UINT32;
 	*((int*)&(message->data[4]))  = RSCAN0.RFDF11.UINT32;
-	
+
 	RSCAN0.RFPCTR1.UINT32 = 0xFF;
-	
+
 	if((RSCAN0.RFSTS1.UINT32 & 0xFF00) == 0)
 	{
 		RSCAN0.RFSTS1.UINT32 &= 0xFFF7;
@@ -667,12 +657,12 @@ void CAN2_ReceiveMessage(CAN_MESSAGE *message)
 {
 	message->id  = RSCAN0.RFID2.UINT32 & 0x1FFFFFFF;
 	message->len = RSCAN0.RFPTR2.UINT32 >> 28;
-	
+
 	*((int*)&(message->data[0]))  = RSCAN0.RFDF02.UINT32;
 	*((int*)&(message->data[4]))  = RSCAN0.RFDF12.UINT32;
-	
+
 	RSCAN0.RFPCTR2.UINT32 = 0xFF;
-	
+
 	if((RSCAN0.RFSTS2.UINT32 & 0xFF00) == 0)
 	{
 		RSCAN0.RFSTS2.UINT32 &= 0xFFF7;
@@ -686,14 +676,14 @@ void CAN1_SendFIFOMessage(CAN_MESSAGE *message)
     {
 		RSCAN0.CFID3.UINT32   = (message->id & 0x1FFFFFFF);
 		RSCAN0.CFID3.UINT32  |= 0x80000000; //Ext
-		
+
         RSCAN0.CFPTR3.UINT32  = (message->len & 0xF) << 28;
-		
+
         RSCAN0.CFDF03.UINT32  = *((uint32_t *)&(message->data[0]));
         RSCAN0.CFDF13.UINT32  = *((uint32_t *)&(message->data[4]));
-		
+
         RSCAN0.CFPCTR3.UINT32 = 0xFF;
-		
+
 	}
 }
 
@@ -703,14 +693,14 @@ void CAN2_SendFIFOMessage(CAN_MESSAGE *message)
     {
 		RSCAN0.CFID6.UINT32   = (message->id & 0x1FFFFFFF);
 		RSCAN0.CFID6.UINT32  |= 0x80000000; //Ext
-		
+
         RSCAN0.CFPTR6.UINT32  = (message->len & 0xF) << 28;
-		
+
         RSCAN0.CFDF06.UINT32  = *((uint32_t *)&(message->data[0]));
         RSCAN0.CFDF16.UINT32  = *((uint32_t *)&(message->data[4]));
-		
+
         RSCAN0.CFPCTR6.UINT32 = 0xFF;
-		
+
 	}
 }
 
