@@ -80,6 +80,29 @@ RSCAN0.GAFLCFG0.UINT32 = 0x00302D00;
 
 This enables enough CAN2 rules to cover the added `0x04F02270` filter entry.
 
+Important `GAFLCFG0` direction note for current BCAN migration:
+
+- Project channel mapping is `CAN1 = BCAN`, `CAN2 = PCAN`.
+- For the current application, bench testing showed the working count encoding is:
+
+```text
+0x00[BCAN/CAN1 rule count][PCAN/CAN2 rule count]00
+```
+
+- When PCAN business receive rules were copied to BCAN, this value did not enable the appended BCAN rules:
+
+```c
+RSCAN0.GAFLCFG0.UINT32 = 0x002F5E00;// wrong for current BCAN business migration
+```
+
+- The tested working value was:
+
+```c
+RSCAN0.GAFLCFG0.UINT32 = 0x005E2F00;// CAN1/BCAN:0x5E, CAN2/PCAN:0x2F
+```
+
+- This was verified on bench: `can_getBCanRxState(0x0CFF11EF)`, `can_getBCanRxState(0x18FFF531)`, and `can_getBCanRxState(0x18FF3C50)` all changed from timeout state `2` to received state `1`.
+
 ## 0x04F02270 Current Status
 
 The current `0x04F02270` bench-test setup is:

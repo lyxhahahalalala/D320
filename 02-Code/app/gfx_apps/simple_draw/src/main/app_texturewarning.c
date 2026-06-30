@@ -149,8 +149,8 @@ static void TextWarn_condition_check(void)
 	GeneralUse_t   *GU_0CFE5A2F_t   = NULL;
 	GeneralUse_t   *GU_18FECA2F_t   = NULL;
 	
-	pEPB_18FF3C50_t = (EPB_18FF3C50_t*)can_getPCanBuffer(0x18FF3C50);
-    VCU_18FFF531_d  = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
+	pEPB_18FF3C50_t = (EPB_18FF3C50_t*)can_getBCanBuffer(0x18FF3C50);
+    VCU_18FFF531_d  = (VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
 	GU_0CFE5A2F_t   = (GeneralUse_t *)can_getBCanBuffer(0x0CFE5A2F);
 	GU_18FECA2F_t   = (GeneralUse_t *)can_getBCanBuffer(0x18FECA2F);
 	
@@ -185,7 +185,7 @@ static void TextWarn_condition_check(void)
 	TextWarnList[18].condition = (TPMS_Warn == 2); //胎温过高报警
 	TextWarnList[19].condition = (TPMS_Warn == 1); //TPMS系统故障
 	
-	TextWarnList[20].condition = (VCU_18FFF531_d->status == 0 && can_getPCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED); //高压未上电
+	TextWarnList[20].condition = (VCU_18FFF531_d->status == 0 && can_getBCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED); //高压未上电
 	TextWarnList[21].condition = (VCU_18FFF531_d->status == 1); //高压已上电，车辆可正常运行
 	TextWarnList[22].condition = ((VCU_18FFF531_d->status == 3 ) && (Vspeed > 10)); //能量回收
 	TextWarnList[23].condition = (Drive_DoorOpen); // 车辆出于可行驶模式，下车注意安全
@@ -198,7 +198,7 @@ static void TextWarn_condition_check(void)
 	if(eol_fadongjiorkaji == 0x2d)
 	{
 		GeneralUse_t   *FCV_0x18FFA1F6  = NULL;
-		FCV_0x18FFA1F6  = (GeneralUse_t*)can_getPCanBuffer(0x18FFA1F6);
+		FCV_0x18FFA1F6  = (GeneralUse_t*)can_getBCanBuffer(0x18FFA1F6);
 		TextWarnList[28].condition = 0; //吹扫进行中
 		TextWarnList[29].condition = ((0x40 == (0xC0 & FCV_0x18FFA1F6->bData[0]))); //加氢盖已打开
 		TextWarnList[30].condition = (FCV_0x18FFA1F6->byte2.byte <= 13); //氢气剩余量低,请加氢
@@ -217,12 +217,12 @@ static void TextWarn_condition_check(void)
 	TextWarnList[35].condition = (eol_epbtype == 2 && (pEPB_18FF3C50_t->work_mode == 7) || (pEPB_18FF3C50_t->work_mode == 254)); //EPB功能失效，使用车轮楔块
 	TextWarnList[36].condition = (eol_epbtype == 2 && pEPB_18FF3C50_t->work_mode == 2); //手动操作EPB开关功能失效
 	TextWarnList[37].condition = (eol_epbtype == 2 && pEPB_18FF3C50_t->work_mode == 1); //车间模式，熄火自动驻车制动无法应用
-	TextWarnList[38].condition = (eol_epbtype == 2 && can_getPCanRxState(0x18FF3C50) == CAN_FRAME_ST_TIMEOUT); //EPB系统失效
+	TextWarnList[38].condition = (eol_epbtype == 2 && can_getBCanRxState(0x18FF3C50) == CAN_FRAME_ST_TIMEOUT); //EPB系统失效
 	TextWarnList[39].condition = (eol_epbtype == 2 && pEPB_18FF3C50_t->Trailer_test == 1); //驻车制动正在执行挂车检查测试
 	
 	TextWarnList[40].condition = (IN11); //翼门已开启
 	
-	GeneralUse_t *pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
+	GeneralUse_t *pBMS_19FF5BF3 = (GeneralUse_t*)can_getBCanBuffer(0x19FF5BF3);
 	TextWarnList[41].condition = (pBMS_19FF5BF3->byte1.bit1234 == 7); //电池加热中，请勿起动车辆
 	TextWarnList[42].condition = (pBMS_19FF5BF3->byte1.bit1234 == 8); //电池加热完成，可以起动车辆
 	TextWarnList[43].condition = (pBMS_19FF5BF3->byte1.bit1234 == 9); //电池电芯温度低，请开启电池加热
@@ -242,7 +242,7 @@ static void TextWarn_condition_check(void)
 	{
 		static uint8_t TrailerModeFlg = 0;
 		
-		GeneralUse_t *TCU_0x18FF0B03 =  (GeneralUse_t*)can_getPCanBuffer(0x18FF0B03);
+		GeneralUse_t *TCU_0x18FF0B03 =  (GeneralUse_t*)can_getBCanBuffer(0x18FF0B03);
 		
 		if(TCU_0x18FF0B03->byte7.bit12 == 3 || TCU_0x18FF0B03->byte7.bit12 == 2)
 		{
@@ -266,7 +266,7 @@ static void TextWarn_condition_check(void)
 		TextWarnList[48].condition = 0; //拖车模式已退出
 	}
 	
-	GeneralUse_t *pPROP_18FF5527 = (GeneralUse_t *)can_getPCanBuffer(0x18FF5527);
+	GeneralUse_t *pPROP_18FF5527 = (GeneralUse_t *)can_getBCanBuffer(0x18FF5527);
 	Buzz_GearMismatched = (pPROP_18FF5527->byte1.bit3 == 1);
 	TextWarnList[49].condition = (Buzz_GearMismatched); //请重新挂挡
 	
@@ -423,10 +423,10 @@ static void TableLogicCheck(void)
 	
 	if(0x2d == eol_fadongjiorkaji)
 	{
-		GeneralUse_t *pFCV_18FFA6F5 = (GeneralUse_t*)can_getPCanBuffer(0x18FFA6F5);
+		GeneralUse_t *pFCV_18FFA6F5 = (GeneralUse_t*)can_getBCanBuffer(0x18FFA6F5);
 		firstLineTable[ 2].condition = ((pFCV_18FFA6F5->bData[0] == 0x07) || (pFCV_18FFA6F5->bData[0] == 0x0A));  //吹扫进行中
 		firstLineTable[ 3].condition = (pFCV_18FFA6F5->bData[0] == 0xFF);  //FCS自检中
-		firstLineTable[ 4].condition = ((pFCV_18FFA6F5->bData[0] == 0x00) && (0x01 == can_getPCanRxState(0x18FFA6F5)));  //FCS自检完成
+		firstLineTable[ 4].condition = ((pFCV_18FFA6F5->bData[0] == 0x00) && (0x01 == can_getBCanRxState(0x18FFA6F5)));  //FCS自检完成
 		firstLineTable[ 5].condition = (pFCV_18FFA6F5->bData[0] == 0x01);  //FCS待机 
 		firstLineTable[ 6].condition = ((pFCV_18FFA6F5->bData[0] == 0x02) || (pFCV_18FFA6F5->bData[0] == 0x03));  //FCS启动中 
 		firstLineTable[ 7].condition = (pFCV_18FFA6F5->bData[0] == 0x04);  //FCS功率输出
@@ -453,7 +453,7 @@ static void TableLogicCheck(void)
 	
 	static ptmrType_t diplay13_Tmr = 0;
 	static uint8_t diplay13_flg = 0;
-	GeneralUse_t *pPROP_18FF5527 = (GeneralUse_t*)can_getPCanBuffer(0x18FF5527);
+	GeneralUse_t *pPROP_18FF5527 = (GeneralUse_t*)can_getBCanBuffer(0x18FF5527);
 	if(((pPROP_18FF5527->bData[0]&0x18) == 0x08 || (pPROP_18FF5527->bData[0]&0x18) == 0x10)
 	&& (get_vehicle_gear_mode() == 1))
 	{

@@ -1313,8 +1313,8 @@ void Display_Telltale(void)
 	GeneralUse_t *pBMS_19FF5BF3 = NULL;
 	VCU_04F02270_t *pVCU_04F02270 = NULL;
 	
-	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
-	GU_18F0010B_t  =  (GeneralUse_t*)can_getPCanBuffer(0x18F0010B);
+	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
+	GU_18F0010B_t  =  (GeneralUse_t*)can_getBCanBuffer(0x18F0010B);
 	pVCU_04F02270 = (VCU_04F02270_t*)can_getBCanBuffer(0x04F02270);
 	
 	start_draw();
@@ -1460,9 +1460,9 @@ void Display_Telltale(void)
 		|| (eol_ldwstype == 4))	/*月照松*/
 		{
 			//LDWS
-			if(can_getPCanRxState(0x18FE5BE8) == CAN_FRAME_ST_RECVED)
+			if(can_getBCanRxState(0x18FE5BE8) == CAN_FRAME_ST_RECVED)
 			{
-				Pcan_18FE5BE8_t = (GeneralUse_t*)can_getPCanBuffer(0x18FE5BE8);
+				Pcan_18FE5BE8_t = (GeneralUse_t*)can_getBCanBuffer(0x18FE5BE8);
 				if((Pcan_18FE5BE8_t->byte7.byte&0x0f)==2)//车道偏离预警系统关闭 
 				{
 					loc_Render_FHP(10,Y_LOCATION,YELLOW,"F");
@@ -1474,7 +1474,7 @@ void Display_Telltale(void)
 				{
 					offRoadCloseRequestDisp = 0;
 					
-					Pcan_10F007E8 = (GeneralUse_t*)can_getPCanBuffer(0x10F007E8);
+					Pcan_10F007E8 = (GeneralUse_t*)can_getBCanBuffer(0x10F007E8);
 					if(Pcan_10F007E8->byte1.bit78== 1)		//车道左偏离
 					{
 						loc_Render_FHP(10,Y_LOCATION,YELLOW,"D");//LEFTOFFROAD  -- 38
@@ -1503,7 +1503,7 @@ void Display_Telltale(void)
 			}
 			else
 			{
-				if(can_getPCanRxState(0x18FE5BE8) == 2)
+				if(can_getBCanRxState(0x18FE5BE8) == 2)
 				{
 					loc_Render_FHP(10,Y_LOCATION,YELLOW,"0");//RIGHTOFFROAD
 					LdwsWarning = 0x01;
@@ -1522,9 +1522,9 @@ void Display_Telltale(void)
 		
 		if(eol_aebstype == 2) //AEBS: 2-Knorr
 		{
-			if(can_getPCanRxState(0x0CF02F2A) == 1)
+			if(can_getBCanRxState(0x0CF02F2A) == 1)
 			{
-				Pcan_0CF02F2A = (GeneralUse_t*)can_getPCanBuffer(0x0CF02F2A);
+				Pcan_0CF02F2A = (GeneralUse_t*)can_getBCanBuffer(0x0CF02F2A);
 				
 				if((Pcan_0CF02F2A->byte1.byte&0x0F) == 2)		//AEBS系统关闭
 				{
@@ -1572,7 +1572,7 @@ void Display_Telltale(void)
 			}
 			else
 			{
-				if(0x02 == (can_getPCanRxState(0x0CF02F2A)))
+				if(0x02 == (can_getBCanRxState(0x0CF02F2A)))
 				{
 					loc_Render_FHP(56,Y_LOCATION,YELLOW,"1");
 					FCWWarning = 0x01;
@@ -1587,9 +1587,9 @@ void Display_Telltale(void)
 		}
 		else if(eol_aebstype == 3) //AEBS: 3-月照松
 		{
-			if(can_getPCanRxState(0x0CF02F2A) == 1)
+			if(can_getBCanRxState(0x0CF02F2A) == 1)
 			{
-				Pcan_0CF02F2A = (GeneralUse_t*)can_getPCanBuffer(0x0CF02F2A);
+				Pcan_0CF02F2A = (GeneralUse_t*)can_getBCanBuffer(0x0CF02F2A);
 				
 				if((Pcan_0CF02F2A->byte1.byte&0x0F) == 2)  //AEBS系统关闭
 				{
@@ -1637,7 +1637,7 @@ void Display_Telltale(void)
 			}
 			else
 			{
-				if(can_getPCanRxState(0x0CF02F2A) == 2)
+				if(can_getBCanRxState(0x0CF02F2A) == 2)
 				{
 					loc_Render_FHP(56,Y_LOCATION,YELLOW,"1");
 					FCWWarning = 0x01;
@@ -1750,7 +1750,7 @@ void Display_Telltale(void)
 		}
 		else if((eol_ebs == 5)||(eol_ebs == 6)||(eol_ebs ==10) || (eol_ebs == 13))
 		{//标定为EBS系统时，显示EBS
-			if(can_getPCanRxState(0x18F0010B) == CAN_FRAME_ST_RECVED)
+			if(can_getBCanRxState(0x18F0010B) == CAN_FRAME_ST_RECVED)
 			{
 				if((GU_18F0010B_t->byte6.bit34) == 0x01)
 				{
@@ -1776,7 +1776,7 @@ void Display_Telltale(void)
 			}
 			else
 			{
-				if(can_getPCanRxState(0x18F0010B) == CAN_FRAME_ST_TIMEOUT)
+				if(can_getBCanRxState(0x18F0010B) == CAN_FRAME_ST_TIMEOUT)
 				{
 					loc_Render_FHP(158,Y_LOCATION,YELLOW,"3");//EBS
 					EBSWarning = 0x01;
@@ -1928,7 +1928,7 @@ void Display_Telltale(void)
 		if((M_ON)
 		&& (eol_language == 0)
 		&& ((VCU_18FFF531_d->bData[0]&0xC0) != 0) 
-		&& can_getPCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED)
+		&& can_getBCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED)
 		{
 			if(get_display_speed() > eol_XianSuFunction)
 			{
@@ -1973,7 +1973,7 @@ void Display_Telltale(void)
 			else
 			{
 				// 锂电相关
-				pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
+				pBMS_19FF5BF3 = (GeneralUse_t*)can_getBCanBuffer(0x19FF5BF3);
 				if((can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
 				{
 					loc_RenderImg(535, Y_LOCATION, &Img_LowBatteryWarning);
@@ -2015,7 +2015,7 @@ void Display_Telltale(void)
 			else
 			{
 				// 锂电相关
-				pBMS_19FF5BF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5BF3);
+				pBMS_19FF5BF3 = (GeneralUse_t*)can_getBCanBuffer(0x19FF5BF3);
 				if((can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_RECVED)&& (pVCU_04F02270->low_battery_warning == 1))
 				{
 					loc_RenderImg(535, Y_LOCATION, &Img_LowBatteryWarning);
@@ -2074,7 +2074,7 @@ void Display_Telltale(void)
 		{
 			static ptmrType_t atm_flt_Tmr = 0;
 			
-			GeneralUse_t *pETC7_18FE4A03 = (GeneralUse_t*)can_getPCanBuffer(0x18FE4A03);
+			GeneralUse_t *pETC7_18FE4A03 = (GeneralUse_t*)can_getBCanBuffer(0x18FE4A03);
 			if(pETC7_18FE4A03->byte6.bit34 == 1)
 			{
 				loc_Render_FHP(92,105,YELLOW,"~");
@@ -2102,7 +2102,7 @@ void Display_Telltale(void)
 		{
 			if(eol_language == 0)
 			{
-				if(can_getPCanRxState(0x18FFF531) == 1)
+				if(can_getBCanRxState(0x18FFF531) == 1)
 				{
 					if(VCU_18FFF531_d->mode == 0)
 						loc_Render_FHP_Text(60,236, GREEN, "!");
@@ -2118,7 +2118,7 @@ void Display_Telltale(void)
 			}
 			else
 			{
-				if(can_getPCanRxState(0x18FFF531) == 1)
+				if(can_getBCanRxState(0x18FFF531) == 1)
 				{
 					if(VCU_18FFF531_d->mode == 0)
 						loc_Render_FHP(132,236,GREEN,"]");//EV
@@ -2138,7 +2138,7 @@ void Display_Telltale(void)
 			else
 				loc_Render_FHP(710, 350, TOUMING,"[");	
 			
-			pFCV_18FFA6F5 = (GeneralUse_t*)can_getPCanBuffer(0x18FFA6F5);	
+			pFCV_18FFA6F5 = (GeneralUse_t*)can_getBCanBuffer(0x18FFA6F5);	
 			if(pFCV_18FFA6F5->bData[0]==9)
 				loc_Render_FHP(750, 350,YELLOW,"\\"); //燃电系统故障
 			else
@@ -2146,7 +2146,7 @@ void Display_Telltale(void)
 			
 			
 			FCV_0x18FFA5F6_t *pFCV_18FFA5F6=NULL;
-			pFCV_18FFA5F6 =  (FCV_0x18FFA5F6_t*)can_getPCanBuffer(0x18FFA5F6);
+			pFCV_18FFA5F6 =  (FCV_0x18FFA5F6_t*)can_getBCanBuffer(0x18FFA5F6);
 			if(pFCV_18FFA5F6->H2concentration <= 60000)
 			{
 				if(pFCV_18FFA5F6->H2concentration > 6000)
@@ -2216,7 +2216,7 @@ void Display_Telltale(void)
 			static ptmrType_t podao_Tmr = 0;
 			static uint8_t    podao_status = 0;
 			
-			EBC5_0x18FDC40B = (GeneralUse_t*)can_getPCanBuffer(0x18FDC40B);
+			EBC5_0x18FDC40B = (GeneralUse_t*)can_getBCanBuffer(0x18FDC40B);
 			if(GU_18F0010B_t->byte3.bit56 == 1) //坡道起步开关开启
 			{
 				if((EBC5_0x18FDC40B->bData[0]&0xE0) == 0x20)
@@ -2274,7 +2274,7 @@ void Display_Telltale(void)
 			}
 		}
 		
-		pPROP_18FF5527 = (GeneralUse_t*)can_getPCanBuffer(0x18FF5527);	
+		pPROP_18FF5527 = (GeneralUse_t*)can_getBCanBuffer(0x18FF5527);	
 		if((pPROP_18FF5527->bData[0]&0x01) == 1)
 			loc_Render_FHP(134,105,GREEN,"&"); //牵引车 空车头模式
 		else
@@ -2396,9 +2396,9 @@ void Display_Telltale(void)
 			&Img_LmtSpd130,
 		};
 		
-		if(can_getPCanRxState(0x18FF709E) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x18FF709E) == CAN_FRAME_ST_RECVED)
 		{
-			GeneralUse_t *pADU_0x18FF709E = (GeneralUse_t*)can_getPCanBuffer(0x18FF709E);
+			GeneralUse_t *pADU_0x18FF709E = (GeneralUse_t*)can_getBCanBuffer(0x18FF709E);
 			
 			loc_ClearRect(218, Y_LOCATION, 60, 38);
 			
@@ -2569,11 +2569,11 @@ void loc_auxiliary_braking(void) //辅助制动、巡航、PTO取力
 	GeneralUse_t   *pTP1_18FFC006 = NULL;
 	GeneralUse_t   *Pcan_0x0CFF0931 = NULL; 
 	
-	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
-	pPROP_18FF5527 = (GeneralUse_t *)can_getPCanBuffer(0x18FF5527);
-	pECR1_18F00010 = (GeneralUse_t *)can_getPCanBuffer(0x18F00010);
-	pTP1_18FFC006  = (GeneralUse_t *)can_getPCanBuffer(0x18FFC006);
-	Pcan_0x0CFF0931 = (GeneralUse_t*)can_getPCanBuffer(0x0CFF0931);
+	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
+	pPROP_18FF5527 = (GeneralUse_t *)can_getBCanBuffer(0x18FF5527);
+	pECR1_18F00010 = (GeneralUse_t *)can_getBCanBuffer(0x18F00010);
+	pTP1_18FFC006  = (GeneralUse_t *)can_getBCanBuffer(0x18FFC006);
+	Pcan_0x0CFF0931 = (GeneralUse_t*)can_getBCanBuffer(0x0CFF0931);
 	
 	uint8_t zhuliFlg = 0;
 	uint8_t FuzhuZhiDong = 0;

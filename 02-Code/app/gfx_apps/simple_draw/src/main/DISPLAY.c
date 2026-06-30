@@ -3096,9 +3096,9 @@ void BatVolFrameUpdate(unsigned char index)
     }
 	
 	//µÍÑ¹ï®µçSOC
-	if(can_getPCanRxState(0x19FF5CF3) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x19FF5CF3) == CAN_FRAME_ST_RECVED)
 	{
-		GeneralUse_t *pBMS_19FF5CF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5CF3);
+		GeneralUse_t *pBMS_19FF5CF3 = (GeneralUse_t*)can_getBCanBuffer(0x19FF5CF3);
 		if(pBMS_19FF5CF3->byte7.byte != 0xff)
 		{
 			low_batt_soc = pBMS_19FF5CF3->byte7.byte * 2 / 5;

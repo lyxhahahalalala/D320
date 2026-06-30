@@ -304,7 +304,7 @@ const canRxFrameLCfg_t lct_BcanRxFrame[] =
 /* 32*/{0x11FF3F32, 3000, can_processTMO_BCan, canRXFrame_recvHandle}, //蓄电池亏电提醒（智能补电）
 /* 33*/{0x18FED631, 3000, can_processTMO_BCan, canRXFrame_recvHandle}, //HCU
 /* 34*/{0x18FF8F25, 3000, can_processTMO_BCan, 0}, //TBOX
-/* 35*/{0x0CF6034D, 3000, can_processTMO_PCan, 0}, //低压转向
+/* 35*/{0x0CF6034D, 3000, can_processTMO_BCan, 0}, //低压转向
 /* 36*/{0x04F02270, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
 /* 37*/{0x04F02370, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
 /* 38*/{0x04F02470, 3000, can_processTMO_BCan, 0},//lyx
@@ -322,6 +322,50 @@ const canRxFrameLCfg_t lct_BcanRxFrame[] =
 /* 50*/{0x1887EFF3, 3000, can_processTMO_BCan, 0},//lyx
 /* 51*/{0x1888EFF3, 3000, can_processTMO_BCan, 0},//lyx
 /* 52*/{0x04F02E70, 3000, can_processTMO_BCan, canRXFrame_recvHandle},//lyx
+
+	{0x0CFFEAF4,   3000, can_processTMO_BCan, canRXFrame_recvHandle},
+	{0x18FFEEF4,   5000, can_processTMO_BCan, 0},
+	{0x18FFF2F4,   5000, can_processTMO_BCan, 0},
+	{0x0CFF11EF,   5000, can_processTMO_BCan, 0},
+	{0x0CFF11F0,   5000, can_processTMO_BCan, 0},
+	{0x18F00503,   3000, can_processTMO_BCan, 0},
+	{0x18FE4A03,   3000, can_processTMO_BCan, 0},
+	{0x18FDA403,   3000, can_processTMO_BCan, 0},
+	{0x0CF00203,   3000, can_processTMO_BCan, 0},
+	{0x0CEF3103,   3000, can_processTMO_BCan, 0},
+	{0x0CFF0931,   3000, can_processTMO_BCan, 0},
+	{0x18FF1F31, 600000, can_processTMO_BCan, canRXFrame_LockVeh_Handler},
+	{0x18FFF531,   3000, can_processTMO_BCan, canRXFrame_recvHandle},
+	{0x18FEF131,   3000, can_processTMO_BCan, 0},
+	{0x18F0010B,   3000, can_processTMO_BCan, 0},
+	{0x18F0090B,   3000, can_processTMO_BCan, 0},
+	{0x18FDC40B,   3000, can_processTMO_BCan, 0},
+	{0x18FE4F0B,   3000, can_processTMO_BCan, 0},
+	{0x18FEBF0B,   3000, can_processTMO_BCan, 0},
+	{0x18F00010,   3000, can_processTMO_BCan, 0},
+	{0x18FF3C50,   3000, can_processTMO_BCan, 0},
+	{0x18F00150,   3000, can_processTMO_BCan, 0},
+	{0x0CF02F2A,   3000, can_processTMO_BCan, 0},
+	{0x0C010305,   3000, can_processTMO_BCan, 0},
+	{0x18FF5527,   3000, can_processTMO_BCan, 0},
+	{0x18FFC006,   3000, can_processTMO_BCan, 0},
+	{0x18FF7C4A,   3000, can_processTMO_BCan, 0},
+	{0x18FF7FDE,   3000, can_processTMO_BCan, canRXFrame_LockVeh_Handler},
+	{0x19FF5CF3,   3000, can_processTMO_BCan, 0},
+	{0x19FF5BF3,   3000, can_processTMO_BCan, 0},
+	{0x0CF19682,   3000, can_processTMO_BCan, 0},
+	{0x18FF0B03,   3000, can_processTMO_BCan, 0},
+	{0x18FF0B04,   3000, can_processTMO_BCan, 0},
+	{0x18FFA6F5,   3000, can_processTMO_BCan, canRXFrame_recvHandle},
+	{0x18FFA7F5,   3000, can_processTMO_BCan, 0},
+	{0x18FFA8F5,   3000, can_processTMO_BCan, 0},
+	{0x18FFAAF5,   3000, can_processTMO_BCan, 0},
+	{0x18FFA1F6,   3000, can_processTMO_BCan, 0},
+	{0x18FFA2F6,   3000, can_processTMO_BCan, 0},
+	{0x18FFA5F6,   3000, can_processTMO_BCan, 0},
+	{0x18FFABF6,   3000, can_processTMO_BCan, 0},
+
+
 	{0x18FECA32, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
 	{0x18ECFF32, 5000, 0, canRXFrame_DM1_Handler},
 	{0x18EBFF32, 3000, can_processTMO_BCan, canRXFrame_DM1_Handler},
@@ -1006,28 +1050,13 @@ void can_rxRoutine(void)
 			{
 				isOverseasVer = 0;
 			}
-			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FFF531)//lyx
-			{
-    			vcu_ready_18fff531 = 0;
-    			VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
-			}
+			
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x04F02270)//lyx
 			{
     			vcu_ready_04f02270 = 0;
     			VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
 			}
-			else if(l_tPCanRxFrame.lcfg[i].id == 0x0CFFEAF4)
-			{
-				l_chargeLine_0CFFEAF4Valid = 0;
-				l_chargeLine_0CFFEAF4 = 0;
-				loc_UpdateCanChargeLine();
-				BMS_SAFETY_LINE_SG = 0;
-			}
-			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FFA6F5)
-			{
-				CAN_H2_ChuiSao   = 0;
-				CAN_H2_LowTptChg = 0;
-			}
+			
 			else if(l_tPCanRxFrame.lcfg[i].id == 0x18FF7C4A)
 			{
 				ZhongLianLockVehFlg = 0;
@@ -1130,6 +1159,23 @@ void can_rxRoutine(void)
 				MSD_SwitchStatus = 0;
 			}
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FEE6EE) TD_MsgEnable = 0;
+			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FFF531)
+			{
+				vcu_ready_18fff531 = 0;
+				VehicleReadyFlag = (vcu_ready_18fff531 || vcu_ready_04f02270);
+			}
+			else if(l_tBCanRxFrame.lcfg[i].id == 0x0CFFEAF4)
+			{
+				l_chargeLine_0CFFEAF4Valid = 0;
+				l_chargeLine_0CFFEAF4 = 0;
+				loc_UpdateCanChargeLine();
+				BMS_SAFETY_LINE_SG = 0;
+			}
+			else if(l_tBCanRxFrame.lcfg[i].id == 0x18FFA6F5)
+			{
+				CAN_H2_ChuiSao   = 0;
+				CAN_H2_LowTptChg = 0;
+			}
 			else if(l_tBCanRxFrame.lcfg[i].id == 0x04F02270)//lyx
 			{
 			vcu_ready_04f02270 = 0;
@@ -2297,9 +2343,9 @@ void BCAN_Send_CCSV(void)   //0x18FEF100  100ms
 {
 	uint8_t *tmp = NULL;
 
-	if(0x01 ==  can_getPCanRxState(0x18FEF131)) //CCSV
+	if(0x01 ==  can_getBCanRxState(0x18FEF131)) //CCSV
 	{
-		tmp = can_getPCanBuffer(0x18FEF131);
+		tmp = can_getBCanBuffer(0x18FEF131);
 		BCAN_Send_Route(0x18FEF100,tmp);
 	}
 }
@@ -2978,9 +3024,9 @@ void PCAN_Send_AUXIO1(void) //0x18FED917  100ms
 
 	memset(msg.data,0,8);
 
-	if(can_getPCanRxState(0x18F00150) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x18F00150) == CAN_FRAME_ST_RECVED)
 	{
-		GU_18F00150_t   = (GeneralUse_t *)can_getPCanBuffer(0x18F00150);
+		GU_18F00150_t   = (GeneralUse_t *)can_getBCanBuffer(0x18F00150);
 		msg.data[0] |= (GU_18F00150_t->byte3.bit56&0x03);
 	}
 	else
@@ -3372,9 +3418,9 @@ if(mot_speed_send_cnt >= 2)
 		Pcan_to_Bcan_N100ms();
 	}
 
-	if((can_getPCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
-	|| (can_getPCanRxState(0x18F00503) == CAN_FRAME_ST_RECVED)
-	|| (can_getPCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED))
+	if((can_getBCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
+	|| (can_getBCanRxState(0x18F00503) == CAN_FRAME_ST_RECVED)
+	|| (can_getBCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED))
 		BCAN_Send_GearR();
 	BCAN_Send_CCSV();
 	PCAN_Send_AUXIO1();

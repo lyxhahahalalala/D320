@@ -1181,15 +1181,15 @@ void LED_Logic(void)
 	}
 	else if(M_ON && M_ON_flag) //wake_up3
     {
-		GU_18FE4F0B_t =  (GeneralUse_t*)can_getPCanBuffer(0x18FE4F0B);
-		GU_18F0010B_t =  (GeneralUse_t*)can_getPCanBuffer(0x18F0010B);
+		GU_18FE4F0B_t =  (GeneralUse_t*)can_getBCanBuffer(0x18FE4F0B);
+		GU_18F0010B_t =  (GeneralUse_t*)can_getBCanBuffer(0x18F0010B);
 		GU_18FF14E7_t =  (GeneralUse_t*)can_getBCanBuffer(0x18FF14E7);
-		GU_18FEF131_t =  (GeneralUse_t*)can_getPCanBuffer(0x18FEF131);
-		VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
-		VCU_18FDA403_d = (GeneralUse_t *)can_getPCanBuffer(0x18FDA403);
-		GU_0CEF3103_t = (GeneralUse_t*)can_getPCanBuffer(0x0CEF3103);
-		// GU_18F7021E_t = (GeneralUse_t*)can_getPCanBuffer(0x18F7021E);
-		pEPB_18FF3C50_t = (EPB_18FF3C50_t*)can_getPCanBuffer(0x18FF3C50);
+		GU_18FEF131_t =  (GeneralUse_t*)can_getBCanBuffer(0x18FEF131);
+		VCU_18FFF531_d = (VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
+		VCU_18FDA403_d = (GeneralUse_t *)can_getBCanBuffer(0x18FDA403);
+		GU_0CEF3103_t = (GeneralUse_t*)can_getBCanBuffer(0x0CEF3103);
+		// GU_18F7021E_t = (GeneralUse_t*)can_getBCanBuffer(0x18F7021E);
+		pEPB_18FF3C50_t = (EPB_18FF3C50_t*)can_getBCanBuffer(0x18FF3C50);
 		
 		GU_18FF2232_t =  (GeneralUse_t*)can_getBCanBuffer(0x18FF2232);
 		BCMI_18FF2732 =  (GeneralUse_t*)can_getBCanBuffer(0x18FF2732);
@@ -1273,7 +1273,7 @@ void LED_Logic(void)
 		//电机故障
 		//LED_MotorFault  = (CurrentFltInfo[DM1_EF].FltBuf.AmberWarnLamp == 1);
 		//LED_MotorFault |= (CurrentFltInfo[DM1_EF].FltBuf.RedStopLamp == 1);
-		//LED_MotorFault |= (can_getPCanRxState(0x0CFF11EF) == CAN_FRAME_ST_TIMEOUT);
+		//LED_MotorFault |= (can_getBCanRxState(0x0CFF11EF) == CAN_FRAME_ST_TIMEOUT);
 		//LED_MotorFault |= (CurrentFltInfo[DM1_F0].FltBuf.AmberWarnLamp == 1);
 		//LED_MotorFault |= (CurrentFltInfo[DM1_F0].FltBuf.RedStopLamp == 1);
 		
@@ -1301,7 +1301,7 @@ void LED_Logic(void)
 		//动力电池故障
 		//LED_HighVolBatFault  = (CurrentFltInfo[DM1_F4].FltBuf.AmberWarnLamp == 1);
 		//LED_HighVolBatFault |= (CurrentFltInfo[DM1_F4].FltBuf.RedStopLamp == 1);
-		//LED_HighVolBatFault |= (can_getPCanRxState(0x0CFFEAF4) == CAN_FRAME_ST_TIMEOUT);
+		//LED_HighVolBatFault |= (can_getBCanRxState(0x0CFFEAF4) == CAN_FRAME_ST_TIMEOUT);
 		
 		if(can_getBCanRxState(0x04F02270) == CAN_FRAME_ST_TIMEOUT)
 		{
@@ -1410,8 +1410,8 @@ void LED_Logic(void)
 		
 		if(eol_atmtype == 44U) //博世两档电驱桥
 		{
-			GeneralUse_t *TCU_0x18FF0B03 =  (GeneralUse_t*)can_getPCanBuffer(0x18FF0B03);
-			GeneralUse_t *TCU_0x18FF0B04 =  (GeneralUse_t*)can_getPCanBuffer(0x18FF0B04);
+			GeneralUse_t *TCU_0x18FF0B03 =  (GeneralUse_t*)can_getBCanBuffer(0x18FF0B03);
+			GeneralUse_t *TCU_0x18FF0B04 =  (GeneralUse_t*)can_getBCanBuffer(0x18FF0B04);
 			LED_WheelDiff = (IN26 || TCU_0x18FF0B03->byte1.bit12 == 1 || TCU_0x18FF0B04->byte1.bit12 == 1); //轮间差速锁止
 		}
 		else
@@ -1521,7 +1521,7 @@ void LED_Logic(void)
 		if((eol_ebs ==1)||(eol_ebs ==2)||(eol_ebs ==3)||(eol_ebs ==4)||(eol_ebs ==7)||(eol_ebs ==8)||(eol_ebs ==9)||(eol_ebs ==11) ||(eol_ebs == 12))
 		{
 			LED_ABS  = (ABS_SelfCheckFlg); //ABS自检
-			LED_ABS |= ((GU_18F0010B_t->byte6.bit56 == 1) || (can_getPCanRxState(0x18F0010B) == CAN_FRAME_ST_TIMEOUT)); //ABS指示
+			LED_ABS |= ((GU_18F0010B_t->byte6.bit56 == 1) || (can_getBCanRxState(0x18F0010B) == CAN_FRAME_ST_TIMEOUT)); //ABS指示
 		}
 		else
 		{
@@ -1532,7 +1532,7 @@ void LED_Logic(void)
 		// ret = ((GU_18F0010B_t->byte1.bit12 == 1) || (GU_18F0010B_t->byte1.bit34 == 1));  
 		// Set_Interval_Req(ret, F_ASR);
 		// LED_ASR  = Get_Interval_Status(F_ASR);
-		// LED_ASR |= ((GU_18F0010B_t->byte3.bit34 == 1) || (can_getPCanRxState(0x18F0010B) == CAN_FRAME_ST_TIMEOUT));
+		// LED_ASR |= ((GU_18F0010B_t->byte3.bit34 == 1) || (can_getBCanRxState(0x18F0010B) == CAN_FRAME_ST_TIMEOUT));
 		LED_ASR = 0;
 		
 		//ESC指示
@@ -1551,7 +1551,7 @@ void LED_Logic(void)
 			
 			esc_fun_normal = ((eol_esc > 0) && (GU_18FE4F0B_t->byte1.bit12 == 1)&&(GU_18FE4F0B_t->byte1.bit34 == 1));
 			
-			esc_fun_abnormal = ((eol_esc > 0) && (can_getPCanRxState(0x18FE4F0B) == CAN_FRAME_ST_TIMEOUT));
+			esc_fun_abnormal = ((eol_esc > 0) && (can_getBCanRxState(0x18FE4F0B) == CAN_FRAME_ST_TIMEOUT));
 			esc_fun_abnormal|= ((eol_esc > 0) && (GU_18FE4F0B_t->byte1.bit12 == 1)&&(GU_18FE4F0B_t->byte1.bit34 == 0));
 			
 			if(asr_work_status || esc_fun_normal)
@@ -1921,8 +1921,8 @@ void Buzzer_Logic(void)
 	VCU_18FFF531_t *VCU_18FFF531_d  = NULL;
 	EPB_18FF3C50_t *pEPB_18FF3C50_t = NULL;
 	
-	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
-	pEPB_18FF3C50_t = (EPB_18FF3C50_t*)can_getPCanBuffer(0x18FF3C50);
+	VCU_18FFF531_d = (VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
+	pEPB_18FF3C50_t = (EPB_18FF3C50_t*)can_getBCanBuffer(0x18FF3C50);
 	
 	uint8_t  Vspeed = get_vehicle_speed();
 	uint16_t mot_rpm = get_motor_speed();
@@ -2068,7 +2068,7 @@ void Buzzer_Logic(void)
 		buzzer_warn_flg[BUZ_PRIORITY_27]|= (pEPB_18FF3C50_t->work_mode == 254); //EPB功能失效，使用车轮楔块
 		buzzer_warn_flg[BUZ_PRIORITY_27]|= (pEPB_18FF3C50_t->work_mode == 2); //手动操作EPB开关功能失效
 		buzzer_warn_flg[BUZ_PRIORITY_27]|= (pEPB_18FF3C50_t->work_mode == 1); //车间模式，熄火自动驻车制动无法应用
-		buzzer_warn_flg[BUZ_PRIORITY_27]|= (eol_epbtype == 2 && can_getPCanRxState(0x18FF3C50) == CAN_FRAME_ST_TIMEOUT); //EPB系统失效
+		buzzer_warn_flg[BUZ_PRIORITY_27]|= (eol_epbtype == 2 && can_getBCanRxState(0x18FF3C50) == CAN_FRAME_ST_TIMEOUT); //EPB系统失效
 		
 		buzzer_warn_flg[BUZ_PRIORITY_28] = (backvalue == 3);
 		buzzer_warn_flg[BUZ_PRIORITY_29] = ((backvalue != 0) && (backvalue != 3) && (backvalue != 2));

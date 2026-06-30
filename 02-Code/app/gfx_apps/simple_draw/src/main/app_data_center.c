@@ -187,17 +187,17 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	GeneralUse_t   *pFCU_18FFA7F5 = NULL;
 	GeneralUse_t   *pBMS_19FF5CF3 = NULL;
 	
-	pBMS_0CFFEAF4 = (BMS_0CFFEAF4_t*)can_getPCanBuffer(0x0CFFEAF4);
-	pBMS_18FFEEF4 = (GeneralUse_t*)can_getPCanBuffer(0x18FFEEF4);
-	pBMS_18FFF2F4 = (GeneralUse_t*)can_getPCanBuffer(0x18FFF2F4);
+	pBMS_0CFFEAF4 = (BMS_0CFFEAF4_t*)can_getBCanBuffer(0x0CFFEAF4);
+	pBMS_18FFEEF4 = (GeneralUse_t*)can_getBCanBuffer(0x18FFEEF4);
+	pBMS_18FFF2F4 = (GeneralUse_t*)can_getBCanBuffer(0x18FFF2F4);
 	bHCU_18FFF631 = (GeneralUse_t*)can_getBCanBuffer(0x18FFF631);
 	bHCU_18FFF731 = (GeneralUse_t*)can_getBCanBuffer(0x18FFF731);
-	pBMS_19FF5CF3 = (GeneralUse_t*)can_getPCanBuffer(0x19FF5CF3);
+	pBMS_19FF5CF3 = (GeneralUse_t*)can_getBCanBuffer(0x19FF5CF3);
 	pVCU_04F02370 = (VCU_04F02370_t*)can_getBCanBuffer(0x04F02370);
 	pVCU_04F02270 = (VCU_04F02270_t*)can_getBCanBuffer(0x04F02270);
 	
 	//低压锂电SOC
-	if(can_getPCanRxState(0x19FF5CF3) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x19FF5CF3) == CAN_FRAME_ST_RECVED)
 	{
 		if(pBMS_19FF5CF3->byte7.byte != 0xff)
 		{
@@ -211,7 +211,7 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 	else DataCenter.low_batt_soc = 0xff;
 	
 	//总电压、总电流、SOC
-	if(can_getPCanRxState(0x0CFFEAF4) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x0CFFEAF4) == CAN_FRAME_ST_RECVED)
 	{
 		if(pBMS_0CFFEAF4->outputvoltage <= 64255)
 			DataCenter.batt_pack_volt = pBMS_0CFFEAF4->outputvoltage;
@@ -264,9 +264,9 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
 			int32_t DC_current = 0x00;
 			int32_t DC_voltage = 0x00;
 			
-			if(can_getPCanRxState(0x18FFA7F5) == CAN_FRAME_ST_RECVED)
+			if(can_getBCanRxState(0x18FFA7F5) == CAN_FRAME_ST_RECVED)
 			{
-				pFCU_18FFA7F5 = (GeneralUse_t*)can_getPCanBuffer(0x18FFA7F5);
+				pFCU_18FFA7F5 = (GeneralUse_t*)can_getBCanBuffer(0x18FFA7F5);
 				
 				u16_buffer = pFCU_18FFA7F5->byte1.byte + pFCU_18FFA7F5->byte2.byte * 256;
 				
@@ -325,7 +325,7 @@ void BMSandTravelInfoData_Update(void) //BMS与行程信息数据更新
     DataCenter.batt_pack_inspower = s32_buffer / 10000;
 }
 	//电池组SOH，电池平均温度
-	if(can_getPCanRxState(0x18FFEEF4) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x18FFEEF4) == CAN_FRAME_ST_RECVED)
 	{
 		DataCenter.batt_pack_soh = pBMS_18FFEEF4->byte2.byte;
 		if(DataCenter.batt_pack_soh > 100) DataCenter.batt_pack_soh = 100;
@@ -442,16 +442,16 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	uint32_t mot_power1 = 0, mot_power2 = 0;
 	uint8_t mot_off1 = 0, mot_off2 = 0;
 	
-	MCU_0CFF11EF_t *pMCU_0CFF11EF  = (MCU_0CFF11EF_t*)can_getPCanBuffer(0x0CFF11EF);
+	MCU_0CFF11EF_t *pMCU_0CFF11EF  = (MCU_0CFF11EF_t*)can_getBCanBuffer(0x0CFF11EF);
 	MCU_0CFF11EF_t *pMCU2_0CFF11F0 = NULL; //
-	GeneralUse_t   *pETC1_0CF00203 = NULL; //(GeneralUse_t*)can_getPCanBuffer(0x0CF00203);
-	GeneralUse_t   *pETC2_18F00503 = NULL; //(GeneralUse_t*)can_getPCanBuffer(0x18F00503);
-	GeneralUse_t   *pETC7_18FE4A03 = (GeneralUse_t*)can_getPCanBuffer(0x18FE4A03);
-	GeneralUse_t   *pTC1_0C010305  = (GeneralUse_t*)can_getPCanBuffer(0x0C010305);
-	GeneralUse_t   *pTCU_0CEF3103  = NULL; //(GeneralUse_t*)can_getPCanBuffer(0x0CEF3103);
-	VCU_18FFF531_t *pHCU_18FFF531  = NULL; //(VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
+	GeneralUse_t   *pETC1_0CF00203 = NULL; //(GeneralUse_t*)can_getBCanBuffer(0x0CF00203);
+	GeneralUse_t   *pETC2_18F00503 = NULL; //(GeneralUse_t*)can_getBCanBuffer(0x18F00503);
+	GeneralUse_t   *pETC7_18FE4A03 = (GeneralUse_t*)can_getBCanBuffer(0x18FE4A03);
+	GeneralUse_t   *pTC1_0C010305  = (GeneralUse_t*)can_getBCanBuffer(0x0C010305);
+	GeneralUse_t   *pTCU_0CEF3103  = NULL; //(GeneralUse_t*)can_getBCanBuffer(0x0CEF3103);
+	VCU_18FFF531_t *pHCU_18FFF531  = NULL; //(VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
 	GeneralUse_t   *bATS_0C3DD7A7  = NULL; //(GeneralUse_t*)can_getBCanBuffer(0x0C3DD7A7);
-	GeneralUse_t   *pPROP_18FF5527 = (GeneralUse_t*)can_getPCanBuffer(0x18FF5527);
+	GeneralUse_t   *pPROP_18FF5527 = (GeneralUse_t*)can_getBCanBuffer(0x18FF5527);
 	VCU_04F02270_t *pVCU_04F02270 = (VCU_04F02270_t*)can_getBCanBuffer(0x04F02270);
 	VCU_04F02A70_t *pVCU_04F02A70 = (VCU_04F02A70_t*)can_getBCanBuffer(0x04F02A70);
 	VCU_04F02B70_t *pVCU_04F02B70 = (VCU_04F02B70_t*)can_getBCanBuffer(0x04F02B70);
@@ -461,15 +461,15 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 		bATS_0C3DD7A7  = (GeneralUse_t*)can_getBCanBuffer(0x0C3DD7A7);
 		DataCenter.cooling_temp = bATS_0C3DD7A7->byte5.byte - 40;
 	}
-	else if(can_getPCanRxState(0x0CF19682) == CAN_FRAME_ST_RECVED)
+	else if(can_getBCanRxState(0x0CF19682) == CAN_FRAME_ST_RECVED)
 	{
-		GeneralUse_t   *pTMS_0CF19682  = (GeneralUse_t*)can_getPCanBuffer(0x0CF19682);
+		GeneralUse_t   *pTMS_0CF19682  = (GeneralUse_t*)can_getBCanBuffer(0x0CF19682);
 		DataCenter.cooling_temp = pTMS_0CF19682->byte1.byte - 40;
 	}
 	else DataCenter.cooling_temp = 0;
 	
 	// 电机电压/电机电流/电机功率/电机转速
-	if(can_getPCanRxState(0x0CFF11EF) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x0CFF11EF) == CAN_FRAME_ST_RECVED)
 	{
 		DataCenter.mot_volt = pMCU_0CFF11EF->linevoltage;
 		
@@ -492,9 +492,9 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 		mot_power1 = 0;
 		mot_off1 = 1;
 	}
-	if(can_getPCanRxState(0x0CFF11F0) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x0CFF11F0) == CAN_FRAME_ST_RECVED)
 	{
-		pMCU2_0CFF11F0 = (MCU_0CFF11EF_t*)can_getPCanBuffer(0x0CFF11F0);
+		pMCU2_0CFF11F0 = (MCU_0CFF11EF_t*)can_getBCanBuffer(0x0CFF11F0);
 		mot_power2 = pMCU2_0CFF11F0->rpm * pMCU2_0CFF11F0->torch /9550/4;
 	}
 	else
@@ -510,14 +510,14 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	//输出轴转速，车速，档位，挡位模式
 	if(eol_atmtype != 33U && eol_atmtype != 34U)
 	{
-		if(can_getPCanRxState(0x0CF00203) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x0CF00203) == CAN_FRAME_ST_RECVED)
 		{
-			pETC1_0CF00203 = (GeneralUse_t*)can_getPCanBuffer(0x0CF00203);
+			pETC1_0CF00203 = (GeneralUse_t*)can_getBCanBuffer(0x0CF00203);
 			u16_buffer = (pETC1_0CF00203->byte2.byte +pETC1_0CF00203->byte3.byte*256);
 		}
-		else if(can_getPCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
+		else if(can_getBCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
 		{
-			pTCU_0CEF3103 = (GeneralUse_t*)can_getPCanBuffer(0x0CEF3103);
+			pTCU_0CEF3103 = (GeneralUse_t*)can_getBCanBuffer(0x0CEF3103);
 			u16_buffer = (pTCU_0CEF3103->byte7.byte +pTCU_0CEF3103->byte8.byte*256);
 		}
 		else u16_buffer = 0;
@@ -537,9 +537,9 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 		else 
 			DataCenter.display_speed = (float)(DataCenter.veh_speed);
 		
-		if(can_getPCanRxState(0x18F00503) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x18F00503) == CAN_FRAME_ST_RECVED)
 		{
-			pETC2_18F00503 = (GeneralUse_t*)can_getPCanBuffer(0x18F00503);
+			pETC2_18F00503 = (GeneralUse_t*)can_getBCanBuffer(0x18F00503);
 			s16_buffer = pETC2_18F00503->byte4.byte - 125;
 			if(s16_buffer == 0)
 				DataCenter.gear = 0; //N挡
@@ -550,7 +550,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 			else
 				DataCenter.gear = 0xffu; //无效
 			
-			if(can_getPCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED)
+			if(can_getBCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED)
 			{
 				if(pETC7_18FE4A03->byte3.bit78 == 1)
 					DataCenter.gear_mode = 0; //M模式
@@ -582,7 +582,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 			}
 			
 		}
-		else if(can_getPCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
+		else if(can_getBCanRxState(0x0CEF3103) == CAN_FRAME_ST_RECVED)
 		{
 			s16_buffer = pTCU_0CEF3103->byte1.byte - 125;
 			if(s16_buffer == 0)
@@ -611,7 +611,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	}
 	else
 	{
-		if(can_getPCanRxState(0x0CFF11EF) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x0CFF11EF) == CAN_FRAME_ST_RECVED)
 		{
 			if(eol_atmtype == 34U)
 				DataCenter.shaft_rpm = pMCU_0CFF11EF->rpm * 2 / 6.243;  //比例0.125
@@ -627,9 +627,9 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 		else 
 			DataCenter.display_speed = (float)(db_buffer);
 		
-		if(can_getPCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x18FFF531) == CAN_FRAME_ST_RECVED)
 		{
-			pHCU_18FFF531  = (VCU_18FFF531_t*)can_getPCanBuffer(0x18FFF531);
+			pHCU_18FFF531  = (VCU_18FFF531_t*)can_getBCanBuffer(0x18FFF531);
 			u8_buffer = pHCU_18FFF531->gear;
 			if(u8_buffer == 1)
 				DataCenter.gear = 0; //N挡
@@ -715,7 +715,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	//E/P模式
 	if(eol_atmtype == 33U || eol_atmtype == 34U || eol_atmtype == 27U || eol_atmtype == 30U)
 	{
-		if(can_getPCanRxState(0x0C010305) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x0C010305) == CAN_FRAME_ST_RECVED)
 		{
 			if(pTC1_0C010305->byte6.bit34 == 0)
 				DataCenter.ep_mode = 0; //E 经济模式
@@ -724,7 +724,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 			else
 				DataCenter.ep_mode = 0xffu; //无效
 		}
-		else if(can_getPCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED)
+		else if(can_getBCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED)
 		{
 			if(pETC7_18FE4A03->byte3.bit56 == 0)
 				DataCenter.ep_mode = 0; //E 经济模式
@@ -741,7 +741,7 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	}
 	else
 	{
-		if(can_getPCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED)
 		{
 			if(pETC7_18FE4A03->byte3.bit56 == 0)
 				DataCenter.ep_mode = 0; //E 经济模式
@@ -759,8 +759,8 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	// 蠕动模式
 	// if(eol_atmtype != 35U)
 	// {
-		// if(can_getPCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED
-		// || can_getPCanRxState(0x0C010305) == CAN_FRAME_ST_RECVED)
+		// if(can_getBCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED
+		// || can_getBCanRxState(0x0C010305) == CAN_FRAME_ST_RECVED)
 		// {
 			// if((pETC7_18FE4A03->byte3.bit34 == 0) && (pTC1_0C010305->byte6.bit56 == 0))
 				// DataCenter.peristalsis_mode = 0; //蠕动未激活
@@ -776,8 +776,8 @@ void DrvSysInfoData_Update(void)       //驱动系统信息数据更新
 	// }
 	// else
 	{
-		if(can_getPCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED
-		|| can_getPCanRxState(0x18FF5527) == CAN_FRAME_ST_RECVED)
+		if(can_getBCanRxState(0x18FE4A03) == CAN_FRAME_ST_RECVED
+		|| can_getBCanRxState(0x18FF5527) == CAN_FRAME_ST_RECVED)
 		{
 			if((pETC7_18FE4A03->byte3.bit34 == 0) && (pPROP_18FF5527->byte1.bit2 == 0))
 				DataCenter.peristalsis_mode = 0; //蠕动未激活
@@ -802,12 +802,12 @@ void HydrogenSysInfoData_Update(void)   //氢气系统信息数据更新
 	GeneralUse_t *pHMS_0x18FFA2F6 = NULL;
 	GeneralUse_t *pFCU_0x18FFAAF5 = NULL;
 	
-    pHMS_0x18FFA1F6 = (GeneralUse_t*)can_getPCanBuffer(0x18FFA1F6);
-	pHMS_0x18FFABF6 = (GeneralUse_t*)can_getPCanBuffer(0x18FFABF6);
-	pHMS_0x18FFA2F6 = (GeneralUse_t*)can_getPCanBuffer(0x18FFA2F6);
-	pFCU_0x18FFAAF5 = (GeneralUse_t*)can_getPCanBuffer(0x18FFAAF5);
+    pHMS_0x18FFA1F6 = (GeneralUse_t*)can_getBCanBuffer(0x18FFA1F6);
+	pHMS_0x18FFABF6 = (GeneralUse_t*)can_getBCanBuffer(0x18FFABF6);
+	pHMS_0x18FFA2F6 = (GeneralUse_t*)can_getBCanBuffer(0x18FFA2F6);
+	pFCU_0x18FFAAF5 = (GeneralUse_t*)can_getBCanBuffer(0x18FFAAF5);
 	
-	if(can_getPCanRxState(0x18FFA1F6) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x18FFA1F6) == CAN_FRAME_ST_RECVED)
 	{
 		if(pHMS_0x18FFA1F6->byte2.byte <= 150)
 		{
@@ -819,7 +819,7 @@ void HydrogenSysInfoData_Update(void)   //氢气系统信息数据更新
 	}
 	else DataCenter.H2_soc = 0xffu;
 	
-	if(can_getPCanRxState(0x18FFABF6) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x18FFABF6) == CAN_FRAME_ST_RECVED)
 	{
 		DataCenter.current_H2_consp = (pHMS_0x18FFABF6->bData[4] + pHMS_0x18FFABF6->bData[5] * 256) * 10; //放大10倍
 		
@@ -841,7 +841,7 @@ void HydrogenSysInfoData_Update(void)   //氢气系统信息数据更新
 	
 	DataCenter.subtot_H2_consp = Miles.single_H2_consp;
 	
-	if(can_getPCanRxState(0x18FFAAF5) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x18FFAAF5) == CAN_FRAME_ST_RECVED)
 	{
 		DataCenter.total_H2_consp = pFCU_0x18FFAAF5->bData[3] + pFCU_0x18FFAAF5->bData[4]  * 256;
 		
@@ -856,7 +856,7 @@ void HydrogenSysInfoData_Update(void)   //氢气系统信息数据更新
 		DataCenter.fcu_work_time = 0xffffffffu;
 	}
 	
-	if(can_getPCanRxState(0x18FFA2F6) == CAN_FRAME_ST_RECVED)
+	if(can_getBCanRxState(0x18FFA2F6) == CAN_FRAME_ST_RECVED)
 	{
 		DataCenter.max_h2_pressure = pHMS_0x18FFA2F6->bData[0] + pHMS_0x18FFA2F6->bData[1] * 256;
 	}
